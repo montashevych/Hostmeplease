@@ -1,8 +1,9 @@
 Capybara.javascript_driver = :webkit # Selenium works, but not as well
-
+ 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
+   Debug.rb
   # Use transactions by default
   config.before :each do
     DatabaseCleaner.strategy = :transaction
