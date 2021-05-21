@@ -15,12 +15,10 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install Rubocop
+      - name: Install dependencies
         run: |
-          gem install rubocop
-          gem rubocop-performance
-          gem rubocop-rails
-          gem rubocop-rspec
+          gem install bundler
+          bundler install
       - name: Check code
         run: rubocop
   rspec-test:
@@ -42,10 +40,10 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundler install
+      # - name: Install dependencies
+      #   run: |
+      #     gem install bundler
+      #     bundler install
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
