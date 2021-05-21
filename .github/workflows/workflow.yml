@@ -17,7 +17,9 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
       - name: Install rubocop
-        run: gem install rubocop
+        run: |
+          gem install rubocop
+          gem install rubocop-performance
       - name: Check code
         run: rubocop
   rspec-test:
