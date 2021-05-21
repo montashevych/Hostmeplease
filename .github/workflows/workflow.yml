@@ -1,5 +1,5 @@
 env:
-  RUBY_VERSION: '3.0'
+  RUBY_VERSION: '3.0.0'
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   POSTGRES_DB: postgres
@@ -15,10 +15,8 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundler install
+      - name: Install rubocop
+        run: install rubocop
       - name: Check code
         run: rubocop
   rspec-test:
@@ -40,10 +38,10 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
-      # - name: Install dependencies
-      #   run: |
-      #     gem install bundler
-      #     bundler install
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundler install
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
