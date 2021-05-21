@@ -20,6 +20,8 @@ jobs:
         run: |
           gem install rubocop
           gem install rubocop-performance
+          gem install rubocop-rails
+          gem rubocop-rspec
       - name: Check code
         run: rubocop
   rspec-test:
