@@ -15,8 +15,7 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install rubocop
-        run: install rubocop
+          bundler-cache: true
       - name: Check code
         run: rubocop
   rspec-test:
