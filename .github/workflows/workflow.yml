@@ -17,13 +17,13 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
       - name: Install rubocop
-        run: install rubocop
+        run: gem install rubocop
       - name: Check code
         run: rubocop
   rspec-test:
     name: RSpec
     needs: rubocop-test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-.04
     services:
       postgres:
         image: postgres:latest
