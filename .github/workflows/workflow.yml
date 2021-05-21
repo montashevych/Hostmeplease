@@ -16,7 +16,11 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install Rubocop
-        run: gem install rubocop
+        run: |
+          gem install rubocop
+          gem rubocop-performance
+          gem rubocop-rails
+          gem rubocop-rspec
       - name: Check code
         run: rubocop
   rspec-test:
