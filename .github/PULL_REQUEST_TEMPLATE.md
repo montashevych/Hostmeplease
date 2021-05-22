@@ -1,4 +1,9 @@
-## What?
+# Checklist:
+
+- [ ] Green rspec run
+- [ ] Green rubocop
+- [ ] PR review from teammate
+# What?
 Explain the changes you’ve made. It doesn’t need to be fancy and you don’t have to get to technical, yet. Just explicit prose on your net change will typically suffice.
 Explanation: Added support for authentication. 
 
@@ -18,3 +23,5 @@ Of course, screenshots are especially helpful for UI-related changes. A simple s
 
 ## Anything Else?
 You may want to delve into possible architecture changes or technical debt here. Call out challenges, optimizations, etc.
+
+
