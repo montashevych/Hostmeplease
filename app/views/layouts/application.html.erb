@@ -12,6 +12,14 @@
   <body>
     <h1>Hello on the Main Page</h1>
 
+    <% if user_signed_in? %>
+    <div class="navbar-right">
+      Hello <%= current_user.username%> | <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>  
+    </div>
+    <% else %>
+      <%= link_to 'Sign In', new_user_session_path %> |
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
