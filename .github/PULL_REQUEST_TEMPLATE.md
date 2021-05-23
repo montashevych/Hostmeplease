@@ -3,6 +3,7 @@
 - [ ] Green rspec run
 - [ ] Green rubocop
 - [ ] PR review from teammate
+- [ ] Added specs for all new ruby code
 # What?
 Explain the changes you’ve made. It doesn’t need to be fancy and you don’t have to get to technical, yet. Just explicit prose on your net change will typically suffice.
 Explanation: Added support for authentication. 
