@@ -10,7 +10,13 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     == yield
-    
+    - if user_signed_in?
+      .navbar-right
+        | Hello #{current_user.email} | #{link_to 'Sign Out', destroy_user_session_path, method: :delete}
+    - else
+      = link_to 'Sign In', new_user_session_path
+    p.notice= notice
+    p.alert= alert
   
 
     
