@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    user_find
   end
 
   def destroy
