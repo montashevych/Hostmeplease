@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/index'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users
+  root to: "users#index"
+  get 'user' => 'users#show'
 end
