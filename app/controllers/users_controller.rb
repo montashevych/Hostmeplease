@@ -6,13 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    user_find
-  end
-
-  def destroy
-    user_find
-    @user.destroy!
-    redirect_to users_path
+    @user = current_user
   end
 
   private
