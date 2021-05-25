@@ -1,9 +1,12 @@
 class PlacesController < ApplicationController
   def index; end
 
-  def create; end
+  def create
+  end
 
-  def show; end
+  def show
+    @place = Place.find(params[:id])
+  end
 
   def update; end
 
