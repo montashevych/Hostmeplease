@@ -1,12 +1,7 @@
-doctype html
-html
-  head
-    title Slim Examples
-    meta name="keywords" content="template language"
-
-  body
-   h1  =@place.title
-   h3 Place type: #{@place.place_type}
-   h3 Description: #{@place.description}
-   h3 Price: #{@place.price}
-   h3 Active: #{@place.active}
+==render "shared/header"
+h1  =@place.title
+h3 Place type: #{@place.place_type}
+h3 Description: #{@place.description}
+h3 Price: #{@place.price}
+h3 Active: #{@place.active}
+==render "shared/footer"
