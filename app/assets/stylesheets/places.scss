@@ -1,3 +1,42 @@
 // Place all the styles related to the Places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  background: #262F30;
+  header {
+    height: 898px;
+    background: url('Potential-Feature-Image-2-1280x640.png') no-repeat center top / cover;
+
+    .it {
+      width: inherit;
+      height: inherit;;
+
+      background: linear-gradient(180deg, #131317 -60.19%, rgba(65, 66, 99, 0.09) 100%);
+      opacity: 0.6;
+    }
+
+    h1 {
+      position: absolute;
+      width: 837px;
+      height: 318px;
+      left: 240px;
+      top: 346px;
+
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 96px;
+      line-height: 110%;
+
+      /* or 106px */
+      letter-spacing: 0.01em;
+
+      color: #FFFFFF;
+    }
+  }
+}
