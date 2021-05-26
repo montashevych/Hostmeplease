@@ -1,16 +1,5 @@
 section.main-screen
-  header.container
-    nav.navbar.navbar-expand-lg.navbar-light.bg-transparent
-      div.collapse.navbar-collapse
-        ul.nav.navbar-nav.me-auto
-          li.nav-item: a.nav-link[href='#'] About
-          li.nav-item: a.nav-link[href='#'] Contact
-      a.navbar-brand.mx-auto HostMePlease
-      div.collapse.navbar-collapse
-        ul.navbar.navbar-nav.ms-auto
-          li.nav-item: a.nav-link[href='#'] Sign In
-          li.nav-item: a.nav-link[href='#'] Sign Up
-    hr
+  == render 'shared/header'
 
   div.container.description
     h1 Beautiful Places of England
@@ -103,5 +92,5 @@ section.best-offers
             div.price-main
               p.new-price.flex-grow-1 $ 3,500
               button.btn.btn-success Book Now
-footer.footer.d-flex
-  p.mx-auto.my-auto Copyright © 2021 SoftServe IT academy
+
+== render 'shared/footer'
