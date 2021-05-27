@@ -12,10 +12,6 @@
           = f.label :LastName, 'LastName:'
           br/
           = f.text_field :LastName, autocomplete: "LastName"
-          .field
-          = f.label :role, 'Role:'
-          br/
-          = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
         .field
           = f.label :email, 'Email:'
           br/
@@ -31,6 +27,11 @@
           = f.label :password_confirmation, 'Password_confirmation:'
           br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
+        .field
+          = f.label :role, 'Role:'
+          br/
+          = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
+            
         .actions
           = f.submit "Sign up"
       = render "devise/shared/links"
