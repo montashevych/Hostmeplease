@@ -1,17 +1,18 @@
 .container
   .row
     table.table.table-bordered
-      h1 Index page
-      = link_to 'SignUp', signup_path
-      thead
-          tr
-            th FirstName:
-            th LastName:
-            th Email:
       tbody
+<<<<<<< HEAD
            - @users.each do |user|
               p
                  = user.FirstName
                  = user.LastName
                  = user.email
                 
+=======
+          tr
+            td.col-md-1
+              h1 Index page
+              br
+              =< link_to 'SignUp', signup_path
+>>>>>>> parent of 5bdc6a2... add view all users on index page
