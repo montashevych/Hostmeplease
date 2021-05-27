@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      = form_for(@user) do |f|
+        = f.label :FirstName, 'FirstName:'
+        = f.text_field :FirstName
+        = f.label :LastName, 'LastName:'
+        = f.text_field :LastName
+        = f.label :role, 'Role:'
+        = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
+        = f.label :email, 'Email:'
+        = f.email_field :email
+        = f.label :password, 'Password:'
+        = f.password_field :password
+        = f.label :password_confirmation, "Password_Confirmation:"
+        = f.password_field :password_confirmation
+        = f.submit "Create my account", class: "btn btn-primary"
