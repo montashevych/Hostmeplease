@@ -31,6 +31,7 @@ gem 'slim', '~> 4.1'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pry', '~> 0.14.1'
 gem 'devise', '~> 4.8'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
