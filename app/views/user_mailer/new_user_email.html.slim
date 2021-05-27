@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    meta[content="text/html; charset=UTF-8" http-equiv="Content-Type"]
+  body
+    p
+      | You got a new user from 
+      = @user.FirstName 
+      = @user.LastName
+      | !
+    p
+      |  User details
+      br
+      |  -------------------------- 
+    p
+      | Name: 
+      => @user.FirstName
+      = @user.LastName
+    p
+      | Email: 
+      = @user.email
+    p
+      |  Message:
+      br
+      |  ---------- 
+    p
+      = @user.message
