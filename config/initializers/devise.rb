@@ -127,6 +127,7 @@ Devise.setup do |config|
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = 'ad389575d09204b4dfa8b521ad31f3ab51009421d850db121a0a951cd15b747fda585f46457489774640c726b4f73644f60779729a675505ba5c054dd2bac92a'
+
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
 
