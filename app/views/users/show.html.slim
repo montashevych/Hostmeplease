@@ -1,1 +1,12 @@
-h1 Show page
+.container
+	.row
+		.col
+			h1 Show page
+			table class = "table table-bordered"
+				thead
+					tr
+						th FirstName:
+						th LastName:
+				tbody
+					td = @user.FirstName 		
+					td= @user.LastName
