@@ -2,7 +2,7 @@
 class UserMailerPreview < ActionMailer::Preview
   def new_user_email
     # Set up a temporary user for the preview
-    user = User.new(FirstName: "Ivan", LastName: "Bogun", email: "ivan@gmail.com", message: "I want to log in!")
+    user = User.new(FirstName: 'Ivan', LastName: 'Bogun', email: 'ivan@gmail.com', message: 'I want to log in!')
 
     UserMailer.with(user: user).new_user_email
   end

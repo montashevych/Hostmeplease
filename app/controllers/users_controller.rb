@@ -8,24 +8,6 @@ class UsersController < ApplicationController
     user_find
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    
-    if @user.save
-      UserMailer.with(user: @user).new_user_email.deliver_later
-
-      flash[:success] = t('flash.user.success')
-      redirect_to @user
-    else
-      flash.now[:error] = t ('flash.user.error_html')
-      render :new
-  end
-end
-
   private
 
   def user_find
@@ -33,6 +15,6 @@ end
   end
 
   def user_params
-    params.require(:user).permit( :password, :password_confirmation )
+    params.require(:user).permit(:password, :password_confirmation)
   end
 end
