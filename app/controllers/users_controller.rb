@@ -33,6 +33,6 @@ end
   end
 
   def user_params
-    params.require(:user).permit( :FirstName, :LastName, :role, :email, :message, :password, :password_confirmation )
+    params.require(:user).permit( :password, :password_confirmation )
   end
 end
