@@ -16,14 +16,26 @@ $gray-medium-light: #eaeaea;
 
 /* forms */
 
-// input, textarea, select, .uneditable-input {
-//   border: 1px solid #bbb;
-//   width: 100%;
-//   margin-bottom: 15px;
-//   @include box_sizing;
-// }
+input, textarea, select, label .uneditable-input {
+  border: 1px solid #bbb;
+  width: 60%;
+}
 
-// input {
-//   height: auto !important;
-// }
+input {
+  height: auto !important;
+}
 
+.container {
+  width: 1200px;
+  clear: both;
+  float: left;
+  text-align: center;
+  .row {
+    .new_user {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      }
+  }
+  
+}
