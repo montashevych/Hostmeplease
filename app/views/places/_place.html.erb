@@ -1,12 +1,18 @@
-<% 9.times do %>
-  <div class="row justify-content-center">
-    <div class="card col" style='width: 18rem;'>
-      <%= image_tag 'Potential-Feature-Image-2-1280x640.png', class: 'card-img-top' %>
-      <div class="card-body">
-        <h5 class='card-title'><%= @places[0].title %></h5>
-        <p class='card-text'><%= @places[0].description %></p>
-        <a href="#" class='btn btn-primary col-sm'>Go somewhere</a>
-      </div>
+<% @places.each do |p| %>
+  <div class="row">
+    <div class="card text-white card-has-bg click-col" style='border: none; border-radius: 20px;'>
+     <div class="card-img-overlay d-flex flex-column">
+       <div class="card-footer">
+         <div class="row">
+           <div class='col-4'>
+             <h2><%= p.price %></h2>
+           </div>
+           <div class='col-8'>
+             <button type="button" class="btn btn-success">Details</button>
+           </div>
+         </div>
+       </div>
+     </div>
     </div>
   </div>
 <% end %>

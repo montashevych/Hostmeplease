@@ -31,7 +31,7 @@ gem 'slim', '~> 4.1'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pry', '~> 0.14.1'
 gem 'will_paginate', '~> 3.3.0'
-gem 'bootstrap-will_paginate', '0.0.10'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

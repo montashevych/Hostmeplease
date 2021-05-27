@@ -9,10 +9,29 @@
      </div>
    </div>
  </section><!-- End Hero -->
+ <div class="container-fluid filter" style='background: #444C4D;height: 183px;'>
+   <div class="row">
+     <div class="col-xl-6">
+       <button type="button" class="btn s-filter">Apply filters</button>
+     </div>
+     <div class="col-xl-6">
+       <button type="button" class="btn s-price" style='float: right;'>Sort by price</button>
+     </div>
+   </div>
+ </div>
 <div class="d-flex align-items-center">
   <div class="container-fluid it">
     <div class="left-right">
-      <%= render 'place' %>
+      <section class="wrapper">
+        <div class="container">
+          <%= render 'place' %>
+        </div>
+      </section>
+      <div class="row pag">
+        <div class="mx-auto">
+          <%= will_paginate @places %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
