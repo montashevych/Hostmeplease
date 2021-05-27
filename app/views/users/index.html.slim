@@ -2,8 +2,9 @@
   .row
     table.table.table-bordered
       tbody
-          tr
-            td.col-md-1
-              h1 Index page
-              br
-              =< link_to 'SignUp', signup_path
+         - @users.each do |user|
+            p
+               = user.FirstName
+               = user.LastName
+               = user.email
+                
