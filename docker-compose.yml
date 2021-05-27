@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3"
 services:
   db:
     image: postgres
@@ -15,3 +15,4 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      
