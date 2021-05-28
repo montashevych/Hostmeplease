@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2021_05_27_133127) do
 
   create_table "users", force: :cascade do |t|
     t.string "FirstName", default: "", null: false
-    t.string "LastName", default: "", null: false
     t.string "role", default: "consumer", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
