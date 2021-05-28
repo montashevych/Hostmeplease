@@ -1,0 +1,42 @@
+<section class="place-screen">
+    <%= render 'shared/header'%>
+    <div class="container place-name">
+        <h1><%= @place.title %> </h1>
+    </div>
+</section>
+
+<section class="pg-cards">
+    <div class="container">
+        <div class="row" >
+            <div class="col-8">
+                <div class="card">
+                    <img src="" class="card-img">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class=container>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="card bg-dark text-white" style="width: 38rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title card-description"> Starting from <b> <%= @place.price %>$ </b> </h5>
+                                        <p class="card-text card-description"><%= @place.description %></p>
+                                        <a href="#" class="btn btn-success">Quick book</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="card pt-10 bg-dark" style="width: 38rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Special title treatment</h5>
+                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
