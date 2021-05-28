@@ -6,7 +6,6 @@ html
     p
       | You got a new user from 
       = @user.FirstName 
-      = @user.LastName
       | !
     p
       |  User details
@@ -14,8 +13,7 @@ html
       |  -------------------------- 
     p
       | Name: 
-      => @user.FirstName
-      = @user.LastName
+      = @user.FirstName
     p
       | Email: 
       = @user.email

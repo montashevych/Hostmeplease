@@ -8,10 +8,6 @@
           = f.label :FirstName, 'FirstName:'
           br/
           = f.text_field :FirstName, autofocus: true, autocomplete: "FirstName"
-          .field
-          = f.label :LastName, 'LastName:'
-          br/
-          = f.text_field :LastName, autocomplete: "LastName"
         .field
           = f.label :email, 'Email:'
           br/
@@ -24,7 +20,7 @@
           br/
           = f.password_field :password, autocomplete: "new-password"
         .field
-          = f.label :password_confirmation, 'Password_confirmation:'
+          = f.label :password_confirmation, 'Confirmation:'
           br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .field

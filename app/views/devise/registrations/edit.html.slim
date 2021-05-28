@@ -6,11 +6,7 @@ h2
     = f.label :FirstName, 'FirstName:'
     br/
     = f.text_field :FirstName, autofocus: true, autocomplete: "FirstName"
-    .field
-    = f.label :LastName, 'LastName:'
-    br/
-    = f.text_field :LastName, autocomplete: "LastName"
-    .field
+  .field
     = f.label :role, 'Role: '
     = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
   .field
