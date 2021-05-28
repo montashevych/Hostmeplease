@@ -12,7 +12,7 @@ Rails.application.configure do
   config.eager_load = false
 
   #Blocked Host for dynamic urls. Can change url.
-  config.hosts << /[a-z0-9]+\.c9users\.io/
+  config.hosts << "pacific-mountain-49875.herokuapp.com"
 
   # Show full error reports.
   config.consider_all_requests_local = true
