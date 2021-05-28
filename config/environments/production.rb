@@ -53,7 +53,7 @@ Rails.application.configure do
   config.log_level = :info
 
   #Blocked Host for dynamic urls. Can change url.
-  config.hosts << /[a-z0-9]+\.c9users\.io/
+  config.hosts << "pacific-mountain-49875.herokuapp.com"
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
