@@ -52,9 +52,6 @@ Rails.application.configure do
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info
 
-  #Blocked Host for dynamic urls. Can change url.
-  config.hosts << /[a-z0-9]+\.c9users\.io/
-
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 

@@ -11,7 +11,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  #Blocked Host for dynamic urls. Can change url.
+  #Blocked Host for dynamic urls. Can change url. Or use config.hosts.clear for disable.
   config.hosts << "pacific-mountain-49875.herokuapp.com"
 
   # Show full error reports.
