@@ -1,32 +1,39 @@
-<!-- ======= Hero Section ======= -->
- <section id="hero" class="d-flex align-items-center">
-   <div class="container">
-     <div class="row">
-       <div class="col-xl-6">
-         <h1>Bettter digital experience with Presento</h1>
-         <h2>We are team of talented designers making websites with Bootstrap</h2>
-       </div>
-     </div>
-   </div>
- </section><!-- End Hero -->
- <div class="container-fluid filter" style='background: #444C4D;height: 183px;'>
-   <div class="row">
-     <div class="col-xl-6">
-       <button type="button" class="btn s-filter">Apply filters</button>
-     </div>
-     <div class="col-xl-6">
-       <button type="button" class="btn s-price" style='float: right;'>Sort by price</button>
-     </div>
-   </div>
- </div>
+<!-- ======= Header ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8">
+        <h1>Find top coworking</h1>
+        <h1>spaces near you</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End header -->
+
+<!-- Filter -->
+<div class="container-fluid filter" style='background: #444C4D;height: 183px;'>
+  <div class="row">
+    <div class="col-xl-6 ">
+      <button type="button" class="btn s-filter">Apply filters</button>
+    </div>
+    <div class="col-xl-6">
+      <p class="s-price" style='float: right;'>Sort by price ▼</p>
+    </div>
+  </div>
+</div>
+<!-- End filter -->
+
+
 <div class="d-flex align-items-center">
   <div class="container-fluid it">
-    <div class="left-right">
-      <section class="wrapper">
+      <div class="py-5">
         <div class="container">
-          <%= render 'place' %>
+          <div class="row hidden-md-up">
+            <%= render 'place' %>
+          </div>
         </div>
-      </section>
+      </div>
       <div class="row pag">
         <div class="mx-auto">
           <%= will_paginate @places %>
@@ -34,4 +41,3 @@
       </div>
     </div>
   </div>
-</div>

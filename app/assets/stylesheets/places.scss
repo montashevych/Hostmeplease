@@ -96,6 +96,10 @@ section {
     line-height: 29px;
     letter-spacing: 0px;
 
+    @media (max-width: 1199px) {
+      display: none;
+    }
+
   }
 }
 
@@ -108,9 +112,15 @@ section {
   .it {
     background-color: #262F30;
 
+    .col {
+      display: flex;
+      justify-content: center;
+    }
+
     .card {
       transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
       overflow: hidden;
+      max-width: 500px;
       min-height: 300px;
       min-width: 312px;
       box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
@@ -171,14 +181,15 @@ section {
             margin: 0;
           }
 
-          .col-4 {
+          .col-6 {
             display: flex;
-            align-items: center
+            align-items: center;
+            justify-content: center;
           }
           .btn {
             background-color: $btn-color;
             border-radius: 20px;
-            width: 181px;
+            width: -moz-available;
             height: 54px;
             font-size: 18px;
             font-style: normal;
