@@ -112,17 +112,22 @@ section {
   .it {
     background-color: #262F30;
 
-    .col {
-      display: flex;
-      justify-content: center;
+    .col-md {
+      //For just col
+      // display: flex;
+      // justify-content: center;
+
+      //For col-md
+      text-align: center;
+      text-align: -moz-center;
     }
 
     .card {
       transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
       overflow: hidden;
-      max-width: 500px;
+      max-width: 400px;
       min-height: 300px;
-      min-width: 312px;
+      min-width: 250px;
       box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
       background-image: url('image-5.png');
       margin: 32px;
@@ -131,7 +136,7 @@ section {
         min-height:350px;
       }
       @media (max-width: 420px) {
-        min-height:300px;
+        min-height: 250px;
       }
 
       &.card-has-bg{
