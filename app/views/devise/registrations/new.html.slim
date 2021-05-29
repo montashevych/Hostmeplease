@@ -1,33 +1,33 @@
-.container
-  .row
-    .input-group
-      h2 Sign up
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = render "devise/shared/error_messages", resource: resource
-        .field
-          = f.label :FirstName, 'FirstName:'
-          br/
-          = f.text_field :FirstName, autofocus: true, autocomplete: "FirstName"
-        .field
-          = f.label :email, 'Email:'
-          br/
-          = f.email_field :email, autocomplete: "email"
-        .field
-          = f.label :password, 'Password:'
-          - if @minimum_password_length
-            em
-              | (#{@minimum_password_length} characters minimum)
-          br/
-          = f.password_field :password, autocomplete: "new-password"
-        .field
-          = f.label :password_confirmation, 'Confirmation:'
-          br/
-          = f.password_field :password_confirmation, autocomplete: "new-password"
-        .field
-          = f.label :role, 'Role:'
-          br/
-          = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
-            
-        .actions
-          = f.submit "Sign up"
-      = render "devise/shared/links"
+section.main-screen
+  = render 'shared/header'
+  h2 Sign up
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      = f.label :FirstName, 'FirstName:'
+      br/
+      = f.text_field :FirstName, autofocus: true, autocomplete: "FirstName"
+    .field
+      = f.label :email, 'Email:'
+      br/
+      = f.email_field :email, autocomplete: "email"
+    .field
+      = f.label :password, 'Password:'
+      - if @minimum_password_length
+        em
+          | (#{@minimum_password_length} characters minimum)
+      br/
+      = f.password_field :password, autocomplete: "new-password"
+    .field
+      = f.label :password_confirmation, 'Confirmation:'
+      br/
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .field
+      = f.label :role, 'Role:'
+      br/
+      = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
+        
+    .actions
+      = f.submit "Sign up"
+  = render "devise/shared/links"
+  = render 'shared/footer'    
