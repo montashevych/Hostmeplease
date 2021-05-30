@@ -6,12 +6,12 @@
 
 html, body {
     // overflow-x: hidden;
-    background: #3286da !important; 
+   
 }
 
 .main-screen {
 
-    background: url(/packs/media/images/homepage-bg-99102d9b830f4c6dad34.png);
+    background: asset-url("Registration_form.png");
     background-size: cover;
     height: Max(1080px, 100vh);
 
@@ -36,7 +36,7 @@ html, body {
       position: relative;
       width: 155px;
       height: 43px;
-      left: 897px;
+      left: 870px;
       top: 223px;
       font-family: SF Pro Display;
       font-style: normal;
@@ -51,11 +51,15 @@ html, body {
     position: relative;
     width: 512px;
     height: 654px;
-    left: 530px;
+    left: 690px;
     top: 308px;
     background: #464E4F;
     border-radius: 20px;
     text-align: center;
+      .new_user {
+        position: inherit;
+        top: 50px;
+      }
       input, select {
         width: 342px;
         height: 35px;
@@ -63,6 +67,7 @@ html, body {
         top: 388px;
         background: #FFFFFF;
         border-radius: 5px;
+        margin: 10px ; 
       }
       label {
         width: 342px;
@@ -76,6 +81,24 @@ html, body {
         line-height: 22px;
         color: #FFFFFF;
         text-align: left;
+      }
+      .password_width {
+        width: 115px;
+        margin-left: -11%;
+      }
+      .action_button {
+        width: 217px;
+        height: 49px;
+        left: 851px;
+        top: 885px;
+        background: #91CB82;
+        border-radius: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 110%;
+        color: #FFFFFF;
       }
   }
 }    
