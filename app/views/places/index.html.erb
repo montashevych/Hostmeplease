@@ -37,22 +37,22 @@
 
 <div class="d-flex align-items-center">
   <div class="container-fluid it">
-      <div class="py-5">
-        <div class="container">
-          <div class="row hidden-md-up">
-            <%= render 'place' %>
-          </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row hidden-md-up">
+          <%= render 'place' %>
         </div>
       </div>
-      <div class="row pag">
-        <div class="mx-auto">
-          <div class="apple_pagination">
-            <%= will_paginate @places, container: false,
-                                       previous_label: '« Prev',
-                                       next_label: 'Next »'%>
-          </div>
+    </div>
+    <div class="row pag">
+      <div class="mx-auto">
+        <div class="apple_pagination">
+          <%= will_paginate @places, container: false,
+                                     previous_label: '« Prev',
+                                     next_label: 'Next »'%>
         </div>
       </div>
     </div>
   </div>
+</div>
 <%= render 'shared/footer' %>
