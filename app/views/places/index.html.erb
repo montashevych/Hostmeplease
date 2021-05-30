@@ -46,7 +46,11 @@
       </div>
       <div class="row pag">
         <div class="mx-auto">
-          <%= will_paginate @places %>
+          <div class="apple_pagination">
+            <%= will_paginate @places, container: false,
+                                       previous_label: '« Prev',
+                                       next_label: 'Next »'%>
+          </div>
         </div>
       </div>
     </div>
