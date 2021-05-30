@@ -19,7 +19,16 @@
       <button type="button" class="btn s-filter">Apply filters</button>
     </div>
     <div class="col-xl-6">
-      <p class="s-price" style='float: right;'>Sort by price ▼</p>
+      <div class="dropdown s-price">
+        <p class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort by price
+        </p>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Low to Hight</a></li>
+          <li><a class="dropdown-item" href="#">Hight to Low</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
