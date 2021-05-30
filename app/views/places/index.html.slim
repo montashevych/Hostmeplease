@@ -18,9 +18,10 @@ section#hero.d-flex.align-items-center
           | Sort by price
         ul.dropdown-menu aria-labelledby="dropdownMenuLink"
           li
-            a.dropdown-item href="#"  Low to Hight
+            = link_to 'Low to Hight', '#', class: 'dropdown-item'
           li
-            a.dropdown-item href="#"  Hight to Low
+            = link_to 'Hight to Low', '#', class: 'dropdown-item'
+
 /! End filter
 /! ======= List of places =======
 .d-flex.align-items-center
