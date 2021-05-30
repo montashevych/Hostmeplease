@@ -4,3 +4,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 
+html, body {
+    // overflow-x: hidden;
+    background: #3286da !important; 
+}
+
+.main-screen {
+
+    background: url(/packs/media/images/homepage-bg-99102d9b830f4c6dad34.png);
+    background-size: cover;
+    height: Max(1080px, 100vh);
+
+    .description {
+        margin-top: 30vh;
+        color: var(--bs-light);
+
+        h1 {
+            max-width: 60%;
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 4em; 
+        }
+
+        p {
+            max-width: 60%;
+            font-size: 1.5em;
+        }
+    }
+
+    h2 {
+      position: relative;
+      width: 155px;
+      height: 43px;
+      left: 897px;
+      top: 223px;
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 43px;
+      /* identical to box height */
+      color: #000000;
+      }
+
+  .form-screen {
+    position: relative;
+    width: 512px;
+    height: 654px;
+    left: 530px;
+    top: 308px;
+    background: #464E4F;
+    border-radius: 20px;
+    text-align: center;
+      input, select {
+        width: 342px;
+        height: 35px;
+        left: 789px;
+        top: 388px;
+        background: #FFFFFF;
+        border-radius: 5px;
+      }
+      label {
+        width: 342px;
+        height: 20px;
+        left: 789px;
+        top: 358px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+        text-align: left;
+      }
+  }
+}    
