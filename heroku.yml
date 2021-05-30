@@ -1,5 +1,8 @@
 build:
-  docker:
+config:
+    RAILS_ENV: development
+    FOO: bar
+docker:
     web: Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
