@@ -1,0 +1,10 @@
+- @places.each do |p|
+  .col-md
+    .card.text-white.card-has-bg.click-col style=("border: none; border-radius: 20px;")
+      .card-img-overlay.d-flex.flex-column
+        .card-footer
+          .row
+            .col-6
+              h2= p.price
+            .col-6
+              button.btn.btn-success type="button"  Details

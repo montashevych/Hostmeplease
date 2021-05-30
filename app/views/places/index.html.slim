@@ -1,0 +1,40 @@
+/! ======= Header =======
+section#hero.d-flex.align-items-center
+  .container
+    = render 'shared/header'
+    .row
+      .col-xl-8
+        h1 Find top coworking
+        h1 spaces near you
+/! End header
+/! ======= Filter =======
+.container-fluid.filter style=("background: #444C4D;height: 183px;")
+  .row
+    .col-xl-6
+      button.btn.s-filter type="button"  Apply filters
+    .col-xl-6
+      .dropdown.s-price
+        p#dropdownMenuLink.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
+          | Sort by price
+        ul.dropdown-menu aria-labelledby="dropdownMenuLink"
+          li
+            a.dropdown-item href="#"  Low to Hight
+          li
+            a.dropdown-item href="#"  Hight to Low
+/! End filter
+/! ======= List of places =======
+.d-flex.align-items-center
+  .container-fluid.it
+    .py-5
+      .container
+        .row.hidden-md-up
+          = render 'place'
+    .row.pag
+      .mx-auto
+        .apple_pagination
+          = will_paginate @places, container: false, \
+            previous_label: '« Prev',                \
+            next_label: 'Next »'
+
+= render 'shared/footer'
+/! End list of places
