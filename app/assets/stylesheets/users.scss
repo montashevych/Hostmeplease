@@ -68,14 +68,14 @@ html, body {
         width: 71%;
         height: 2.3em;
         background: #FFFFFF;
-        border-radius: 0.4em;
+        border-radius: 0.5em;
         margin: 2%; 
       }
       label {
         width: 71%;
-        height: 0.8em;
+        height: 0.4em;
         left: 78%;
-        top: 35%;
+        top: 30%;
         font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
@@ -102,7 +102,7 @@ html, body {
         line-height: 1em;
         color: #FFFFFF;
         margin-top: 6%;
-        margin-bottom: 6%;
+        margin-bottom: 8%;
       }
   }
  // Styles for form sign-in
@@ -114,9 +114,9 @@ html, body {
   .form-sign_in {
     position: relative;
     width: 26%;
-    height: 35%;
+    height: 34%;
     left: 38%;
-    top: 13%;
+    top: 15%;
     background: #464E4F;
     border-radius: 1.2em;
     text-align: center;
