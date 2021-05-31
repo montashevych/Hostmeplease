@@ -9,6 +9,7 @@ html, body {
    
 }
 
+// Styles for main container page 
 .main-screen {
 
     background: asset-url("Registration_form.png");
@@ -32,6 +33,7 @@ html, body {
         }
     }
 
+// Styles for tag h2 form sign-up
     h2 {
       position: relative;
       width: 155px;
@@ -45,8 +47,8 @@ html, body {
       line-height: 43px;
       color: #FFFFFF;
       }
-
-  .form-screen {
+// Styles for form sign-up
+  .form-sign_up {
     position: relative;
     width: 512px;
     height: 614px;
@@ -105,4 +107,75 @@ html, body {
         margin-bottom: 6%;
       }
   }
+ // Styles for form sign-in
+  h2 {
+    width: 150px;
+    height: 43px;
+    left: 860px;
+    top: 120px;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 43px;
+    /* identical to box height */
+    color: #FFFFFF;
+  } 
+  .form-sign_in {
+    position: relative;
+    width: 512px;
+    height: 371px;
+    left: 704px;
+    top: 150px;
+    background: #464E4F;
+    border-radius: 20px;
+    text-align: center;
+    color: #FFFFFF;
+      label {
+        width: 342px;
+        height: 20px;
+        left: 789px;
+        top: 358px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: left;
+      }
+      input {
+        width: 342px;
+        height: 35px;
+        left: 789px;
+        top: 388px;
+        background: #FFFFFF;
+        border-radius: 5px;
+        margin: 10px ; 
+      }
+      .remember_check_box {
+        width: 50px;
+        height: 35px;
+        left: 789px;
+        top: 388px;
+        background: #FFFFFF;
+        border-radius: 5px;
+        margin: 10px; 
+      }
+      .remember_label {
+        width: 150px;
+        height: 35px;
+        top: 388px;
+        float: left;
+      }
+      .btn_sign_in {
+        width: 217px;
+        height: 49px;
+        left: 852px;
+        top: 572px;
+        background: #91CB82;
+        border-radius: 20px;
+      }
+  }
 }    
+
+
