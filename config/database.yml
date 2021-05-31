@@ -40,11 +40,11 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development
+  database: post_development
 
 test:
   <<: *default
-  database: myapp_test
+  database: post_test
 
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -68,4 +68,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 production:
   <<: *default
+  database: post_production
   url: <%= ENV['DATABASE_URL'] %>
