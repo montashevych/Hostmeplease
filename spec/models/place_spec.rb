@@ -1,5 +1,13 @@
 require 'rails_helper'
+require 'factories/places'
 
 RSpec.describe Place, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:all) do
+    @place = create(:place)
+  end
+  
+  it "is valid with valid attributes" do
+    expect(@place).to be_valid
+  end
 end
