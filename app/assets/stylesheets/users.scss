@@ -33,6 +33,7 @@ html, body {
         }
     }
 
+
 // Styles for tag h2 form sign-up
     h2 {
       position: relative;
@@ -46,7 +47,8 @@ html, body {
       font-size: 36px;
       line-height: 43px;
       color: #FFFFFF;
-      }
+  }
+    
 // Styles for form sign-up
   .form-sign_up {
     position: relative;
@@ -108,23 +110,28 @@ html, body {
       }
   }
  // Styles for form sign-in
-  h2 {
-    width: 150px;
-    height: 43px;
+  .sign_in_h2 {
+    position: relative;
     left: 860px;
     top: 120px;
-    font-family: SF Pro Display;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 43px;
-    /* identical to box height */
-    color: #FFFFFF;
-  } 
+  }
+  .sign_up_h2 {
+      position: relative;
+      width: 155px;
+      height: 43px;
+      left: 870px;
+      top: 200px;
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 43px;
+      color: #FFFFFF;
+      } 
   .form-sign_in {
     position: relative;
     width: 512px;
-    height: 371px;
+    height: 400px;
     left: 704px;
     top: 150px;
     background: #464E4F;
@@ -150,27 +157,27 @@ html, body {
       input {
         width: 342px;
         height: 35px;
-        left: 789px;
-        top: 388px;
         background: #FFFFFF;
         border-radius: 5px;
-        margin: 10px ; 
+        margin: 2%; 
       }
       .remember_check_box {
         width: 50px;
-        height: 35px;
+        height: 30px;
         left: 789px;
         top: 388px;
         background: #FFFFFF;
         border-radius: 5px;
-        margin: 10px; 
+        margin-top: 2%;
+
       }
       .remember_label {
-        width: 150px;
+        width: 30%;
         height: 35px;
-        top: 388px;
+        margin-left: -22%;
       }
       .btn_sign_in {
+        position: inherit;
         width: 217px;
         height: 49px;
         left: 852px;
@@ -182,4 +189,15 @@ html, body {
   }
 }    
 
-
+// Stylew for partials links
+.sign_in_color {
+  position: relative;
+  color: #FFFFFF;
+  top: 1%;
+}
+.sign_in_color:hover {
+  color: #0b03fc;
+}
+.receive_link_top {
+  top: 3%;
+}
