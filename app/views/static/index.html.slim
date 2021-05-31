@@ -7,8 +7,8 @@ section.main-screen
 
   div.container.book
     p Book your vacation
-    form.d-flex
-      fieldset.flex-grow-1
+    form.row
+      fieldset.flex-grow-1.col-xxl-7
         label for="accommodation"
           p Accommodation
           select.form-select#accommodation
@@ -31,66 +31,73 @@ section.main-screen
           select.form-select#guests
             option[value="2a"] 2 adults
         
-      button.btn.btn-success Search
+      button.btn.btn-success.col-xxl-4.flex-grow-1.align-middle Search
 
 section.activities
   div.container
-    div.activity
-      / img src="/packs/media/images/accommodations.png"
-      = image_pack_tag "media/images/accommodations.png"
-      div.bottom-part
-        span Accommodation
-        button.btn.btn-success Explore
-    div.activity
-      / img src="/packs/media/images/places-to-work.png"
-      = image_pack_tag "media/images/places-to-work.png"
-      div.bottom-part
-        span Places to work
-        button.btn.btn-success Explore
+    div.row.g-4
+      div.col-lg-6
+        div.activity.card.bg-dark.text-light
+          / img src="/packs/media/images/accommodations.png"
+          = image_pack_tag "media/images/accommodations.png", class: "card-img"
+          div.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
+            span Accommodation
+            button.btn.btn-success Explore
+      div.col-lg-6
+        div.activity
+          / img src="/packs/media/images/places-to-work.png"
+          = image_pack_tag "media/images/places-to-work.png", class: "card-img"
+          div.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
+            span Places to work
+            button.btn.btn-success Explore
 
 div.fw3.d-flex
   h1.mx-auto Best offers
 
 section.best-offers
   div.container
-      div.offer
-        = image_pack_tag "media/images/best-offers-1.png"
-        section.information
-          p.title White Palace
-          div.main-info
-            p.location 1749 Wheeler Ridge Delaware
-            p.guests 2 Guests
-            p.rooms 1 Room
-          div.price
-            s.old-price $ 10,500
-            div.price-main
-              p.new-price.flex-grow-1 $ 9,500
-              button.btn.btn-success Book Now
-      div.offer
-        = image_pack_tag "media/images/best-offers-2.png"
-        section.information
-          p.title Luxury Place
-          div.main-info
-            p.location 1749 Wheeler Ridge Delaware
-            p.guests 2 Guests
-            p.rooms 1 Room
-          div.price
-            s.old-price $ 4,500
-            div.price-main
-              p.new-price.flex-grow-1 $ 2,500
-              button.btn.btn-success Book Now
-      div.offer
-        = image_pack_tag "media/images/best-offers-3.png"
-        section.information
-          p.title Hotel Five Star
-          div.main-info
-            p.location 1749 Wheeler Ridge Delaware
-            p.guests 2 Guests
-            p.rooms 1 Room
-          div.price
-            s.old-price $ 6,500
-            div.price-main
-              p.new-price.flex-grow-1 $ 3,500
-              button.btn.btn-success Book Now
+    div.g-4.row
+      div.col-lg-4
+        div.offer
+          = image_pack_tag "media/images/best-offers-1.png"
+          section.information
+            p.title White Palace
+            div.main-info
+              p.location 1749 Wheeler Ridge Delaware
+              p.guests 2 Guests
+              p.rooms 1 Room
+            div.price
+              s.old-price $ 10,500
+              div.price-main
+                p.new-price.flex-grow-1 $ 9,500
+                button.btn.btn-success Book Now
+      div.col-lg-4
+        div.offer
+          = image_pack_tag "media/images/best-offers-2.png"
+          section.information
+            p.title Luxury Place
+            div.main-info
+              p.location 1749 Wheeler Ridge Delaware
+              p.guests 2 Guests
+              p.rooms 1 Room
+            div.price
+              s.old-price $ 4,500
+              div.price-main
+                p.new-price.flex-grow-1 $ 2,500
+                button.btn.btn-success Book Now
+      div.col-lg-4
+        div.offer
+          = image_pack_tag "media/images/best-offers-3.png"
+          section.information
+            p.title Hotel Five Star
+            div.main-info
+              p.location 1749 Wheeler Ridge Delaware
+              p.guests 2 Guests
+              p.rooms 1 Room
+            div.price
+              s.old-price $ 6,500
+              div.price-main
+                p.new-price.flex-grow-1 $ 3,500
+                button.btn.btn-success Book Now
 
 == render 'shared/footer'
