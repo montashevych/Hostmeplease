@@ -37,73 +37,69 @@ html, body {
 // Styles for tag h2 form sign-up
     h2 {
       position: relative;
-      width: 155px;
-      height: 43px;
-      left: 870px;
-      top: 200px;
+      width: 15%;
+      height: 4%;
+      left: 45%;
+      top: 18%;
       font-family: SF Pro Display;
       font-style: normal;
       font-weight: 600;
-      font-size: 36px;
-      line-height: 43px;
+      font-size: 2.4em;
+      line-height: 40%;
       color: #FFFFFF;
   }
     
 // Styles for form sign-up
   .form-sign_up {
     position: relative;
-    width: 512px;
-    height: 614px;
-    left: 690px;
-    top: 230px;
+    width: 26%;
+    height: 56%;
+    left: 38%;
+    top: 20%;
     background: #464E4F;
-    border-radius: 20px;
+    border-radius: 4%;
     text-align: center;
     color: #FFFFFF;
       .new_user {
         position: inherit;
-        top: 50px;
+        top: 8%;
       }
       input, select {
-        width: 342px;
-        height: 35px;
-        left: 789px;
-        top: 388px;
+        width: 71%;
+        height: 2.3em;
         background: #FFFFFF;
-        border-radius: 5px;
-        margin: 10px ; 
+        border-radius: 0.4em;
+        margin: 2%; 
       }
       label {
-        width: 342px;
-        height: 20px;
-        left: 789px;
-        top: 358px;
+        width: 71%;
+        height: 0.8em;
+        left: 78%;
+        top: 35%;
         font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 1.05em;
+        line-height: 3%;
         text-align: left;
       }
       .password_width {
-        width: 105px;
+        width: 22%;
         margin-left: -14%;
       }
       .link_color {
         color: #FFFFFF;
       }
       .action_button {
-        width: 217px;
-        height: 49px;
-        left: 851px;
-        top: 885px;
+        width: 50%;
+        height: 2.8em;
         background: #91CB82;
-        border-radius: 20px;
+        border-radius: 1em;
         font-family: Montserrat;
         font-style: normal;
         font-weight: 800;
-        font-size: 18px;
-        line-height: 110%;
+        font-size: 1.2em;
+        line-height: 1em;
         color: #FFFFFF;
         margin-top: 6%;
         margin-bottom: 6%;
@@ -112,42 +108,29 @@ html, body {
  // Styles for form sign-in
   .sign_in_h2 {
     position: relative;
-    left: 860px;
-    top: 120px;
+    left: 45%;
+    top: 12%;
   }
-  .sign_up_h2 {
-      position: relative;
-      width: 155px;
-      height: 43px;
-      left: 870px;
-      top: 200px;
-      font-family: SF Pro Display;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 36px;
-      line-height: 43px;
-      color: #FFFFFF;
-      } 
   .form-sign_in {
     position: relative;
-    width: 512px;
-    height: 400px;
-    left: 704px;
-    top: 150px;
+    width: 26%;
+    height: 35%;
+    left: 38%;
+    top: 13%;
     background: #464E4F;
-    border-radius: 20px;
+    border-radius: 1.2em;
     text-align: center;
     color: #FFFFFF;
       label {
-        width: 342px;
-        height: 20px;
-        left: 789px;
-        top: 358px;
+        width: 71%;
+        height: 0.6em;
+        left: 78%;
+        top: 35%;
         font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 1.05em;
+        line-height: 1.2em;
         text-align: left;
       }
       .new_user {
@@ -155,35 +138,31 @@ html, body {
         top: 5%;
       }
       input {
-        width: 342px;
-        height: 35px;
+        width: 71%;
+        height: 2.2em;
         background: #FFFFFF;
-        border-radius: 5px;
-        margin: 2%; 
+        border-radius: 0.4em;
+        margin: 2%;  
       }
       .remember_check_box {
-        width: 50px;
-        height: 30px;
-        left: 789px;
-        top: 388px;
+        width: 10%;
+        height: 1.8em;
         background: #FFFFFF;
-        border-radius: 5px;
+        border-radius: 1.2em;
         margin-top: 2%;
 
       }
       .remember_label {
-        width: 30%;
-        height: 35px;
-        margin-left: -22%;
+        width: 50%;
+        height: 1.6em;
+        margin-left: -7%;
       }
       .btn_sign_in {
         position: inherit;
-        width: 217px;
-        height: 49px;
-        left: 852px;
-        top: 572px;
+        width: 50%;
+        height: 2.8em;
         background: #91CB82;
-        border-radius: 20px;
+        border-radius: 1em;
         margin-bottom: 6%;
       }
   }
