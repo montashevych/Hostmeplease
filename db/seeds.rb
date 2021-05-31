@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-99.times do |n|
+20.times do |n|
   title  = "Title for post №#{n}"
   type = Faker::Lorem.characters(number: 10)
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
