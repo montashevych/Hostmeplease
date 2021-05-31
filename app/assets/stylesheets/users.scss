@@ -143,6 +143,10 @@ html, body {
         line-height: 22px;
         text-align: left;
       }
+      .new_user {
+        position: inherit;
+        top: 5%;
+      }
       input {
         width: 342px;
         height: 35px;
@@ -165,7 +169,6 @@ html, body {
         width: 150px;
         height: 35px;
         top: 388px;
-        float: left;
       }
       .btn_sign_in {
         width: 217px;
@@ -174,6 +177,7 @@ html, body {
         top: 572px;
         background: #91CB82;
         border-radius: 20px;
+        margin-bottom: 6%;
       }
   }
 }    

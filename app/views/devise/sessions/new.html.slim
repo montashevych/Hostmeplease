@@ -13,8 +13,8 @@ section.main-screen
         = f.password_field :password, autocomplete: "current-password"
       - if devise_mapping.rememberable?
         .field
-          = f.check_box :remember_me, class: "remember_check_box"
           = f.label :remember_me, class: "remember_label"
+          = f.check_box :remember_me, class: "remember_check_box"
       .actions
         = f.submit "Sign In", class: "btn_sign_in"
     = render "devise/shared/links"

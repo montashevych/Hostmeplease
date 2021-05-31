@@ -1,6 +1,6 @@
 p
   | Welcome #{@email}!
-p Hello dear #{@user.FirstName} of Hostmeplease app.
+p Hello dear #{@user.first_name} of Hostmeplease app.
 p Thanks for choosing our service. 
 p Use this link below to confirm your mail:
 p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)

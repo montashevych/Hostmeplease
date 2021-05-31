@@ -5,7 +5,7 @@ html
   body
     p
       | You got a new user from 
-      = @user.FirstName 
+      = @user.first_name 
       | !
     p
       |  User details
@@ -13,7 +13,7 @@ html
       |  -------------------------- 
     p
       | Name: 
-      = @user.FirstName
+      = @user.first_name
     p
       | Email: 
       = @user.email
