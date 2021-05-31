@@ -1,33 +1,32 @@
 section.main-screen
   = render 'shared/header'
-  h2  Sign up
-  section.form-sign_up
+  .sign_up_h2   Sign up
+  section.form-sign_up 
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
-      section.top_height
-        .field
-          = f.label :first_name, 'FirstName:'
-          br/
-          = f.text_field :first_name, autofocus: true, autocomplete: "FirstName"
-        .field
-          = f.label :email, 'Email:'
-          br/
-          = f.email_field :email, autocomplete: "email"
-        .field
-          = f.label :password, 'Password:', class: "password_width"
-          - if @minimum_password_length
-              | (#{@minimum_password_length} characters minimum)
-          br/
-          = f.password_field :password, autocomplete: "new-password"
-        .field.label
-          = f.label :password_confirmation, 'Confirmation:'
-          br/
-          = f.password_field :password_confirmation, autocomplete: "new-password"
-        .field
-          = f.label :role, 'Role:'
-          br/
-          = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})     
-        .actions
-          = f.submit "Sign up", class: "action_button"
-      = render "devise/shared/links"
+      .field
+        = f.label :first_name, "FirstName:"
+        br/
+        = f.text_field :first_name, autofocus: true, autocomplete: "FirstName"
+      .field
+        = f.label :email, 'Email:'
+        br/
+        = f.email_field :email, autocomplete: "email"
+      .field
+        = f.label :password, 'Password:', class: "password_width"
+        - if @minimum_password_length
+            | (#{@minimum_password_length} characters minimum)
+        br/
+        = f.password_field :password, autocomplete: "new-password"
+      .field.label
+        = f.label :password_confirmation, 'Confirmation:'
+        br/
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .field
+        = f.label :role, 'Role:'
+        br/
+        = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})     
+      .actions
+        = f.submit "Sign up", class: "action_button"
+    = render "devise/shared/links"
 = render 'shared/footer'    
