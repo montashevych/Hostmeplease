@@ -16,7 +16,6 @@ section.main-screen
         .field
           = f.label :password, 'Password:', class: "password_width"
           - if @minimum_password_length
-            em
               | (#{@minimum_password_length} characters minimum)
           br/
           = f.password_field :password, autocomplete: "new-password"
@@ -27,8 +26,7 @@ section.main-screen
         .field
           = f.label :role, 'Role:'
           br/
-          = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
-            
+          = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})     
         .actions
           = f.submit "Sign up", class: "action_button"
       = render "devise/shared/links"
