@@ -155,15 +155,34 @@ html, body {
                 margin: 36px;
 
                 .title {
-                    font-family: 'Montserrat'; font-weight: 700; font-size: 18pt;
-                    color: var(--bs-light); text-decoration: none;
+                    font-family: 'Montserrat';
+                    font-weight: 700;
+                    font-size: 18pt;
+
+                    color: var(--bs-light);
+                    text-decoration: none;
                 }
 
-                .main-info p, .main-info a
-                    { padding-left: 36px; line-height: 1.2em; display: block; position: relative; }
+                .main-info p, .main-info a {
+                    padding-left: 36px;
 
-                .main-info p:before, .main-info a:before
-                    { font-size: 2em; padding-bottom: -4px; font-family: 'Material Icons'; left: -4px; top: 0.1em; position: absolute; }
+                    line-height: 1.2em;
+
+                    display: block;
+
+                    position: relative;
+                }
+
+                .main-info p:before, .main-info a:before {
+                    font-size: 2em;
+                    font-family: 'Material Icons';
+                    
+                    padding-bottom: -4px;
+                    
+                    left: -4px;
+                    top: 0.1em;
+                    position: absolute;
+                }
 
                 .location:before { content: "\e55f"; }
                 .guests:before { content: "\e7ff"; }
@@ -179,7 +198,13 @@ html, body {
                         vertical-align: middle;
                         align-items: center;
                         
-                        .new-price { font-family: 'Montserrat'; font-weight: 700; font-size: 1.5em; vertical-align: bottom; }
+                        .new-price {
+                            font-family: 'Montserrat';
+                            font-weight: 700;
+                            font-size: 1.5em;
+                            
+                            vertical-align: bottom;
+                        }
                     }
                 }
             }
