@@ -40,14 +40,14 @@ section.activities
         div.activity.card.bg-dark.text-light
           / img src="/packs/media/images/accommodations.png"
           = image_pack_tag "media/images/accommodations.png", class: "card-img"
-          a[href="#"].bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
+          a.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top[href="#"]
             span Accommodation
             button.btn.btn-success Explore
       div.col-lg-6
         div.activity
           / img src="/packs/media/images/places-to-work.png"
           = image_pack_tag "media/images/places-to-work.png", class: "card-img"
-          a[href="#"].bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
+          a.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top[href="#"]
             span Places to work
             button.btn.btn-success Explore
 
@@ -58,10 +58,10 @@ section.best-offers
   div.container
     div.g-4.row
       div.col-lg-4
-        a[href="#"].offer
+        div.offer
           = image_pack_tag "media/images/best-offers-1.png"
           section.information
-            p.title White Palace
+            a.title[href="#"] White Palace
             div.main-info
               p.location 1749 Wheeler Ridge Delaware
               p.guests 2 Guests
@@ -72,10 +72,10 @@ section.best-offers
                 p.new-price.flex-grow-1 $ 9,500
                 button.btn.btn-success Book Now
       div.col-lg-4
-        a[href="#"].offer
+        div.offer
           = image_pack_tag "media/images/best-offers-2.png"
           section.information
-            p.title Luxury Place
+            a.title[href="#"] Luxury Place
             div.main-info
               p.location 1749 Wheeler Ridge Delaware
               p.guests 2 Guests
@@ -86,10 +86,10 @@ section.best-offers
                 p.new-price.flex-grow-1 $ 2,500
                 button.btn.btn-success Book Now
       div.col-lg-4
-        a[href="#"].offer
+        div.offer
           = image_pack_tag "media/images/best-offers-3.png"
           section.information
-            p.title Hotel Five Star
+            a.title[href="#"] Hotel Five Star
             div.main-info
               p.location 1749 Wheeler Ridge Delaware
               p.guests 2 Guests
