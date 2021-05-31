@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User do
   context 'when user registrate' do
-
     it 'is valid with valid attributes' do
       user2 = build(:user)
       expect(user2).to be_valid
@@ -42,7 +41,5 @@ RSpec.describe User do
       user2 = build(:user, email: nil)
       expect(user2).not_to be_valid
     end
-  end
-  context "when user login"
   end
 end
