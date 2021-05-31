@@ -40,14 +40,14 @@ section.activities
         div.activity.card.bg-dark.text-light
           / img src="/packs/media/images/accommodations.png"
           = image_pack_tag "media/images/accommodations.png", class: "card-img"
-          div.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
+          a[href="#"].bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
             span Accommodation
             button.btn.btn-success Explore
       div.col-lg-6
         div.activity
           / img src="/packs/media/images/places-to-work.png"
           = image_pack_tag "media/images/places-to-work.png", class: "card-img"
-          div.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
+          a[href="#"].bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top
             span Places to work
             button.btn.btn-success Explore
 
@@ -58,7 +58,7 @@ section.best-offers
   div.container
     div.g-4.row
       div.col-lg-4
-        div.offer
+        a[href="#"].offer
           = image_pack_tag "media/images/best-offers-1.png"
           section.information
             p.title White Palace
@@ -72,7 +72,7 @@ section.best-offers
                 p.new-price.flex-grow-1 $ 9,500
                 button.btn.btn-success Book Now
       div.col-lg-4
-        div.offer
+        a[href="#"].offer
           = image_pack_tag "media/images/best-offers-2.png"
           section.information
             p.title Luxury Place
@@ -86,7 +86,7 @@ section.best-offers
                 p.new-price.flex-grow-1 $ 2,500
                 button.btn.btn-success Book Now
       div.col-lg-4
-        div.offer
+        a[href="#"].offer
           = image_pack_tag "media/images/best-offers-3.png"
           section.information
             p.title Hotel Five Star
