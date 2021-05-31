@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
-
-header hr { margin: 0 !important; }
-
 html, body {
     // overflow-x: hidden;
     background: #262F30 !important;
@@ -17,11 +12,6 @@ html, body {
     background: url('place-background.png');
     background-size: cover;
     height: Max(400px);
-
-    .navbar-brand {
-        font-family: 'Montserrat';
-        font-weight: 700;
-    }
 
     .place-name {
         margin-top: 10vh;
@@ -52,7 +42,12 @@ html, body {
     }
   }
 
-  .card-description{
-    font-family: 'Montserrat';
-    font-weight: 700;
-  }
+.card {
+    background-color: #444C4D!important;
+    border-radius: 20px!important;
+
+    .card-description{
+        font-family: 'Montserrat';
+        font-weight: 700;
+    }
+}
