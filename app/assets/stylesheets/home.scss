@@ -149,6 +149,11 @@ html, body {
 
             border-radius: 20px;
 
+            color: var(--bs-light);
+            text-decoration: none;
+
+            display: block;
+
             img { width: 100%; }
 
             .information {
@@ -158,9 +163,6 @@ html, body {
                     font-family: 'Montserrat';
                     font-weight: 700;
                     font-size: 18pt;
-
-                    color: var(--bs-light);
-                    text-decoration: none;
                 }
 
                 .main-info p, .main-info a {
