@@ -19,5 +19,5 @@
                 place_type: type,
                 description: description,
                 price: price,
-                active: active)
+                status: active)
 end

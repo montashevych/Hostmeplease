@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_071219) do
     t.string "place_type"
     t.text "description"
     t.float "price"
-    t.boolean "active"
+    t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

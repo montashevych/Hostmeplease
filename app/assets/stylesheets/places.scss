@@ -77,7 +77,7 @@ section {
 .filter {
   background: #444C4D;
   height: 183px;
-  
+
   .btn {
     background-color: $btn-color;
     color: white;
@@ -205,6 +205,7 @@ section {
             background-color: $btn-color;
             border-radius: 20px;
             width: -moz-available;
+            width: -webkit-fill-available;
             height: 54px;
             font-size: 18px;
             font-style: normal;
