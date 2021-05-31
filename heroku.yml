@@ -15,3 +15,7 @@ release:
   image: worker
 run:
   web: bundle exec puma -C config/puma.rb
+release:
+  image: worker
+  command:
+    - ./deployment-tasks.sh
