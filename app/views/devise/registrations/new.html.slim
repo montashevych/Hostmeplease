@@ -1,7 +1,7 @@
 section.main-screen
   = render 'shared/header'
   h2 Sign up
-  section.form-screen
+  section.form-sign_up
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       section.top_height
