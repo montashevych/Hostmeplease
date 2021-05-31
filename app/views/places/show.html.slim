@@ -5,7 +5,7 @@ section.place-screen
     h1
       = @place.title
 section.pg-cards
-  .container
+  .container.justify-content-around
     .row.align-items-start
       .col
         .card style=("width: 35rem;") 
@@ -21,8 +21,7 @@ section.pg-cards
             a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
               span.carousel-control-next-icon aria-hidden="true" 
               span.sr-only Next
-      .col
-        .col
+      .col.mx-3
           .row
             .card.text-white style=("width: 30rem;") 
               .card-body
@@ -36,6 +35,6 @@ section.pg-cards
                 p.card-text.card-description= @place.description
                 a.btn.btn-success href="#"  Quick book
           .row.mt-3
-            div classe="card" style=("width: 30rem;") 
+            div.card style=("width: 30rem;") 
               img.card.card-img-top src="https://live.staticflickr.com/65535/51214325708_f46c98e18f_b.jpg" /
 = render'shared/footer'
