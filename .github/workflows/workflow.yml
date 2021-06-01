@@ -54,9 +54,9 @@ jobs:
           bundler exec rails db:migrate RAILS_ENV=test
       - name: Run tests
         run: bundler exec rake
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.9
+      - name: Upload coverage results    
+        uses: actions/upload-artifact@master
         if: always()
         with:
           name: coverage-report
-          path: ~/download
+          path: coverage
