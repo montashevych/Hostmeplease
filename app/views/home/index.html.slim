@@ -32,7 +32,7 @@ section.main-screen
           p Guests
           select.form-select#guests
             option[value="2a"] 2 adults
-        
+
       button.btn.btn-success.col-xxl-4.flex-grow-1.align-middle Search
 
 section.activities
@@ -42,14 +42,15 @@ section.activities
         div.activity.card.bg-dark.text-light
           / img src="/packs/media/images/accommodations.png"
           = image_pack_tag "media/images/accommodations.png", class: "card-img"
-          a.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top[href="#"]
+          = link_to places_url, class: 'bottom-part card-img-overlay d-flex align-items-end align-text-top'
             span Accommodation
             button.btn.btn-success Explore
       div.col-lg-6
         div.activity
           / img src="/packs/media/images/places-to-work.png"
           = image_pack_tag "media/images/places-to-work.png", class: "card-img"
-          a.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top[href="#"]
+
+          = link_to places_url, class: 'bottom-part card-img-overlay d-flex align-items-end align-text-top'
             span Places to work
             button.btn.btn-success Explore
 

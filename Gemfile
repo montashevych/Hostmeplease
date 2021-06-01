@@ -32,7 +32,11 @@ gem 'slim', '~> 4.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pry', '~> 0.14.1'
+<<<<<<< HEAD
 gem 'devise', '~> 4.8'
+=======
+gem 'will_paginate', '~> 3.3.0'
+>>>>>>> b5e30c63510814295e42ee98f238333b621a1cc3
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,6 +44,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'rails-controller-testing'
   # Rubocop gems
   gem 'rubocop', '~> 1.15', require: false
   gem 'rubocop-performance', require: false
@@ -65,9 +70,6 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'database_cleaner-active_record'
-
-  # expect render_template...
-  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
