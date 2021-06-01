@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_062318) do
 
   create_table "places", force: :cascade do |t|
     t.string "title"
-    t.string "place_type"
+    t.string "type"
     t.text "description"
     t.float "price"
     t.boolean "active"
