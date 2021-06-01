@@ -16,8 +16,7 @@
   active = Faker::Boolean.boolean
   password = "password"
   Place.create!(title: title,
-                place_type: type,
                 description: description,
                 price: price,
-                active: active)
+                status: active)
 end

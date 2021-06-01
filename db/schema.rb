@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 2021_05_25_071219) do
 
   create_table "places", force: :cascade do |t|
     t.string "title"
-    t.string "place_type"
+    t.string "type"
     t.text "description"
     t.float "price"
-    t.boolean "active"
+    t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
