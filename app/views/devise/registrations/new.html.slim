@@ -24,7 +24,7 @@ section.main-screen
       - if resource.errors[:password]
         =resource.errors[:password].first
       .field.label
-        = f.label :password_confirmation, 'Confirmation:'
+        = f.label :password_confirmation, 'Password Confirmation:'
         br/
         = f.password_field :password_confirmation, autocomplete: "new-password"
       - if resource.errors[:password_confirmation]

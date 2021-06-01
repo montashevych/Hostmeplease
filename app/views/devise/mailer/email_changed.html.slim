@@ -1,8 +1,12 @@
 p
   | Hello #{@email}!
 - if @resource.try(:unconfirmed_email?)
-  p.alert.alert-danger= alert
+  p.alert.alert-danger.alert-dismissible.fade.show role="alert"
     | We're contacting you to notify you that your email is being changed to #{@resource.unconfirmed_email}.
+    button.close aria-label="Close" data-dismiss="alert" type="button" 
+      span aria-hidden="true"
 - else
-  p.alert.alert-success= notice
+  p.alert.alert-success.alert-dismissible.fade.show role="alert"
     | We're contacting you to notify you that your email has been changed to #{@resource.email}.
+    button.close aria-label="Close" data-dissmiss="alert" type="button"
+      span aria-hidden="true"
