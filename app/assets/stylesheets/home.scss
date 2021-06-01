@@ -1,0 +1,215 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+html, body {
+    // overflow-x: hidden;
+    background: #262F30 !important;
+}
+
+.main-screen {
+
+    background: asset-url("homepage-bg.png");
+    background-size: cover;
+    min-height: Max(1080px, 100vh);
+
+    .description {
+        margin-top: 30vh;
+        color: var(--bs-light);
+
+        h1 {
+            max-width: 60%;
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 4em; 
+        }
+
+        p {
+            max-width: 60%;
+            font-size: 1.5em;
+        }
+    }
+
+    .book {
+        border-radius: 20px;
+        backdrop-filter: blur(40px);
+        margin-top: 20vh;
+        padding: 35px 48px 48px 35px !important;
+        background-color: #ffffff22;
+
+        margin-bottom: 48px;
+
+        p {
+            font-family: 'Montserrat';
+            font-weight: 700;
+            color: var(--bs-light);
+        }
+        
+        form {
+            fieldset {
+                border-radius: 20px;
+                border: 1px solid var(--bs-gray);
+                padding-left: 12px;
+                padding-right: 12px;
+
+                & * {
+                    color: var(--bs-light);
+                    background: transparent;
+                }
+
+                &>* {
+                    height: 100%;
+                    padding: 12px;
+                    border-left: 1px solid var(--bs-gray);
+
+                    p {
+                        font-size: 0.75em;
+                        color: var(--bs-gray);
+                    }
+
+                    @media screen and (max-width: 1400px) {
+                        border-left: none;
+                        height: initial;
+                    }
+                }
+
+                :first-child { border-left: none; }
+
+                select, input { border: none; padding: 0; width: 100%; }
+
+                option { color: var(--bs-dark); }
+            }
+
+            button {
+                margin: 1em;
+                padding: 1em 3em;
+                height: 100%;
+
+                @media screen and (max-width: 1400px) {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.activities {
+    padding: 2em 0;
+    background: #262F30;
+
+
+    .container {
+        position: relative;
+        .activity {
+            position: relative;
+            
+            img { width: 100%; }
+
+            .bottom-part {
+                vertical-align: middle;
+                width: 100%;
+                padding: 24px;
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                color: var(--bs-light);
+                background: #00000088;
+                align-items: center;
+                span {
+                    flex-grow: 1; flex-basis: fill;
+                    font-family: 'Montserrat'; font-weight: 700;
+                }
+                button {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+.fw3 {
+    background: asset-url("bestoffers-bg.png");
+    background-size: cover;
+    padding: 48px;
+    color: var(--bs-light);
+}
+
+.best-offers {
+    padding: 3em 0;
+    background: #262F30;
+
+    .container {
+        .offer {
+            padding: 0;
+            color: var(--bs-light);
+
+            margin: 12px;
+
+            background: #464E4F;
+
+            border-radius: 20px;
+
+            color: var(--bs-light);
+            text-decoration: none;
+
+            display: block;
+
+            img { width: 100%; }
+
+            .information {
+                margin: 36px;
+
+                .title {
+                    font-family: 'Montserrat';
+                    font-weight: 700;
+                    font-size: 18pt;
+                }
+
+                .main-info p, .main-info a {
+                    padding-left: 36px;
+
+                    line-height: 1.2em;
+
+                    display: block;
+
+                    position: relative;
+                }
+
+                .main-info p:before, .main-info a:before {
+                    font-size: 2em;
+                    font-family: 'Material Icons';
+                    
+                    padding-bottom: -4px;
+                    
+                    left: -4px;
+                    top: 0.1em;
+                    position: absolute;
+                }
+
+                .location:before { content: "\e55f"; }
+                .guests:before { content: "\e7ff"; }
+                .rooms:before { content: "\ea44"; }
+
+                .price {
+                    padding-top: 2em;
+                    * { display: block; }
+
+                    .old-price { font-size: 1em; }
+                    .price-main {
+                        display: flex;
+                        vertical-align: middle;
+                        align-items: center;
+                        
+                        .new-price {
+                            font-family: 'Montserrat';
+                            font-weight: 700;
+                            font-size: 1.5em;
+                            
+                            vertical-align: bottom;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
