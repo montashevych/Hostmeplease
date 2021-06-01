@@ -1,0 +1,105 @@
+- provide :title, "Home"
+
+section.main-screen
+  == render 'shared/header'
+
+  div.container.description
+    h1 Beautiful Places of England
+    p Plan your vacation on the most beatiful places of England
+
+  div.container.book
+    p Book your vacation
+    form.row
+      fieldset.flex-grow-1.col-xxl-7
+        label for="accommodation"
+          p Accommodation
+          select.form-select#accommodation
+            option[value="1"]
+              | 6730 Luna Land North Rhiannonmouth
+            option[value="2"]
+              | White Palace
+            option[value="3"]
+              | Luxry Place
+            option[value="3"]
+              | Hotel Five Star
+        label for="checkin-date"
+          p Check-in
+          input#checkin-date type="date"
+        label for="checkout-date"
+          p Check-out
+          input#checkout-date type="date"
+        label.flex-grow-1 for="guests"
+          p Guests
+          select.form-select#guests
+            option[value="2a"] 2 adults
+        
+      button.btn.btn-success.col-xxl-4.flex-grow-1.align-middle Search
+
+section.activities
+  div.container
+    div.row.g-4
+      div.col-lg-6
+        div.activity.card.bg-dark.text-light
+          / img src="/packs/media/images/accommodations.png"
+          = image_pack_tag "media/images/accommodations.png", class: "card-img"
+          a.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top[href="#"]
+            span Accommodation
+            button.btn.btn-success Explore
+      div.col-lg-6
+        div.activity
+          / img src="/packs/media/images/places-to-work.png"
+          = image_pack_tag "media/images/places-to-work.png", class: "card-img"
+          a.bottom-part.card-img-overlay.d-flex.align-items-end.align-text-top[href="#"]
+            span Places to work
+            button.btn.btn-success Explore
+
+div.fw3.d-flex
+  h1.mx-auto Best offers
+
+section.best-offers
+  div.container
+    div.g-4.row
+      div.col-lg-4
+        a.offer[href="#"]
+          = image_pack_tag "media/images/best-offers-1.png"
+          section.information
+            p.title White Palace
+            div.main-info
+              p.location 1749 Wheeler Ridge Delaware
+              p.guests 2 Guests
+              p.rooms 1 Room
+            div.price
+              s.old-price $ 10,500
+              div.price-main
+                p.new-price.flex-grow-1 $ 9,500
+                button.btn.btn-success Book Now
+      div.col-lg-4
+        a.offer[href="#"]
+          = image_pack_tag "media/images/best-offers-2.png"
+          section.information
+            p.title Luxury Place
+            div.main-info
+              p.location 1749 Wheeler Ridge Delaware
+              p.guests 2 Guests
+              p.rooms 1 Room
+            div.price
+              s.old-price $ 4,500
+              div.price-main
+                p.new-price.flex-grow-1 $ 2,500
+                button.btn.btn-success Book Now
+      div.col-lg-4
+        a.offer[href="#"]
+          = image_pack_tag "media/images/best-offers-3.png"
+          section.information
+            p.title Hotel Five Star
+            div.main-info
+              p.location 1749 Wheeler Ridge Delaware
+              p.guests 2 Guests
+              p.rooms 1 Room
+            div.price
+              s.old-price $ 6,500
+              div.price-main
+                p.new-price.flex-grow-1 $ 3,500
+                button.btn.btn-success Book Now
+
+== render 'shared/footer'
