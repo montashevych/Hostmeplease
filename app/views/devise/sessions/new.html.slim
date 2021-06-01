@@ -1,6 +1,10 @@
 section.main-screen
   = render 'shared/header'
-  .sign_up_h2.sign_in_h2  Sign In
+  .container
+    .row
+      .col-md-12
+  .sign_up_h2.sign_in_h2  
+    | Sign In
   section.form-sign_in
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
@@ -12,7 +16,7 @@ section.main-screen
         br/
         = f.password_field :password, autocomplete: "current-password"
       - if devise_mapping.rememberable?
-        .field
+        .field.remember
           = f.label :remember_me, class: "remember_label"
           = f.check_box :remember_me, class: "remember_check_box"
       .actions
