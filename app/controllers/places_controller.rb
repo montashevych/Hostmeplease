@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
+  PAGES = 9
+
   def index
-    @places = Place.where(active: true).paginate(page: params[:page], per_page: 9)
+    @places = Place.where(status: true).paginate(page: params[:page], per_page: PAGES)
   end
 end

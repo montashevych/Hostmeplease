@@ -14,10 +14,8 @@
                                        random_sentences_to_add: 4)
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
   active = Faker::Boolean.boolean
-  password = "password"
   Place.create!(title: title,
-                place_type: type,
                 description: description,
                 price: price,
-                active: active)
+                status: active)
 end
