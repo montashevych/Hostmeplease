@@ -1,0 +1,40 @@
+section.place-screen
+  .text-white
+    = render 'shared/header'
+  .container.place-name
+    h1
+      = @place.title
+section.pg-cards
+  .container.justify-content-center
+    .row.align-items-start
+      .col
+        .card style=("width: 35rem;") 
+          #carouselExampleIndicators.carousel.slide data-ride="carousel" 
+            ol.carousel-indicators
+              li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
+            .carousel-inner
+              .carousel-item.active
+                img.d-block.w-100.card alt=("First slide") src="https://www.bachmann.com/fileadmin/03_Anwendungswelten/Office/BACHMANN_Anwendungswelt_Office_Header_mobil.jpg" /
+            a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button" 
+              span.carousel-control-prev-icon aria-hidden="true" 
+              span.sr-only Previous
+            a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
+              span.carousel-control-next-icon aria-hidden="true" 
+              span.sr-only Next
+      .col.mx-4
+          .row
+            .card.text-white style=("width: 30rem;") 
+              .card-body
+                h5.card-title.card-description
+                  | Price starts from
+                  br/
+                  big
+                    = @place.price
+                    | $
+                  small  per month
+                p.card-text.card-description= @place.description
+                a.btn.btn-success href="#"  Quick book
+          .row.mt-3
+            div style=("width: 30rem;") 
+              img.card.card-img-top src="https://live.staticflickr.com/65535/51214325708_f46c98e18f_b.jpg" /
+= render'shared/footer'
