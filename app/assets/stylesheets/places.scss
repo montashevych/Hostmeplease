@@ -8,6 +8,11 @@ $btn-color: #91CB82;
   padding: 0;
 }
 
+a {
+  width: -moz-available;
+  width: -webkit-fill-available;
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -77,7 +82,7 @@ section {
 .filter {
   background: #444C4D;
   height: 183px;
-  
+
   .btn {
     background-color: $btn-color;
     color: white;
@@ -200,17 +205,21 @@ section {
             display: flex;
             align-items: center;
             justify-content: center;
-          }
-          .btn {
-            background-color: $btn-color;
-            border-radius: 20px;
-            width: -moz-available;
-            height: 54px;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 21px;
-            letter-spacing: 0px;
+
+            a {
+              .btn {
+                background-color: $btn-color;
+                width: -moz-available;
+                width: -webkit-fill-available;
+                border-radius: 20px;
+                height: 54px;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 21px;
+                letter-spacing: 0px;
+              }
+            }
           }
         }
       }
