@@ -1,0 +1,9 @@
+.container
+  .row
+    table.table.table-bordered
+      tbody
+         - @users.each do |user|
+            p
+               = user.first_name
+               = user.email
+                

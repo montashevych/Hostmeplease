@@ -54,6 +54,7 @@ Metrics/BlockLength:
     - draw
     - configure
     - group
+    - Devise.setup
 
 # Style Cops
 

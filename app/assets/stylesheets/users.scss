@@ -1,0 +1,182 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
+
+html, body {
+    // overflow-x: hidden;
+   
+}
+
+// Styles for main container page 
+.main-screen {
+
+    background: asset-url("Registration_form.png");
+    background-size: cover;
+    height: Max(1080px, 100vh);
+
+    .description {
+        margin-top: 30vh;
+        color: var(--bs-light);
+
+        h1 {
+            max-width: 60%;
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 4em; 
+        }
+
+        p {
+            max-width: 60%;
+            font-size: 1.5em;
+        }
+    }
+
+
+// Styles for tag h2 form sign-up
+    .sign_up_h2 {
+      position: relative;
+      width: 15%;
+      height: 4%;
+      left: 45%;
+      top: 18%;
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 2.4em;
+      line-height: 40%;
+      color: #FFFFFF;
+  }
+    
+// Styles for form sign-up
+  .form-sign_up {
+    position: relative;
+    width: 26%;
+    height: auto;
+    left: 38%;
+    top: 20%;
+    background: #464E4F;
+    border-radius: 4%;
+    text-align: center;
+    color: #FFFFFF;
+      .new_user {
+        position: inherit;
+        top: 8%;
+      }
+      input, select {
+        width: 71%;
+        height: 2.3em;
+        background: #FFFFFF;
+        border-radius: 0.5em;
+        margin: 2%; 
+      }
+      label {
+        width: 71%;
+        height: 0.4em;
+        left: 78%;
+        top: 30%;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.05em;
+        line-height: 3%;
+        text-align: left;
+      }
+      .password_width {
+        width: 22%;
+        margin-left: -14%;
+      }
+      .link_color {
+        color: #FFFFFF;
+      }
+      .action_button {
+        width: 50%;
+        height: 2.8em;
+        background: #91CB82;
+        border-radius: 1em;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1.2em;
+        line-height: 1em;
+        color: #FFFFFF;
+        margin-top: 6%;
+        margin-bottom: 8%;
+      }
+  }
+ // Styles for form sign-in
+  .sign_in_h2 {
+    position: relative;
+    left: 45%;
+    top: 12%;
+  }
+  .form-sign_in {
+    position: relative;
+    width: 26%;
+    height: 34%;
+    left: 38%;
+    top: 15%;
+    background: #464E4F;
+    border-radius: 1.2em;
+    text-align: center;
+    color: #FFFFFF;
+      label {
+        width: 71%;
+        height: 0.6em;
+        left: 78%;
+        top: 35%;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.05em;
+        line-height: 1.2em;
+        text-align: left;
+      }
+      .new_user {
+        position: inherit;
+        top: 5%;
+      }
+      input {
+        width: 71%;
+        height: 2.2em;
+        background: #FFFFFF;
+        border-radius: 0.4em;
+        margin: 2%;  
+      }
+      .remember_check_box {
+        width: 10%;
+        height: 1.8em;
+        background: #FFFFFF;
+        border-radius: 1.2em;
+        margin-top: 2%;
+
+      }
+      .remember_label {
+        width: 50%;
+        height: 1.6em;
+        margin-left: -7%;
+      }
+      .btn_sign_in {
+        position: inherit;
+        width: 50%;
+        height: 2.8em;
+        background: #91CB82;
+        border-radius: 1em;
+        margin-bottom: 6%;
+      }
+  }
+}    
+
+// Stylew for partials links
+.sign_in_color {
+  position: relative;
+  color: #FFFFFF;
+  top: 1%;
+}
+.sign_in_color:hover {
+  color: #0b03fc;
+}
+.receive_link_top {
+  top: 3%;
+}
