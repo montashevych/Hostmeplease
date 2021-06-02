@@ -108,13 +108,19 @@ html, body {
   .sign_in_h2 {
     margin: 10% 45% 0%;
     margin-bottom: 3%;
-    font-size: 1.5em;
+    font-size: 2.4em;
     font-weight: 600;
+    color: $text-color;
   }
+  @media screen and (max-width: 1140px) {
+          .sign_in_h2 {
+            font-size: 1.4em;
+          }
+      }
   .form-sign_in {
     width: 26%;
     min-width: 200px;
-    height: auto;
+    height: 42%;
     margin: 1% 40% 0%;
     background: #464E4F;
     border-radius: 1.2em;
@@ -123,18 +129,12 @@ html, body {
       label {
         width: 71%;
         height: 0.6em;
-        left: 78%;
-        top: 35%;
         font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
         font-size: 1.05em;
         line-height: 1.2em;
         text-align: left;
-      }
-      .new_user {
-        position: inherit;
-        top: 5%;
       }
       input {
         width: 71%;
@@ -143,45 +143,76 @@ html, body {
         border-radius: 0.4em;
         margin: 2%;  
       }
-      .remember_check_box {
-        width: 10%;
-        height: 1.8em;
-        background: #FFFFFF;
-        border-radius: 1.2em;
-        margin-top: 2%;
 
+      @media screen and (max-width: 1140px) {
+          label {
+            font-size: 1em;
+          }
+          input {
+            height: 1.6em;
+          }
       }
-      .remember_label {
+
+      @media screen and (max-width: 720px) {
+          label {
+            font-size: 0.9em;
+          }
+          input {
+            height: 1.6em;
+          }
+    
+      }
+
+      .form-check-box {
         width: 50%;
         height: 1.6em;
-        margin-left: -7%;
+        margin-right: 15%;
+        float: right;
+        margin-top: -5%;
       }
       .btn_sign_in {
-        position: inherit;
         width: 50%;
         height: 2.8em;
+        font-weight: 600;
         background: #91CB82;
         border-radius: 1em;
         margin-bottom: 6%;
+        color: $text-color
       }
-      @media (min-width: 960px) and (max-width: 1140px) {
-          
+      .link_in_color {
+        color: $text-color;
       }
+      .link_in_color:hover {
+        color: #0b03fc;
+      }
+      @media screen and (max-width: 1140px) {
+          .form-check-box {
+            width: 20%;
+            height: 1.3em;
+            float: right;
+            margin-top: -8%;
+          }
+          .btn_sign_in {
+            width: 60%;
+            height: 2.1em;
+            background: #91CB82;
+            font-weight: 400;
+          }
+          .link_in_color {
+             font-size: 1em; 
+          }
+      }
+       @media screen and (max-width: 720px) {
+          .link_in_color {
+            font-size: 0.9em;
+          }
+       }
+}    
+
+      
       @media (min-width: 720px) and (max-width: 960px) {
         
       }
   }
-}    
-
 // Stylew for partials links
-.sign_in_color {
-  position: relative;
-  color: $text-color;
-  top: 1%;
-}
-.sign_in_color:hover {
-  color: #0b03fc;
-}
-.receive_link_top {
-  top: 3%;
-}
+
