@@ -38,11 +38,8 @@ html, body {
 
 // Styles for tag h2 form sign-up
     .sign_up_h2 {
-      position: relative;
       width: 15%;
       height: 4%;
-      left: 45%;
-      top: 18%;
       font-family: SF Pro Display;
       font-style: normal;
       font-weight: 600;
@@ -109,16 +106,16 @@ html, body {
   }
  // Styles for form sign-in
   .sign_in_h2 {
-    position: relative;
-    left: 45%;
-    top: 12%;
+    margin: 10% 45% 0%;
+    margin-bottom: 3%;
+    font-size: 1.5em;
+    font-weight: 600;
   }
   .form-sign_in {
-    position: relative;
     width: 26%;
+    min-width: 200px;
     height: auto;
-    left: 38%;
-    top: 15%;
+    margin: 1% 40% 0%;
     background: #464E4F;
     border-radius: 1.2em;
     text-align: center;
@@ -168,59 +165,11 @@ html, body {
         margin-bottom: 6%;
       }
       @media (min-width: 960px) and (max-width: 1140px) {
-        .sign_in_h2 {
-          font-size: 0.9em;
-          left: 40%;
-          }
-        .form-sign_in {
-          margin-top: 2%;
-        }
-          label {
-            font-size: 1em;
-            line-height: 1.2em;
-          }
-          input {
-            width: 71%;
-            height: 1.7em;
-            background: #FFFFFF;
-            border-radius: 0.4em;
-            margin: 5%;  
-            }  
-        .remember_check_box {
-          width: 8%;
-          height: 1.8em;
-          margin-top: 3%;
-          margin-right: 14%;
-          float: right;
-
-        }
-        .remember_label {
-          width: 52%;
-          height: 1.3em;
-          margin-left: 7%;
-          margin-top: 5%;
-          padding-bottom: 15%;
-        }
-        .btn_sign_in {
-          position: inherit;
-          width: 67%;
-          height: 2em;
-          background: #91CB82;
-          border-radius: 0.8em;
-          margin-bottom: 6%;
-          color: $text-color;
-        }
-        .sign_in_color {
-          position: relative;
-          color: $text-color;
-          top: 1%;
-        }
-        .receive_link_top {
-          position: inherit;
-          top: 2%;
-        }
+          
+      }
+      @media (min-width: 720px) and (max-width: 960px) {
         
-    }
+      }
   }
 }    
 
