@@ -7,9 +7,6 @@ h2
     br/
     = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
   .field
-    = f.label :role, 'Role: '
-    = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})
-  .field
     = f.label :email, 'Email:'
     br/
     = f.email_field :email, autofocus: true, autocomplete: "email"

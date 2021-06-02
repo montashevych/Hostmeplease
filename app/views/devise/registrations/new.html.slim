@@ -28,11 +28,7 @@ section.main-screen
         br/
         = f.password_field :password_confirmation, autocomplete: "new-password"
       - if resource.errors[:password_confirmation]
-        =resource.errors[:password_confirmation].first
-      .field
-        = f.label :role, 'Role:'
-        br/
-        = f.select :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]})     
+        =resource.errors[:password_confirmation].first    
       .actions
         = f.submit "Sign up", class: "action_button"
     = render "devise/shared/links"
