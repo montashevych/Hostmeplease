@@ -17,13 +17,14 @@ a {
 # Header
 --------------------------------------------------------------*/
 
-header {
-  position: absolute;
-  top: 35px;
-  z-index: 1;
-}
-
 #hero {
+  .container {
+    header {
+      position: absolute;
+      top: 35px;
+      z-index: 1;
+    }
+  }
   width: 100%;
   height: 100vh;
   background: linear-gradient( rgba(0, 0, 0, 0.8),
