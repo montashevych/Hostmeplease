@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe PlacesController do
-  describe 'GET index' do
-    it 'renders the index template' do
-      get 'index'
-      expect(response).to render_template(:index)
+    describe PlacesController do
+      it 'test rendering template' do
+        get :index
+        expect(response).to render_template 'places/index'
     end
   end
 end
