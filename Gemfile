@@ -21,6 +21,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Slim HTML
 gem 'slim', '~> 4.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -32,6 +33,7 @@ gem 'slim', '~> 4.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pry', '~> 0.14.1'
+gem 'will_paginate', '~> 3.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -39,6 +41,7 @@ group :development, :test do
   gem 'factory_bot', '~> 6.2'
   gem 'faker', '~> 2.18'
   gem 'rspec-rails', '~> 5.0.0'
+
   # Rubocop gems
   gem 'rubocop', '~> 1.15', require: false
   gem 'rubocop-performance', require: false
@@ -64,7 +67,6 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'database_cleaner-active_record'
-
   # expect render_template...
   gem 'rails-controller-testing'
 end
