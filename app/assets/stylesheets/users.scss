@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 $text-color: #FFFFFF;
+$link-color: #f8f9fa;
 
 // Styles for main container page 
 .main-screen {
@@ -18,7 +19,14 @@ $text-color: #FFFFFF;
     border-radius: 20px;
     padding-top: 48px;
 
-    button { width: 80%; }
+    button { 
+      width: 80%;
+      border-radius: 20px;
+     }
+  }
+
+  .link_in_color {
+    color: $link-color;    
   }
 
   .signin-form {
