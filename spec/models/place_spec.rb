@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'factories/places'
 
 RSpec.describe Place, type: :model do
   let(:test_place) { create(:place) }
