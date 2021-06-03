@@ -8,7 +8,7 @@
 
 
 20.times do |n|
-  title  = "Title for post №#{n}"
+  title  = Faker::Company.name
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
                                        random_sentences_to_add: 4)
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
