@@ -13,7 +13,7 @@ $link-color: #f8f9fa;
     height: Max(1080px, 100vh);
 
 //======== FORMS ========
-  .signin-form, .signup-form {
+  .signin-form, .signup-form, .forgot_password-form, .resend_confirmation-form {
     background-color: #464E4F;
     margin-top: 20vh;
     border-radius: 20px;
@@ -44,7 +44,34 @@ $link-color: #f8f9fa;
       width: 100%;
     }
   }
+// Styles for forgot_password form
+  .forgot_password-form {
+    width: 35%;
 
-// Stylew for partials links
+    h2 {
+      font-size: 1.6em;
+    }
+    button {
+      width: 70%;
+    }
 
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+  }
+// Styles resend_confirmations form
+  .resend_confirmation-form {
+    width: 35%;
+
+    h2 {
+      font-size: 1.6em;
+    }
+    button {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+  }
 }
