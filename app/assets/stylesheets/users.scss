@@ -7,101 +7,12 @@ $text-color: #FFFFFF;
 
 // Styles for main container page 
 .main-screen {
-
     background: asset-url("Registration_form.png");
     background-size: cover;
     height: Max(1080px, 100vh);
 
-    .description {
-        margin-top: 30vh;
-        color: var(--bs-light);
-
-        h1 {
-            max-width: 60%;
-            font-family: 'Montserrat';
-            font-weight: 700;
-            font-size: 4em; 
-        }
-
-        p {
-            max-width: 60%;
-            font-size: 1.5em;
-        }
-    }
-
-
-// Styles for tag h2 form sign-up
-    .sign_up_h2 {
-      width: 15%;
-      height: 4%;
-      font-family: SF Pro Display;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 2.4em;
-      line-height: 40%;
-      color: $text-color;
-  }
-    
-// Styles for form sign-up
-  .form-sign_up {
-    position: relative;
-    width: 26%;
-    height: auto;
-    left: 38%;
-    top: 20%;
-    background: #464E4F;
-    border-radius: 4%;
-    text-align: center;
-    color: $text-color;
-      .new_user {
-        position: inherit;
-        top: 8%;
-      }
-      input, select {
-        width: 71%;
-        height: 2.3em;
-        background: #FFFFFF;
-        border-radius: 0.5em;
-        margin: 2%; 
-      }
-      label {
-        width: 71%;
-        height: 0.4em;
-        left: 78%;
-        top: 30%;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1.05em;
-        line-height: 3%;
-        text-align: left;
-      }
-      .password_width {
-        width: 22%;
-        margin-left: -14%;
-      }
-      .link_color {
-        color: $text-color;
-      }
-      .action_button {
-        width: 50%;
-        height: 2.8em;
-        background: #91CB82;
-        border-radius: 1em;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 1.2em;
-        line-height: 1em;
-        color: $text-color;
-        margin-top: 6%;
-        margin-bottom: 8%;
-      }
-  }
-
-//======== SIGN IN FORM ========
-  .signin-form {
-    width: 26.66667%;
+//======== FORMS ========
+  .signin-form, .signup-form {
     background-color: #464E4F;
     margin-top: 20vh;
     border-radius: 20px;
@@ -109,6 +20,9 @@ $text-color: #FFFFFF;
 
     button { width: 80%; }
   }
+
+  .signin-form { width: 26.66667%; }
+  .signup-form { width: 60%; }
 
 // Stylew for partials links
 

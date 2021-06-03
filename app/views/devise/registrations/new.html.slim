@@ -1,35 +1,64 @@
+/ section.main-screen
+/   = render 'shared/header'
+/   .sign_up_h2   Sign up
+/   section.form-sign_up 
+/     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+/       .field
+/         = f.label :first_name, "FirstName:"
+/         br/
+/         = f.text_field :first_name, autofocus: true, autocomplete: "FirstName"
+/       -if resource.errors[:first_name] 
+/         = resource.errors[:first_name].first
+/       .field
+/         = f.label :email, 'Email:'
+/         br/
+/         = f.email_field :email, autocomplete: "email"
+/       -if resource.errors[:email]
+/         =resource.errors[:email].first
+/       .field
+/         = f.label :password, 'Password:', class: "password_width"
+/         - if @minimum_password_length
+/             | (#{@minimum_password_length} characters minimum)
+/         br/
+/         = f.password_field :password, autocomplete: "new-password"
+/       - if resource.errors[:password]
+/         =resource.errors[:password].first
+/       .field.label
+/         = f.label :password_confirmation, 'Password Confirmation:'
+/         br/
+/         = f.password_field :password_confirmation, autocomplete: "new-password"
+/       - if resource.errors[:password_confirmation]
+/         =resource.errors[:password_confirmation].first    
+/       .actions
+/         = f.submit "Sign up", class: "action_button"
+/     = render "devise/shared/links"
+/ = render 'shared/footer'    
+
 section.main-screen
   = render 'shared/header'
-  .sign_up_h2   Sign up
-  section.form-sign_up 
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      .field
-        = f.label :first_name, "FirstName:"
-        br/
-        = f.text_field :first_name, autofocus: true, autocomplete: "FirstName"
-      -if resource.errors[:first_name] 
-        = resource.errors[:first_name].first
-      .field
-        = f.label :email, 'Email:'
-        br/
-        = f.email_field :email, autocomplete: "email"
-      -if resource.errors[:email]
-        =resource.errors[:email].first
-      .field
-        = f.label :password, 'Password:', class: "password_width"
-        - if @minimum_password_length
-            | (#{@minimum_password_length} characters minimum)
-        br/
-        = f.password_field :password, autocomplete: "new-password"
-      - if resource.errors[:password]
-        =resource.errors[:password].first
-      .field.label
-        = f.label :password_confirmation, 'Password Confirmation:'
-        br/
-        = f.password_field :password_confirmation, autocomplete: "new-password"
-      - if resource.errors[:password_confirmation]
-        =resource.errors[:password_confirmation].first    
-      .actions
-        = f.submit "Sign up", class: "action_button"
-    = render "devise/shared/links"
+  .container
+    section.signup-form.text-light.mx-auto.px-4
+      h2.text-center Sign Up
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .mb-3.row
+          .col-md-6
+            = f.label :first_name, class: "form-label"
+            = f.text_field :first_name, class: "form-control"
+          .col-md-6
+            = f.label :last_name, class: "form-label"
+            = f.text_field :last_name, class: "form-control"
+        .mb-3.row
+          .col-md-12
+            = f.label :email, class: "form-label"
+            = f.email_field :email, class: "form-control"
+        .mb-3.row
+          .col-md-6
+            = f.label :password, class: "form-label"
+            = f.password_field :password, class: "form-control"
+          .col-md-6
+            = f.label :password_confirmation, class: "form-label"
+            = f.password_field :password_confirmation, class: "form-control"
+        button.btn.btn-success.mx-auto.d-block.mb-3 type="submit" Sign Up
+        .text-center
+          = render "devise/shared/links"
 = render 'shared/footer'    
