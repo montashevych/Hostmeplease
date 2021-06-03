@@ -21,8 +21,21 @@ $text-color: #FFFFFF;
     button { width: 80%; }
   }
 
-  .signin-form { width: 26.66667%; }
-  .signup-form { width: 60%; }
+  .signin-form {
+    width: 60%;
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+  }
+
+  .signup-form {
+    width: 60%;
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+  }
 
 // Stylew for partials links
 
