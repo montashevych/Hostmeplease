@@ -121,11 +121,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
-<<<<<<< HEAD
-    nokogiri (1.11.6-x86_64-linux)
-=======
     nokogiri (1.11.7-x86_64-linux)
->>>>>>> 5e689eeafc4c0aa7ac77013568b6755da4f6dfac
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.20.1)
