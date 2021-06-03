@@ -3,6 +3,5 @@ FactoryBot.define do
     first_name  { Faker::Name.first_name }
     password    { Faker::Internet.password(min_length: 6) }
     email       { Faker::Internet.unique.email }
-    role        { Faker::Construction.role("consumer") }
   end
 end
