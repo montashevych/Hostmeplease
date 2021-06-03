@@ -34,6 +34,11 @@ RSpec.describe User do
       expect(unvalid_user).not_to be_valid
     end
 
+    it 'creates an user without password_confirmation' do
+      unvalid_user = build(:user, password_confirmation: '')
+      expect(unvalid_user).not_to be_valid
+    end
+
     it 'creates an user without role' do
       unvalid_user = build(:user, role: '')
       expect(unvalid_user).not_to be_valid
