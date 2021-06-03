@@ -1,28 +1,18 @@
 section.main-screen
   = render 'shared/header'
   .container
-    .row
-      .col-xl-8.sign_in_h2 Sign In
-  section.form-sign_in
-    .col
+    section.signin-form.text-light.mx-auto.px-4
+      h2.text-center Sign In
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .row  
-          .col-xl-12
-            = f.label :email
-            br/
-            = f.email_field :email, autofocus: true, autocomplete: "email"
-        .row
-          .col-xl-12
-            = f.label :password
-            br/
-            = f.password_field :password, autocomplete: "current-password"
+        .mb-3
+          = f.label :email, class: "form-label"
+          = f.email_field :email, class: "form-control"
+        .mb-3
+          = f.label :password, class: "form-label"
+          = f.password_field :password, class: "form-control"
         - if devise_mapping.rememberable?
-          .row
-            .col-xl-12
-              .form-check
-              = f.label :remember_me 
-              = f.check_box :remember_me, class: "form-check-box"
-        .col-xl-12.actions
-          = f.submit "Sign In", class: "btn_sign_"
-    = render "devise/shared/links"
+          .mb-3.d-flex.justify-content-between
+            = f.label :remember_me, class: "form-check-label"
+            = f.check_box :remember_me, class: "form-check-input ms-auto"
+        button.btn.btn-success.mx-auto.d-block type="submit" Sign In
 = render 'shared/footer'
