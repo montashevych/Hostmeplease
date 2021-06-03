@@ -15,16 +15,16 @@ html
     .navbar-right
       | Hello #{current_user.email} | #{link_to 'Sign Out', destroy_user_session_path, method: :delete}
   - if flash[:notice]
-    .alert.alert-success
-      button.close data-dismiss="alert" type="button"  ×
+    .alert.alert-success.alert-dismissible.position-absolute.start-50 role="alert"
+      button.btn-close data-dismiss="alert" type="button"
       = flash[:notice]
   - elsif flash[:error]
-    .alert.alert-danger
-      button.close data-dismiss="alert" type="button"  ×
+    .alert.alert-danger.alert-dismissible.position-absolute.start-50 role="alert"
+      button.btn-close data-dismiss="alert" type="button"
       = flash[:error]
   - elsif flash[:alert]
-    .alert.alert-danger
-      button.close data-dismiss="alert" type="button"  ×
+    .alert.alert-danger.alert-dismissible.position-absolute.start-50 role="alert"
+      button.btn-close data-dismiss="alert" type="button"
       = flash[:alert]
         
   = yield
