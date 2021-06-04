@@ -71,15 +71,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'example.com' #replace with your own url
   config.action_mailer.default_url_options = { host: host }
-
-    @admin = "aleksanderis2121@gmail.com"
-    @password = "onbvxknmqrvczbpk"
+  heroku config:set GOOGLE_LOGIN="aleksanderis2121@gmail.com"
+  heroku config:set GOOGLE_PASSWORD="onbvxknmqrvczbpk"
+    
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :user_name            => @admin,
-    :password             => @password,
+    :user_name            => GOOGLE_LOGIN,
+    :password             => GOOGLE_PASSWORD,
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
