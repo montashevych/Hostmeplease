@@ -5,12 +5,10 @@ ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
-# Use Postgresql as second db
-gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# Use Postgress as the app database
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -42,6 +40,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'sqlite3', '~> 1.4'
 
   # Rubocop gems
   gem 'rubocop', '~> 1.15', require: false
