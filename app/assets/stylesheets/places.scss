@@ -8,11 +8,6 @@ $btn-color: #91CB82;
   padding: 0;
 }
 
-a {
-  width: -moz-available;
-  width: -webkit-fill-available;
-}
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -65,17 +60,6 @@ a {
     height: 120vh;
   }
 }
-
-
-/*--------------------------------------------------------------
-# Sections General
---------------------------------------------------------------*/
-section {
-  padding: 60px 0;
-  overflow: hidden;
-  position: relative;
-}
-
 
 /*--------------------------------------------------------------
 # Filter
@@ -198,6 +182,11 @@ section {
           bottom: 0;
           width: 100%;
           background: rgba(38, 47, 48, 0.8);
+
+          a {
+            width: -moz-available;
+            width: -webkit-fill-available;
+          } 
 
           h2 {
             margin: 0;
