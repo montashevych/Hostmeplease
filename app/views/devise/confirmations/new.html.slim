@@ -4,7 +4,7 @@ section.main-screen
     section.resend_confirmation-form.text-light.mx-auto.px-4
       h2.text-center.mb-3 Resend confirmation instructions
       = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-        .mb-4.row
+        .mb-2.row
           .col-md-8.mx-auto
           - if resource.errors[:email]
             = f.label :email, class: "form-label"

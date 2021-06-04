@@ -2,12 +2,12 @@ section.main-screen
   = render 'shared/header'
   .container
     section.forgot_password-form.text-light.mx-auto.px-4
-      h2.text-center.mb-3 Forgot your password?
+      h2.text-center.mb-2 Forgot your password?
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| 
-        .mb-3.row
-          .col-md-8.mx-auto
+        .mb-2.row
+          .col-8
           - if resource.errors[:email]
-            = f.label :email, class: "form-label"
+            = f.label :email, class: "col-form-label"
             br/
             = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
           p = resource.errors[:email].first  

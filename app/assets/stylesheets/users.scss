@@ -1,8 +1,6 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 $text-color: #FFFFFF;
 $link-color: #f8f9fa;
 
@@ -26,7 +24,7 @@ $link-color: #f8f9fa;
   }
 
   .link_in_color {
-    color: $link-color;    
+    color: $link-color;
   }
 
   .signin-form, .signup-form {
@@ -59,6 +57,16 @@ $link-color: #f8f9fa;
 
     h2 {
       font-size: 1.6em;
+    }
+
+    label {
+      margin-left: 14%
+    }
+
+    input {
+      width: 67%;
+      margin: auto;
+      margin-right: 16%;
     }
 
     button {
