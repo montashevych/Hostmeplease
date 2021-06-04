@@ -196,7 +196,6 @@ $btn-color: #91CB82;
             display: flex;
             align-items: center;
             justify-content: center;
-          }
 
             a {
               .btn {
@@ -211,6 +210,7 @@ $btn-color: #91CB82;
                 line-height: 21px;
                 letter-spacing: 0px;
               }
+            }
           }
         }
       }
@@ -262,55 +262,5 @@ $btn-color: #91CB82;
         }
       }
     }
-  }
-}
-
-html, body {
-  // overflow-x: hidden;
-  background: #262F30 !important;
-}
-
-.place-screen {
-
-  background: url('place-background.png');
-  background-size: cover;
-  height: Max(350px);
-
-  .place-name {
-      margin-top: 10vh;
-      color: var(--bs-light);
-
-      h1 {
-          max-width: 60%;
-          font-family: 'Montserrat';
-          font-weight: 700;
-          font-size: 4em; 
-      }
-
-      p {
-          max-width: 60%;
-          font-size: 1.5em;
-      }
-  }
-}
-
-.pg-cards {
-  padding: 2em 0;
-  background: #262F30;
-
-
-  .container {
-      display: grid;
-      grid-template-columns: auto auto;
-  }
-}
-
-.card {
-  background-color: #444C4D!important;
-  border-radius: 20px!important;
-
-  .card-description{
-      font-family: 'Montserrat';
-      font-weight: 700;
   }
 }
