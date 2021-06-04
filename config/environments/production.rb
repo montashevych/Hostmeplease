@@ -69,7 +69,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.delivery_method = :smtp
-  host = 'example.com' #replace with your own url
+  host = 'https://hostmeplease.herokuapp.com/' #replace with your own url
   config.action_mailer.default_url_options = { host: host }
   heroku config:set GOOGLE_LOGIN="aleksanderis2121@gmail.com"
   heroku config:set GOOGLE_PASSWORD="onbvxknmqrvczbpk"
