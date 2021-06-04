@@ -1,11 +1,10 @@
-- @places.each do |p|
-  .col-md
-    .card.text-white.card-has-bg
-      .card-img-overlay.d-flex.flex-column
-        .card-footer
-          .row
-            .col-6
-              h2= place.price
+.col-md
+  .card.text-white.card-has-bg
+    .card-img-overlay.d-flex.flex-column
+      .card-footer
+        .row
           .col-6
-            = link_to place
-              button.btn.btn-success type="button"  Details
+            h2= place.price
+        .col-6
+          = link_to place
+            button.btn.btn-success type="button"  Details

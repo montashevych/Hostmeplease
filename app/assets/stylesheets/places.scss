@@ -208,17 +208,6 @@ section {
             align-items: center;
             justify-content: center;
           }
-          .btn {
-            background-color: $btn-color;
-            border-radius: 20px;
-            width: -moz-available;
-            width: -webkit-fill-available;
-            height: 54px;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 21px;
-            letter-spacing: 0px;
 
             a {
               .btn {
@@ -233,7 +222,6 @@ section {
                 line-height: 21px;
                 letter-spacing: 0px;
               }
-            }
           }
         }
       }
