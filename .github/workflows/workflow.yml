@@ -46,8 +46,11 @@ jobs:
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
         run: |
-          gem install bundler
+          gem install bundler  
           bundler install
+      - name: yarn install
+        run: |
+          yarn install --pure-lockfile  
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
