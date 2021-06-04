@@ -89,8 +89,8 @@ $link-color: #f8f9fa;
   .resend_confirmation-form {
      width: 35%;
 
-    @media screen and (max-width: 960px) {
-      width: 80%;
-    }
-    
+      @media screen and (max-width: 960px) {
+        width: 80%;
+      }    
+  }
 }
