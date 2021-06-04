@@ -47,7 +47,6 @@ jobs:
       - name: Install dependencies
         run: |
           gem install bundler
-          yarn install
           bundler install
       - name: Create database
         run: |
