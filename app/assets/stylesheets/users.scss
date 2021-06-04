@@ -29,7 +29,7 @@ $link-color: #f8f9fa;
     color: $link-color;    
   }
 
-  .signin-form {
+  .signin-form, .signup-form {
     width: 40%;
 
     @media screen and (max-width: 960px) {
@@ -53,31 +53,8 @@ $link-color: #f8f9fa;
     }
   }
 
-  .signup-form {
-    width: 40%;
-
-    @media screen and (max-width: 960px) {
-      width: 100%;
-    }
-
-    @media (min-width: 360px) and (max-width: 540px) {
-      width: 80%;
-    }
-
-    @media (min-width: 540px) and (max-width: 960px) {
-      width: 70%;
-    }
-
-    @media (min-width: 760px) and (max-width: 960px) {
-      width: 50%;
-    }
-
-    @media (min-width: 960px) and (max-width: 980px) {
-      width: 60%;
-    }
-  }
 // Styles for forgot_password form
-  .forgot_password-form {
+  .forgot_password-form, .resend_confirmation-form {
     width: 35%;
 
     h2 {
@@ -111,33 +88,9 @@ $link-color: #f8f9fa;
 // Styles resend_confirmations form
   .resend_confirmation-form {
      width: 35%;
-    
-    h2 {
-      font-size: 1.6em;
-    }
-
-    button {
-      width: 70%;
-    }
 
     @media screen and (max-width: 960px) {
       width: 80%;
     }
     
-    @media (min-width: 360px) and (max-width: 540px) {
-      width: 80%;
-    }
-
-    @media (min-width: 540px) and (max-width: 960px) {
-      width: 70%;
-    }
-
-    @media (min-width: 760px) and (max-width: 960px) {
-      width: 50%;
-    }
-
-    @media (min-width: 960px) and (max-width: 980px) {
-      width: 60%;
-    }
-  }
 }
