@@ -1,13 +1,12 @@
 class PlacesController < ApplicationController
-  def index; end
+  PLACES_PER_PAGE = 9
 
-  def create; end
+  def index
+    @places = Place.where(status: true).paginate(page: params[:page], per_page: PLACES_PER_PAGE)
+  end
 
   def show
     @place = Place.find(params[:id])
   end
-
-  def update; end
-
-  def destroy; end
+  
 end
