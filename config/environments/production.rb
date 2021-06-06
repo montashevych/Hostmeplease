@@ -70,7 +70,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   
-  config.action_mailer.default_url_options = { host: ENV['HEROK_HOST'] }
+  config.action_mailer.default_url_options = { host: ENV['HEROKU_HOST'] }
     
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
