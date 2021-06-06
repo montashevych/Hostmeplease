@@ -4,7 +4,11 @@
       .card-footer
         .row
           .col-6
-            h2= place.price
+            .row
+              .col-12
+                h5 = place.title
+              .col-12
+                p New York, str Big Halls, 129a
           .col-6
             = link_to place
-              button.btn.btn-success type="button"  Details
+              button.btn.btn-success type="button" = place.price

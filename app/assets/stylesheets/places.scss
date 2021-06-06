@@ -186,10 +186,16 @@ $btn-color: #91CB82;
           a {
             width: -moz-available;
             width: -webkit-fill-available;
-          } 
+          }
 
-          h2 {
+          h5 {
             margin: 0;
+          }
+
+          p {
+            margin: 0;
+            font-weight: 280;
+            font-size: small;
           }
 
           .col-6 {
