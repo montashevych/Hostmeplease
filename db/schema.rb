@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_05_27_133127) do
 
-  create_table "places", force: :cascade do |t|
-    t.string "title"
-    t.string "type"
-    t.text "description"
-    t.float "price"
-    t.boolean "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

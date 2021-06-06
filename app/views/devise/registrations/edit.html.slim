@@ -7,11 +7,11 @@ h2
   .field
     = f.label :first_name, 'FirstName:'
     br/
-    = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
+    = f.text_field :first_name, placeholder: 'Enter name', autofocus: true, autocomplete: "first_name"
   .field
     = f.label :email, 'Email:'
     br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, placeholder: 'Enter email', autofocus: true, autocomplete: "email"
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div
       | Currently waiting confirmation for: #{resource.unconfirmed_email}
@@ -19,7 +19,7 @@ h2
     = f.label :password, 'Password:'
     i (leave blank if you don't want to change it)
     br/
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, placeholder: 'Enter password', autocomplete: "new-password"
     - if @minimum_password_length
       br/
       em
@@ -28,12 +28,12 @@ h2
   .field
     = f.label :password_confirmation, 'Password_confirmation:'
     br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, placeholder: 'Confirm password', autocomplete: "new-password"
   .field
     = f.label :current_password, 'Current_password:'
     i (we need your current password to confirm your changes)
     br/
-    = f.password_field :current_password, autocomplete: "current-password"
+    = f.password_field :current_password, placeholder: 'Enter current password', autocomplete: "current-password"
   .actions
     = f.submit "Update"
 h3 Cancel my account

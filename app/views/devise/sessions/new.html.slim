@@ -8,10 +8,10 @@ section.main-screen
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .mb-3
           = f.label :email, class: "form-label"
-          = f.email_field :email, class: "form-control"
+          = f.email_field :email, placeholder: 'Enter email', class: "form-control"
         .mb-3
           = f.label :password, class: "form-label"
-          = f.password_field :password, class: "form-control"
+          = f.password_field :password, placeholder: 'Enter password', class: "form-control"
         - if devise_mapping.rememberable?
           .mb-3.d-flex.justify-content-around
             = f.label :remember_me, class: "form-check-label"
