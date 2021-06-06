@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_171159) do
+ActiveRecord::Schema.define(version: 2021_06_06_174117) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2021_06_06_171159) do
     t.string "country_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id", null: false
+    t.index ["city_id"], name: "index_countries_on_city_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -32,26 +34,10 @@ ActiveRecord::Schema.define(version: 2021_06_06_171159) do
     t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "country_id", null: false
+    t.index ["country_id"], name: "index_places_on_country_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "role", default: "consumer", null: false
-    t.string "email"
-    t.string "encrypted_password", default: "", null: false
-    t.text "message"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
+  add_foreign_key "countries", "cities"
+  add_foreign_key "places", "countries"
 end
