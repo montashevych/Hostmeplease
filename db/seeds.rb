@@ -11,9 +11,11 @@
   title  = Faker::Company.name
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
                                        random_sentences_to_add: 4)
+  type = 'Accommodation'
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
   active = Faker::Boolean.boolean
   Place.create!(title: title,
+                type: type,
                 description: description,
                 price: price,
                 status: active)
