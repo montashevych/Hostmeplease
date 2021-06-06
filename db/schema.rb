@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2021_05_27_133127) do
 
+  create_table "places", force: :cascade do |t|
+    t.string "title"
+    t.string "type"
+    t.text "description"
+    t.float "price"
+    t.boolean "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -31,4 +41,5 @@ ActiveRecord::Schema.define(version: 2021_05_27_133127) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
