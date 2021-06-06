@@ -13,8 +13,20 @@
                                        random_sentences_to_add: 4)
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
   active = Faker::Boolean.boolean
-  Place.create!(title: title,
+  country = Faker::Address.country
+  city = Faker::Address.city
+  place = Place.create(title: title,
                 description: description,
                 price: price,
                 status: active)
+end
+
+places = Place.all
+places.each do |place|
+  place.country.create(country_name: country)
+end
+
+countries = Country.all
+countries.each do |country|
+  country.city.create(city_name: city)
 end
