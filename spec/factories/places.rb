@@ -4,6 +4,6 @@ FactoryBot.define do
     type { 'office' }
     description { Faker::Lorem.paragraphs }
     price { Faker::Number.number(digits: 4) }
-    active { true }
+    status { true }
   end
 end

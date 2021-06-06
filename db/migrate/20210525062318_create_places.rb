@@ -5,7 +5,7 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
       t.string :type
       t.text :description
       t.float :price
-      t.boolean :active
+      t.boolean :status
 
       t.timestamps
     end
