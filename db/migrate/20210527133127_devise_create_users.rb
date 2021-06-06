@@ -46,5 +46,4 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
     # add_index :users, :unlock_token,         unique: true
   end
 end
-
-  
+ 
