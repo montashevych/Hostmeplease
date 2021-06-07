@@ -14,7 +14,8 @@
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
   active = Faker::Boolean.boolean
   Place.create!(title: title,
+                type: '',
                 description: description,
                 price: price,
-                status: active)
+                status: 0)
 end
