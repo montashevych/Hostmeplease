@@ -42,10 +42,11 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
-      - name: Install postgres client
-        run: sudo apt-get install libpq-dev
-             sudo service postgresql start
-             sudo -u postgres createuser --superuser "$USER"
+      - name: Set up PostgreSQL
+        run: |
+          sudo apt-get install postgresql libpq-dev
+          sudo service postgresql start
+          sudo -u postgres createuser --superuser "$USER"
       - name: Install dependencies
         run: |
           gem install bundler
