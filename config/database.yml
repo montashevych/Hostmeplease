@@ -58,14 +58,9 @@ development:
 test:
   <<: *default
   database: Hostmeplease_test
-  encoding: unicode
-  pool: 5
   timeout: 5000
-  username: postgres
-  password: postgres
   port: 5432
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 15 } %>
-  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
