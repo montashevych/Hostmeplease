@@ -40,7 +40,6 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'sqlite3', '~> 1.4'
 
   # Rubocop gems
   gem 'rubocop', '~> 1.15', require: false
