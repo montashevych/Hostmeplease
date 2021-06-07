@@ -87,10 +87,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  timeout: 5000
-  username: postgres
-  password: postgres
-  port: 5432
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 15 } %>
+  database: Hostmeplease_production
+  username: Hostmeplease
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
