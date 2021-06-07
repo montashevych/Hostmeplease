@@ -46,7 +46,7 @@ jobs:
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
         run: |
-          gem install bundler  
+          gem install bundler
           bundler install
       - name: yarn install
         run: |
