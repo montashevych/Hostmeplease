@@ -1,2 +1,2 @@
-class Workspace < Place 
+class Workspace < Place
 end
