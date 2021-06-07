@@ -44,6 +44,8 @@ jobs:
           bundler-cache: true
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
+             sudo service postgresql start
+             sudo -u postgres createuser --superuser "$USER"
       - name: Install dependencies
         run: |
           gem install bundler
