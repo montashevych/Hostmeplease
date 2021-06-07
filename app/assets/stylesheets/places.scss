@@ -52,6 +52,20 @@ html, body {
     }
 }
 
+.card-image {
+  background-image: url('workspace-image.jpg');
+  min-width: 35rem;
+  min-height: 35rem;
+  background-size: cover;
+}
+
+.map-card {
+  background-image: url('map.jpg');
+  min-width: 30rem;
+  min-height: 15rem;
+  background-size: cover;
+}
+
 $btn-color: #91CB82;
 
 * {
