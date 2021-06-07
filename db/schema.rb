@@ -10,22 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_195534) do
+ActiveRecord::Schema.define(version: 2021_06_07_095310) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
     t.integer "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "street"
     t.index ["country_id"], name: "index_cities_on_country_id"
   end
 
   create_table "countries", force: :cascade do |t|
     t.string "country_name"
-    t.integer "place_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["place_id"], name: "index_countries_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -34,10 +33,12 @@ ActiveRecord::Schema.define(version: 2021_06_06_195534) do
     t.text "description"
     t.float "price"
     t.boolean "status"
+    t.integer "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_places_on_city_id"
   end
 
   add_foreign_key "cities", "countries"
-  add_foreign_key "countries", "places"
+  add_foreign_key "places", "cities"
 end

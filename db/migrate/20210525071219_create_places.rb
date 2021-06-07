@@ -6,6 +6,7 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
       t.text :description
       t.float :price
       t.boolean :status
+      t.references :city, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -1,3 +1,3 @@
 class Place < ApplicationRecord
-  has_one :country
+  belongs_to :city
 end
