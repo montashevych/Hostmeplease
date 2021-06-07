@@ -83,9 +83,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: Hostmeplease_production
   username: Hostmeplease
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
 
