@@ -17,6 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -58,8 +61,7 @@ development:
 test:
   <<: *default
   database: Hostmeplease_test
-  username: postgres
-  password: postgres
+  pool: 5
   port: 5432
 
 # As with config/credentials.yml, you never want to store sensitive information,
