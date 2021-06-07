@@ -87,7 +87,6 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  timeout: 5000
   database: Hostmeplease_production
   username: Hostmeplease
   url: <%= ENV['DATABASE_URL'] %>
