@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_06_06_223433) do
 
   create_table "places", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.string "type"
+    t.string "type", default: "", null: false
     t.text "description", default: "", null: false
     t.decimal "price", default: "0.0", null: false
     t.boolean "status", default: true, null: false

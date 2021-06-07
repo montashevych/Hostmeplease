@@ -3,6 +3,6 @@ class Place < ApplicationRecord
   validates :description, length: { maximum: 600 }
   validates :price, presence: true
 
-  scope :workspaces, -> { where(type: 'workspace') }
-  scope :accommodations, -> { where(type: 'accommodation') }
+  scope :workspaces, -> { where(type: 'Workspace') }
+  scope :accommodations, -> { where(type: 'Accommodation') }
 end

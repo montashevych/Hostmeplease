@@ -9,8 +9,6 @@ RSpec.describe Place, type: :model do
   end
 
   describe 'length validations' do
-    @test_place = described_class.create(title: 'test', description: 'test', price: 100, status: true)
-
     it 'does not allow a title longer than 50 characters' do
       expect(FactoryBot.build(:place, title: 'q' * 51)).not_to be_valid
     end
