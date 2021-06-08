@@ -9,7 +9,7 @@ html, body {
 
 .main-screen {
 
-    background: asset-url("homepage-bg.png");
+    background: url("../images/homepage-bg.png");
     background-size: cover;
     min-height: Max(1080px, 100vh);
 
@@ -128,7 +128,7 @@ html, body {
 }
 
 .fw3 {
-    background: asset-url("bestoffers-bg.png");
+    background: url("../images/best-offers-1.png");
     background-size: cover;
     padding: 48px;
     color: var(--bs-light);
