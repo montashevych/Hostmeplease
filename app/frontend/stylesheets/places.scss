@@ -9,7 +9,7 @@ html, body {
 
 .place-screen {
 
-    background: url('place-background.png');
+    background: url('../images/place-background.png');
     background-size: cover;
     height: Max(350px);
 
@@ -53,14 +53,14 @@ html, body {
 }
 
 .card-image {
-  background-image: url('workspace-image.jpg');
+  background-image: url('../images/workspace-image.jpg');
   min-width: 35rem;
   min-height: 35rem;
   background-size: cover;
 }
 
 .map-card {
-  background-image: url('map.jpg');
+  background-image: url('../images/map.jpg');
   min-width: 30rem;
   min-height: 15rem;
   background-size: cover;
