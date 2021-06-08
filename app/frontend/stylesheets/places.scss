@@ -89,7 +89,7 @@ $btn-color: #91CB82;
   height: 100vh;
   background: linear-gradient( rgba(0, 0, 0, 0.8),
               rgba(0, 0, 0, 0.3) ),
-              url("Potential-Feature-Image-2-1280x640.png") top center no-repeat;
+              url("../images/Potential-Feature-Image-2-1280x640.png") top center no-repeat;
   background-size: cover;
   position: relative;
   padding-top: 82px;
@@ -204,7 +204,7 @@ $btn-color: #91CB82;
       min-height: 300px;
       min-width: 250px;
       box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
-      background-image: url('image-5.png');
+      background-image: url('../images/image-5.png');
       margin: 32px;
       transition: transform 500ms ease-out, background-size 500ms ease-in-out;
 
