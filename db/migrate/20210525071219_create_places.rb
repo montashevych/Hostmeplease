@@ -6,6 +6,7 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
       t.text :description, null: false
       t.float :price, default: 0, null: false
       t.integer :status, null: false
+      t.boolean :is_active, null: false
 
       t.timestamps
     end
