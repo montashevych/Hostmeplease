@@ -14,8 +14,8 @@
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
+  "popper.js": "1.16.1",
   "devDependencies": {
-    "popper.js": "1.16.1",
     "webpack-dev-server": "^3.11.2"
   }
 }
