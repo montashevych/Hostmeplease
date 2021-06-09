@@ -16,5 +16,7 @@
   Place.create!(title: title,
                 description: description,
                 price: price,
-                status: active)
+                is_active: true,
+                status: :created)
+
 end
