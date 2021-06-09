@@ -10,9 +10,9 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-  - if user_signed_in?
-    .navbar-right
-      | Hello #{current_user.email} | #{link_to 'Sign Out', destroy_user_session_path, method: :delete}
+  / - if user_signed_in?
+  /   .navbar-right
+  /     | Hello #{current_user.email} | #{link_to 'Sign Out', destroy_user_session_path, method: :delete}
   - if flash[:notice]
     .alert.alert-success.alert-dismissible.position-absolute.start-50.fade.show role="alert"
       button.btn-close data-bs-dismiss="alert" type="button"
