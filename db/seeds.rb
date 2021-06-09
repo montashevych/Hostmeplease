@@ -13,10 +13,12 @@
                                        random_sentences_to_add: 4)
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
   active = Faker::Boolean.boolean
-  Place.create!(title: title,
+  country = Faker::Address.country
+  city = Faker::Address.city
+  place = Place.create(title: title,
                 description: description,
                 price: price,
                 is_active: true,
-                status: :created)
+                status: (n % 2) == 0 ? :created : :approved)
 
 end

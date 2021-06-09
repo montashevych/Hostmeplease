@@ -1,11 +1,35 @@
 .col-md
   .card.text-white.card-has-bg
     .card-img-overlay.d-flex.flex-column
+      .rating
+        |⭐️4.9
       .card-footer
-        .row
-          .col-6
-            h2= place.price
-          .col-6
-            = link_to place
-              button.btn.btn-success type="button"  Details
-              
+        - if place.title.length < 16
+          .row style=("margin-top: 5%")
+            .col-6
+              .row
+                .col-12
+                  h5
+                    = place.title
+                  .col-12
+                    p New York, str Big Halls, 129a
+            .col-6
+              = link_to place
+                button.btn.btn-success type="button"
+                  = place.price
+                  | $
+        - else
+          .row
+            .col-6
+              .row
+                .col-12
+                  h5
+                    = place.title
+                  .col-12
+                    p New York, str Big Halls, 129a
+
+            .col-6
+              = link_to place
+                button.btn.btn-success type="button"
+                  = place.price
+                  | $

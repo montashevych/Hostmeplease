@@ -4,7 +4,7 @@
 
 html, body {
     // overflow-x: hidden;
-    background: #262F30 
+    background: #262F30;
 }
 
 .place-screen {
@@ -21,7 +21,7 @@ html, body {
             max-width: 60%;
             font-family: 'Montserrat';
             font-weight: 700;
-            font-size: 4em; 
+            font-size: 4em;
         }
 
         p {
@@ -81,6 +81,7 @@ $btn-color: #91CB82;
   .container {
     header {
       position: absolute;
+      left: 0;
       top: 35px;
       z-index: 1;
     }
@@ -183,6 +184,10 @@ $btn-color: #91CB82;
 --------------------------------------------------------------*/
 
 .d-flex {
+  .rating {
+    margin: 20px 0 0 20px;
+    display: flex;
+  }
   .it {
     background-color: #262F30;
 
@@ -244,6 +249,7 @@ $btn-color: #91CB82;
 
         .card-footer {
           position: absolute;
+          min-height: 112.6px;
           bottom: 0;
           width: 100%;
           background: rgba(38, 47, 48, 0.8);
@@ -251,10 +257,16 @@ $btn-color: #91CB82;
           a {
             width: -moz-available;
             width: -webkit-fill-available;
-          } 
+          }
 
-          h2 {
+          h5 {
             margin: 0;
+          }
+
+          p {
+            margin: 0;
+            font-weight: 280;
+            font-size: small;
           }
 
           .col-6 {

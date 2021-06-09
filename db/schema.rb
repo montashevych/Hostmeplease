@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 2021_06_06_223433) do
   enable_extension "plpgsql"
 
   create_table "places", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "type"
-    t.text "description"
-    t.decimal "price"
-    t.boolean "status"
+    t.text "description", null: false
+    t.decimal "price", default: "0.0", null: false
+    t.integer "status", null: false
+    t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["type"], name: "index_places_on_type"
