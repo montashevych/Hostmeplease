@@ -54,6 +54,9 @@ jobs:
         run: |
           gem install bundler
           bundler install
+      - name: yarn install
+        run: |
+          yarn install --pure-lockfile  
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test

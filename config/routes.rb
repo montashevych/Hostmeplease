@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :places
+  devise_for :users
+  resources :users
 end

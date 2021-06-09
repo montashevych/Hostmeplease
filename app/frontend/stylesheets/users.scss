@@ -1,0 +1,104 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$text-color: #FFFFFF;
+$link-color: #f8f9fa;
+
+// Styles for main container page 
+.main-screen {
+    background: url("../images/homepage-bg.png");
+    background-size: cover;
+    height: Max(1080px, 100vh);
+
+//======== FORMS ========
+  .signin-form, .signup-form, .forgot_password-form, .resend_confirmation-form {
+    background-color: #464E4F;
+    margin-top: 20vh;
+    border-radius: 20px;
+    padding-top: 48px;
+
+    button { 
+      width: 80%;
+      border-radius: 20px;
+     }
+  }
+
+  .link_in_color {
+    color: $link-color;
+  }
+
+  .signin-form, .signup-form {
+    width: 40%;
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+
+    @media (min-width: 360px) and (max-width: 540px) {
+      width: 80%;
+    }
+
+    @media (min-width: 540px) and (max-width: 960px) {
+      width: 70%;
+    }
+
+    @media (min-width: 760px) and (max-width: 960px) {
+      width: 50%;
+    }
+
+    @media (min-width: 960px) and (max-width: 980px) {
+      width: 60%;
+    }
+  }
+
+// Styles for forgot_password form
+  .forgot_password-form, .resend_confirmation-form {
+    width: 38%;
+
+    h2 {
+      font-size: 1.6em;
+    }
+
+    label {
+      margin-left: 12%
+    }
+
+    input {
+      width: 70%;
+      margin: auto;
+      margin-right: 16%;
+    }
+
+    button {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+
+    @media (min-width: 360px) and (max-width: 540px) {
+      width: 80%;
+    }
+
+    @media (min-width: 540px) and (max-width: 960px) {
+      width: 70%;
+    }
+
+    @media (min-width: 760px) and (max-width: 960px) {
+      width: 50%;
+    }
+
+    @media (min-width: 960px) and (max-width: 980px) {
+      width: 60%;
+    }
+  }
+// Styles resend_confirmations form
+  .resend_confirmation-form {
+     width: 38%;
+
+      @media screen and (max-width: 960px) {
+        width: 80%;
+      }    
+  }
+}
