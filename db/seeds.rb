@@ -20,21 +20,3 @@
                 price: price,
                 status: active)
 end
-
-# places = Place.all
-# places.each do |place|
-#   place.country.create(country_name: country)
-# end
-#
-# countries = Country.all
-# countries.each do |country|
-#   country.city.create(city_name: city)
-# end
-
-
-20.times do
-  country = Country.create(country_name: Faker::Address.country)
-  20.times do
-    city = country.city.create(city_name: Faker::Address.city)
-  end
-end
