@@ -293,7 +293,7 @@ DEPENDENCIES
   faker (~> 2.18)
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  pg (~> 1.1)
+  pg
   pry (~> 0.14.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
