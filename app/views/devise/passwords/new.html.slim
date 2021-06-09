@@ -1,0 +1,19 @@
+- provide :title, "Forgot Password"
+
+section.main-screen
+  = render 'shared/header'
+  .container
+    section.forgot_password-form.text-light.mx-auto.px-4
+      h2.text-center.mb-2 Forgot your password?
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| 
+        .mb-2.row
+          .col-8
+          - if resource.errors[:email]
+            = f.label :email, class: "col-form-label"
+            br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+          p = resource.errors[:email].first  
+        button.btn.btn-success.mx-auto.d-block.mb-3 type="submit" Send me reset password 
+        .text-center
+          = render "devise/shared/links"
+= render 'shared/footer'

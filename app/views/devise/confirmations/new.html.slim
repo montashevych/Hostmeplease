@@ -1,0 +1,19 @@
+- provide :title, "Resend Confirmation"
+
+section.main-screen
+  = render 'shared/header'
+  .container
+    section.resend_confirmation-form.text-light.mx-auto.px-4
+      h2.text-center.mb-3 Resend confirmation instructions
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        .mb-2.row
+          .col-md-8.mx-auto
+          - if resource.errors[:email]
+            = f.label :email, class: "form-label"
+            br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control"
+          p = resource.errors[:email].first  
+        button.btn.btn-success.mx-auto.d-block.mb-3 type="submit" Resend confirmation
+        .text-center
+          = render "devise/shared/links"
+= render 'shared/footer'

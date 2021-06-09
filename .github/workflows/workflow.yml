@@ -1,8 +1,9 @@
 env:
   RUBY_VERSION: '3.0.0'
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: ENV['POSTGRES_USER']
+  POSTGRES_PASSWORD: ENV['POSTGRES_PASSWORD']
   POSTGRES_DB: postgres
+  POSTGRES_HOST: localhost
 
 name: Rspec_and_rubocop_test
 on: [push, pull_request]
@@ -36,6 +37,11 @@ jobs:
         env:
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
@@ -48,6 +54,9 @@ jobs:
         run: |
           gem install bundler
           bundler install
+      - name: yarn install
+        run: |
+          yarn install --pure-lockfile  
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test

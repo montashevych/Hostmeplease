@@ -1,0 +1,22 @@
+- provide :title, "Sign In"
+
+section.main-screen
+  = render 'shared/header'
+  .container
+    section.signin-form.text-light.mx-auto.px-4
+      h2.text-center Sign In
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .mb-3
+          = f.label :email, class: "form-label"
+          = f.email_field :email, placeholder: 'Enter email', class: "form-control"
+        .mb-3
+          = f.label :password, class: "form-label"
+          = f.password_field :password, placeholder: 'Enter password', class: "form-control"
+        - if devise_mapping.rememberable?
+          .mb-3.d-flex.justify-content-around
+            = f.label :remember_me, class: "form-check-label"
+            = f.check_box :remember_me, class: "form-check-input mx-auto"
+        button.btn.btn-success.mx-auto.d-block.mb-3 type="submit" Sign In
+        .text-center
+          = render "devise/shared/links"
+= render 'shared/footer'

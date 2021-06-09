@@ -1,12 +1,12 @@
-header.container
-  nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent
+header.d-flex.w-100.flex-column
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.container
     div.collapse.navbar-collapse
       ul.nav.navbar-nav.me-auto
         li.nav-item: a.nav-link[href='#'] About
         li.nav-item: a.nav-link[href='#'] Contact
-    a.navbar-brand.mx-auto HostMePlease
+    = link_to "HostMePlease", root_path, class: "navbar-brand mx-auto nav-link"
     div.collapse.navbar-collapse
       ul.navbar.navbar-nav.ms-auto
-        li.nav-item: a.nav-link[href='#'] Sign In
-        li.nav-item: a.nav-link[href='#'] Sign Up
-  hr
+        li.nav-item: a.nav-link[href='/users/sign_in'] Sign In
+        li.nav-item: a.nav-link[href='/users/sign_up'] Sign Up
+  hr.container.mx-auto
