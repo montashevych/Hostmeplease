@@ -1,7 +1,8 @@
 .col-md
   .card.text-white.card-has-bg
     .card-img-overlay.d-flex.flex-column
-<<<<<<< HEAD
+      .rating
+        |⭐️4.9
       .card-footer style=('min-height: 102px;')
         - if place.title.length < 16
           .row style=("margin-top: 3%")
@@ -32,13 +33,3 @@
                 button.btn.btn-success type="button"
                   = place.price
                   | $
-=======
-      .card-footer
-        .row
-          .col-6
-            h2= place.price
-          .col-6
-            = link_to place
-              button.btn.btn-success type="button"  Details
-              
->>>>>>> master
