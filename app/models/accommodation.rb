@@ -1,0 +1,2 @@
+class Accommodation < Place
+end

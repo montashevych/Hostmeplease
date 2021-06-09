@@ -1,6 +1,71 @@
 // Place all the styles related to the Places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+html, body {
+    // overflow-x: hidden;
+    background: #262F30 
+}
+
+.place-screen {
+
+    background: url('../images/place-background.png');
+    background-size: cover;
+    height: Max(350px);
+
+    .place-name {
+        margin-top: 10vh;
+        color: var(--bs-light);
+
+        h1 {
+            max-width: 60%;
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 4em; 
+        }
+
+        p {
+            max-width: 60%;
+            font-size: 1.5em;
+        }
+    }
+  }
+
+  .pg-cards {
+    padding: 2em 0;
+    background: #262F30;
+
+
+    .container {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+  }
+
+.card {
+    background-color: #444C4D!important;
+    border-radius: 20px!important;
+
+    .card-description{
+        font-family: 'Montserrat';
+        font-weight: 900;
+    }
+}
+
+.card-image {
+  background-image: url('../images/workspace-image.jpg');
+  min-width: 35rem;
+  min-height: 35rem;
+  background-size: cover;
+}
+
+.map-card {
+  background-image: url('../images/map.jpg');
+  min-width: 25rem;
+  min-height: 15rem;
+  background-size: cover;
+}
+
 $btn-color: #91CB82;
 
 * {
