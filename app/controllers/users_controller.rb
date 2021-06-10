@@ -11,11 +11,11 @@ class UsersController < ApplicationController
 
   private
 
-  def user_find
-    @user = User.find(params[:id])
-  end
+    def user_find
+      @user = User.find(params[:id])
+    end
 
-  def user_params
-    params.require(:user).permit(:password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:password, :password_confirmation)
+    end
 end
