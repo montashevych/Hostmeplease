@@ -191,16 +191,6 @@ $btn-color: #91CB82;
   .it {
     background-color: #262F30;
 
-    .col-md {
-      //For just col
-      // display: flex;
-      // justify-content: center;
-
-      //For col-md
-      text-align: center;
-      text-align: -moz-center;
-    }
-
     .card {
       border: none;
       border-radius: 20px;
@@ -248,6 +238,8 @@ $btn-color: #91CB82;
         padding: 0;
 
         .card-footer {
+          display: flex;
+          justify-content: center;
           position: absolute;
           min-height: 112.6px;
           bottom: 0;
