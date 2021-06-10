@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_06_10_142955) do
     t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "lon", default: "0.0"
-    t.decimal "lat", default: "0.0"
+    t.float "lon", default: 0.0
+    t.float "lat", default: 0.0
     t.index ["type"], name: "index_places_on_type"
   end
 
