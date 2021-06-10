@@ -5,5 +5,6 @@ FactoryBot.define do
     description { Faker::Lorem.paragraphs }
     price { Faker::Number.number(digits: 4) }
     status { :created }
+    is_active { true }
   end
 end
