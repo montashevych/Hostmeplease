@@ -11,7 +11,7 @@
                 h5
                   = place.title
                 .col-12
-                  p = Geocoder.search([place.lon, place.lat]).first.data.extract!('address').values.first.extract!('country', 'state', 'city', 'village', 'road', 'house_number').values.join(', ')
+                  p = address(place)
 
           .col-6
             = link_to "places/#{place.id}"
