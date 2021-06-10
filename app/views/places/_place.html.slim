@@ -11,7 +11,7 @@
                 h5
                   = place.title
                 .col-12
-                  p New York, str Big Halls, 129a
+                  p = Geocoder.search([place.lon, place.lat]).first.data.extract!('address').values.first.extract!('country', 'state', 'city', 'village', 'road', 'house_number').values.join(', ')
 
           .col-6
             = link_to "places/#{place.id}"
