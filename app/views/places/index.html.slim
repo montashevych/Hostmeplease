@@ -33,7 +33,7 @@ section#hero.d-flex.align-items-center
     .py-5
       .container
         .row.hidden-md-up
-          = render @places
+          = render partial: 'place', collection: @places
     .row.pag
       .mx-auto
         .apple_pagination
