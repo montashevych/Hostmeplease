@@ -1,6 +1,6 @@
 module PlacesHelper
-  def address(plc)
-    data = Geocoder.search([plc.lon, plc.lat]).first.data
+  def address(place)
+    data = Geocoder.search([place.lon, place.lat]).first.data
     str = data.extract!('address').values.first.extract!('country',
                                                          'state',
                                                          'city',
