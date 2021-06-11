@@ -43,7 +43,7 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   CountComments: false
-  Max: 10
+  Max: 9
   IgnoredMethods:
     - context
     - describe
@@ -55,6 +55,7 @@ Metrics/BlockLength:
     - configure
     - group
     - Devise.setup
+    - FactoryBot.define
 
 # Style Cops
 

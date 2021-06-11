@@ -5,8 +5,8 @@ RSpec.describe PlacesHelper do
     let(:test_place) { FactoryBot.build(:place) }
 
     it 'returns address' do
-      addrcs = address(test_place)
-      expect(addrcs).to eq('Ukraine, Rivne Oblast, Rivne, Kvitky-Osnovianenka Street, 8б')
+      adres = address(test_place)
+      expect(adres).to eq('Ukraine, Rivne Oblast, Rivne, Kvitky-Osnovianenka Street, 8б')
     end
   end
 end
