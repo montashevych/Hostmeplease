@@ -6,5 +6,31 @@ header {
       font-weight: 700;
   }
 
-    a { color: var(--bs-light) !important; }
+  .navbar {
+    .userinfo {
+      ul {
+        li {
+          .dropdown-toggle::after {             // dropdown triangle
+            margin-left: 0;
+            margin-right: 0.255em;
+            float: left;
+            margin-top: 20%;
+            border-top: 0.4em solid;
+            border-right: 0.4em solid transparent;
+            border-left: 0.4em solid transparent;
+          }
+          ul {
+            text-align: center;
+            background-color: #464E4F;
+          }
+        }
+      }
+    }
+  }
+
+  a { color: var(--bs-light) !important; }
+}
+
+.hovc:hover {
+  color: #505050 !important;
 }

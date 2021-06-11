@@ -5,18 +5,20 @@ header.d-flex.w-100.flex-column
         li.nav-item: a.nav-link[href='#'] About
         li.nav-item: a.nav-link[href='#'] Contact
     = link_to "HostMePlease", root_path, class: "navbar-brand mx-auto nav-link"
-    div.collapse.navbar-collapse
+    div.collapse.navbar-collapse.userinfo
       ul.navbar.navbar-nav.ms-auto
         - if user_signed_in?
           li.nav-item.dropdown
-            p#dropdownMenuLink.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
+            a.nav-link#dropdownMenuLink.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
               | John
-            ul.dropdown-menu aria-labelledby="dropdownMenuLink"
+            ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
               li
-                = link_to 'Low to Hight', '#', class: 'dropdown-item'
+                = link_to 'Profile', '#', class: 'dropdown-item hovc'
+              li
+                = link_to 'My Places', '#', class: 'dropdown-item hovc'
               li
                 = link_to 'Sign Out', destroy_user_session_path, method: :delete,
-                                                                 class: 'dropdown-item'
+                                                                 class: 'dropdown-item hovc'
         - else
           li.nav-item: a.nav-link[href='/users/sign_in'] Sign In
           li.nav-item: a.nav-link[href='/users/sign_up'] Sign Up
