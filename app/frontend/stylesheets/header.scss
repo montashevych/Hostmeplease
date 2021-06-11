@@ -10,14 +10,12 @@ header {
     .userinfo {
       ul {
         li {
+          .gravatar {
+            border-radius: 50px;
+            margin-left: 7px;
+          }
           .dropdown-toggle::after {             // dropdown triangle
-            margin-left: 0;
-            margin-right: 0.255em;
-            float: left;
-            margin-top: 22%;
-            border-top: 0.4em solid;
-            border-right: 0.4em solid transparent;
-            border-left: 0.4em solid transparent;
+            display: none;
           }
           ul {
             text-align: center;
