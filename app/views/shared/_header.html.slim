@@ -10,7 +10,7 @@ header.d-flex.w-100.flex-column
         - if user_signed_in?
           li.nav-item.dropdown
             a.nav-link#dropdownMenuLink.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
-              | John
+              = current_user.first_name
             ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
               li
                 = link_to 'Profile', '#', class: 'dropdown-item hovc'
