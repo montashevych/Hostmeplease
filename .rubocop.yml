@@ -43,7 +43,7 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   CountComments: false
-  Max: 9
+  Max: 10
   IgnoredMethods:
     - context
     - describe
@@ -184,4 +184,3 @@ Rails/Delegate:
 
 Bundler/OrderedGems:
   Enabled: false
-  
