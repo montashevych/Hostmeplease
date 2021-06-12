@@ -20,5 +20,4 @@ class Place < ApplicationRecord
   end
 
   after_validation :reverse_geocode
-  after_update :reverse_geocode
 end
