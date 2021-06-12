@@ -1,10 +1,42 @@
 header {
-  hr { margin: 0 !important; }
+  hr { margin: 0; }
 
-  .navbar-brand {
+  .navbar {
+    .collapse {
+      .navbar-nav {
+        a { color: var(--bs-light); }
+      }
+    }
+
+    .navbar-brand {
       font-family: 'Montserrat';
       font-weight: 700;
-  }
+    }
 
-    a { color: var(--bs-light) !important; }
+    .userinfo {
+      ul {
+        li {
+          .gravatar {
+            border-radius: 50px;
+            margin-left: 7px;
+          }
+          .dropdown-toggle::after {             // dropdown triangle
+            display: none;
+          }
+          .dropdown-menu {
+            text-align: center;
+            background-color: #464E4F;
+
+            .dropdown-item {
+              color: white;
+
+              &:hover {
+                color: #505050;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
