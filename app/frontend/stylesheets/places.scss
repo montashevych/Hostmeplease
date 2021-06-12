@@ -1,6 +1,8 @@
 // Place all the styles related to the Places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$text-color: #FFFFFF;
+$button-color: #91CB82;
 
 html, body {
     // overflow-x: hidden;
@@ -82,7 +84,7 @@ $btn-color: #91CB82;
     header {
       position: absolute;
       left: 0;
-      top: 35px;
+      top: 15px;
       z-index: 1;
     }
   }
@@ -287,6 +289,17 @@ $btn-color: #91CB82;
   }
 }
 
+/*--------------------------------------------------------------
+# My Places Page of places
+--------------------------------------------------------------*/
+h2 {
+  color: $text-color;
+  margin-top: 6vh;
+  margin-left: 5%;
+}
+.button-myplaces {
+  background-color: $button-color;
+}
 
 
 /*--------------------------------------------------------------
