@@ -7,4 +7,6 @@ class Place < ApplicationRecord
 
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
+
+  belongs_to :user
 end
