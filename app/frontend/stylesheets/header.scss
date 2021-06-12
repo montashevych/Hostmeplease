@@ -1,12 +1,18 @@
 header {
-  hr { margin: 0 !important; }
-
-  .navbar-brand {
-      font-family: 'Montserrat';
-      font-weight: 700;
-  }
+  hr { margin: 0; }
 
   .navbar {
+    .collapse {
+      .navbar-nav {
+        a { color: var(--bs-light); }
+      }
+    }
+
+    .navbar-brand {
+      font-family: 'Montserrat';
+      font-weight: 700;
+    }
+
     .userinfo {
       ul {
         li {
@@ -17,18 +23,20 @@ header {
           .dropdown-toggle::after {             // dropdown triangle
             display: none;
           }
-          ul {
+          .dropdown-menu {
             text-align: center;
             background-color: #464E4F;
+
+            .dropdown-item {
+              color: white;
+
+              &:hover {
+                color: #505050;
+              }
+            }
           }
         }
       }
     }
   }
-
-  a { color: var(--bs-light) !important; }
-}
-
-.hovc:hover {
-  color: #505050 !important;
 }

@@ -2,8 +2,10 @@ header.d-flex.w-100.flex-column
   nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.container
     div.collapse.navbar-collapse
       ul.nav.navbar-nav.me-auto
-        li.nav-item: a.nav-link[href='#'] About
-        li.nav-item: a.nav-link[href='#'] Contact
+        li.nav-item
+          = link_to 'About', '#', class: 'nav-link'
+        li.nav-item
+          = link_to 'Contact', '#', class: 'nav-link'
     = link_to "HostMePlease", root_path, class: "navbar-brand mx-auto nav-link"
     div.collapse.navbar-collapse.userinfo
       ul.navbar.navbar-nav.ms-auto
@@ -14,12 +16,12 @@ header.d-flex.w-100.flex-column
               = gravatar_for(current_user)
             ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
               li
-                = link_to 'Profile', '#', class: 'dropdown-item hovc'
+                = link_to 'Profile', '#', class: 'dropdown-item'
               li
-                = link_to 'My Places', '#', class: 'dropdown-item hovc'
+                = link_to 'My Places', '#', class: 'dropdown-item'
               li
                 = link_to 'Sign Out', destroy_user_session_path, method: :delete,
-                                                                 class: 'dropdown-item hovc'
+                                                                 class: 'dropdown-item'
         - else
           li.nav-item
             = link_to 'Sign In', new_user_session_url, class: 'nav-link'
