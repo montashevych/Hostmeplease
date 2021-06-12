@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+  belongs_to :user
   enum status: { created: 0, updated: 1, approved: 2 }
 
   validates :title, presence: true, length: { maximum: 23 }
