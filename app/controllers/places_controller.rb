@@ -6,6 +6,16 @@ class PlacesController < ApplicationController
   end
 
   def show
+    place_find
+  end
+
+  def myplaces
+    @place = Place.where(user: current_user)
+  end
+
+  private
+
+  def place_find
     @place = Place.find(params[:id])
   end
 end
