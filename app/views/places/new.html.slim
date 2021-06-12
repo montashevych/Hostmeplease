@@ -2,9 +2,20 @@
 
 .container-field.new
   = render 'shared/header'
-  .container-sm
+  .container.form-container
     .row
+      h1.text-center New Place
+    .row
+      = form_for(@place) do |f|
+        = f.label 'Title'
+        = f.text_field :title
+        = f.label 'Deacription'
+        = f.text_field :description
+        / = f.label 'Type'
+        / = f.text_field :type
+        = f.label 'Price'
+        = f.text_field :price
+        = f.submit 'Save'
       .col-lg-5
       .col-lg-5
-
 = render 'shared/footer'

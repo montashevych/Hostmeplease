@@ -20,5 +20,4 @@
                 price: price,
                 is_active: true,
                 status: (n % 2) == 0 ? :created : :approved)
-
 end
