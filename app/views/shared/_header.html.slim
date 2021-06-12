@@ -9,7 +9,7 @@ header.d-flex.w-100.flex-column
       ul.navbar.navbar-nav.ms-auto
         - if user_signed_in?
           li.nav-item.dropdown
-            a.nav-link#dropdownMenuLink.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
+            a#dropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
               = current_user.first_name
               = gravatar_for(current_user)
             ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
@@ -21,6 +21,8 @@ header.d-flex.w-100.flex-column
                 = link_to 'Sign Out', destroy_user_session_path, method: :delete,
                                                                  class: 'dropdown-item hovc'
         - else
-          li.nav-item: a.nav-link[href='/users/sign_in'] Sign In
-          li.nav-item: a.nav-link[href='/users/sign_up'] Sign Up
+          li.nav-item
+            = link_to 'Sign In', new_user_session_url, class: 'nav-link'
+          li.nav-item
+            = link_to 'Sign Up', new_user_registration_url, class: 'nav-link'
   hr.container.mx-auto
