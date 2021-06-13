@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_find, only: [:show]
 
   def index
     redirect_to root_path
   end
 
   def show
-    user_find
   end
 
   private

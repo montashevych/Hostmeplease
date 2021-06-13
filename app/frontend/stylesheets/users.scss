@@ -101,4 +101,46 @@ $link-color: #f8f9fa;
         width: 80%;
       }    
   }
+
+//======== PROFILE ========
+  .profile .row {
+    width: Max(60%, 800px);
+
+    margin-top: 64px;
+    padding: 32px;
+
+    background: #464E4F;
+
+    border-radius: 20px;
+
+    font-weight: 700;
+
+    .name { font-size: 18px; }
+
+    .gravatar { border-radius: 100%; margin-bottom: 12px; }
+
+    .col-gravatar { text-align: center; }
+
+    .change-avatar {
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: 20px;
+      background-color: #91CB82;
+      padding: 4px 10px 4px;
+    }
+
+    table.about {
+      width: 100%;
+      
+      thead {
+        border-bottom: 2px solid white;
+        margin-bottom: 24px;
+      }
+
+      tr {
+        td:first-child { width: 100%; }
+        td { padding-top: 24px; }
+      }
+    }
+  }
 }
