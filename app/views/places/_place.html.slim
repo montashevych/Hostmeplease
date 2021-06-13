@@ -1,11 +1,20 @@
 .col-md
   .card.text-white.card-has-bg
     .card-img-overlay.d-flex.flex-column
+      .rating
+        |⭐️4.9
       .card-footer
         .row
           .col-6
-            h2= place.price
+            .row
+              .col-12
+                h5
+                  = place.title
+                .col-12
+                  p = place.address
+
           .col-6
-            = link_to place
-              button.btn.btn-success type="button"  Details
-              
+            = link_to "places/#{place.id}"
+              button.btn.btn-success type="button"
+                = place.price
+                | $
