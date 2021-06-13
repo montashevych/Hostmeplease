@@ -115,7 +115,10 @@ $link-color: #f8f9fa;
 
     font-weight: 700;
 
-    .name { font-size: 18px; }
+    .name { 
+      font-size: 18px;
+      margin-bottom: 0;
+    }
 
     .gravatar { border-radius: 100%; margin-bottom: 12px; }
 
