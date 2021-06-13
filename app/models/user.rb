@@ -12,5 +12,5 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6, maximum: 256 }
 
-  has_many :places
+  has_many :places, dependent: :destroy
 end
