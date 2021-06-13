@@ -10,7 +10,8 @@
         = f.label 'Title'
         = f.text_field :title
         = f.label 'Deacription'
-        = f.text_field :description
+        = f.text_area :description
+        = f.select :type, ['Accommodation', 'Workspace']
         / = f.label 'Type'
         / = f.text_field :type
         = f.label 'Price'

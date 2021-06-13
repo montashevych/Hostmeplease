@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
 
+  before_action :logged_in_user, only: [:new, :create]
+
   def index
     @places = Place.where(status: :created).paginate(page: params[:page],
                                                      per_page: PLACES_PER_PAGE)
@@ -15,10 +17,12 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
+    @place = current_user.places.build(place_params)
+    @place.is_active = true
+    @place.status = :created
     if @place.save
       flash[:info] = "Place created."
-      redirect_to root_url
+      redirect_to places_path
     else
       render :new
     end
@@ -26,6 +30,6 @@ class PlacesController < ApplicationController
 
   private
     def place_params
-      params.require(:place).permit(:title, :description, :price)
+      params.require(:place).permit(:title, :description, :price, :type)
     end
 end
