@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :places
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,4 +11,5 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6, maximum: 256 }
+  has_many :places, dependent: :destroy
 end
