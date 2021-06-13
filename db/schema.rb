@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 2021_06_12_072508) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.float "lon", default: 0.0
+    t.float "lat", default: 0.0
+    t.string "address"
     t.index ["type"], name: "index_places_on_type"
     t.index ["user_id"], name: "index_places_on_user_id"
   end

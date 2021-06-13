@@ -241,7 +241,7 @@ $btn-color: #91CB82;
           display: flex;
           justify-content: center;
           position: absolute;
-          min-height: 112.6px;
+          min-height: 130.5px;
           bottom: 0;
           width: 100%;
           background: rgba(38, 47, 48, 0.8);
@@ -252,13 +252,15 @@ $btn-color: #91CB82;
           }
 
           h5 {
-            margin: 0;
+            font-weight: bold;
+            min-width: 148px;
           }
 
           p {
             margin: 0;
             font-weight: 280;
             font-size: small;
+            color: gainsboro;
           }
 
           .col-6 {
@@ -278,6 +280,7 @@ $btn-color: #91CB82;
                 font-weight: 700;
                 line-height: 21px;
                 letter-spacing: 0px;
+                min-width: 148px;
               }
             }
           }
