@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
+    place_find
   end
 
   def new
@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
     @place.is_active = true
     @place.status = :created
     if @place.save
-      flash[:info] = "Place created."
+      flash[:info] = 'Place created'
       redirect_to places_path
     else
       render :new
@@ -29,7 +29,12 @@ class PlacesController < ApplicationController
   end
 
   private
-    def place_params
-      params.require(:place).permit(:title, :description, :price, :type)
-    end
+
+  def place_find
+    @place = Place.find(params[:id])
+  end
+
+  def place_params
+    params.require(:place).permit(:title, :description, :price, :type)
+  end
 end

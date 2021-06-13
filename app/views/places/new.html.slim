@@ -9,7 +9,7 @@
       = form_for(@place) do |f|
         = f.label 'Title'
         = f.text_field :title
-        = f.label 'Deacription'
+        = f.label 'Description'
         = f.text_area :description
         = f.select :type, ['Accommodation', 'Workspace']
         / = f.label 'Type'
