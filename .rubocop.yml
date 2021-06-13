@@ -55,6 +55,7 @@ Metrics/BlockLength:
     - configure
     - group
     - Devise.setup
+    - FactoryBot.define
 
 # Style Cops
 
@@ -184,4 +185,3 @@ Rails/Delegate:
 
 Bundler/OrderedGems:
   Enabled: false
-  
