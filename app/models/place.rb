@@ -14,8 +14,8 @@ class Place < ApplicationRecord
 
   reverse_geocoded_by :lat, :lon do |obj, results|
     if (geo = results.first.data)
-      set = geo.extract!('address').values.first.extract!(*SLICED_ATTRIBUTES)
-      obj.address = set.values.join(', ')
+      attributes = geo.extract!('address').values.first.extract!(*SLICED_ATTRIBUTES)
+      obj.address = attributes.values.join(', ')
     end
   end
 
