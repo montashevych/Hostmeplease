@@ -6,29 +6,29 @@
     .row
       h1.text-center New Place
     .row
-      .col-lg-5.text-center
-        = form_for(@place, url: places_path) do |f|
-          .mb-2.row
-            .col-md-12
-              p = f.label 'Title'
-              = f.text_field :title
-          .mb-2.row
-            .col-md-12
-              p = f.label 'Description'
-              = f.text_area :description
-          .mb-2.row
-            .col-md-12
-              p = f.label 'Type'
-              = f.select :type, ['Accommodation', 'Workspace']
-          .mb-2.row
-            .col-md-12
-              p = f.label 'Price'
-              = f.text_field :price
-          = f.submit 'Save'
-      .col-lg-5
-        / = form_for(@place) do |f|
-        /   .mb-2.row
-        /     .col-md-12
-        /       p = f.label 'Address'
-        /       = f.text_field :address
+      = form_for(@place, url: places_path) do |f|
+        .row
+          .col-lg-5.text-center
+            .mb-2.row
+              .col-md-12
+                p = f.label 'Title'
+                = f.text_field :title
+            .mb-2.row
+              .col-md-12
+                p = f.label 'Description'
+                = f.text_area :description
+            .mb-2.row
+              .col-md-12
+                p = f.label 'Type'
+                = f.select :type, ['Accommodation', 'Workspace']
+            .mb-2.row
+              .col-md-12
+                p = f.label 'Price'
+                = f.text_field :price
+            = f.submit 'Save'
+          .col-lg-5
+            .mb-2.row
+              .col-md-12
+                p = f.label 'Address'
+                = f.text_field :address
 = render 'shared/footer'
