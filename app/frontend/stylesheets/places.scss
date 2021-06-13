@@ -4,7 +4,7 @@
 
 html, body {
     // overflow-x: hidden;
-    background: #262F30 
+    background: #262F30;
 }
 
 .place-screen {
@@ -21,7 +21,7 @@ html, body {
             max-width: 60%;
             font-family: 'Montserrat';
             font-weight: 700;
-            font-size: 4em; 
+            font-size: 4em;
         }
 
         p {
@@ -81,7 +81,8 @@ $btn-color: #91CB82;
   .container {
     header {
       position: absolute;
-      top: 35px;
+      left: 0;
+      top: 15px;
       z-index: 1;
     }
   }
@@ -183,18 +184,12 @@ $btn-color: #91CB82;
 --------------------------------------------------------------*/
 
 .d-flex {
+  .rating {
+    margin: 20px 0 0 20px;
+    display: flex;
+  }
   .it {
     background-color: #262F30;
-
-    .col-md {
-      //For just col
-      // display: flex;
-      // justify-content: center;
-
-      //For col-md
-      text-align: center;
-      text-align: -moz-center;
-    }
 
     .card {
       border: none;
@@ -243,7 +238,10 @@ $btn-color: #91CB82;
         padding: 0;
 
         .card-footer {
+          display: flex;
+          justify-content: center;
           position: absolute;
+          min-height: 130.5px;
           bottom: 0;
           width: 100%;
           background: rgba(38, 47, 48, 0.8);
@@ -251,10 +249,18 @@ $btn-color: #91CB82;
           a {
             width: -moz-available;
             width: -webkit-fill-available;
-          } 
+          }
 
-          h2 {
+          h5 {
+            font-weight: bold;
+            min-width: 148px;
+          }
+
+          p {
             margin: 0;
+            font-weight: 280;
+            font-size: small;
+            color: gainsboro;
           }
 
           .col-6 {
@@ -274,6 +280,7 @@ $btn-color: #91CB82;
                 font-weight: 700;
                 line-height: 21px;
                 letter-spacing: 0px;
+                min-width: 148px;
               }
             }
           }
