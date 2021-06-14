@@ -47,8 +47,16 @@
                     .col-md-12
                       p = f.label 'Country'
                       = f.country_select :address
-          .row.justify-content-start.button-row
-            .col-lg-5
-              .col-md-12.button-col
-                = f.submit 'Save', class: 'button'
+                  .mb-2.row
+                    .col-md-12
+                      p Or select on map:
+                      #map
+            .row.justify-content-start.button-row
+              .col-lg-5
+                .col-md-12.button-col
+                  = f.submit 'Save', class: 'button'
+
+script
+  | window.newPlacePage()
+
 = render 'shared/footer'
