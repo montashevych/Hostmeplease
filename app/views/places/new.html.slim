@@ -32,7 +32,8 @@
                 = f.text_field :address, placeholder: 'Like street or number of huse..', alt: 'Address'
             .mb-2.row
               .col-md-12
-                p = f.country_select :address
+                p = f.label 'Country'
+                = f.country_select :address
           .col-lg-5.justify-content-start
             .col-md-12
               = f.submit 'Save', class: 'button'
