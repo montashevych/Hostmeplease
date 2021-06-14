@@ -357,30 +357,38 @@ $btn-color: #91CB82;
 
 .new {
   width: 100%;
-  height: 100vh;
   position: relative;
   background: url("../images/homepage-bg.png") top center no-repeat;
   background-size: cover;
+  min-height: 100vh;
 
   .form-container {
-    justify-content: center;
-
     h1 {
       font-weight: bold;
       color: white;
       font-family: 'Montserrat';
-      margin-top: revert;
+      margin: 50px 0 25px 0;
     }
 
     .row {
-      justify-content: center;
       .col-lg-5 {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 36px;
-        backdrop-filter: blur(40px);
-        webkit-backdrop-filter: blur(40px);
-        padding: 20px 40px;
+        height: max-content;
         margin: 10px;
+
+        .blur {
+          padding: 20px 40px;
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 36px;
+          backdrop-filter: blur(40px);
+          webkit-backdrop-filter: blur(40px);
+        }
+
+        p {
+          font-weight: bold;
+          font-family: 'Montserrat';
+          margin-bottom: 9px;
+          margin-top: 3px;
+        }
 
         #place_title {
           @include field_properties;
@@ -388,10 +396,22 @@ $btn-color: #91CB82;
 
         #place_price {
           @include field_properties;
+          width: 92%;
+        }
+
+        .dollar {
+          font-weight: bold;
+          font-size: 22px;
+          margin: 10px;
+          text-decoration: none;
+          color: black;
+          cursor: default;
         }
 
         #place_address {
           @include field_properties;
+          padding: 2% 5%;
+          height: 47px;
         }
 
         #place_type {
@@ -402,21 +422,35 @@ $btn-color: #91CB82;
 
         #place_description {
           @include field_properties;
-          height: 100px;
+          height: 200px;
           padding: 2% 5%;
+          resize: none;
+        }
+      }
+
+      .button-row {
+        padding-left: 8.5%;
+
+        @media (max-width: 991px) {
+          padding-left: 0;
+          width: 100%;
         }
 
-        .button {
-          background-color: $btn-color;
-          border-radius: 24px;
-          border: 0;
-          height: 72px;
-          color: white;
-          font-weight: bold;
-          width: -moz-available;
-          width: -webkit-fill-available;
-          font-size: 24px;
-          font-family: 'Montserrat';
+        .button-col {
+          padding: 0 20px;
+
+          .button {
+            background-color: $btn-color;
+            border-radius: 24px;
+            border: 0;
+            height: 72px;
+            color: white;
+            font-weight: bold;
+            width: -moz-available;
+            width: -webkit-fill-available;
+            font-size: 24px;
+            font-family: 'Montserrat';
+          }
         }
       }
     }
