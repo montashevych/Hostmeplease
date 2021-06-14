@@ -8,27 +8,29 @@
     .row
       = form_for(@place, url: places_path) do |f|
         .row
-          .col-lg-5.text-center
+          .col-lg-5
             .mb-2.row
               .col-md-12
                 p = f.label 'Title'
-                = f.text_field :title
+                = f.text_field :title, placeholder: 'Title', alt: 'Title'
             .mb-2.row
               .col-md-12
                 p = f.label 'Description'
-                = f.text_area :description
+                = f.text_area :description, placeholder: 'Something about your place..', alt: 'Description'
             .mb-2.row
               .col-md-12
                 p = f.label 'Type'
-                = f.select :type, ['Accommodation', 'Workspace']
+                = f.select :type, ['Accommodation', 'Workspace'], alt: 'Type'
             .mb-2.row
               .col-md-12
                 p = f.label 'Price'
-                = f.text_field :price
-            = f.submit 'Save'
+                = f.text_field :price, alt: 'Price'
           .col-lg-5
             .mb-2.row
               .col-md-12
                 p = f.label 'Address'
-                = f.text_field :address
+                = f.text_field :address, placeholder: 'Like street or number of huse..', alt: 'Address'
+          .col-lg-5.justify-content-start
+            .col-md-12
+              = f.submit 'Save', class: 'button'
 = render 'shared/footer'

@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@mixin field_properties {
+  background-color: #ECECEC;
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  border: 0;
+  padding: 5%;
+}
+
+
 html, body {
     // overflow-x: hidden;
     background: #262F30;
@@ -353,8 +363,6 @@ $btn-color: #91CB82;
   background-size: cover;
 
   .form-container {
-    background-color: black;
-    height: 100px;
     justify-content: center;
 
     h1 {
@@ -367,8 +375,49 @@ $btn-color: #91CB82;
     .row {
       justify-content: center;
       .col-lg-5 {
-        background-color: red;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 36px;
+        backdrop-filter: blur(40px);
+        webkit-backdrop-filter: blur(40px);
+        padding: 20px 40px;
         margin: 10px;
+
+        #place_title {
+          @include field_properties;
+        }
+
+        #place_price {
+          @include field_properties;
+        }
+
+        #place_address {
+          @include field_properties;
+        }
+
+        #place_type {
+          @include field_properties;
+          padding: 2% 5%;
+          height: 47px;
+        }
+
+        #place_description {
+          @include field_properties;
+          height: 100px;
+          padding: 2% 5%;
+        }
+
+        .button {
+          background-color: $btn-color;
+          border-radius: 24px;
+          border: 0;
+          height: 72px;
+          color: white;
+          font-weight: bold;
+          width: -moz-available;
+          width: -webkit-fill-available;
+          font-size: 24px;
+          font-family: 'Montserrat';
+        }
       }
     }
   }
