@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  private
+
+  # Checks if user is log in.
+  def logged_in_user
+    return if user_signed_in?
+
+    flash[:danger] = 'Please log in'
+    redirect_to new_user_session_path
+  end
+
   protected
 
   def configure_permitted_parameters
