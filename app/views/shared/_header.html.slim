@@ -18,10 +18,10 @@ header.d-flex.w-100.flex-column
               li
                 = link_to 'Profile', user_path(id: current_user.id), class: 'dropdown-item'
               li
-                = link_to 'My Places', '#', class: 'dropdown-item'
+                = link_to 'My Places', 'myplaces', class: 'dropdown-item'
               li
                 = link_to 'Sign Out', destroy_user_session_path, method: :delete,
-                                                                 class: 'dropdown-item'
+                                                                 class: 'dropdown-item hovc'
         - else
           li.nav-item
             = link_to 'Sign In', new_user_session_url, class: 'nav-link'

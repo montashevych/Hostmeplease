@@ -26,6 +26,9 @@ class PlacesController < ApplicationController
     else
       render :new
     end
+
+  def myplaces
+    @place = Place.where(user: current_user)
   end
 
   private

@@ -36,5 +36,11 @@ header {
         }
       }
     }
+
+    a { color: var(--bs-light) !important; }
+  }
+
+  .hovc:hover {
+    color: #505050 !important;
   }
 }

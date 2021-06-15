@@ -1,6 +1,7 @@
 class Place < ApplicationRecord
   SLICED_ATTRIBUTES = %w[country state city village road house_number].freeze
 
+  belongs_to :user
   enum status: { created: 0, updated: 1, approved: 2 }
 
   validates :title, presence: true, length: { maximum: 23 }
