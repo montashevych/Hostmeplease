@@ -46,7 +46,7 @@
                   .mb-2.row
                     .col-md-12
                       p = f.label 'Country'
-                      = f.country_select :address
+                      = f.country_select :address, priority_countries: ['UA', 'RU', 'BY', 'GB']
                   .mb-2.row
                     .col-md-12
                       p Or select on map:
