@@ -370,7 +370,9 @@ $btn-color: #91CB82;
       margin: 50px 0 25px 0;
     }
 
-    .row {
+    .form-row {
+      margin-bottom: 80px;
+
       .col-lg-5 {
         height: max-content;
         margin: 10px;
@@ -430,9 +432,11 @@ $btn-color: #91CB82;
 
       .button-row {
         padding-left: 8.5%;
+        margin-top: -160px;
 
         @media (max-width: 991px) {
           padding-left: 0;
+          margin-top: 0;
           width: 100%;
         }
 
