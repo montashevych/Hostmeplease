@@ -12,6 +12,7 @@ class Place < ApplicationRecord
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
 
+  belongs_to :user, optional: true
   reverse_geocoded_by :lat, :lon do |obj, results|
     if (geo = results.first.data)
       sliced_address = geo.extract!('address').values.first.extract!(*SLICED_ATTRIBUTES)

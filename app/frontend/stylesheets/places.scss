@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@mixin field_properties {
+  background-color: #ECECEC;
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  border: 0;
+  padding: 5%;
+}
+
+
 html, body {
     // overflow-x: hidden;
     background: #262F30;
@@ -332,6 +342,125 @@ $btn-color: #91CB82;
           text-decoration: underline;
           color: black;
         }
+      }
+    }
+  }
+}
+
+
+
+
+/*--------------------------------------------------------------
+# New. Head container
+--------------------------------------------------------------*/
+
+
+.new {
+  width: 100%;
+  position: relative;
+  background: url("../images/homepage-bg.png") top center no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+
+  .form-container {
+    h1 {
+      font-weight: bold;
+      color: white;
+      font-family: 'Montserrat';
+      margin: 50px 0 25px 0;
+    }
+
+    .form-row {
+      margin-bottom: 80px;
+
+      .col-lg-5 {
+        height: max-content;
+        margin: 10px;
+
+        .blur {
+          padding: 20px 40px;
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 36px;
+          backdrop-filter: blur(40px);
+          webkit-backdrop-filter: blur(40px);
+        }
+
+        p {
+          font-weight: bold;
+          font-family: 'Montserrat';
+          margin-bottom: 9px;
+          margin-top: 3px;
+        }
+
+        #place_title {
+          @include field_properties;
+        }
+
+        #place_price {
+          @include field_properties;
+          width: 92%;
+        }
+
+        .dollar {
+          font-weight: bold;
+          font-size: 22px;
+          margin: 10px;
+          text-decoration: none;
+          color: black;
+          cursor: default;
+        }
+
+        #place_address {
+          @include field_properties;
+          padding: 2% 5%;
+          height: 47px;
+        }
+
+        #place_type {
+          @include field_properties;
+          padding: 2% 5%;
+          height: 47px;
+        }
+
+        #place_description {
+          @include field_properties;
+          height: 200px;
+          padding: 2% 5%;
+          resize: none;
+        }
+      }
+
+      .button-row {
+        padding-left: 8.5%;
+        margin-top: -160px;
+
+        @media (max-width: 991px) {
+          padding-left: 0;
+          margin-top: 0;
+          width: 100%;
+        }
+
+        .button-col {
+          padding: 0 20px;
+
+          .button {
+            background-color: $btn-color;
+            border-radius: 24px;
+            border: 0;
+            height: 72px;
+            color: white;
+            font-weight: bold;
+            width: -moz-available;
+            width: -webkit-fill-available;
+            font-size: 24px;
+            font-family: 'Montserrat';
+          }
+        }
+      }
+
+      #map {
+        height: 286px;
+        border-radius: 13px;
       }
     }
   }
