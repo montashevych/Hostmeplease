@@ -28,6 +28,10 @@ class PlacesController < ApplicationController
     end
   end
 
+  def myplaces
+    @place = Place.where(user: current_user)
+  end
+
   private
 
   def place_find
