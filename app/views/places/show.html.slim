@@ -26,16 +26,34 @@ section.pg-cards
           .row
             .card.text-white style=("width: 30rem;") 
               .card-body
+                h4.card-description = @place.title
                 h5.card-title.card-description
-                  | Price starts from
-                  br/
-                  big
-                    | $
-                    = @place.price
+                  | $
+                  = @place.price
                   small  per month
-                p.card-text = @place.description
-                a.btn.btn-success href="#"  Quick book
+                div.container.book
+                  form.row
+                    fieldset.flex-grow-1.col-xxl-3
+                      label for="checkin-date"
+                        p Check-in
+                        input#checkin-date type="date"
+                      label for="checkout-date"
+                        p Check-out
+                        input#checkout-date type="date"
+                      label.flex-grow-1 for="guests"
+                        p Guests
+                        select.form-select#guests
+                          option[value="2a"] 2 adults
+                a.btn.btn-success.mt-3 href="#"  Quick book
           .row.mt-3
-            div style=("width: 30rem;") 
-              img.card.card-img-top.map-card /
+            div.card.text-white style=("width: 30rem;") 
+              .card-body
+                div.card-text
+                  h5.card-description Description 
+                div
+                  p.card-text = @place.description
+                div.mt-3
+                  h5.card-description Location 
+                  p = @place.address       
+
 = render'shared/footer'
