@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'slim', '~> 4.1'
 gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 gem 'mini_magick', '~> 4.11'
+# Geocoder for adress of places
+gem 'geocoder'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
