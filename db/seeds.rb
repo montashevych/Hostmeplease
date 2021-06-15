@@ -6,7 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-25.times do |n|
+user = User.new(first_name: "test",
+                   email: "test@gmail.com",
+                   password: "123test",
+                   password_confirmation: "123test")
+user.skip_confirmation!
+user.save
+20.times do |n|
   title  = Faker::Company.name
   type = Faker::Lorem.characters(number: 10)
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
@@ -15,12 +21,12 @@
   active = Faker::Boolean.boolean
   country = Faker::Address.country
   city = Faker::Address.city
-  place = Place.create(title: title,
+  place = user.places.create(title: title,
                 description: description,
                 price: price,
                 is_active: true,
+                type: (n % 2) == 0 ? 'Accommodation' : 'Workspace',
                 status: (n % 2) == 0 ? :created : :approved,
                 lon: "#{n}.6191034",
                 lat: 26.2605438)
-
 end
