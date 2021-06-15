@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.new(first_name: "test",
-                   email: "test@gmail.com",
-                   password: "123test",
-                   password_confirmation: "123test")
+                   email: "test_one@gmail.com",
+                   password: "1q2w3e4rtest",
+                   password_confirmation: "1q2w3e4rtest")
 user.skip_confirmation!
 user.save
 25.times do |n|
