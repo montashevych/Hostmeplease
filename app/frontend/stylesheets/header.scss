@@ -16,28 +16,23 @@ header {
       font-weight: 700;
     }
 
-    .userinfo {
-      ul {
-        li {
-          .gravatar {
-            border-radius: 50px;
-            margin-left: 7px;
-          }
-          .dropdown-toggle::after {             // dropdown triangle
-            display: none;
-          }
-          .dropdown-menu {
-            text-align: center;
-            background-color: #464E4F;
+    .gravatar {
+      border-radius: 100%;
+      margin-left: 7px;
+    }
 
-            .dropdown-item {
-              color: white;
+    .dropdown-toggle::after {             // dropdown triangle
+      display: none;
+    }
+    .dropdown-menu {
+      text-align: center;
+      background-color: #464E4F;
 
-              &:hover {
-                color: #505050;
-              }
-            }
-          }
+      .dropdown-item {
+        color: white;
+
+        &:hover {
+          color: #505050;
         }
       }
     }
