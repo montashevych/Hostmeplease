@@ -28,6 +28,8 @@ gem 'country_select', '~> 4.0'
 
 gem 'faker', '~> 2.18'
 
+gem 'fog'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
