@@ -11,7 +11,7 @@ user = User.new(first_name: "test",
                    password: "123test",
                    password_confirmation: "123test")
 user.skip_confirmation!
-user.save
+user.save!
 20.times do |n|
   title  = Faker::Company.name
   type = Faker::Lorem.characters(number: 10)
