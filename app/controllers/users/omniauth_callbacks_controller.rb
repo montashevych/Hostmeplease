@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    user = User.from_google(email: from_google_email, other_options: from_google_params)
+    user = User.from_google(email: from_google_email, params: from_google_params)
     if user.present?
       google_oauth2_success(user)
     else

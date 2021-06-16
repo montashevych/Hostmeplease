@@ -1,11 +1,4 @@
 module UsersHelper
-  GOOGLE_AVATAR_STORAGE_REGEX = %r{https://lh\d\.googleusercontent\.com.+}
-
-  def google_avatar_url_for(user, size)
-    url = user.avatar_url.split('=')[0] # crop off parameters
-    "#{url}=s#{size}-c"
-  end
-
   def gravatar_for(user, size: 40)
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
@@ -18,5 +11,14 @@ module UsersHelper
     else
       gravatar_for(user, size: size)
     end
+  end
+
+  private
+
+  GOOGLE_AVATAR_STORAGE_REGEX = %r{https://lh\d\.googleusercontent\.com.+}
+
+  def google_avatar_url_for(user, size)
+    url = user.avatar_url.split('=')[0] # crop off parameters
+    "#{url}=s#{size}-c"
   end
 end
