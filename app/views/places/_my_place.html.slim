@@ -1,0 +1,25 @@
+.col-md-4
+  .card.text-white.card-has-bg
+    .card-img-overlay.d-flex.flex-column
+      .card-footer
+        .row
+          .col-6
+            .row
+              .col-12
+                h5
+                  = place.title
+              .col-12
+                p = place.type
+              .col-12
+                p 📍 New York, str Big Halls, 129a
+              .col-12
+                = place.price
+                | $  
+
+          .col-6
+              .col-12
+                button.btn.btn-success type="button"
+                  = link_to "Edit", new_place_path
+              .col-12
+                .rating
+                  |⭐️4.9
