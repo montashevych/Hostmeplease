@@ -1,8 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    user = User.from_google(email: from_google_email, params: from_google_params)
+    user = User.from_google(email: from_google_email, other_options: from_google_params)
     if user.present?
-      google_oauth2_success
+      google_oauth2_success(user)
     else
       google_oauth2_failure
     end
@@ -38,7 +38,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @auth ||= request.env['omniauth.auth']
   end
 
-  def google_oauth2_success
+  def google_oauth2_success(user)
     sign_out_all_scopes
     flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
     sign_in_and_redirect user, event: :authentication
@@ -46,7 +46,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def google_oauth2_failure
     flash[:alert] =
-      t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
+      t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{from_google_email} is not authorized."
     redirect_to new_user_session_path
   end
 end
