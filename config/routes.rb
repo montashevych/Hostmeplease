@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :places
   devise_for :users
   resources :users
-  get 'myplaces' => 'places#myplaces'
+  get 'my_places' => 'places#my_places'
 end
