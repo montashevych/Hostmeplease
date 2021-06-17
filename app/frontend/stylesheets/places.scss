@@ -295,7 +295,7 @@ $btn-color: #91CB82;
 # My Places Page of places
 --------------------------------------------------------------*/
 .main-screen {
-    min-height: Max(1080px, 152vh);
+    min-height: Max(1080px, 157vh);
 }
 
 h2 {
@@ -307,7 +307,7 @@ h2 {
 .button-myplaces {
   font-family: Montserrat;
   font-weight: 600;
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: $text-color;
   background-color: #91CB82;
   @media screen and (max-width: 1140px ) {
@@ -359,10 +359,11 @@ a {
       transition: transform 500ms ease-out, background-size 500ms ease-in-out;
 
       @media screen and (max-width: 1140px) {
-        .card {
-          min-width: 230px;
-        }
+              margin-right: 20px;
       }
+      @media (min-width: 770px) and (max-width: 990px ) {
+      }
+  }
 
       @media (max-width: 768px) {
         min-height:350px;
@@ -408,9 +409,27 @@ a {
           width: 100%;
           background: rgba(38, 47, 48, 0.8);
           margin-top: -8em;
+          padding-bottom: 0;
+          padding-left: 1.5%;
 
           .row:first-child {
-            height: 2.8em;
+            height: 2.2em;
+          }
+          .col-md-5 {
+              margin-right: -5%;
+            @media screen and (max-width: 1140px ) {
+              margin-right: -5%;
+            }
+
+          }
+          .rating {
+            margin: 0 0 0 52%;
+            @media (min-width: 960px) and (max-width: 1200px ) {
+              margin: 0 0 0 35%;
+            }
+            @media (min-width: 770px) and (max-width: 990px ) {
+              margin: 0 0 0 10%;
+            }
           }
 
           h5 {
@@ -418,22 +437,29 @@ a {
             width: 7.8em;
             font-size: 1.1em;
           @media screen and (max-width: 1140px ) {
-            width: 8em;
+            width: 100%;
           }
-          @media (min-width: 960px) and (max-width: 1140px ) {
-              width: 7em;
-              font-size: 1em;
-        }
+
         }
           .link_font-size {
-            font-size: 1.2em;
-              @media screen and (max-width: 1140px ) {
-                  font-size: 1.1em;
-                  width: 50%;
+            font-size: 1.1em;
+              @media (min-width: 960px) and (max-width: 1400px ) {
+                font-size: 1.1em;
+              }
+              @media (min-width: 1200px) and (max-width: 1920px ) {
+                margin-left: 24%;
+              }
+              @media screen and (max-width: 1200px ) {
+                font-size: 1em;
+                width: 106%;
+              }
+              @media (min-width: 770px) and (max-width: 990px ) {
+                width: 80%;
               }
             }
 
           p {
+            margin-left: 8%;
             margin-bottom: 4%;
             font-weight: 280;
             font-size: 0.9em;
@@ -465,11 +491,6 @@ a {
         }
       }
     }
-}
-
-
-
-
 
 /*--------------------------------------------------------------
 # Pagination
