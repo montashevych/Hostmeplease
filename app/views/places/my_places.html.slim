@@ -14,20 +14,20 @@ section.main-screen
 					.d-flex.collapse.navbar-collapse.userinfo.ms-auto
 				      ul.navbar.navbar-nav
 			          p.nav-item.dropdown
-			            .button-myplaces.rounded-pill.nav-link#dropdownMenuLink.dropdown-toggle.text-center aria-expanded="false" data-bs-toggle="dropdown" role="button"
+			            .button-myplaces.rounded-pill.nav-link#dropdownMenuLink.dropdown-toggle.text-center.hovc aria-expanded="false" data-bs-toggle="dropdown" role="button"
 			              | Filters
 			            ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
 			              li
 			                = link_to 'Accomodations', '#', class: 'dropdown-item hovc'
 			              li
 			                = link_to 'Workspaces', '#', class: 'dropdown-item hovc'
-		section.myplaces.mt-5.pt-4
+		section.myplaces.mt-5.pt-4.mb-5
 			.row.px-5
 				= render partial: 'my_place', collection: @places, as: :place
 			.row.pag
 		    .mx-auto
-		      .apple_pagination
+		      .apple_pagination.text-center
 		        = will_paginate @places, container: false, \
 		          previous_label: '« Prev',                \
 		          next_label: 'Next »'
-= render 'shared/footer'
+	= render 'shared/footer'
