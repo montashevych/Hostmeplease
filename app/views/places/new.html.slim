@@ -2,13 +2,13 @@
 
 .container-field.new
   = render 'shared/header'
-  .container.form-container
+  .container-xxl.form-container
     .row
       h1.text-center New Place
     .row
       = form_for(@place, url: places_path) do |f|
           .row.justify-content-center.form-row
-            .col-lg-5
+            .col-xl-4
               .blur
                 .col-lg-12
                   .mb-2.row
@@ -28,7 +28,7 @@
                       p = f.label 'Price'
                       = f.text_field :price, alt: 'Price'
                       a.dollar $
-            .col-lg-5
+            .col-xl-5
               .blur
                 .col-lg-12
                   .mb-2.row
@@ -51,8 +51,13 @@
                     .col-md-12
                       p Or select on map:
                       #map
-            .row.justify-content-start.button-row
-              .col-lg-5
+            .col-xl-3
+              .blur
+                .col-lg-12
+                  = image_tag 'https://images.wallpaperscraft.ru/image/olen_art_vektor_134088_3840x2160.jpg'
+                  = image_tag 'https://images.wallpaperscraft.ru/image/olen_art_vektor_134088_3840x2160.jpg'
+            .row.button-row
+              .col-xl-4
                 .col-md-12.button-col
                   = f.submit 'Save', class: 'button'
 
