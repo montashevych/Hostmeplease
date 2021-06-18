@@ -1,5 +1,6 @@
 class Place < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
+
   SLICED_ATTRIBUTES = %w[country state city village road house_number].freeze
 
   enum status: { created: 0, updated: 1, approved: 2 }
