@@ -30,9 +30,6 @@ RSpec.describe User do
     let(:user_without_email) { build(:user, email: '') }
     let(:user_without_password) { build(:user, password: '') }
     let(:user_without_role) { build(:user, role: '') }
-    let(:user_from_google_without_params) { User.from_google(email: 'test@mail.com', params: {}) }
-    let(:user_from_google_without_name) { User.from_google(email: 'test@mail.com', params: { password: 'a'*6 }) }
-    let(:user_from_google_without_password) { User.from_google(email: 'test@mail.com', params: { first_name: 'a'*2 }) }
 
     it 'creates an user with space-name' do
       expect(user_with_empty_name).not_to be_valid
@@ -55,15 +52,21 @@ RSpec.describe User do
     end
 
     it 'creates an user without params' do
-      expect(user_from_google_without_params).not_to be_valid
+      expect {
+        User.from_google(email: 'test@mail.com', params: {})
+      }.to raise_error(ArgumentError) # with empty params create_with(**params) takes 0, it is supposed to take >= 1
     end
 
     it 'creates a user without name' do
-      expect(user_from_google_without_name).not_to be_valid
+      expect {
+        User.from_google(email: 'test@mail.com', params: { password: 'a'*6 })
+      }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'creates a user without password' do
-      expect(user_from_google_without_password).not_to be_valid
+      expect {
+        User.from_google(email: 'test@mail.com', params: { first_name: 'a'*2 })
+      }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 
