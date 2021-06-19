@@ -10,7 +10,6 @@ RSpec.describe Place, type: :model do
   end
 
   context 'when length incorrect' do
-    let(:long_description) { build(:place, description: 'q' * 601) }
     let(:test_place) { FactoryBot.build(:place) }
 
     it 'does not allow a title longer than 50 characters' do
