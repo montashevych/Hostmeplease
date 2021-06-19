@@ -19,8 +19,6 @@ class PlacesController < ApplicationController
 
   def create
     @place = current_user.places.build(place_params.except(:address))
-    @place.is_active = true
-    @place.status = :created
     if @place.save
       @address = @place.build_address(place_params.require(:address))
       @address.save
@@ -39,6 +37,13 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:title, :description, :price, :type, address: [:country, :state_region, :city, :details])
+    params.require(:place).permit(:title,
+                                  :description,
+                                  :price,
+                                  :type,
+                                  address: [:country,
+                                            :state_region,
+                                            :city,
+                                            :details])
   end
 end
