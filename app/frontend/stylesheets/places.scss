@@ -92,7 +92,7 @@ $btn-color: #91CB82;
     header {
       position: absolute;
       left: 0;
-      top: 15px;
+      top: 0;
       z-index: 1;
     }
   }
@@ -412,12 +412,6 @@ $btn-color: #91CB82;
           cursor: default;
         }
 
-        #place_address {
-          @include field_properties;
-          padding: 2% 5%;
-          height: 47px;
-        }
-
         #place_type {
           @include field_properties;
           padding: 2% 5%;
@@ -452,10 +446,24 @@ $btn-color: #91CB82;
           margin-top: 3px;
         }
 
-        #place_address {
+        #place_address_details {
           @include field_properties;
           padding: 2% 5%;
           height: 47px;
+        }
+
+        #place_address_city {
+          @include field_properties;
+        }
+
+        #place_address_state_region {
+          @include field_properties;
+        }
+
+        #place_address_country {
+          @include field_properties;
+          height: 50px;
+          padding: 2% 5%;
         }
       }
 

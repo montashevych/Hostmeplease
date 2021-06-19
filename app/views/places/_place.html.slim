@@ -9,9 +9,9 @@
             .row
               .col-12
                 h5
-                  = place.title
+                  = place.title.capitalize
                 .col-12
-                  p = place.address.city
+                  p = full_address(place.address)
 
           .col-6
             = link_to "places/#{place.id}"
