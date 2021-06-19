@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
-  
+
   before_action :place_find, only: [:show]
 
   def index
@@ -8,6 +8,10 @@ class PlacesController < ApplicationController
   end
 
   def show;  end
+
+  def new; end
+
+  def edit; end
 
   def my_places
     @count_places = current_user.places.count
