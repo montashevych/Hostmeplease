@@ -7,14 +7,6 @@ RSpec.describe User do
       described_class.from_google(email: 'test@mail.com', params: { password: 'a' * 6, first_name: 'a' * 2 })
     }
 
-    it 'creates an default user with indication name' do
-      expect(user_with_name_of_two_length).to be_valid
-    end
-
-    it 'creates an default user with indication password' do
-      expect(user_with_password_of_sixth_length).to be_valid
-    end
-
     it 'creates an user with owner role' do
       expect(test_user).to be_valid
     end
