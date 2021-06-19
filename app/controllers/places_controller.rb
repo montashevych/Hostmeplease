@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
     @places = Place.where(status: :created).paginate(page: params[:page], per_page: PLACES_PER_PAGE)
   end
 
-  def show;  end
+  def show; end
 
   def new; end
 

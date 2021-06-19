@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Showing', type: :feature do
-
   describe('list of places') do
     let!(:test_place) { FactoryBot.create(:place) }
 
@@ -59,7 +58,7 @@ RSpec.describe 'Showing', type: :feature do
     end
 
     context 'when it have content' do
-        it 'returns headers\'s title' do
+      it 'returns headers\'s title' do
         expect(page).to have_content("Your Places(#{test_user.places.count})")
       end
     end
@@ -70,17 +69,17 @@ RSpec.describe 'Showing', type: :feature do
         have_current_path eq(root_path)
       end
 
-      it 'redirect to show place' do
+      it 'redirect to edit place' do
         click_on 'Edit'
         have_current_path eq(edit_place_path(test_place))
       end
 
-      it 'redirect to show place' do
+      it 'redirect to Edit Place' do
         click_on 'Edit Place'
         have_current_path eq(edit_place_path(test_place))
       end
 
-      it 'redirect to show place' do
+      it 'redirect to New Place' do
         click_on 'New Place'
         have_current_path eq(new_place_path)
       end
