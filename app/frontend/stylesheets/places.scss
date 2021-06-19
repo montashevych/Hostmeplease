@@ -506,8 +506,11 @@ $btn-color: #91CB82;
                 @media (min-width: 1140px) and (max-width: 1200px ) {
                   margin: 0 0 0 35%;
                 }
-                @media (min-width: 1200px) and (max-width: 1920px ) {
-                  margin: 0 0 0 24%;
+                @media (min-width: 1200px) and (max-width: 1400px ) {
+                  margin: 0 0 0 28%;
+                }
+                @media (min-width: 1400px) and (max-width: 1920px ) {
+                  margin: 0 0 0 32%;
                 }
               }
 
@@ -564,8 +567,11 @@ $btn-color: #91CB82;
                   @media (min-width: 960px) and (max-width: 1400px ) {
                     font-size: 1em;
                   }
-                  @media (min-width: 1200px) and (max-width: 1920px ) {
+                  @media (min-width: 1200px) and (max-width: 1400px ) {
                     margin-left: 36%;
+                  }
+                  @media (min-width: 1400px) and (max-width: 1920px ) {
+                    margin-left: 46%;
                   }
 
                 }
