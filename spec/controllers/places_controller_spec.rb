@@ -20,7 +20,7 @@ RSpec.describe PlacesController do
       expect(response).to render_template 'places/index'
     end
 
-    context 'when User login User' do
+    context 'when User is login and User see ' do
       let(:test_user) { FactoryBot.build(:user) }
       let(:test_place) { FactoryBot.build(:place) }
 
