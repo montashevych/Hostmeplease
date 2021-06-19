@@ -13,7 +13,7 @@ header.d-flex.w-100.flex-column
           li.nav-item.dropdown
             a#dropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
               = current_user.first_name
-              = gravatar_for(current_user)
+              = avatar_for(current_user)
             ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
               li
                 = link_to 'Profile', '#', class: 'dropdown-item'
