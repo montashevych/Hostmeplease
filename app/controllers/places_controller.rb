@@ -14,13 +14,17 @@ class PlacesController < ApplicationController
 
   def new
     @place = Place.new
+    @address = Address.new
   end
 
   def create
-    @place = current_user.places.build(place_params)
+    @place = current_user.places.build(place_params.except(:address))
     @place.is_active = true
     @place.status = :created
     if @place.save
+      @address = @place.build_address(place_params.require(:address))
+      @address.save
+
       flash[:info] = 'Place created'
       redirect_to places_path
     else
@@ -35,6 +39,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:title, :description, :price, :type, :address)
+    params.require(:place).permit(:title, :description, :price, :type, address: [:country, :state_region, :city, :details])
   end
 end

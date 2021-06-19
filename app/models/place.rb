@@ -13,12 +13,15 @@ class Place < ApplicationRecord
   scope :accommodations, -> { where(type: 'Accommodation') }
 
   belongs_to :user, optional: true
-  reverse_geocoded_by :lat, :lon do |obj, results|
-    if (geo = results.first.data)
-      sliced_address = geo.extract!('address').values.first.extract!(*SLICED_ATTRIBUTES)
-      obj.address = sliced_address.values.join(', ')
-    end
-  end
+  has_one :address, dependent: :destroy
 
-  after_validation :reverse_geocode
+  accepts_nested_attributes_for :address
+  # reverse_geocoded_by :lat, :lon do |obj, results|
+  #   if (geo = results.first.data)
+  #     sliced_address = geo.extract!('address').values.first.extract!(*SLICED_ATTRIBUTES)
+  #     obj.address = sliced_address.values.join(', ')
+  #   end
+  # end
+
+  # after_validation :reverse_geocode
 end

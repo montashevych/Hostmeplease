@@ -21,7 +21,7 @@ user.save
   active = Faker::Boolean.boolean
   country = Faker::Address.country
   city = Faker::Address.city
-  place = user.places.create(title: title,
+  place = user.places.create!(title: title,
                 description: description,
                 price: price,
                 is_active: true,
@@ -29,4 +29,9 @@ user.save
                 status: (n % 2) == 0 ? :created : :approved,
                 lon: "#{n}.6191034",
                 lat: 26.2605438)
+
+  place.addresses.create(country: Faker::Address.country,
+                         city: Faker::Address.city,
+                         state_region: Faker::Address.state,
+                         details: Faker::Address.street_address)
 end

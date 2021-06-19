@@ -31,26 +31,27 @@
             .col-xl-5
               .blur
                 .col-lg-12
-                  .mb-2.row
-                    .col-md-12
-                      p = f.label 'Address'
-                      = f.text_field :address, placeholder: 'Like street or number of house..', alt: 'Address'
-                  .mb-2.row
-                    .col-md-12
-                      p = f.label 'City'
-                      = f.text_field :address, placeholder: 'City..', alt: 'city'
-                  .mb-2.row
-                    .col-md-12
-                      p = f.label 'State / Region'
-                      = f.text_field :address, placeholder: 'Your state or region..', alt: 'State or region'
-                  .mb-2.row
-                    .col-md-12
-                      p = f.label 'Country'
-                      = f.country_select :address, priority_countries: ['UA', 'RU', 'BY', 'GB']
-                  .mb-2.row
-                    .col-md-12
-                      p Or select on map:
-                      #map
+                  = f.fields_for @address do |a|
+                    .mb-2.row
+                      .col-md-12
+                        p = a.label 'Address'
+                        = a.text_field :details, placeholder: 'Like street or number of house..', alt: 'Address'
+                    .mb-2.row
+                      .col-md-12
+                        p = a.label 'City'
+                        = a.text_field :city, placeholder: 'City..', alt: 'city'
+                    .mb-2.row
+                      .col-md-12
+                        p = a.label 'State / Region'
+                        = a.text_field :state_region, placeholder: 'Your state or region..', alt: 'State or region'
+                    .mb-2.row
+                      .col-md-12
+                        p = a.label 'Country'
+                        = a.country_select :country, priority_countries: ['UA', 'RU', 'BY', 'GB']
+                    .mb-2.row
+                      .col-md-12
+                        p Or select on map:
+                        #map
             .col-xl-3
               .blur
                 .col-lg-12
