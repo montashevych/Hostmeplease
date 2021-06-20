@@ -74,11 +74,6 @@ RSpec.describe 'Showing', type: :feature do
         have_current_path eq(root_path)
       end
 
-      it 'redirect to edit place' do
-        click_on 'Edit'
-        have_current_path eq(edit_place_path(test_place))
-      end
-
       it 'redirect to Edit Place' do
         click_on 'Edit Place'
         have_current_path eq(edit_place_path(test_place))
