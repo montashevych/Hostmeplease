@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
 
   SLICED_ATTRIBUTES = %w[country state city village road house_number].freeze
 
