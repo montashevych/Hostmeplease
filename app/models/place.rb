@@ -1,6 +1,4 @@
 class Place < ApplicationRecord
-  SLICED_ATTRIBUTES = %w[country state city village road house_number].freeze
-
   enum status: { created: 0, updated: 1, approved: 2 }
 
   validates :title, presence: true, length: { maximum: 23 }
@@ -16,12 +14,12 @@ class Place < ApplicationRecord
   has_one :address, dependent: :destroy
 
   accepts_nested_attributes_for :address
-  # reverse_geocoded_by :lat, :lon do |obj, results|
-  #   if (geo = results.first.data)
-  #     sliced_address = geo.extract!('address').values.first.extract!(*SLICED_ATTRIBUTES)
-  #     obj.address = sliced_address.values.join(', ')
+  # geocoded_by full_address(@address) do |obj, results|
+  #   if (geo = results.first)
+  #     obj.lat = geo.latitude
+  #     obj.lon = geo.longitude
   #   end
   # end
-
-  # after_validation :reverse_geocode
+  #
+  # after_validation :geocode
 end
