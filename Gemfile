@@ -19,8 +19,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Slim HTML
 gem 'slim', '~> 4.1'
-gem 'carrierwave', '~> 2.2', '>= 2.2.2'
-gem 'mini_magick', '~> 4.11'
 # Geocoder for adress of places
 gem 'geocoder'
 
