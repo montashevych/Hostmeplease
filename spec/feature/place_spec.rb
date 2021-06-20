@@ -2,9 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Showing', type: :feature do
   describe('list of places') do
-    let!(:test_place) { FactoryBot.create(:place) }
+    let(:test_user) { FactoryBot.build(:user) }
+    let(:test_place) { FactoryBot.build(:place) }
 
     before do
+      test_user.skip_confirmation!
+      test_user.save!
+      test_place.user_id = test_user.id
+      test_place.save!
       visit places_path
     end
 

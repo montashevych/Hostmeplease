@@ -2,7 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Place, type: :model do
   context 'when  valid' do
-    let(:test_place) { build(:place) }
+    let(:test_user) { FactoryBot.build(:user) }
+    let(:test_place) { FactoryBot.build(:place) }
+
+    before do
+      test_user.skip_confirmation!
+      test_user.save!
+      test_place.user_id = test_user.id
+      test_place.save!
+    end
 
     it 'is valid with valid attributes' do
       expect(test_place).to be_valid
@@ -10,7 +18,15 @@ RSpec.describe Place, type: :model do
   end
 
   context 'when length incorrect' do
+    let(:test_user) { FactoryBot.build(:user) }
     let(:test_place) { FactoryBot.build(:place) }
+
+    before do
+      test_user.skip_confirmation!
+      test_user.save!
+      test_place.user_id = test_user.id
+      test_place.save!
+    end
 
     it 'does not allow a title longer than 50 characters' do
       test_place.title = 'q' * 24
