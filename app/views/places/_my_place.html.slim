@@ -4,14 +4,14 @@
       .card-footer
         .row
           .col-md-12.col-lg-12.col-xl-12.col-xxl-12
-            h5.col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12.col-xxl-12 = place.title
+            h5.text-center.col-12.col-sm-12.col-md-12 = place.title
         .row.flex-row-reverse
-          .col-5.col-sm-5.col-md-5
+          .col-5.col-sm-4.col-md-4
             .rating.mt-1.d-flex ⭐️ 4.9
-          .col-7.col-sm-7.col-md-7
-            p = place.type
+          .col-7.col-sm-8.col-md-8
+            p = "🏠 #{place.type}"
             p 📍 New York, str Big Halls, 129a
-            p.mb-3 = "$#{place.price}"
+            p.mb-3.font_family_price = "$#{place.price}"
         .row
-          .col-md.mt-2
+          .col-md.mt-2.mb-2
               = link_to "Edit Place", edit_place_path(place), class: "py-1 px-3 btn link_font-size rounded-pill hovc button-myplaces text-center"
