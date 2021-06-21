@@ -23,6 +23,13 @@ gem 'slim', '~> 4.1'
 gem 'geocoder'
 # List of countries in select tag
 gem 'country_select', '~> 4.0'
+# Use figaro for saving secrete values
+gem 'figaro'
+# Use for uploading images
+gem 'carrierwave', '~> 1.0'
+gem 'file_validators'
+gem 'mini_magick'
+gem 'fog-aws'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
