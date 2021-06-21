@@ -11,6 +11,13 @@
   padding: 5%;
 }
 
+@mixin column_optimization {
+  @media (max-width: 420px) {
+    min-width: 0;
+    padding: 0;
+  }
+}
+
 
 html, body {
     // overflow-x: hidden;
@@ -377,6 +384,7 @@ $btn-color: #91CB82;
         height: max-content;
         min-width: 372px;
         margin-top: 10px;
+        @include column_optimization;
 
         .blur {
           padding: 20px 40px;
@@ -429,6 +437,7 @@ $btn-color: #91CB82;
         height: max-content;
         min-width: 372px;
         margin-top: 10px;
+        @include column_optimization;
 
         .blur {
           padding: 20px 40px;
@@ -482,6 +491,21 @@ $btn-color: #91CB82;
               width: -webkit-fill-available;
               margin: 10px 0;
               border-radius: 13px;
+              height: 146px;
+            }
+
+            #place_picture_label {
+              display: flex;
+              background-color: #D8D8D8;
+              width: -moz-available;
+              width: -webkit-fill-available;
+              justify-content: center;
+              border-radius: 13px;
+              cursor: pointer;
+              margin-top: 1rem;
+              font-size: 79px;
+              color: #606060;
+              padding: 14px 0;
             }
           }
         }

@@ -58,13 +58,14 @@
                   = f.fields_for @picture do |i|
                     .mb-2.row
                       .col-md-12
-                        = image_tag 'https://images.wallpaperscraft.ru/image/olen_art_vektor_134088_3840x2160.jpg'
+                        = image_tag 'https://images.wallpaperscraft.ru/image/olen_art_vektor_134088_3840x2160.jpg', id: 'img_prev', alt: "image"
                     .mb-2.row
                       .col-md-12
                         = image_tag 'https://images.wallpaperscraft.ru/image/olen_art_vektor_134088_3840x2160.jpg'
                     .mb-2.row
                       .col-md-12
-                        = i.file_field :image
+                        = i.label '+', for: 'place_picture_image', id: 'place_picture_label'
+                        = i.file_field :image, hidden: ''
                         = i.hidden_field :image_cache
 
             .row.button-row

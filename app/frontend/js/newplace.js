@@ -31,4 +31,9 @@ window.newPlacePage = () => {
 
     marker.on('click', evt => marker.remove());
   });
+
+  document.getElementById('place_picture_image').addEventListener('change', function(event) {
+    let image = URL.createObjectURL(event.target.files[0]);
+    document.getElementById('img_prev').src = image;
+  })
 };
