@@ -22,7 +22,9 @@ class PlacesController < ApplicationController
     @place = current_user.places.build(place_params.except(:address, :picture))
     if @place.save
       @address = @place.build_address(place_params.require(:address))
+      @picture = @place.pictures.build(place_params.require(:picture))
       @address.save
+      @picture.save
 
       flash[:info] = 'Place created'
       redirect_to places_path
@@ -45,6 +47,7 @@ class PlacesController < ApplicationController
                                   address: [:country,
                                             :state_region,
                                             :city,
-                                            :details])
+                                            :details],
+                                  picture: {})
   end
 end

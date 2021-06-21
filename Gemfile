@@ -26,7 +26,7 @@ gem 'country_select', '~> 4.0'
 # Use figaro for saving secrete values
 gem 'figaro'
 # Use for uploading images
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 2.0'
 gem 'file_validators'
 gem 'mini_magick'
 gem 'fog-aws'
