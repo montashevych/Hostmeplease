@@ -15,10 +15,11 @@ class PlacesController < ApplicationController
   def new
     @place = Place.new
     @address = Address.new
+    @picture = Picture.new
   end
 
   def create
-    @place = current_user.places.build(place_params.except(:address))
+    @place = current_user.places.build(place_params.except(:address, :picture))
     if @place.save
       @address = @place.build_address(place_params.require(:address))
       @address.save

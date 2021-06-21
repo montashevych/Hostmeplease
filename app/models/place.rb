@@ -12,8 +12,10 @@ class Place < ApplicationRecord
 
   belongs_to :user, optional: true
   has_one :address, dependent: :destroy
+  has_many :pictures, as: :imageable, dependent: :destroy
 
   accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :pictures
   # geocoded_by full_address(@address) do |obj, results|
   #   if (geo = results.first)
   #     obj.lat = geo.latitude

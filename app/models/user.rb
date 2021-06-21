@@ -13,4 +13,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6, maximum: 256 }
 
   has_many :places, dependent: :destroy
+  has_one :picture, as: :imageable, dependent: :destroy
 end
