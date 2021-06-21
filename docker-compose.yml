@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     ports:
-      - "5431:5432"
+      - "5432:5432"
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
@@ -15,6 +15,10 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres  
     depends_on:
       - db
-      
