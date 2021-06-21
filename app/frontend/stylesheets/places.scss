@@ -209,7 +209,6 @@ $btn-color: #91CB82;
       min-height: 300px;
       min-width: 250px;
       box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
-      background-image: url('../images/image-5.png');
       margin: 32px;
       transition: transform 500ms ease-out, background-size 500ms ease-in-out;
 
@@ -221,7 +220,7 @@ $btn-color: #91CB82;
       }
 
       &.card-has-bg{
-        background-size: 120%;
+        background-size: 160%;
         background-repeat:no-repeat;
         background-position: center center;
 
@@ -237,7 +236,7 @@ $btn-color: #91CB82;
 
         &:hover {
           box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
-          background-size: 125%;
+          background-size: 150%;
         }
       }
       &:hover {
