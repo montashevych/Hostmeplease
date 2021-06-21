@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :picture do
-    name { 'MyString' }
+    image { 'MyString' }
     imageable_type { 'MyString' }
   end
 end

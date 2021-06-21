@@ -21,10 +21,8 @@ class PlacesController < ApplicationController
   def create
     @place = current_user.places.build(place_params.except(:address, :picture))
     if @place.save
-      @address = @place.build_address(place_params.require(:address))
-      @picture = @place.pictures.build(place_params.require(:picture))
-      @address.save
-      @picture.save
+      @address = @place.build_address(place_params.require(:address)).save
+      @picture = @place.pictures.create(place_params.require(:picture))
 
       flash[:info] = 'Place created'
       redirect_to places_path
