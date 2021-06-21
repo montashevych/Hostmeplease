@@ -19,6 +19,7 @@ services:
       RAILS_ENV: development
       POSTGRES_HOST: db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres  
+      POSTGRES_PASSWORD: postgres
     depends_on:
       - db
+            
