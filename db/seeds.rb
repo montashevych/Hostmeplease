@@ -23,7 +23,7 @@ user.save
   city = Faker::Address.city
   place = user.places.create(title: title,
                 description: description,
-                price: price,
+                price: price.round(2),
                 is_active: true,
                 type: (n % 2) == 0 ? 'Accommodation' : 'Workspace',
                 status: (n % 2) == 0 ? :created : :approved,
