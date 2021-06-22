@@ -2,14 +2,23 @@ require 'rails_helper'
 
 RSpec.describe 'Showing', type: :feature do
   describe('list of places') do
-    let(:test_user) { FactoryBot.build(:user) }
-    let(:test_place) { FactoryBot.build(:place) }
+    let!(:test_user) { FactoryBot.build(:user) }
+    let!(:test_place) { FactoryBot.create :place, user: test_user  }
 
     before do
-      test_user.skip_confirmation!
-      test_user.save!
-      test_place.user_id = test_user.id
-      test_place.save!
+      visit new_user_registration_path
+      fill_in 'First name', with: test_user.first_name
+      fill_in 'Email', with: test_user.email
+      fill_in 'Password', with: test_user.password
+      fill_in 'Password confirmation', with: test_user.password_confirmation
+      click_button "Sign Up"
+      visit "/"
+      usr = User.find_by_email test_user.email
+      raw, enc = Devise.token_generator.generate(usr.class, :confirmation_token)
+      usr.confirmation_token = enc
+      usr.confirmation_sent_at = Time.now.utc
+      usr.save(validate: false)
+      visit "/users/confirmation?confirmation_token=#{raw}"
       visit places_path
     end
 
@@ -47,18 +56,27 @@ RSpec.describe 'Showing', type: :feature do
   end
 
   describe('my places') do
-    let(:test_user) { FactoryBot.build(:user) }
-    let!(:test_place) { FactoryBot.build(:place) }
+    let!(:test_user) { FactoryBot.build(:user) }
+    let!(:test_place) { FactoryBot.create :place, user: test_user }
 
     before do
-      test_user.skip_confirmation!
-      test_user.save
+      visit new_user_registration_path
+      fill_in 'First name', with: test_user.first_name
+      fill_in 'Email', with: test_user.email
+      fill_in 'Password', with: test_user.password
+      fill_in 'Password confirmation', with: test_user.password_confirmation
+      click_button "Sign Up"
+      visit "/"
+      usr = User.find_by_email test_user.email
+      raw, enc = Devise.token_generator.generate(usr.class, :confirmation_token)
+      usr.confirmation_token = enc
+      usr.confirmation_sent_at = Time.now.utc
+      usr.save(validate: false)
+      visit "/users/confirmation?confirmation_token=#{raw}"
       visit new_user_session_path
       fill_in 'Email', with: test_user.email
       fill_in 'Password', with: test_user.password
       click_button 'Sign In'
-      test_place.user_id = test_user.id
-      test_place.save
       visit my_places_path
     end
 
