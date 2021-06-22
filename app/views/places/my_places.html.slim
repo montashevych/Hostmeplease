@@ -1,6 +1,6 @@
 - provide :title, "My Places"
 
-section.my-places
+section.my_places
 	= render 'shared/header'
 	.container
 		section
@@ -21,13 +21,13 @@ section.my-places
 			                = link_to 'Accomodations', '#', class: 'dropdown-item hovc'
 			              li
 			                = link_to 'Workspaces', '#', class: 'dropdown-item hovc'
-		section.myplaces.mt-5.pt-4.mb-5
+		section.places.mt-5.pt-4.mb-5
 			.row.px-5
 				= render partial: 'my_place', collection: @places, as: :place
 			.row.pag
-		    .mx-auto
-		      .apple_pagination.text-center
-		        = will_paginate @places, container: false, \
-		          previous_label: '« Prev',                \
-		          next_label: 'Next »'
+				.mx-auto
+					.apple_pagination.text-center
+						= will_paginate @places, container: false, \
+							previous_label: '« Prev',                \
+							next_label: 'Next »'
 	= render 'shared/footer'
