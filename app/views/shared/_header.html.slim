@@ -1,13 +1,12 @@
 header.d-flex.w-100.flex-column
   nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.container
-    div.collapse.navbar-collapse
-      ul.nav.navbar-nav.me-auto
-        li.nav-item
-          = link_to 'About', '#', class: 'nav-link'
-        li.nav-item
-          = link_to 'Contact', '#', class: 'nav-link'
+    ul.nav.navbar-nav.me-auto
+      li.nav-item
+        = link_to 'About', '#', class: 'nav-link'
+      li.nav-item
+        = link_to 'Contact', '#', class: 'nav-link'
     = link_to "HostMePlease", root_path, class: "navbar-brand mx-auto nav-link"
-    div.collapse.navbar-collapse.userinfo
+    .userinfo
       ul.navbar.navbar-nav.ms-auto
         - if user_signed_in?
           li.nav-item.dropdown
