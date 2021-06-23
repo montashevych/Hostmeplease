@@ -6,11 +6,4 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users
   get 'my_places' => 'places#my_places'
-
-  devise_scope :user do
-    get 'new_user_registration_path' => "devise/registrations#new"
-  end
-  devise_scope :user do
-    get 'new_user_session_path' => "devise/sessions#new"
-  end
 end
