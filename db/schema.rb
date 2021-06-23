@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_160958) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string "image"
+    t.json "image"
     t.string "imageable_type"
     t.bigint "imageable_id"
     t.datetime "created_at", precision: 6, null: false
