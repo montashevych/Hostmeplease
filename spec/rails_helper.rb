@@ -39,6 +39,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include Rails.application.routes.url_helpers, type: :feature 
+
   config.include Devise::Test::ControllerHelpers, type: :controller
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
