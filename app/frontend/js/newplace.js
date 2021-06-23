@@ -34,6 +34,9 @@ window.newPlacePage = () => {
 
   document.getElementById('place_picture_image').addEventListener('change', function(event) {
     let image = URL.createObjectURL(event.target.files[0]);
-    document.getElementById('img_prev').src = image;
+    let newimage = document.createElement('img');
+    newimage.id = 'img_prev';
+    newimage.src = image;
+    document.getElementById('image-column').appendChild(newimage);
   })
 };

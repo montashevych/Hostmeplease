@@ -486,12 +486,19 @@ $btn-color: #91CB82;
           webkit-backdrop-filter: blur(40px);
 
           .col-lg-12 {
+            .row {
+              max-height: 500px;
+              overflow: auto;
+
+              @media (max-width: 1199px) {
+                max-height: 695px;
+              }
+            }
             img {
               width: -moz-available;
               width: -webkit-fill-available;
               margin: 10px 0;
               border-radius: 13px;
-              height: 100%;
             }
 
             #place_picture_label {
