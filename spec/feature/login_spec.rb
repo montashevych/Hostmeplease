@@ -1,7 +1,7 @@
 require 'rails_helper'
-include ApplicationHelper
 
 describe 'the sign_in process', type: :feature do
+  include ApplicationHelper
   context 'when user can' do
     let(:test_user) { FactoryBot.build(:user) }
 

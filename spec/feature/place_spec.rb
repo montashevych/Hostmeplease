@@ -1,7 +1,7 @@
 require 'rails_helper'
-include ApplicationHelper
 
 RSpec.describe 'Showing', type: :feature do
+  include ApplicationHelper
   describe('list of places') do
     let(:test_user) { FactoryBot.build(:user) }
     let!(:test_place) { FactoryBot.create :place, user: test_user }
