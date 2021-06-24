@@ -8,7 +8,7 @@ RSpec.describe Place, type: :model do
     it 'is valid with valid attributes' do
       expect(test_place).to be_valid
     end
-end
+  end
 
   context 'when length incorrect' do
     let(:test_user) { FactoryBot.build(:user) }

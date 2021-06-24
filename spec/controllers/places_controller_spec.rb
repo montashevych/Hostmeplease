@@ -3,12 +3,7 @@ require 'rails_helper'
 RSpec.describe PlacesController do
   describe PlacesController do
     context 'when User' do
-      let(:test_user) { FactoryBot.build(:user) }
-
-      before do
-        test_user.skip_confirmation!
-        test_user.save!
-      end
+      let(:test_user) { FactoryBot.create(:user, :confirmed) }
 
       it 'is valid with valid attributes' do
         expect(test_user).to be_valid
@@ -21,15 +16,8 @@ RSpec.describe PlacesController do
     end
 
     context 'when User is login and User see ' do
-      let(:test_user) { FactoryBot.build(:user) }
-      let(:test_place) { FactoryBot.build(:place) }
-
-      before do
-        test_user.skip_confirmation!
-        test_user.save!
-        test_place.user_id = test_user.id
-        test_place.save
-      end
+      let(:test_user) { FactoryBot.create(:user, :confirmed) }
+      let!(:test_place) { FactoryBot.create(:place, user: test_user) }
 
       it 'count current_user places' do
         sign_in test_user
