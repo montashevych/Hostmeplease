@@ -1,0 +1,26 @@
+- provide :title, @user.first_name
+
+div.main-screen
+  = render 'shared/header'
+
+  div.container.profile
+    div.row.mx-auto.text-light.montserrat
+      div.col-sm-4.col-gravatar
+        = gravatar_for @user, size: 135
+        = link_to "Change Photo", "https://en.gravatar.com/gravatars/new", class: "change-avatar btn text-white montserrat"
+      div.col-sm-8.montserrat
+        p.name = @user.first_name
+        p.role = @user.role.capitalize
+        p.rating = "Rating: TODO"
+        table.about
+          thead: tr: th About
+          tbody
+            tr
+              td Name:
+              td = @user.first_name
+            tr
+              td Email:
+              td = @user.email
+            tr
+              td Phone:
+              td = "+380 68 123 56 78"

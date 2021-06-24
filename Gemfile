@@ -45,6 +45,10 @@ gem 'pry', '~> 0.14.1'
 gem 'devise', '~> 4.8'
 gem 'will_paginate', '~> 3.3.0'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
