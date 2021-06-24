@@ -9,6 +9,10 @@
   border-radius: 12px;
   border: 0;
   padding: 5%;
+
+  @media (max-width: 1199px) {
+    padding: 2.5%
+  }
 }
 
 @mixin column_optimization {
@@ -422,7 +426,7 @@ $btn-color: #91CB82;
         .dollar {
           font-weight: bold;
           font-size: 22px;
-          margin: 10px;
+          margin-left: 10px;
           text-decoration: none;
           color: black;
           cursor: default;
@@ -431,7 +435,11 @@ $btn-color: #91CB82;
         #place_type {
           @include field_properties;
           padding: 2% 5%;
-          height: 47px;
+          height: 50px;
+
+          @media (max-width: 1199px) {
+            padding: 0 2.5%;
+          }
         }
 
         #place_description {
@@ -481,6 +489,10 @@ $btn-color: #91CB82;
           @include field_properties;
           height: 50px;
           padding: 2% 5%;
+
+          @media (max-width: 1199px) {
+            padding: 0 2.5%;
+          }
         }
       }
 
