@@ -25,7 +25,7 @@ RSpec.describe 'places/my_places.html.slim', type: :view do
       allow(view).to receive(:user_signed_in?).and_return(true)
     end
 
-    it 'render partial' do
+    it 'render my_places template' do
       @places = [test_place].paginate
       sign_in user
       render
