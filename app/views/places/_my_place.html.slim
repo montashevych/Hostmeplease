@@ -10,8 +10,8 @@
             .rating.mt-1.d-flex ⭐️ 4.9
           .col-7.col-sm-8.col-md-8
             p = "🏠 #{place.type}"
-            p 📍 New York, str Big Halls, 129a
-            p.mb-3.font_family_price = "$#{place.price}"
+            p.mb-2 📍 New York, str Big Halls, 129a
+            p.mb-2.font_family_price = "$#{place.price}"
         .row
           .col-md.p-0
               = link_to "Edit Place", edit_place_path(place), class: "py-2 px-3 btn link_font-size hovc button-myplaces text-center"

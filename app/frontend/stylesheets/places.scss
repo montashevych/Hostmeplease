@@ -403,7 +403,7 @@ $btn-color: #91CB82;
         padding-left: 1.5%;
 
         .row:first-child {
-          height: 2.2em;
+          height: 2.1em;
         }
         .col-md-5 {
             margin-right: -1%;
@@ -529,44 +529,71 @@ $btn-color: #91CB82;
           margin-bottom: 4%;
           font-weight: 280;
           font-size: 1.2em;
-            @media screen and (max-width: 360px ) {
-              margin-left: -1%;
-            }
+          &:first-child {
+            margin-bottom: 1%;
             @media (min-width: 360px) and (max-width: 420px ) {
-              font-size: 0.8em;
-              margin-left: -1%;
+              margin-bottom: 11%;
             }
             @media (min-width: 420px) and (max-width: 460px ) {
-              font-size: 1em;
-              margin-left: -1%;
+              margin-bottom: 6%;
             }
-            @media (min-width: 460px) and (max-width: 570px ) {
-              font-size: 1.1em;
-              margin-left: -1%;
+            @media (min-width: 990px) and (max-width: 1200px ) {
+              margin-bottom: 6%;
             }
-            @media (min-width: 570px) and (max-width: 768px ) {
-              font-size: 1.2em;
-              margin-left: -1%;
+          }
+          &:last-child {
+            margin-bottom: 1%;
+            @media (min-width: 360px) and (max-width: 380px ) {
+              margin-top: 22%;
             }
-            @media (min-width: 768px) and (max-width: 772px ) {
-              font-size: 0.9em;
-              margin-left: -1%;
+            @media (min-width: 380px) and (max-width: 420px ) {
+              margin-top: 16%;
             }
-            @media (min-width: 768px) and (max-width: 990px ) {
-              margin-left: -1%;
-              font-size: 1.1em;
+            @media (min-width: 420px) and (max-width: 460px ) {
+              margin-top: 1%;
             }
-            @media (min-width: 990px) and (max-width: 1140px ) {
-              margin-left: -1%;
-              font-size: 1em;
+            @media (min-width: 990px) and (max-width: 1200px ) {
+              margin-top: 8%;
             }
-            @media (min-width: 1140px) and (max-width: 1200px ) {
-              margin-left: -1%;
-              font-size: 1em;
-            }
-            @media (min-width: 1200px ) and (max-width: 1920px ) {
-              margin-left: 3%;
-            }
+          }
+          @media screen and (max-width: 360px ) {
+            margin-left: -1%;
+          }
+          @media (min-width: 360px) and (max-width: 420px ) {
+            font-size: 0.8em;
+            margin-left: -1%;
+          }
+          @media (min-width: 420px) and (max-width: 460px ) {
+            font-size: 1em;
+            margin-left: -1%;
+          }
+          @media (min-width: 460px) and (max-width: 570px ) {
+            font-size: 1.1em;
+            margin-left: -1%;
+          }
+          @media (min-width: 570px) and (max-width: 768px ) {
+            font-size: 1.2em;
+            margin-left: -1%;
+          }
+          @media (min-width: 768px) and (max-width: 772px ) {
+            font-size: 0.9em;
+            margin-left: -1%;
+          }
+          @media (min-width: 768px) and (max-width: 990px ) {
+            margin-left: -1%;
+            font-size: 1.1em;
+          }
+          @media (min-width: 990px) and (max-width: 1140px ) {
+            margin-left: -1%;
+            font-size: 1em;
+          }
+          @media (min-width: 1140px) and (max-width: 1200px ) {
+            margin-left: -1%;
+            font-size: 1em;
+          }
+          @media (min-width: 1200px ) and (max-width: 1920px ) {
+            margin-left: 3%;
+          }
 
         }
         .font_family_price {
