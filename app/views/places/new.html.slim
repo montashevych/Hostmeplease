@@ -3,7 +3,7 @@
 .container-field.new
   = render 'shared/header'
   .container-xxl.form-container
-    .row
+    .row.text-row
       h1.text-center New Place
     .row
       = form_for(@place, url: places_path) do |f|
@@ -59,7 +59,7 @@
                     .row
                       #image-column.col-md-12
                     .row.mb-2
-                      .col-md-12
+                      #fileInputColumn.col-md-12
                         = i.label '+', for: 'place_picture_image', id: 'place_picture_label'
                         = i.file_field :image, hidden: '', multiple: true
                         = i.hidden_field :image_cache

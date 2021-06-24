@@ -3,6 +3,7 @@
 
 window.newPlacePage = () => {
   let latlng = [0.0, 0.0];
+  let number = 1;
 
   console.log(localStorage.getItem('newplace-map-location'));
 
@@ -32,11 +33,38 @@ window.newPlacePage = () => {
     marker.on('click', evt => marker.remove());
   });
 
-  document.getElementById('place_picture_image').addEventListener('change', function(event) {
+
+  document.getElementById('place_picture_image').addEventListener('change', (event) => {
+    let inputImage = document.getElementById('place_picture_image');
+    let cloneInput = inputImage.cloneNode();
+    let fileInputColumn = document.getElementById('fileInputColumn');
     let image = URL.createObjectURL(event.target.files[0]);
+    let newimage_div = document.createElement('div');
     let newimage = document.createElement('img');
-    newimage.id = 'img_prev';
+    let link_to_delete = document.createElement('a');
+
+    // Creating new inputs
+    inputImage.value = '';
+    cloneInput.id = 'place_picture_image-' + (number++);
+    fileInputColumn.appendChild(cloneInput);
+
+    // Creating delete link
+    link_to_delete.text = 'delete';
+    link_to_delete.className = 'delete_image';
+    link_to_delete.id = 'delete-' + cloneInput.id;
+    newimage_div.appendChild(link_to_delete);
+
+    // Creating preview
     newimage.src = image;
-    document.getElementById('image-column').appendChild(newimage);
-  })
+    newimage_div.id = 'preview-' + cloneInput.id;
+    newimage_div.className = 'preview-div';
+    newimage_div.appendChild(newimage);
+    document.getElementById('image-column').appendChild(newimage_div);
+
+    // Add eventListener for delete image
+    document.getElementById(link_to_delete.id).addEventListener('click', () => {
+      document.getElementById(cloneInput.id).outerHTML = '';
+      document.getElementById(newimage_div.id).outerHTML = '';
+    });
+  });
 };

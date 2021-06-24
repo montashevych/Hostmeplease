@@ -370,11 +370,20 @@ $btn-color: #91CB82;
 
   .form-container {
     max-width: 1500px;
-    h1 {
-      font-weight: bold;
-      color: white;
-      font-family: 'Montserrat';
-      margin: 50px 0 25px 0;
+
+    .text-row {
+      justify-content: center;
+      h1 {
+        font-weight: bold;
+        color: white;
+        font-family: 'Montserrat';
+        margin: 50px 0 25px 30px;
+        width: max-content;
+
+        @media (max-width: 990px) {
+          margin: 50px 0 25px 0;
+        }
+      }
     }
 
     .form-row {
@@ -492,6 +501,39 @@ $btn-color: #91CB82;
 
               @media (max-width: 1199px) {
                 max-height: 695px;
+              }
+
+              #image-column {
+                .preview-div {
+                  position: relative;
+
+                  .delete_image {
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: black;
+                    position: absolute;
+                    right: 0;
+                    top: 12%;
+                    background-color: white;
+                    border-radius: 20px 0 0 20px;
+                    width: 28%;
+                    padding: 0 5px;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: bold;
+
+                    @media (max-width: 1199px) {
+                      top: 9%;
+                      width: 20%;
+                      font-size: xx-large;
+                    }
+
+                    @media (max-width: 768px) {
+                      top: 12%;
+                      width: 28%;
+                      font-size: larger;
+                    }
+                  }
+                }
               }
             }
             img {
