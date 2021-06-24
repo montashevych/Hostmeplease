@@ -1,3 +1,5 @@
+require 'digest'
+
 module UsersHelper
   def gravatar_for(user, size: 40)
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
