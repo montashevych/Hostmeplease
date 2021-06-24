@@ -3,7 +3,7 @@ include ApplicationHelper
 
 describe 'the sign_in process', type: :feature do
   context 'when user can' do
-    let!(:test_user) { FactoryBot.build(:user) }
+    let(:test_user) { FactoryBot.build(:user) }
 
     before do
       test_registration
