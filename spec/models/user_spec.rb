@@ -5,6 +5,9 @@ RSpec.describe User do
     let(:user_with_name_of_two_length) { build(:user, first_name: 'a' * 2) }
     let(:user_with_password_of_sixth_length) { build(:user, password: 'a' * 6) }
     let(:user_without_name_role) { build(:user, role: 'owner') }
+    let(:user_from_google) {
+      described_class.from_google(email: 'test@mail.com', params: { password: 'a' * 6, first_name: 'a' * 2 })
+    }
 
     it 'creates an default user with indication name' do
       expect(user_with_name_of_two_length).to be_valid
@@ -16,6 +19,10 @@ RSpec.describe User do
 
     it 'creates an user with owner role' do
       expect(user_without_name_role).to be_valid
+    end
+
+    it 'creates a user from google' do
+      expect(user_from_google).to be_valid
     end
   end
 
@@ -44,6 +51,24 @@ RSpec.describe User do
 
     it 'creates an user without role' do
       expect(user_without_role).not_to be_valid
+    end
+
+    it 'creates an user without params' do
+      expect {
+        described_class.from_google(email: 'test@mail.com', params: {})
+      }.to raise_error(ArgumentError) # with empty params create_with(**params) takes 0, it is supposed to take >= 1
+    end
+
+    it 'creates a user without name' do
+      expect {
+        described_class.from_google(email: 'test@mail.com', params: { password: 'a' * 6 })
+      }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it 'creates a user without password' do
+      expect {
+        described_class.from_google(email: 'test@mail.com', params: { first_name: 'a' * 2 })
+      }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 
