@@ -6,6 +6,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'support/factory_bot'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -39,9 +40,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.include Rails.application.routes.url_helpers, type: :feature 
+  config.include Rails.application.routes.url_helpers, type: :feature
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.include Devise::Test::ControllerHelpers, type: :view
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
