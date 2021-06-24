@@ -46,9 +46,6 @@ class PlacesController < ApplicationController
                                             :state_region,
                                             :city,
                                             :details],
-                                  picture: [
-                                    :image_cache,
-                                    image: []
-                                    ])
+                                  picture: [:image_cache, { image: [] }])
   end
 end
