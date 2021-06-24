@@ -15,7 +15,7 @@ header.d-flex.w-100.flex-column
               = avatar_for(current_user)
             ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
               li
-                = link_to 'Profile', '#', class: 'dropdown-item'
+                = link_to 'Profile', user_path(id: current_user.id), class: 'dropdown-item'
               li
                 = link_to 'My Places', 'my_places', class: 'dropdown-item'
               li

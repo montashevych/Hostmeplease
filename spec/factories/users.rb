@@ -3,6 +3,7 @@ FactoryBot.define do
     first_name  { Faker::Name.name }
     password    { 'password' }
     password_confirmation { 'password' }
+    sequence(:id) { |n| n }
     email       { Faker::Internet.unique.email }
     role        { 'consumer' }
 
