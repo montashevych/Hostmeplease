@@ -21,7 +21,6 @@ RSpec.describe 'Users', type: :request do
     describe 'GET /users/{id}' do
       it 'redirects to sign in' do
         get "/users/#{test_user.id}"
-        expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to('/users/sign_in')
       end
     end
