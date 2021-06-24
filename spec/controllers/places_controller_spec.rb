@@ -17,13 +17,13 @@ RSpec.describe PlacesController do
 
     context 'when User is login and User see ' do
       let(:test_user) { FactoryBot.create(:user, :confirmed) }
-      let!(:test_place) { FactoryBot.create(:place, user: test_user) }
+      let!(:user_places) { [FactoryBot.create(:place, user: test_user)] }
 
       it 'count current_user places' do
         sign_in test_user
 
         get :my_places
-        expect(assigns(:count_places)).to eq(1)
+        expect(assigns(:count_places)).to eq(user_places.count)
       end
 
       it 'render template my_places' do
