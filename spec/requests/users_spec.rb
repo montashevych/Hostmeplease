@@ -4,7 +4,6 @@ RSpec.describe 'Users', type: :request do
   let(:test_user) { build :user }
 
   context 'when valid path' do
-
     describe 'GET /sign_up' do
       it 'returns http success' do
         get '/users/sign_up'
@@ -31,7 +30,7 @@ RSpec.describe 'Users', type: :request do
   context 'when invalid path' do
     describe 'GET /users/{id}' do
       it 'doesnt return http success' do
-        get "/users/foobar"
+        get '/users/foobar'
         expect(response).not_to have_http_status(:success)
       end
     end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController do
   describe 'profile page' do
-    let(:test_user) { build(:user, password: "asdasd", password_confirmation: "asdasd") }
+    let(:test_user) { build(:user, password: 'asdasd', password_confirmation: 'asdasd') }
 
     context 'when not signed in' do
       it 'redirects to /sign_in' do
