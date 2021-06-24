@@ -23,7 +23,7 @@ section.my_places
 			                = link_to 'Workspaces', '#', class: 'dropdown-item hovc'
 		section.places.mt-5.pt-4.mb-5
 			.row.px-5
-				= render partial: 'shared/my_place', collection: @places, as: :place
+				= render partial: 'my_place', collection: @places, as: :place
 			.row.pag
 				.mx-auto
 					.apple_pagination.text-center
