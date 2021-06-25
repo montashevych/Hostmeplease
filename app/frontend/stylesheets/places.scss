@@ -311,6 +311,9 @@ $btn-color: #91CB82;
 .my_places {
   background: url("../images/homepage-bg.png");
   background-size: cover;
+  @media screen and (max-width: 770px ) {
+  min-height: 500px;
+  }
 
   .pag {
     .mx-auto {
@@ -531,11 +534,11 @@ $btn-color: #91CB82;
           font-size: 1.2em;
           &:first-child {
             margin-bottom: 1%;
-            @media (min-width: 360px) and (max-width: 420px ) {
+            @media (min-width: 360px) and (max-width: 460px ) {
               margin-bottom: 11%;
             }
-            @media (min-width: 420px) and (max-width: 460px ) {
-              margin-bottom: 6%;
+            @media (min-width: 360px) and (max-width: 460px ) {
+              margin-bottom: 11%;
             }
             @media (min-width: 990px) and (max-width: 1200px ) {
               margin-bottom: 6%;
@@ -620,6 +623,75 @@ $btn-color: #91CB82;
             }
           }
         }
+      }
+    }
+  }
+  .empty_my_places {
+    h2 {
+      font-size: 2.6em;
+      @media (min-width:  360px) and (max-width: 420px ) {
+        font-size: 1.8em;
+      }
+      @media (min-width:  420px) and (max-width: 770px ) {
+        font-size: 2em;
+      }
+    }
+    .empty_places {
+      background-color: rgba(196, 196, 196, 0.3);
+      backdrop-filter: blur(30px);
+      border-radius: 20px;
+      margin-left: 8%;
+      max-width: 1075px;
+      max-height: 556px;
+      @media screen and (max-width: 430px ) {
+        margin: 20% 0 20% 0;
+      }
+      @media (min-width: 430px ) and (max-width: 570px ) {
+        margin: 12% 0 12% 0;
+      }
+      @media (min-width: 570px ) and (max-width: 770px ) {
+        margin: 14% 0 14% 0;
+      }
+      @media (min-width: 770px ) and (max-width: 1920px ) {
+        margin-top: 5%;
+      }
+
+      h3 {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 2.6em;
+        color: #FFFFFF;
+        margin: 21% 0 21% 0 ;
+        @media (min-width:  360px) and (max-width: 400px ) {
+          font-size: 1.5em;
+          padding: 16% 0 16% 0;
+        }
+        @media (min-width:  400px) and (max-width: 470px ) {
+          font-size: 1.7em;
+        }
+        @media (min-width:  400px) and (max-width: 420px ) {
+          padding: 8% 0 8% 0;
+        }
+        @media (min-width:  420px) and (max-width: 550px ) {
+          padding: 11% 0 11% 0;
+        }
+        @media (min-width:  470px) and (max-width: 770px ) {
+          font-size: 1.9em;
+        }
+        @media (min-width: 770px ) and (max-width: 990px ) {
+          font-size: 2.2em;
+        }
+        @media (min-width: 990px ) and (max-width: 1200px ) {
+          font-size: 2.4em;
+        }
+        @media (min-width: 1200px ) and (max-width: 1920px ) {
+          font-size: 2.6em;
+        }
+      }
+      .footer p {
+        display: flex;
+        justify-content: center;
       }
     }
   }
