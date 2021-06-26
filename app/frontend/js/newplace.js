@@ -35,36 +35,38 @@ window.newPlacePage = () => {
 
 
   document.getElementById('place_picture_image').addEventListener('change', (event) => {
-    let inputImage = document.getElementById('place_picture_image');
-    let cloneInput = inputImage.cloneNode();
-    let fileInputColumn = document.getElementById('fileInputColumn');
-    let image = URL.createObjectURL(event.target.files[0]);
-    let newimage_div = document.createElement('div');
-    let newimage = document.createElement('img');
-    let link_to_delete = document.createElement('a');
+    let n = Array.from(event.target.files);
+    n.forEach((file) => {
+      let inputImage = document.getElementById('place_picture_image');
+      let fileInputColumn = document.getElementById('fileInputColumn');
+      let newimage_div = document.createElement('div');
+      let newimage = document.createElement('img');
+      let link_to_delete = document.createElement('a');
+      let cloneInput = inputImage.cloneNode();
+      let image = URL.createObjectURL(file);
+      // Creating new inputs
+      inputImage.value = '';
+      cloneInput.id = 'place_picture_image-' + (number++);
+      fileInputColumn.appendChild(cloneInput);
 
-    // Creating new inputs
-    inputImage.value = '';
-    cloneInput.id = 'place_picture_image-' + (number++);
-    fileInputColumn.appendChild(cloneInput);
+      // Creating delete link
+      link_to_delete.text = 'delete';
+      link_to_delete.className = 'delete_image';
+      link_to_delete.id = 'delete-' + cloneInput.id;
+      newimage_div.appendChild(link_to_delete);
 
-    // Creating delete link
-    link_to_delete.text = 'delete';
-    link_to_delete.className = 'delete_image';
-    link_to_delete.id = 'delete-' + cloneInput.id;
-    newimage_div.appendChild(link_to_delete);
+      // Creating preview
+      newimage.src = image;
+      newimage_div.id = 'preview-' + cloneInput.id;
+      newimage_div.className = 'preview-div';
+      newimage_div.appendChild(newimage);
+      document.getElementById('image-column').appendChild(newimage_div);
 
-    // Creating preview
-    newimage.src = image;
-    newimage_div.id = 'preview-' + cloneInput.id;
-    newimage_div.className = 'preview-div';
-    newimage_div.appendChild(newimage);
-    document.getElementById('image-column').appendChild(newimage_div);
-
-    // Add eventListener for delete image
-    document.getElementById(link_to_delete.id).addEventListener('click', () => {
-      document.getElementById(cloneInput.id).outerHTML = '';
-      document.getElementById(newimage_div.id).outerHTML = '';
+      // Add eventListener for delete image
+      document.getElementById(link_to_delete.id).addEventListener('click', () => {
+        document.getElementById(cloneInput.id).outerHTML = '';
+        document.getElementById(newimage_div.id).outerHTML = '';
+      });
     });
   });
 };
