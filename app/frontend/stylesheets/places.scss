@@ -393,6 +393,25 @@ $btn-color: #91CB82;
     .form-row {
       margin: 10px auto 80px auto;
 
+      .col-md-12 {
+        position: relative;
+
+        .error-message {
+          position: absolute;
+          top: 6%;
+          right: 10%;
+          font-size: 10px;
+          font-family: 'Noto Sans';
+          font-weight: normal;
+          color: #a63636;
+        }
+
+        .field_with_errors {
+          border: 1px solid red;
+          border-radius: 14px;
+        }
+      }
+
       .col-xl-4 {
         height: max-content;
         min-width: 372px;
@@ -471,7 +490,7 @@ $btn-color: #91CB82;
           margin-top: 3px;
         }
 
-        #place_address_details {
+        #place_address_details, #accommodation_address_details {
           @include field_properties;
           padding: 2% 5%;
           height: 47px;
