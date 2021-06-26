@@ -42,9 +42,10 @@ window.newPlacePage = () => {
       let newimage_div = document.createElement('div');
       let newimage = document.createElement('img');
       let link_to_delete = document.createElement('a');
-      let cloneInput = inputImage.cloneNode();
+      let cloneInput = document.createElement('input');
       let image = URL.createObjectURL(file);
-      // Creating new inputs
+      
+      // Creating new input
       inputImage.value = '';
       cloneInput.id = 'place_picture_image-' + (number++);
       fileInputColumn.appendChild(cloneInput);
