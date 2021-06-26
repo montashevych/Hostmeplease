@@ -35,18 +35,27 @@ window.newPlacePage = () => {
 
 
   document.getElementById('place_picture_image').addEventListener('change', (event) => {
+    let inputImage = document.getElementById('place_picture_image');
     let n = Array.from(event.target.files);
+    let position = 0;
+    let fileList = inputImage.files;
+
     n.forEach((file) => {
-      let inputImage = document.getElementById('place_picture_image');
       let fileInputColumn = document.getElementById('fileInputColumn');
       let newimage_div = document.createElement('div');
       let newimage = document.createElement('img');
       let link_to_delete = document.createElement('a');
-      let cloneInput = document.createElement('input');
+      let cloneInput = inputImage.cloneNode();
       let image = URL.createObjectURL(file);
-      
+      let list = new DataTransfer();
+      let listItem = fileList[position++];
+
+      list.items.add(listItem);
+
+      let myImage = list.files;
+
       // Creating new input
-      inputImage.value = '';
+      cloneInput.files = myImage;
       cloneInput.id = 'place_picture_image-' + (number++);
       fileInputColumn.appendChild(cloneInput);
 
@@ -69,5 +78,6 @@ window.newPlacePage = () => {
         document.getElementById(newimage_div.id).outerHTML = '';
       });
     });
+    inputImage.value = '';
   });
 };
