@@ -47,6 +47,8 @@ window.newPlacePage = () => {
       let link_to_delete = document.createElement('a');
       let cloneInput = inputImage.cloneNode();
       let image = URL.createObjectURL(file);
+
+      // set custom FileList, all to line 60 
       let list = new DataTransfer();
       let listItem = fileList[position++];
 
