@@ -6,23 +6,27 @@
     .row.text-row
       h1.text-center New Place
     .row
-      = form_for(@place, url: places_path) do |f|
+      = form_for :place, url: places_path do |f|
           .row.justify-content-center.form-row
             .col-xl-4
               .blur
                 .col-lg-12
                   .mb-2.row
                     .col-md-12
-                      p = f.label 'Title'
-                      = f.text_field :title, placeholder: 'My first place', alt: 'Title'
+                      - if @place.errors[:title]
+                        p = f.label 'Title'
+                        = f.text_field :title, placeholder: 'My first place', alt: 'Title'
+                      p.error-message = @place.errors[:title].first
                   .mb-2.row
                     .col-md-12
                       p = f.label 'Type'
                       = f.select :type, ['Accommodation', 'Workspace'], alt: 'Type'
                   .mb-2.row
                     .col-md-12
-                      p = f.label 'Description'
-                      = f.text_area :description, placeholder: 'Something about your place..', alt: 'Description', size: '80'
+                      - if @place.errors[:description]
+                        p = f.label 'Description'
+                        = f.text_area :description, placeholder: 'Something about your place..', alt: 'Description', size: '80'
+                      p.error-message = @place.errors[:description].first
                   .mb-2.row
                     .col-md-12
                       p = f.label 'Price'
@@ -34,16 +38,22 @@
                   = f.fields_for @address do |a|
                     .mb-2.row
                       .col-md-12
-                        p = a.label 'Address'
-                        = a.text_field :details, placeholder: 'Like street, number of house..', alt: 'Address'
+                        - if @address.errors[:details]
+                          p = a.label 'Address'
+                          = a.text_field :details, placeholder: 'Like street, number of house..', alt: 'Address'
+                        p.error-message = @address.errors[:details].first
                     .mb-2.row
                       .col-md-12
-                        p = a.label 'City'
-                        = a.text_field :city, placeholder: 'City..', alt: 'city'
+                        - if @address.errors[:city]
+                          p = a.label 'City'
+                          = a.text_field :city, placeholder: 'City..', alt: 'city'
+                        p.error-message = @address.errors[:city].first
                     .mb-2.row
                       .col-md-12
-                        p = a.label 'State / Region'
-                        = a.text_field :state_region, placeholder: 'Your state or region..', alt: 'State or region'
+                        - if @address.errors[:state_region]
+                          p = a.label 'State / Region'
+                          = a.text_field :state_region, placeholder: 'Your state or region..', alt: 'State or region'
+                        p.error-message = @address.errors[:state_region].first
                     .mb-2.row
                       .col-md-12
                         p = a.label 'Country'
