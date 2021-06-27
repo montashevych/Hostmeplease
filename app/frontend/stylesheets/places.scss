@@ -329,35 +329,35 @@ $btn-color: #91CB82;
     font-size: 2.4em;
     color: $text-color;
   }
-  .button-myplaces {
+  .button_myplaces {
     font-family: Montserrat;
     font-weight: 600;
     font-size: 1.1em;
     color: $text-color;
     background-color: #91CB82;
-    @media screen and (max-width: 1140px ) {
-      width: 20%;
-    }
   }
-    .myinfo {
-      ul {
-        .dropdown-toggle::after {             // dropdown triangle
-          display: none;
-        }
-        .dropdown-menu {
-          text-align: center;
-          background-color: #464E4F;
 
-          .dropdown-item {
-            color: white;
+.myinfo {
+  position: absolute;
+  ul {
+    .dropdown-toggle::after {             // dropdown triangle
+        display: none;
+      }
+      .dropdown-menu {
+        text-align: center;
+        background-color: #464E4F;
 
-            &:hover {
-              color: #505050;
-            }
+        .dropdown-item {
+          color: white;
+
+          &:hover {
+            color: #505050;
           }
         }
       }
     }
+  }
+
 
   a {
       color: var(--bs-light);
@@ -372,6 +372,7 @@ $btn-color: #91CB82;
     background-color: rgba(196, 196, 196, 0.3);
     backdrop-filter: blur(30px);
     border-radius: 20px;
+    margin-top: 4em;
 
     .card {
       padding: 0;
@@ -619,6 +620,9 @@ $btn-color: #91CB82;
       }
     }
   }
+  /*--------------------------------------------------------------
+  # Partial Empty My Places Page of places
+  --------------------------------------------------------------*/
   .empty_my_places {
     h2 {
       font-size: 2.6em;
