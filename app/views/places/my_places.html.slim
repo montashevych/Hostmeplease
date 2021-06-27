@@ -7,33 +7,32 @@ section.my_places
 			- if current_user.places.count == 0
 				= render 'empty_my_places'
 			- else
-				h2.mt-4.ms-n1.mb-12.text-center
+				h2.mt-4.ms-n1.text-center
 					| Your Places(#{@count_places})
 				.row
 					.col-6.col-sm-6.col-md-6.d-flex.justify-content-end
-						.rounded-pill.px-4.button-myplaces.p-2.text-center
-							= link_to 'New Place', new_place_path, class: 'hovc'
+						.rounded-pill.button-myplaces.px-4.py-2.text-center
+							= link_to 'New Place', new_place_path
 					.col-6.col-sm-6.col-md-6.d-flex.dropdown-menu-start
 						.d-flex.collapse.navbar-collapse.myinfo.ms-auto
-					      ul.navbar.navbar-nav
-				          p.nav-item.dropdown
-				            .button-myplaces.rounded-pill.nav-link#dropdownMenuLink.dropdown-toggle.text-center.hovc aria-expanded="false" data-bs-toggle="dropdown" role="button"
-				              | Filters
-				            ul.text-center.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
-				              li
-				                = link_to 'Accomodations', '#', class: 'dropdown-item hovc'
-				              li
-				                = link_to 'Workspaces', '#', class: 'dropdown-item hovc'
+							ul.navbar.navbar-nav
+								p.nav-item.dropdown
+									.button-myplaces.px-4.rounded-pill.nav-link#dropdownMenuLink.dropdown-toggle.text-center.hovc aria-expanded="false" data-bs-toggle="dropdown" role="button"
+										| Filters
+									ul.text-center.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
+										li
+											= link_to 'Accomodations', '#', class: 'dropdown-item hovc'
+										li
+											= link_to 'Workspaces', '#', class: 'dropdown-item hovc'
 			- if current_user.places.count == 0
 				section.empty_my_places.mt-5.pt-4.mb-5
 			- else
 				section.places.mt-5.pt-4.mb-5
 					.row.px-5
 						= render partial: 'my_place', collection: @places, as: :place
-					.row.pag
-						.mx-auto
-							.apple_pagination.text-center
-								= will_paginate @places, container: false, \
-									previous_label: '« Prev',                \
-									next_label: 'Next »'
+					.row.pag.mx-auto
+						.apple_pagination.text-center
+							= will_paginate @places, container: false, \
+								previous_label: '« Prev',                \
+								next_label: 'Next »'
 	= render 'shared/footer'
