@@ -7,13 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.new(first_name: "test",
-                   email: "test@gmail.com",
-                   password: "123test",
-                   password_confirmation: "123test")
+                email: "test@mail.com",
+                password: "123test",
+                password_confirmation: "123test")
 user.skip_confirmation!
-user.save
+user.save!
+
 20.times do |n|
-  title  = Faker::Company.name
+  title  = t = Faker::Company.name[0..10]
   type = Faker::Lorem.characters(number: 10)
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
                                        random_sentences_to_add: 4)
@@ -29,8 +30,7 @@ user.save
                 status: (n % 2) == 0 ? :created : :approved,
                 lon: "#{n}.6191034",
                 lat: 26.2605438)
-
-  place.addresses.create(country: Faker::Address.country,
+  place.create_address!(country: Faker::Address.country,
                          city: Faker::Address.city,
                          state_region: Faker::Address.state,
                          details: Faker::Address.street_address)
