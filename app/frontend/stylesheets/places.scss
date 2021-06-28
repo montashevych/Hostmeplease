@@ -380,7 +380,7 @@ $btn-color: #91CB82;
       overflow: hidden;
       max-width: 330px;
       min-height: 224px;
-      min-width: 202px;
+      min-width: 260px;
       background: transparent !important;
       margin: 10px;
       transition: transform 500ms ease-out, background-size 500ms ease-in-out;
@@ -405,6 +405,12 @@ $btn-color: #91CB82;
         @media (min-width: 360px) and (max-width: 364px ) {
           margin-top: -7em;
         }
+        @media (min-width: 570px) and (max-width: 768px ) {
+          margin-top: -9em;
+        }
+        @media (min-width: 768px) and (max-width: 990px ) {
+          margin-top: -8em;
+        }
         .row:first-child {
           height: 2.1em;
         }
@@ -422,12 +428,12 @@ $btn-color: #91CB82;
           @media screen and (max-width: 360px ) {
               margin: 0 0 0 43%;
           }
-          @media (min-width: 360px) and (max-width: 364px ) {
-            font-size: 0.7em;
+          @media (min-width: 360px) and (max-width: 370px ) {
+            font-size: 0.9em;
             margin: 0 0 0 38%;
           }
-          @media (min-width: 364px) and (max-width: 420px ) {
-            font-size: 0.8em;
+          @media (min-width: 370px) and (max-width: 420px ) {
+            font-size: 0.9em;
             margin: 0 0 0 38%;
           }
           @media (min-width: 420px) and (max-width: 432px ) {
@@ -539,14 +545,11 @@ $btn-color: #91CB82;
           font-size: 1.2em;
           &:first-child {
             margin-bottom: 1%;
-            @media (min-width: 360px) and (max-width: 364px ) {
+            @media (min-width: 360px) and (max-width: 460px ) {
               margin-bottom: 6%;
             }
-            @media (min-width: 364px) and (max-width: 460px ) {
-              margin-bottom: 11%;
-            }
-            @media (min-width: 360px) and (max-width: 460px ) {
-              margin-bottom: 11%;
+            @media (min-width: 460px) and (max-width: 770px ) {
+              margin-bottom: 4%;
             }
             @media (min-width: 990px) and (max-width: 1200px ) {
               margin-bottom: 6%;
@@ -557,14 +560,14 @@ $btn-color: #91CB82;
             @media (min-width: 360px) and (max-width: 365px ) {
               margin: 0.5rem 0 0.5rem 0;
             }
-            @media (min-width: 365px) and (max-width: 380px ) {
-              margin-top: 22%;
-            }
-            @media (min-width: 380px) and (max-width: 420px ) {
-              margin-top: 16%;
+            @media (min-width: 365px) and (max-width: 420px ) {
+              margin-top: 14%;
             }
             @media (min-width: 420px) and (max-width: 460px ) {
               margin-top: 1%;
+            }
+            @media (min-width: 768px) and (max-width: 990px ) {
+              margin-top: 1rem;
             }
             @media (min-width: 990px) and (max-width: 1200px ) {
               margin-top: 8%;
@@ -573,12 +576,12 @@ $btn-color: #91CB82;
           @media screen and (max-width: 360px ) {
             margin-left: -1%;
           }
-          @media (min-width: 360px) and (max-width: 364px ) {
-            font-size: 0.7em;
+          @media (min-width: 360px) and (max-width: 370px ) {
+            font-size: 0.9em;
             margin-left: -1%;
           }
-          @media (min-width: 364px) and (max-width: 420px ) {
-            font-size: 0.8em;
+          @media (min-width: 370px) and (max-width: 420px ) {
+            font-size: 0.9em;
             margin-left: -1%;
           }
           @media (min-width: 420px) and (max-width: 460px ) {
