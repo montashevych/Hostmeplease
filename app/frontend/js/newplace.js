@@ -27,6 +27,7 @@ window.newPlacePage = () => {
     // Geocoding
     geocoder.reverseGeocode(lat, lng, function ( err, data ) {
       console.log(data);
+      console.log(data.results[0]);
     }, { key: "" });         //api key
 
     if (marker) marker.remove();
