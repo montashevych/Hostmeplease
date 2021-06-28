@@ -1,9 +1,8 @@
-// const Geocoder = require('node-geocoder');
-// import { NodeGeocoder } from 'node-geocoder';
-
 window.newPlacePage = () => {
   let latlng = [0.0, 0.0];
   let number = 1;
+
+  var geocoder = require('geocoder');
 
   console.log(localStorage.getItem('newplace-map-location'));
 
@@ -24,6 +23,12 @@ window.newPlacePage = () => {
 
   map.on('click', evt => {
     let { lat, lng } = evt.latlng;
+
+    // Geocoding
+    geocoder.reverseGeocode(lat, lng, function ( err, data ) {
+      console.log(data);
+    }, { key: "" });         //api key
+
     if (marker) marker.remove();
     marker = L.marker([lat, lng])
       .addTo(map);
@@ -48,7 +53,7 @@ window.newPlacePage = () => {
       let cloneInput = inputImage.cloneNode();
       let image = URL.createObjectURL(file);
 
-      // set custom FileList, all to line 60 
+      // set custom FileList, all to line 60
       let list = new DataTransfer();
       let listItem = fileList[position++];
 
