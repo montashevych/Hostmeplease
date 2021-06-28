@@ -1,0 +1,37 @@
+- provide :title, @user.first_name
+
+div.main-screen
+  = render 'shared/header'
+
+  div.container.profile
+    div.row.g-0.mx-auto.text-light.montserrat
+      div.col-sm-4.col-md-4.col-gravatar
+        p  = gravatar_for @user, size: 135
+        p = link_to "Change Photo", "https://en.gravatar.com/gravatars/new", class: "change-avatar btn text-white montserrat"
+      div.col-sm-8.col-md-8
+        = form_for  :user, url: user_path(@user), method: :put do |f|
+          .card-body
+            .row
+              .col-sm-4.col-md-4
+                = @user.first_name
+              .col-sm-8.col-md-8.d-flex.justify-content-end
+                = link_to 'Save Changes', edit_user_path(@user), class: 'button_profile btn text-white montserrat'
+            p   = f.select  :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]}),autofocus: true,
+                                                                                                          autocomplete: "role"
+            p.rating = "Rating: TODO"
+            table.about
+              thead: tr: th About
+              tbody
+                tr
+                  td =  f.label :first_name, 'Name:'
+                  td =  f.text_field  :first_name
+                tr
+                  td =  f.label :last_name, 'Last Name:'
+                  td =  f.text_field  :last_name, placeholder: 'Enter Last Name'
+                tr
+                  td =  f.label :email, 'Email:'
+                  td =  f.email_field  :email
+                tr
+                  td Phone:
+                  td = "+380 68 123 56 78"
+= render 'shared/footer'
