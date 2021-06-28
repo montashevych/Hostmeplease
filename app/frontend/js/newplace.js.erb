@@ -1,10 +1,8 @@
 window.newPlacePage = () => {
   let latlng = [0.0, 0.0];
   let number = 1;
-
-  var geocoder = require('geocoder');
-
-  console.log(localStorage.getItem('newplace-map-location'));
+  let geocoder = require('geocoder');
+  let api_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';
 
   if (localStorage.getItem('newplace-map-location')) {
     latlng = JSON.parse(localStorage.getItem('newplace-map-location'));
@@ -63,7 +61,7 @@ window.newPlacePage = () => {
         };
       });
 
-    }, { key: '' });         //api key
+    }, { key: api_key });         //api key
 
     if (marker) marker.remove();
     marker = L.marker([lat, lng])
