@@ -402,7 +402,9 @@ $btn-color: #91CB82;
         margin-top: -8em;
         padding-bottom: 0;
         padding-left: 1.5%;
-
+        @media (min-width: 360px) and (max-width: 364px ) {
+          margin-top: -7em;
+        }
         .row:first-child {
           height: 2.1em;
         }
@@ -420,12 +422,17 @@ $btn-color: #91CB82;
           @media screen and (max-width: 360px ) {
               margin: 0 0 0 43%;
           }
-          @media (min-width: 360px) and (max-width: 420px ) {
+          @media (min-width: 360px) and (max-width: 364px ) {
+            font-size: 0.7em;
+            margin: 0 0 0 38%;
+          }
+          @media (min-width: 364px) and (max-width: 420px ) {
             font-size: 0.8em;
+            margin: 0 0 0 38%;
           }
           @media (min-width: 420px) and (max-width: 432px ) {
             font-size: 1em;
-            margin: 0 0 0 25%
+            margin: 0 0 0 38%;
           }
           @media (min-width: 432px) and (max-width: 570px ) {
             font-size: 1.1em;
@@ -532,7 +539,10 @@ $btn-color: #91CB82;
           font-size: 1.2em;
           &:first-child {
             margin-bottom: 1%;
-            @media (min-width: 360px) and (max-width: 460px ) {
+            @media (min-width: 360px) and (max-width: 364px ) {
+              margin-bottom: 6%;
+            }
+            @media (min-width: 364px) and (max-width: 460px ) {
               margin-bottom: 11%;
             }
             @media (min-width: 360px) and (max-width: 460px ) {
@@ -544,7 +554,10 @@ $btn-color: #91CB82;
           }
           &:last-child {
             margin-bottom: 1%;
-            @media (min-width: 360px) and (max-width: 380px ) {
+            @media (min-width: 360px) and (max-width: 365px ) {
+              margin: 0.5rem 0 0.5rem 0;
+            }
+            @media (min-width: 365px) and (max-width: 380px ) {
               margin-top: 22%;
             }
             @media (min-width: 380px) and (max-width: 420px ) {
@@ -560,7 +573,11 @@ $btn-color: #91CB82;
           @media screen and (max-width: 360px ) {
             margin-left: -1%;
           }
-          @media (min-width: 360px) and (max-width: 420px ) {
+          @media (min-width: 360px) and (max-width: 364px ) {
+            font-size: 0.7em;
+            margin-left: -1%;
+          }
+          @media (min-width: 364px) and (max-width: 420px ) {
             font-size: 0.8em;
             margin-left: -1%;
           }
