@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Showing place', type: :feature do
-  let(:test_place) { FactoryBot.build(:place) }
+  let(:test_place) { FactoryBot.create(:place) }
   let(:test_address) { FactoryBot.build(:address) }
+  let(:test_picture) { FactoryBot.build(:picture) }
 
   before do
-    test_place.save!
     test_address.place_id = test_place.id
+    test_picture.imageable_id = test_place.id
     test_address.save!
+    test_picture.save!
     visit places_path
   end
 
