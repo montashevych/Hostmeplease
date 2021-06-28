@@ -4,7 +4,7 @@
 $text-color: #FFFFFF;
 $link-color: #f8f9fa;
 
-// Styles for main container page 
+// Styles for main container page
 .main-screen {
     background: url("../images/homepage-bg.png");
     background-size: cover;
@@ -17,7 +17,7 @@ $link-color: #f8f9fa;
     border-radius: 20px;
     padding-top: 48px;
 
-    button { 
+    button {
       width: 80%;
       border-radius: 20px;
      }
@@ -99,23 +99,24 @@ $link-color: #f8f9fa;
 
       @media screen and (max-width: 960px) {
         width: 80%;
-      }    
+      }
   }
 
 //======== PROFILE ========
   .profile .row {
-    width: Max(60%, 800px);
-
-    margin-top: 64px;
+    width: Max(80%, 690px);
     padding: 32px;
-
     background: #464E4F;
-
     border-radius: 20px;
-
     font-weight: 700;
+    .card-body{
+      padding: 0;
+      .row {
+        padding: 0 1rem 0 0;
+      }
+    }
 
-    .name { 
+    .name {
       font-size: 18px;
       margin-bottom: 0;
     }
@@ -134,7 +135,7 @@ $link-color: #f8f9fa;
 
     table.about {
       width: 100%;
-      
+
       thead {
         border-bottom: 2px solid white;
         margin-bottom: 24px;
@@ -144,6 +145,14 @@ $link-color: #f8f9fa;
         td:first-child { width: 100%; }
         td { padding-top: 24px; }
       }
+    }
+    .button_profile {
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: 20px;
+      background-color: #91CB82;
+      padding: 4px 10px 4px;
+      margin-left: 3rem;
     }
   }
 }
