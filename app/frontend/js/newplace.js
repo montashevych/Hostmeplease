@@ -26,11 +26,39 @@ window.newPlacePage = () => {
 
     // Geocoding
     geocoder.reverseGeocode(lat, lng, function ( err, data ) {
-      let parts = data.results[0].address_components;
+      let parts = data.results[0].address_components.reverse();
       parts.forEach((part) => {
+        // Fill in country field
         if (part.types.includes('country')) {
+          let country_field = document.getElementById('place_address_country');
+          country_field.value = part.short_name;
+        };
+
+        // Fill in city field
+        if (part.types.includes('administrative_area_level_1')) {
+          let city_field = document.getElementById('place_address_state_region');
+          city_field.value = part.long_name;
+        };
+
+        // Fill in state or region field
+        if (part.types.includes('locality')) {
+          let city_field = document.getElementById('place_address_city');
+          city_field.value = part.long_name;
+        };
+
+        // Fill in details as street field
+        if (part.types.includes('route')) {
+          let street_field = document.getElementById('place_address_details');
+          street_field.value = part.long_name;
           console.log(part.long_name);
-        }
+        };
+
+        // Fill in details as street number field
+        if (part.types.includes('street_number')) {
+          let number_street_field = document.getElementById('place_address_details');
+          number_street_field.value += `, ${ part.long_name }`;
+          console.log(part.long_name);
+        };
       });
 
     }, { key: '' });         //api key
