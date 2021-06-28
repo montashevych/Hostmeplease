@@ -27,6 +27,7 @@ window.newPlacePage = () => {
     // Geocoding
     geocoder.reverseGeocode(lat, lng, function ( err, data ) {
       let parts = data.results[0].address_components.reverse();
+      console.log(parts);
       parts.forEach((part) => {
         // Fill in country field
         if (part.types.includes('country')) {
@@ -50,14 +51,12 @@ window.newPlacePage = () => {
         if (part.types.includes('route')) {
           let street_field = document.getElementById('place_address_details');
           street_field.value = part.long_name;
-          console.log(part.long_name);
         };
 
         // Fill in details as street number field
         if (part.types.includes('street_number')) {
           let number_street_field = document.getElementById('place_address_details');
           number_street_field.value += `, ${ part.long_name }`;
-          console.log(part.long_name);
         };
       });
 
@@ -69,7 +68,15 @@ window.newPlacePage = () => {
 
     localStorage.setItem('newplace-map-location', JSON.stringify([lat,lng]));
 
-    marker.on('click', evt => marker.remove());
+    marker.on('click', evt => {
+      // Removing marker
+      marker.remove()
+
+      // Clearing fields
+      document.getElementById('place_address_state_region').value = '';
+      document.getElementById('place_address_city').value = '';
+      document.getElementById('place_address_details').value = '';
+    });
   });
 
 
