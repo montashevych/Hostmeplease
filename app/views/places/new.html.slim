@@ -60,6 +60,8 @@
                         = a.country_select :country, priority_countries: ['UA', 'RU', 'BY', 'GB']
                     .mb-2.row
                       .col-md-12
+                        = f.hidden_field :lon
+                        = f.hidden_field :lat
                         p Or select on map:
                         #map
             .col-xl-3

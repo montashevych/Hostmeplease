@@ -24,10 +24,13 @@ window.newPlacePage = () => {
   map.on('click', evt => {
     let { lat, lng } = evt.latlng;
 
-    // Geocoding
+    // Fill in latitude and longitude fields
+    document.getElementById('place_lon').value = lng;
+    document.getElementById('place_lat').value = lat;
+
+    // Reverse geocoding
     geocoder.reverseGeocode(lat, lng, function ( err, data ) {
       let parts = data.results[0].address_components.reverse();
-      console.log(parts);
       parts.forEach((part) => {
         // Fill in country field
         if (part.types.includes('country')) {
@@ -72,7 +75,11 @@ window.newPlacePage = () => {
       // Removing marker
       marker.remove()
 
-      // Clearing fields
+      // Clearing latitude and longitude fields
+      document.getElementById('place_lon').value = '';
+      document.getElementById('place_lat').value = '';
+
+      // Clearing address's fields
       document.getElementById('place_address_state_region').value = '';
       document.getElementById('place_address_city').value = '';
       document.getElementById('place_address_details').value = '';

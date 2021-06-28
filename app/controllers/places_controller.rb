@@ -42,6 +42,8 @@ class PlacesController < ApplicationController
                                   :description,
                                   :price,
                                   :type,
+                                  :lon,
+                                  :lat,
                                   address: [:country,
                                             :state_region,
                                             :city,
