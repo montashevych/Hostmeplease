@@ -8,6 +8,19 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def edit
+    user_find
+  end
+
+  def update
+    user_find
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_find
@@ -15,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:role, :first_name, :last_name, :email, :phone, :password, :password_confirmation)
   end
 end
