@@ -1,19 +1,17 @@
 require 'rails_helper'
 
 describe 'the sign_in process', type: :feature do
+  include ApplicationHelper
   context 'when user can' do
     let(:test_user) { FactoryBot.build(:user) }
 
     before do
-      test_user.skip_confirmation!
-      test_user.save!
-      visit '/users/sign_in'
+      test_registration
+      test_confirmation
+      test_login
     end
 
     it 'create new session' do
-      fill_in 'Email', with: test_user.email
-      fill_in 'Password', with: test_user.password
-      click_button 'Sign In'
       have_current_path eq(root_path)
       expect(page).to have_text('Signed in successfully.')
     end
