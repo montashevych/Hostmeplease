@@ -26,9 +26,14 @@ window.newPlacePage = () => {
 
     // Geocoding
     geocoder.reverseGeocode(lat, lng, function ( err, data ) {
-      console.log(data);
-      console.log(data.results[0]);
-    }, { key: "" });         //api key
+      let parts = data.results[0].address_components;
+      parts.forEach((part) => {
+        if (part.types.includes('country')) {
+          console.log(part.long_name);
+        }
+      });
+
+    }, { key: '' });         //api key
 
     if (marker) marker.remove();
     marker = L.marker([lat, lng])
