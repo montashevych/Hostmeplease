@@ -516,7 +516,7 @@ $btn-color: #91CB82;
         }
         .link_font-size {
           font-size: 1.1em;
-
+          width: 100%;
           @media screen and (max-width: 432px ) {
             width: 105%;
           }
@@ -530,10 +530,7 @@ $btn-color: #91CB82;
             font-size: 1em;
             width: 106%;
           }
-          @media (min-width: 1200px) and (max-width: 1400px ) {
-            width: 104%;;
-          }
-          @media (min-width: 1400px) and (max-width: 1920px ) {
+          @media (min-width: 1200px) and (max-width: 2096px ) {
             width: 104%;
           }
         }
