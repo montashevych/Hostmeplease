@@ -16,5 +16,5 @@
           .col-6
             = link_to "places/#{place.id}"
               button.btn.btn-success type="button"
-                = place.price
+                = '%.2f' % place.price
                 | $

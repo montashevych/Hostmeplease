@@ -34,4 +34,8 @@ user.save!
                          city: Faker::Address.city,
                          state_region: Faker::Address.state,
                          details: Faker::Address.street_address)
+  place.pictures.create!(image: [Rack::Test::UploadedFile.new(
+                      File.open(Rails.root.join('spec/factories/test.png')),
+                      'image/png',
+                    )])
 end
