@@ -29,6 +29,16 @@ RSpec.describe User do
       expect(test_user).not_to be_valid
     end
 
+    it 'creates an default user with indication last_name' do
+      test_user.last_name = 'a'
+      expect(test_user).not_to be_valid
+    end
+
+    it 'creates an user with long last_name' do
+      test_user.last_name = 'a' * 51
+      expect(test_user).not_to be_valid
+    end
+
     it 'creates an user without email' do
       test_user.email = ''
       expect(test_user).not_to be_valid
