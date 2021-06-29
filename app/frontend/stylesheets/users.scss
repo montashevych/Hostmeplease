@@ -104,15 +104,17 @@ $link-color: #f8f9fa;
 
 //======== PROFILE ========
   .profile .row {
-    width: Max(80%, 690px);
+    max-width: 1036px;
     padding: 32px;
     background: #464E4F;
     border-radius: 20px;
     font-weight: 700;
+    margin-top: 12rem;
     .card-body{
       padding: 0;
       .row {
         padding: 0 1rem 0 0;
+        margin: 0;
       }
     }
 
