@@ -56,7 +56,7 @@ jobs:
           bundler install
       - name: yarn install
         run: |
-          yarn install --pure-lockfile  
+          yarn install --pure-lockfile
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
@@ -67,7 +67,7 @@ jobs:
           bundler exec rails webpacker:compile
       - name: Run tests
         run: bundler exec rake
-      - name: Upload coverage results    
+      - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
         with:

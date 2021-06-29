@@ -14,7 +14,7 @@
                   p = full_address(place.address)
 
           .col-6
-            = link_to "places/#{place.id}"
+            = link_to place_path(place)
               button.btn.btn-success type="button"
                 = '%.2f' % place.price
                 | $
