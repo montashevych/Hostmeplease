@@ -15,9 +15,8 @@ div.main-screen
               .col-sm-4.col-md-4
                 = @user.first_name
               .col-sm-8.col-md-8.d-flex.justify-content-end
-                = link_to 'Save Changes', edit_user_path(@user), class: 'button_profile btn text-white montserrat'
-            p   = f.select  :role, options_for_select(User.roles.map {|k, v| [k.humanize.capitalize, v]}),autofocus: true,
-                                                                                                          autocomplete: "role"
+                = f.submit 'Save Changes', class: 'button_profile btn text-white montserrat'
+            p   = @user.role
             p.rating = "Rating: TODO"
             table.about
               thead: tr: th About
