@@ -30,7 +30,7 @@ class PlacesController < ApplicationController
       render :new
     end
   end
-  
+
   def edit; end
 
   def my_places
