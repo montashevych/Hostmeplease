@@ -1,8 +1,17 @@
 window.newPlacePage = () => {
+  let geocoder = require('geocoder');                // require geocoder library
+  let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from enviropment
+
   let latlng = [0.0, 0.0];
   let number = 1;
-  let geocoder = require('geocoder');
-  let api_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';
+  let country = '';
+
+  // Get address fields
+  let country_field = document.getElementById('place_address_country');
+  let state_region_field = document.getElementById('place_address_state_region');
+  let city_field = document.getElementById('place_address_city');
+  let street_field = document.getElementById('place_address_details');
+  let number_street_field = document.getElementById('place_address_details');
 
   if (localStorage.getItem('newplace-map-location')) {
     latlng = JSON.parse(localStorage.getItem('newplace-map-location'));
@@ -19,6 +28,7 @@ window.newPlacePage = () => {
     accessToken: 'sk.eyJ1IjoiaHVudGkiLCJhIjoiY2twd3J0dDQ5MWczdTJ1bm9xeXhoZWc2eCJ9.MEGM9kySBOwTh46vZ7eTMg'
   }).addTo(map);
 
+  // When user click on map
   map.on('click', evt => {
     let { lat, lng } = evt.latlng;
 
@@ -32,36 +42,31 @@ window.newPlacePage = () => {
       parts.forEach((part) => {
         // Fill in country field
         if (part.types.includes('country')) {
-          let country_field = document.getElementById('place_address_country');
           country_field.value = part.short_name;
         };
 
         // Fill in city field
         if (part.types.includes('administrative_area_level_1')) {
-          let city_field = document.getElementById('place_address_state_region');
-          city_field.value = part.long_name;
+          state_region_field.value = part.long_name;
         };
 
         // Fill in state or region field
-        if (part.types.includes('locality')) {
-          let city_field = document.getElementById('place_address_city');
+        if (part.types.includes('locality') || part.types.includes('administrative_area_level_2')) {
           city_field.value = part.long_name;
         };
 
         // Fill in details as street field
         if (part.types.includes('route')) {
-          let street_field = document.getElementById('place_address_details');
           street_field.value = part.long_name;
         };
 
         // Fill in details as street number field
         if (part.types.includes('street_number')) {
-          let number_street_field = document.getElementById('place_address_details');
           number_street_field.value += `, ${ part.long_name }`;
         };
       });
 
-    }, { key: api_key });         //api key
+    }, { key: api_geocode_key });         //api key
 
     if (marker) marker.remove();
     marker = L.marker([lat, lng])
@@ -84,7 +89,59 @@ window.newPlacePage = () => {
     });
   });
 
+  //When user write address in fields
+  document.getElementById('address_form').addEventListener('input', () => {
+    // Get full country name
+    [...Array(country_field.length).keys()].forEach((i) => {
+      if (country_field[i].value == country_field.value) {
+        country = country_field[i].text;
+        return;
+      }
+    });
 
+    let address_string = `${ country }, ${ city_field.value }, ${ state_region_field.value }, ${ street_field.value }, ${ number_street_field.value }`;
+    let zoom = 5;
+
+    // Setting zoom value by filling fields
+    if (state_region_field.value.length != 0) {
+      zoom = 10;
+    } else {
+      zoom = 5;
+    };
+
+    if (city_field.value.length != 0) {
+      zoom = 14;
+    } else {
+      zoom = 5;
+    };
+
+    if (street_field.value.length != 0) {
+      zoom = 16;
+    } else {
+      zoom = 5;
+    };
+
+    if (number_street_field.value.length != 0) {
+      zoom = 18;
+    } else {
+      zoom = 5;
+    };
+
+    // Geocoding by address from fields
+    geocoder.geocode(address_string, function ( err, data ) {
+      let lat = data.results[0].geometry.location.lat;
+      let lng = data.results[0].geometry.location.lng;
+
+      // Fill in latitude and longitude fields
+      document.getElementById('place_lon').value = lng;
+      document.getElementById('place_lat').value = lat;
+
+      // Moving to selected address
+      map.flyTo([lat, lng], zoom);
+    }, { key: api_geocode_key });         //api key
+  });
+
+  // Preview and deleting images befor upload
   document.getElementById('place_picture_image').addEventListener('change', (event) => {
     let inputImage = document.getElementById('place_picture_image');
     let n = Array.from(event.target.files);
