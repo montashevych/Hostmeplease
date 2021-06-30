@@ -32,5 +32,5 @@ div.main-screen
                   td =  f.email_field  :email
                 tr
                   td Phone:
-                  td = "+380 68 123 56 78"
+                  td =  f.text_field :phone_number,  id: "phone", name: "phone", type: "tel"
 = render 'shared/footer'
