@@ -30,7 +30,6 @@ html, body {
 }
 
 .place-screen {
-
     background: url('../images/place-background.png');
     background-size: cover;
     height: Max(350px);
@@ -207,7 +206,7 @@ $btn-color: #91CB82;
 
 .d-flex {
   .rating {
-    margin: 0 0 0 52%;
+    margin: 5% 0 0 5%;
     display: flex;
   }
   .it {
@@ -266,6 +265,11 @@ $btn-color: #91CB82;
           bottom: 0;
           width: 100%;
           background: rgba(38, 47, 48, 0.8);
+          padding: 0 40px;
+
+          @media (max-width: 420px) {
+            padding: 0 20px 0 40px;
+          }
 
           a {
             width: -moz-available;
@@ -280,7 +284,7 @@ $btn-color: #91CB82;
           p {
             margin: 0;
             font-weight: 280;
-            font-size: small;
+            font-size: x-small;
             color: gainsboro;
           }
 
@@ -302,6 +306,10 @@ $btn-color: #91CB82;
                 line-height: 21px;
                 letter-spacing: 0px;
                 min-width: 148px;
+
+                @media (max-width: 420px) {
+                  min-width: 95px;
+                }
               }
             }
           }
