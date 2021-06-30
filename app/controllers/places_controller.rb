@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
 
-  before_action :logged_in_user, only: [:new, :create]
+  before_action :logged_in_user, only: [:new, :create, :my_places, :destroy]
   before_action :place_find, only: [:show]
 
   def index
@@ -21,7 +21,9 @@ class PlacesController < ApplicationController
 
   def create
     @place = current_user.places.build(place_params.except(:address, :picture))
-    if @place.save
+    if @place.save!
+      byebug
+      consumer_to_owner_and_vice_versa
       @address = @place.build_address(place_params.require(:address)).save
       picture_create
       flash[:success] = 'Place created'
@@ -33,9 +35,14 @@ class PlacesController < ApplicationController
 
   def edit; end
 
+  def destroy
+    consumer_to_owner_and_vice_versa
+  end
+
   def my_places
     @count_places = current_user.places.count
-    @places = current_user.places.paginate(page: params[:page], per_page: PLACES_PER_PAGE)
+    @places = current_user.places.paginate(page: params[:page],
+                                           per_page: PLACES_PER_PAGE)
   end
 
   private
@@ -55,5 +62,14 @@ class PlacesController < ApplicationController
                                                   :city,
                                                   :details],
                                         picture: [:image_cache, { image: [] }])
+  end
+
+  def consumer_to_owner_and_vice_versa
+    if !current_user.places.first.nil? && current_user.role == 'consumer'
+      current_user.update_attribute(:role, 'owner')
+    end
+    if current_user.places.first.nil? && current_user.role == 'owner'
+      current_user.update_attribute(:role, 'consumer')
+    end
   end
 end
