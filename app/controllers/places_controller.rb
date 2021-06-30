@@ -22,8 +22,6 @@ class PlacesController < ApplicationController
   def create
     @place = current_user.places.build(place_params.except(:address, :picture))
     if @place.save!
-      byebug
-      consumer_to_owner_and_vice_versa
       @address = @place.build_address(place_params.require(:address)).save
       picture_create
       flash[:success] = 'Place created'
@@ -62,14 +60,5 @@ class PlacesController < ApplicationController
                                                   :city,
                                                   :details],
                                         picture: [:image_cache, { image: [] }])
-  end
-
-  def consumer_to_owner_and_vice_versa
-    if !current_user.places.first.nil? && current_user.role == 'consumer'
-      current_user.update_attribute(:role, 'owner')
-    end
-    if current_user.places.first.nil? && current_user.role == 'owner'
-      current_user.update_attribute(:role, 'consumer')
-    end
   end
 end

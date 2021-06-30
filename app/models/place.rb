@@ -17,6 +17,8 @@ class Place < ApplicationRecord
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :pictures
+
+  after_commit :consumer_to_owner_and_vice_versa
   # geocoded_by full_address(@address) do |obj, results|
   #   if (geo = results.first)
   #     obj.lat = geo.latitude
@@ -25,4 +27,17 @@ class Place < ApplicationRecord
   # end
   #
   # after_validation :geocode
+
+  private
+
+  def consumer_to_owner_and_vice_versa
+    # byebug
+    user = User.where('id = ?', self.user_id).first
+    if !user.places.first.nil? && user.role == 'consumer'
+      user.update_attribute(:role, 'owner')
+    end
+    if user.places.first.nil? && user.role == 'owner'
+      user.update_attribute(:role, 'consumer')
+    end
+  end
 end
