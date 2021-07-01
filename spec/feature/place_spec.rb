@@ -67,7 +67,6 @@ RSpec.describe 'Showing place', type: :feature do
       test_confirmation
       test_login
       visit my_places_path
-      # byebug
     end
 
     context 'when it have content' do
