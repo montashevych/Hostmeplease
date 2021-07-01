@@ -776,7 +776,7 @@ $btn-color: #91CB82;
     .form-row {
       margin: 10px auto 80px auto;
 
-      .col-md-12 {
+      .col-md-12, .col-md-11, .col-md-1 {
         position: relative;
 
         .error-message {
@@ -822,7 +822,6 @@ $btn-color: #91CB82;
 
         #place_price {
           @include field_properties;
-          width: 87%;
         }
 
         .dollar {
@@ -832,6 +831,13 @@ $btn-color: #91CB82;
           text-decoration: none;
           color: black;
           cursor: default;
+          position: absolute;
+          bottom: 16%;
+
+          @media (max-width: 768px) {
+            bottom: 14px;
+            right: -8px;
+          }
         }
 
         #place_type {
