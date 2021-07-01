@@ -29,9 +29,11 @@
                       p.error-message = @place.errors[:description].first
                   .mb-2.row
                     .col-md-12
-                      p = f.label 'Price'
-                      = f.text_field :price, alt: 'Price'
-                      a.dollar $
+                      - if @place.errors[:price]
+                        p = f.label 'Price'
+                        = f.text_field :price, alt: 'Price', placeholder: '0.00'
+                        a.dollar $
+                        p.error-message = @place.errors[:price].first
             .col-xl-5
               .blur
                 #address_form.col-lg-12
