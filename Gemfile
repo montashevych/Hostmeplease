@@ -21,6 +21,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'slim', '~> 4.1'
 # Geocoder for adress of places
 gem 'geocoder'
+# WickedPDF for receipt generation
+gem 'wicked_pdf'
+# WickedPDF native binary
+gem 'wkhtmltopdf-binary'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
