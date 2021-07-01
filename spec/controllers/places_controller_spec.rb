@@ -15,21 +15,20 @@ RSpec.describe PlacesController do
       expect(response).to render_template 'places/index'
     end
 
-    context 'when User is login and User see ' do
+    context 'when User is login and User' do
       let(:test_user) { FactoryBot.create(:user, :confirmed) }
       let!(:user_places) { [FactoryBot.create(:place, user: test_user)] }
 
-      it 'count current_user places' do
+      before do
         sign_in test_user
-
         get :my_places
+      end
+
+      it 'see own places count' do
         expect(assigns(:count_places)).to eq(user_places.count)
       end
 
-      it 'render template my_places' do
-        sign_in test_user
-
-        get :my_places
+      it 'see rendered template my_places' do
         expect(response).to render_template 'my_places'
       end
     end
