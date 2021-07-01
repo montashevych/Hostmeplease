@@ -24,9 +24,10 @@ class PlacesController < ApplicationController
     address_build
     picture_build
     if @place.save && @address.save && @picture.save
-      flash[:success] = 'Place created'
-      redirect_to places_path
+      flash[:notice] = 'Place created'
+      redirect_to my_places_path
     else
+      flash[:error] = 'Incorrect data entry'
       render :new
     end
   end
