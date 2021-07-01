@@ -41,16 +41,8 @@
                   = f.fields_for @address do |a|
                     .mb-2.row
                       .col-md-12
-                        - if @address.errors[:details]
-                          p = a.label 'Address'
-                          = a.text_field :details, placeholder: 'Like street, number of house..', alt: 'Address'
-                        p.error-message = @address.errors[:details].first
-                    .mb-2.row
-                      .col-md-12
-                        - if @address.errors[:city]
-                          p = a.label 'City'
-                          = a.text_field :city, placeholder: 'City..', alt: 'city'
-                        p.error-message = @address.errors[:city].first
+                        p = a.label 'Country'
+                        = a.country_select :country, priority_countries: ['UA', 'RU', 'BY', 'GB']
                     .mb-2.row
                       .col-md-12
                         - if @address.errors[:state_region]
@@ -59,8 +51,16 @@
                         p.error-message = @address.errors[:state_region].first
                     .mb-2.row
                       .col-md-12
-                        p = a.label 'Country'
-                        = a.country_select :country, priority_countries: ['UA', 'RU', 'BY', 'GB']
+                        - if @address.errors[:city]
+                          p = a.label 'City'
+                          = a.text_field :city, placeholder: 'City..', alt: 'city'
+                        p.error-message = @address.errors[:city].first
+                    .mb-2.row
+                      .col-md-12
+                        - if @address.errors[:details]
+                          p = a.label 'Address'
+                          = a.text_field :details, placeholder: 'Like street, number of house..', alt: 'Address'
+                        p.error-message = @address.errors[:details].first
                     .mb-2.row
                       .col-md-12
                         = f.hidden_field :lon
