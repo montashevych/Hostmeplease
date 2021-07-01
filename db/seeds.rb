@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.new(first_name: "test",
                 email: "test@mail.com",
-                password: "123test",
-                password_confirmation: "123test")
+                password: "1q2w3e4r",
+                password_confirmation: "1q2w3e4r")
 user.skip_confirmation!
 user.save!
 
