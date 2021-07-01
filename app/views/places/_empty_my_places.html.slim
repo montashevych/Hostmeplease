@@ -1,0 +1,12 @@
+.container
+  section.empty_my_places
+    h2.mt-4.mb-4.text-center
+      | Your Places
+    .row
+      .col-12.col-sm-12.col-md-12.d-flex.justify-content-center
+        .rounded-pill.px-4.button-myplaces.p-2.text-center
+          = link_to '+ New Place', new_place_path, class: 'hovc'
+    section.empty_places.mx-auto.col-12.col-sm-12.col-md-12.d-flex.justify-content-center
+      .card-body
+        h3.text-center
+          | Add your first place

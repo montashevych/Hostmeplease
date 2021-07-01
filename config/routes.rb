@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get  '/bookings/:id/save', to: 'bookings#save', as: :booking_save
   post '/bookings/:id/cancel', to: 'bookings#cancel', as: :booking_cancel
   post '/places/:place_id/book', to: 'places#book', as: :place_book
+
+  get 'my_places' => 'places#my_places'
 end
