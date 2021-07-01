@@ -1,5 +1,6 @@
 // Import Bootstrap v5
 @import "~bootstrap/scss/bootstrap";
+@import "~flatpickr/dist/flatpickr";
 @import "alert";
 @import "fonts";
 @import "footer";
@@ -7,3 +8,4 @@
 @import "home";
 @import "places";
 @import "users";
+@import "bookings";
