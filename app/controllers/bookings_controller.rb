@@ -40,9 +40,9 @@ class BookingsController < ApplicationController
   end
 
   def check_same_user
-    unless current_user.id == @booking.user.id
-      flash[:error] = "You need to be the same user as the one who created the booking to view it."
-      redirect_to root_url
-    end
+    return if current_user.id == @booking.user.id
+
+    flash[:error] = 'You need to be the same user as the one who created the booking to view it.'
+    redirect_to root_url
   end
 end

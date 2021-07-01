@@ -5,18 +5,18 @@ class Booking < ApplicationRecord
   validates :checkin, presence: true
   validates :checkout, presence: true
 
-  scope :with_overlapping_dates, ->(checkin, checkout) {
+  scope :with_overlapping_dates, lambda { |checkin, checkout|
     where(checkin: checkin...checkout).or(where(checkout: checkin...checkout))
   }
 
-  scope :overlapping, ->(b) {
+  scope :overlapping, lambda { |b|
     with_overlapping_dates(b.checkin, b.checkout)
       .where(place_id: b.place_id)
       .where.not(id: b.id)
   }
 
   def duration
-    ((checkout.to_date - checkin.to_date).to_i) + 1
+    (checkout.to_date - checkin.to_date).to_i + 1
   end
 
   def full_price
