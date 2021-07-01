@@ -9,6 +9,8 @@ class Place < ApplicationRecord
   validates :lon, presence: true
   validates :lat, presence: true
 
+  has_many :bookings
+
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
 
