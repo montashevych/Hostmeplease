@@ -16,6 +16,10 @@ RSpec.describe 'Showing place', type: :feature do
     visit places_path
   end
 
+  after do
+    test_picture.destroy
+  end
+
   describe('list of places') do
     before do
       visit places_path

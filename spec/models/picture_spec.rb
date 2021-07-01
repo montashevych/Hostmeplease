@@ -10,6 +10,10 @@ RSpec.describe Picture, type: :model do
     test_picture.save!
   end
 
+  after do
+    test_picture.destroy
+  end
+
   it 'is valid with valid attributes' do
     expect(test_picture).to be_valid
   end
