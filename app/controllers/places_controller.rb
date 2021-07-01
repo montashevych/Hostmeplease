@@ -20,9 +20,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = current_user.places.build(place_params.except(:address, :picture))
-    address_build
-    picture_build
+    place_build && address_build && picture_build
     if @place.save && @address.save && @picture.save
       flash[:notice] = 'Place created'
       redirect_to my_places_path
@@ -48,6 +46,10 @@ class PlacesController < ApplicationController
 
   def place_find
     @place = Place.find(params[:id])
+  end
+
+  def place_build
+    @place = current_user.places.build(place_params.except(:address, :picture))
   end
 
   def picture_build
