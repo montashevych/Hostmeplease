@@ -13,6 +13,7 @@ RSpec.describe 'Showing', type: :feature do
   let!(:test_picture) { FactoryBot.create(:picture, imageable: test_place) }
 
   after do
+    test_picture.destroy
     test_place.destroy
   end
 
@@ -21,12 +22,12 @@ RSpec.describe 'Showing', type: :feature do
       visit places_path
     end
 
-    context 'when it have content' do
-      it 'returns headers\'s title' do
+    context 'when it has' do
+      it 'headers\'s title' do
         expect(page).to have_content('Find top coworking')
       end
 
-      it 'returns header\'s subtitle' do
+      it 'header\'s subtitle' do
         expect(page).to have_content('spaces near you')
       end
     end
@@ -87,5 +88,71 @@ RSpec.describe 'Showing', type: :feature do
   end
 
   describe('new place page') do
+    before do
+      test_login
+      visit new_place_path
+    end
+
+    context 'when it has' do
+      it 'headers\'s title' do
+        expect(page).to have_content('New Place')
+      end
+    end
+
+    context 'when form has' do
+      it 'title label' do
+        expect(page).to have_content('Title')
+      end
+
+      it 'type label' do
+        expect(page).to have_content('Type')
+      end
+
+      it 'type has options' do
+        expect(page).to have_content('Accommodation Workspace')
+      end
+
+      it 'description label' do
+        expect(page).to have_content('Description')
+      end
+
+      it 'price label' do
+        expect(page).to have_content('Price')
+      end
+
+      it 'country label' do
+        expect(page).to have_content('Country')
+      end
+
+      it 'state or region label' do
+        expect(page).to have_content('State / region')
+      end
+
+      it 'city label' do
+        expect(page).to have_content('City')
+      end
+
+      it 'address label' do
+        expect(page).to have_content('Address')
+      end
+
+      it 'pictures label' do
+        expect(page).to have_content('+')
+      end
+    end
+
+    context 'when it successfull create new place' do
+      it 'form\'s title field' do
+        fill_in 'place_title', with: 'q' * 9
+        fill_in 'place_description', with: 'q' * 30
+        fill_in 'place_price', with: 100
+        fill_in 'place_address_state_region', with: Faker::Address.state
+        fill_in 'place_address_city', with: Faker::Address.city
+        fill_in 'place_address_details', with: "#{Faker::Address.street_name}, 1"
+        page.attach_file('place[picture][image][]', Rails.root.join('spec/factories/test.png'), visible: false)
+        click_button 'Save'
+        have_current_path eq(my_places_path)
+      end
+    end
   end
 end
