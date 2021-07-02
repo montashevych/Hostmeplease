@@ -98,7 +98,7 @@ window.newPlacePage = () => {
   });
 
   //When user write address in fields
-  document.getElementById('address_form').addEventListener('input', () => {  
+  document.getElementById('address_form').addEventListener('focusout', () => {  // or event 'input' for geocoding in real time
     // Get full country name
     [...Array(country_field.length).keys()].forEach((i) => {
       if (country_field[i].value == country_field.value) {
