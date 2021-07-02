@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Showing', type: :feature do
-  include ApplicationHelper
-
   let!(:test_user) { FactoryBot.create(:user, :confirmed) }
   let!(:test_address) { FactoryBot.create(:address) }
   let!(:test_place) {
@@ -57,9 +55,10 @@ RSpec.describe 'Showing', type: :feature do
 
   describe('my places') do
     before do
-      test_registration
-      test_confirmation
-      test_login
+      visit user_session_path
+      fill_in 'Email', with: test_user.email
+      fill_in 'Password', with: test_user.password
+      click_button 'Sign In'
       visit my_places_path
     end
 
@@ -89,7 +88,10 @@ RSpec.describe 'Showing', type: :feature do
 
   describe('new place page') do
     before do
-      test_login
+      visit user_session_path
+      fill_in 'Email', with: test_user.email
+      fill_in 'Password', with: test_user.password
+      click_button 'Sign In'
       visit new_place_path
     end
 
