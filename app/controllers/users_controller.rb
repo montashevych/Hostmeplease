@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_find, only: [:show]
+  before_action :user_find, only: [:show, :edit]
 
   def index
     redirect_to root_path
@@ -8,9 +8,7 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def edit
-    user_find
-  end
+  def edit; end
 
   def update
     user_find
@@ -28,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:role, :first_name, :last_name, :email, :phone, :password, :password_confirmation)
+    params.require(:user).permit(:role, :first_name, :last_name, :email, :phone_number, :full_number, :password,
+                                 :password_confirmation)
   end
 end
