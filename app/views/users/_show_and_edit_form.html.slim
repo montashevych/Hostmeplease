@@ -1,0 +1,36 @@
+div.container.profile
+  div.row.g-0.mx-auto.text-light.montserrat
+    div.col-sm-4.col-md-4.col-gravatar
+      p  = gravatar_for @user, size: 135
+      - if action_name == "show"
+        p = link_to "Change Photo", "#", class: "change-avatar btn text-white montserrat"
+      - else action_name == "edit"
+        p = link_to "Change Photo", "https://en.gravatar.com/gravatars/new", class: "change-avatar btn text-white montserrat"
+    div.col-sm-8.col-md-8
+      = form_for  :user, url: user_path(@user), method: :put do |f|
+        .card-body
+          .row
+            .col-sm-4.col-md-4
+              = @user.first_name
+            .col-sm-8.col-md-8.d-flex.justify-content-end
+              - if action_name == "show"
+                = link_to 'Edit Profile', edit_user_path(@user), class: 'button_profile btn text-white montserrat'
+              - else action_name == "edit"
+                = f.submit 'Save Changes', class: 'button_profile btn text-white montserrat'
+          p   = @user.role.capitalize
+          p.rating = "Rating: TODO"
+          table.about
+            thead: tr: th About
+            tbody
+              tr
+                td =  f.label :first_name, 'Name:'
+                td =  f.text_field  :first_name
+              tr
+                td =  f.label :last_name, 'Last Name:'
+                td =  f.text_field  :last_name, placeholder: 'Enter Last Name'
+              tr
+                td =  f.label :email, 'Email:'
+                td =  f.email_field  :email
+              tr
+                td Phone:
+                td =  f.telephone_field :phone_number, id:  "phone", name:  "phone",type:  "tel"
