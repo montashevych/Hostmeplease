@@ -1,20 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'Showing place', type: :feature do
+RSpec.describe 'Showing', type: :feature do
   include ApplicationHelper
 
-  let(:test_user) { FactoryBot.build(:user) }
-  let(:test_place) { FactoryBot.create :place, user: test_user }
-  let(:test_address) { FactoryBot.build(:address) }
-  let(:test_picture) { FactoryBot.build(:picture) }
-
-  before do
-    test_address.place_id = test_place.id
-    test_picture.imageable_id = test_place.id
-    test_address.save!
-    test_picture.save!
-    visit places_path
-  end
+  let!(:test_user) { FactoryBot.create(:user, :confirmed) }
+  let!(:test_address) { FactoryBot.create(:address) }
+  let!(:test_place) {
+    FactoryBot.create :place,
+                      user: test_user,
+                      address: test_address
+  }
+  let!(:test_picture) { FactoryBot.create(:picture, imageable: test_place) }
 
   after do
     test_picture.destroy
@@ -51,7 +47,7 @@ RSpec.describe 'Showing place', type: :feature do
         have_current_path eq(new_user_registration_path)
       end
 
-      it 'redirect to show place' do
+      it 'show place' do
         click_button test_place.price.to_s
         have_current_path eq(place_path(:place))
       end
@@ -59,9 +55,6 @@ RSpec.describe 'Showing place', type: :feature do
   end
 
   describe('my places') do
-    let!(:test_user) { FactoryBot.build(:user) }
-    let!(:test_place) { FactoryBot.create :place, user: test_user }
-
     before do
       test_registration
       test_confirmation
@@ -91,5 +84,8 @@ RSpec.describe 'Showing place', type: :feature do
         have_current_path eq(new_place_path)
       end
     end
+  end
+
+  describe('new place page') do
   end
 end
