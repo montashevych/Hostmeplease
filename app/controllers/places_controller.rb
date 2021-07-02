@@ -25,7 +25,7 @@ class PlacesController < ApplicationController
       format.json { render json: @place }
     end
   end
-  
+
   def new; end
 
   def edit; end
@@ -38,6 +38,8 @@ class PlacesController < ApplicationController
   private
 
   def place_find
+    @place = Place.find(params[:place_id])
+  end
 
   def book
     @place = Place.find(params[:place_id])
@@ -49,8 +51,6 @@ class PlacesController < ApplicationController
       redirect_to_confirm
     end
   end
-
-  private
 
   def booking_params
     params.require(:booking).permit(:checkin, :checkout)
