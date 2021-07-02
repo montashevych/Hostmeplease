@@ -776,12 +776,12 @@ $btn-color: #91CB82;
     .form-row {
       margin: 10px auto 80px auto;
 
-      .col-md-12, .col-md-11, .col-md-1 {
+      .col-md-12, .col-md-10, .col-md-1 {
         position: relative;
 
         .error-message {
           position: absolute;
-          top: 6%;
+          top: 44%;
           right: 10%;
           font-size: 10px;
           font-family: 'Noto Sans';
@@ -818,10 +818,12 @@ $btn-color: #91CB82;
 
         #place_title {
           @include field_properties;
+          padding: 6%;
         }
 
         #place_price {
           @include field_properties;
+          padding: 6%;
         }
 
         .dollar {
@@ -832,7 +834,7 @@ $btn-color: #91CB82;
           color: black;
           cursor: default;
           position: absolute;
-          bottom: 16%;
+          bottom: 6%;
 
           @media (max-width: 768px) {
             bottom: 14px;
@@ -850,11 +852,21 @@ $btn-color: #91CB82;
           }
         }
 
-        #place_description {
-          @include field_properties;
-          height: 200px;
-          padding: 2% 5%;
-          resize: none;
+        .description-column {
+          #place_description {
+            @include field_properties;
+            height: 200px;
+            padding: 2% 5%;
+            resize: none;
+          }
+
+          .field_with_errors {
+            height: 202px;
+          }
+
+          .error-message {
+            top: 18%;
+          }
         }
       }
 
@@ -952,6 +964,20 @@ $btn-color: #91CB82;
                       font-size: larger;
                     }
                   }
+                }
+              }
+
+              #fileInputColumn {
+                .field_with_errors {
+                  border: none;
+                }
+
+                .error-message {
+                  top: 13%;
+                }
+
+                .image-has-errors {
+                  border: 1px solid red;
                 }
               }
             }

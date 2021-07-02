@@ -12,6 +12,14 @@ window.newPlacePage = () => {
   let city_field = document.getElementById('place_address_city');
   let street_field = document.getElementById('place_address_details');
   let number_street_field = document.getElementById('place_address_details');
+  let image_errors = document.getElementById('image-error');
+  let picture_label = document.getElementById('place_picture_label');
+
+  if (image_errors.textContent.length > 0) {
+    picture_label.className = 'image-has-errors';
+  } else {
+    picture_label.className = '';
+  }
 
   if (localStorage.getItem('newplace-map-location')) {
     latlng = JSON.parse(localStorage.getItem('newplace-map-location'));

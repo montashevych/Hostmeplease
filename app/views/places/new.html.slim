@@ -22,7 +22,7 @@
                       p = f.label 'Type'
                       = f.select :type, ['Accommodation', 'Workspace'], alt: 'Type'
                   .mb-2.row
-                    .col-md-12
+                    .col-md-12.description-column
                       - if @place.errors[:description]
                         p = f.label 'Description'
                         = f.text_area :description, placeholder: 'Something about your place..', alt: 'Description', size: '80'
@@ -75,10 +75,11 @@
                       #image-column.col-md-12
                     .row.mb-2
                       #fileInputColumn.col-md-12
-                        = i.label '+', for: 'place_picture_image', id: 'place_picture_label'
-                        = i.file_field :image, hidden: '', multiple: true
-                        = i.hidden_field :image_cache
-
+                        - if @picture.errors[:image]
+                          = i.label '+', for: 'place_picture_image', id: 'place_picture_label'
+                          = i.file_field :image, hidden: '', multiple: true
+                          = i.hidden_field :image_cache
+                        p#image-error.error-message = @picture.errors[:image].first
             .row.button-row
               .col-xl-4
                 .col-md-12.button-col
