@@ -98,7 +98,7 @@ window.newPlacePage = () => {
   });
 
   //When user write address in fields
-  document.getElementById('address_form').addEventListener('input', () => {
+  document.getElementById('address_form').addEventListener('input', () => {  
     // Get full country name
     [...Array(country_field.length).keys()].forEach((i) => {
       if (country_field[i].value == country_field.value) {
@@ -107,7 +107,10 @@ window.newPlacePage = () => {
       }
     });
 
-    let address_string = `${ country }, ${ city_field.value }, ${ state_region_field.value }, ${ street_field.value }, ${ number_street_field.value }`;
+    let address_string = `${ country }, ${ city_field.value }, ` +
+                         `${ state_region_field.value }, ` +
+                         `${ street_field.value }, ` +
+                         `${ number_street_field.value }`;
     let zoom = 5;
 
     // Setting zoom value by filling fields

@@ -12,7 +12,9 @@ describe 'User', type: :feature do
       fill_in 'Password confirmation', with: test_user.password_confirmation
       click_button 'Sign Up'
       have_current_path eq(root_path)
-      expect(page).to have_text('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
+      expect(page).to have_text('A message with a confirmation link has been ' \
+                                'sent to your email address. Please follow ' \
+                                'the link to activate your account.')
     end
 
     it 'confirm email for account access' do
