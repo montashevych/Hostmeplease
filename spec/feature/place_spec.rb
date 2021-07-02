@@ -13,7 +13,7 @@ RSpec.describe 'Showing', type: :feature do
   let!(:test_picture) { FactoryBot.create(:picture, imageable: test_place) }
 
   after do
-    test_picture.destroy
+    test_place.destroy
   end
 
   describe('list of places') do
