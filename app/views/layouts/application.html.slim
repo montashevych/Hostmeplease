@@ -9,8 +9,6 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'
-    script src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'
   body
   - if flash[:notice]
     .alert.alert-success.alert-dismissible.position-absolute.start-50.fade.show role="alert"

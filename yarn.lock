@@ -2658,6 +2658,11 @@ detect-node@^2.0.4:
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.1.0.tgz#c9c70775a49c3d03bc2c06d9a73be550f978f8b1"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
 
+diesal@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/diesal/-/diesal-1.0.2.tgz#a79b75d920a6747d4fae9abc529450723d61cb90"
+  integrity sha512-vGKXq/bB/eNI4L2fMj8jH9wpQ05ijUReLmfLAZRNeXVqOaC4NfdpQvoIZrazEbA5u9MF3R8JYloUUQTp3Q/yvA==
+
 diffie-hellman@^5.0.0:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
@@ -4184,6 +4189,18 @@ last-call-webpack-plugin@^3.0.0:
   dependencies:
     lodash "^4.17.5"
     webpack-sources "^1.1.0"
+
+leaflet.timeline@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/leaflet.timeline/-/leaflet.timeline-1.4.3.tgz#2d33a7bf9e13371279ccf02bf14353d422419bb8"
+  integrity sha512-usv9Om4MVSClWQa8dY8jkCxmTrSDckEXhwqr1067J9tmU4LNLx/Wqy/IW4+XhYtdXvKZluPIGhKE6nPW+uSr0A==
+  dependencies:
+    diesal "^1.0.2"
+
+leaflet@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.7.1.tgz#10d684916edfe1bf41d688a3b97127c0322a2a19"
+  integrity sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
