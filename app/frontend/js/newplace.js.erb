@@ -1,5 +1,6 @@
 window.newPlacePage = () => {
   let geocoder = require('geocoder');                // require geocoder library
+
   let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from enviropment
 
   let latlng = [0.0, 0.0];
@@ -14,6 +15,16 @@ window.newPlacePage = () => {
   let number_street_field = document.getElementById('place_address_details');
   let image_errors = document.getElementById('image-error');
   let picture_label = document.getElementById('place_picture_label');
+
+
+  delete L.Icon.Default.prototype._getIconUrl;                            //**************************
+                                                                          //*
+  L.Icon.Default.mergeOptions({                                           //* Resolved bug
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),     //* with
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),              //* loading images
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),          //*
+  });                                                                     //**************************
+
 
   if (image_errors.textContent.length > 0) {
     picture_label.className = 'image-has-errors';
@@ -33,7 +44,7 @@ window.newPlacePage = () => {
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: 'sk.eyJ1IjoiaHVudGkiLCJhIjoiY2twd3J0dDQ5MWczdTJ1bm9xeXhoZWc2eCJ9.MEGM9kySBOwTh46vZ7eTMg'
+    accessToken: '<%= ENV["MAPBOX_API_KEY"] %>'
   }).addTo(map);
 
   // When user click on map
@@ -98,7 +109,7 @@ window.newPlacePage = () => {
   });
 
   //When user write address in fields
-  document.getElementById('address_form').addEventListener('focusout', () => {  // or event 'input' for geocoding in real time
+  document.getElementById('address_form').addEventListener('change', () => {  // or event 'input' for geocoding in real time
     // Get full country name
     [...Array(country_field.length).keys()].forEach((i) => {
       if (country_field[i].value == country_field.value) {
@@ -116,23 +127,11 @@ window.newPlacePage = () => {
     // Setting zoom value by filling fields
     if (state_region_field.value.length != 0) {
       zoom = 10;
-    } else {
-      zoom = 5;
-    };
-
-    if (city_field.value.length != 0) {
+    } else if (city_field.value.length != 0) {
       zoom = 14;
-    } else {
-      zoom = 5;
-    };
-
-    if (street_field.value.length != 0) {
+    } else if (street_field.value.length != 0) {
       zoom = 16;
-    } else {
-      zoom = 5;
-    };
-
-    if (number_street_field.value.length != 0) {
+    } else if (number_street_field.value.length != 0) {
       zoom = 18;
     } else {
       zoom = 5;
@@ -140,8 +139,7 @@ window.newPlacePage = () => {
 
     // Geocoding by address from fields
     geocoder.geocode(address_string, function ( err, data ) {
-      let lat = data.results[0].geometry.location.lat;
-      let lng = data.results[0].geometry.location.lng;
+       let { lat, lng } = data.results[0].geometry.location;
 
       // Fill in latitude and longitude fields
       document.getElementById('place_lon').value = lng;
@@ -155,11 +153,11 @@ window.newPlacePage = () => {
   // Preview and deleting images befor upload
   document.getElementById('place_picture_image').addEventListener('change', (event) => {
     let inputImage = document.getElementById('place_picture_image');
-    let n = Array.from(event.target.files);
+    let files = Array.from(event.target.files);
     let position = 0;
     let fileList = inputImage.files;
 
-    n.forEach((file) => {
+    files.forEach((file) => {
       let fileInputColumn = document.getElementById('fileInputColumn');
       let newimage_div = document.createElement('div');
       let newimage = document.createElement('img');
