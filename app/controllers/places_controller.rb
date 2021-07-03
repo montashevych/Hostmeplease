@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
 
-  before_action :logged_in_user, only: [:new, :create, :my_places, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :my_places, :destroy]
   before_action :place_find, only: [:show]
 
   def index
@@ -10,7 +10,6 @@ class PlacesController < ApplicationController
   end
 
   def show
-    place_find
   end
 
   def new
@@ -23,7 +22,7 @@ class PlacesController < ApplicationController
     place_build && address_build && picture_build
     if @place.save && @address.save && @picture.save
       flash[:notice] = 'Place created'
-      redirect_to my_places_path
+      redirect_to place_path(@place)
     else
       flash[:error] = 'Incorrect data entry'
       render :new
@@ -45,7 +44,7 @@ class PlacesController < ApplicationController
   private
 
   def place_find
-    @place = Place.find(params[:id])
+    @my_place = Place.find(params[:id])
   end
 
   def place_build
