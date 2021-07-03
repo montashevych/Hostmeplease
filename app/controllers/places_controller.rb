@@ -9,8 +9,7 @@ class PlacesController < ApplicationController
                                                      per_page: PLACES_PER_PAGE)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @place = Place.new
