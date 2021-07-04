@@ -1,0 +1,204 @@
+import geocoder from 'geocoder'   // import geocoder library
+import marker_icon_2x from 'leaflet/dist/images/marker-icon-2x.png'
+import marker_icon from 'leaflet/dist/images/marker-icon.png'
+import marker_shadow from 'leaflet/dist/images/marker-shadow.png'
+
+
+let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from enviropment
+
+let latlng = [0.0, 0.0];
+let number = 1;
+let country = '';
+
+// Get address fields
+let country_field = document.getElementById('place_address_country');
+let state_region_field = document.getElementById('place_address_state_region');
+let city_field = document.getElementById('place_address_city');
+let street_field = document.getElementById('place_address_details');
+let number_street_field = document.getElementById('place_address_details');
+let image_errors = document.getElementById('image-error');
+let picture_label = document.getElementById('place_picture_label');
+
+
+delete L.Icon.Default.prototype._getIconUrl;                            //**************************
+                                                                        //*
+L.Icon.Default.mergeOptions({                                           //* Resolved bug
+  iconRetinaUrl: marker_icon_2x,     //* with
+  iconUrl: marker_icon,              //* loading images
+  shadowUrl: marker_shadow,          //*
+});                                                                     //**************************
+
+if (image_errors.textContent.length > 0) {
+  picture_label.className = 'image-has-errors';
+} else {
+  picture_label.className = '';
+}
+
+if (localStorage.getItem('newplace-map-location')) {
+  latlng = JSON.parse(localStorage.getItem('newplace-map-location'));
+}
+
+let map = L.map('map').setView(latlng, 10);
+let marker;
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?' +
+            'access_token={accessToken}', {
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: '<%= ENV["MAPBOX_API_KEY"] %>'
+}).addTo(map);
+
+// When user click on map
+map.on('click', evt => {
+  let { lat, lng } = evt.latlng;
+
+  // Fill in latitude and longitude fields
+  document.getElementById('place_lon').value = lng;
+  document.getElementById('place_lat').value = lat;
+
+  // Reverse geocoding
+  geocoder.reverseGeocode(lat, lng, function ( err, data ) {
+    let parts = data.results[0].address_components.reverse();
+    parts.forEach((part) => {
+      // Fill in country field
+      if (part.types.includes('country')) {
+        country_field.value = part.short_name;
+      };
+
+      // Fill in city field
+      if (part.types.includes('administrative_area_level_1')) {
+        state_region_field.value = part.long_name;
+      };
+
+      // Fill in state or region field
+      if (part.types.includes('locality') || part.types.includes('administrative_area_level_2')) {
+        city_field.value = part.long_name;
+      };
+
+      // Fill in details as street field
+      if (part.types.includes('route')) {
+        street_field.value = part.long_name;
+      };
+
+      // Fill in details as street number field
+      if (part.types.includes('street_number')) {
+        number_street_field.value += `, ${ part.long_name }`;
+      };
+    });
+
+  }, { key: api_geocode_key });         //api key
+
+  if (marker) marker.remove();
+  marker = L.marker([lat, lng])
+    .addTo(map);
+
+  localStorage.setItem('newplace-map-location', JSON.stringify([lat,lng]));
+
+  marker.on('click', evt => {
+    // Removing marker
+    marker.remove()
+
+    // Clearing latitude and longitude fields
+    document.getElementById('place_lon').value = '';
+    document.getElementById('place_lat').value = '';
+
+    // Clearing address's fields
+    document.getElementById('place_address_state_region').value = '';
+    document.getElementById('place_address_city').value = '';
+    document.getElementById('place_address_details').value = '';
+  });
+});
+
+//When user write address in fields
+document.getElementById('address_form').addEventListener('change', () => {  // or event 'input' for geocoding in real time
+  // Get full country name
+  [...Array(country_field.length).keys()].forEach((i) => {
+    if (country_field[i].value == country_field.value) {
+      country = country_field[i].text;
+      return;
+    }
+  });
+
+  let address_string = `${ country }, ${ city_field.value }, ` +
+                       `${ state_region_field.value }, ` +
+                       `${ street_field.value }, ` +
+                       `${ number_street_field.value }`;
+  let zoom = 5;
+
+  // Setting zoom value by filling fields
+  if (state_region_field.value.length != 0) {
+    zoom = 10;
+  } else if (city_field.value.length != 0) {
+    zoom = 14;
+  } else if (street_field.value.length != 0) {
+    zoom = 16;
+  } else if (number_street_field.value.length != 0) {
+    zoom = 18;
+  } else {
+    zoom = 5;
+  };
+
+  // Geocoding by address from fields
+  geocoder.geocode(address_string, function ( err, data ) {
+     let { lat, lng } = data.results[0].geometry.location;
+
+    // Fill in latitude and longitude fields
+    document.getElementById('place_lon').value = lng;
+    document.getElementById('place_lat').value = lat;
+
+    // Moving to selected address
+    map.flyTo([lat, lng], zoom);
+  }, { key: api_geocode_key });         //api key
+});
+
+// Preview and deleting images befor upload
+document.getElementById('place_picture_image').addEventListener('change', (event) => {
+  let inputImage = document.getElementById('place_picture_image');
+  let files = Array.from(event.target.files);
+  let position = 0;
+  let fileList = inputImage.files;
+
+  files.forEach((file) => {
+    let fileInputColumn = document.getElementById('fileInputColumn');
+    let newimage_div = document.createElement('div');
+    let newimage = document.createElement('img');
+    let link_to_delete = document.createElement('a');
+    let cloneInput = inputImage.cloneNode();
+    let image = URL.createObjectURL(file);
+
+    // set custom FileList, all to line 60
+    let list = new DataTransfer();
+    let listItem = fileList[position++];
+
+    list.items.add(listItem);
+
+    let myImage = list.files;
+
+    // Creating new input
+    cloneInput.files = myImage;
+    cloneInput.id = 'place_picture_image-' + (number++);
+    fileInputColumn.appendChild(cloneInput);
+
+    // Creating delete link
+    link_to_delete.text = 'delete';
+    link_to_delete.className = 'delete_image';
+    link_to_delete.id = 'delete-' + cloneInput.id;
+    newimage_div.appendChild(link_to_delete);
+
+    // Creating preview
+    newimage.src = image;
+    newimage_div.id = 'preview-' + cloneInput.id;
+    newimage_div.className = 'preview-div';
+    newimage_div.appendChild(newimage);
+    document.getElementById('image-column').appendChild(newimage_div);
+
+    // Add eventListener for delete image
+    document.getElementById(link_to_delete.id).addEventListener('click', () => {
+      document.getElementById(cloneInput.id).outerHTML = '';
+      document.getElementById(newimage_div.id).outerHTML = '';
+    });
+  });
+  inputImage.value = '';
+});

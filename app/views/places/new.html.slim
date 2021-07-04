@@ -84,8 +84,6 @@
               .col-xl-4
                 .col-md-12.button-col
                   = f.submit 'Save', class: 'button'
-
-script
-  | window.newPlacePage()
-
+                  
 = render 'shared/footer'
+= javascript_pack_tag 'new'
