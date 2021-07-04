@@ -130,11 +130,23 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
   // Setting zoom value by filling fields
   if (state_region_field.value.length != 0) {
     zoom = 10;
-  } else if (city_field.value.length != 0) {
+  } else {
+    zoom = 5;
+  };
+
+  if (city_field.value.length != 0) {
     zoom = 14;
-  } else if (street_field.value.length != 0) {
+  } else {
+    zoom = 5;
+  };
+
+  if (street_field.value.length != 0) {
     zoom = 16;
-  } else if (number_street_field.value.length != 0) {
+  } else {
+    zoom = 5;
+  };
+
+  if (number_street_field.value.length != 0) {
     zoom = 18;
   } else {
     zoom = 5;
