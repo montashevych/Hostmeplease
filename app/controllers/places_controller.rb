@@ -3,23 +3,19 @@ class PlacesController < ApplicationController
 
   PLACES_PER_PAGE = 9
 
-  before_action :place_find, only: [:show]
+  before_action :place_find, only: [:show, :bookings]
 
   def index
     @places = Place.where(status: :created).paginate(page: params[:page], per_page: PLACES_PER_PAGE)
   end
 
   def bookings
-    @place = Place.find(params[:id])
-
     respond_with do |format|
       format.json { render json: @place.bookings.where(cancelled: false) }
     end
   end
 
   def show
-    @place = Place.find(params[:id])
-
     respond_with do |format|
       format.html
       format.json { render json: @place }
@@ -35,12 +31,6 @@ class PlacesController < ApplicationController
     @places = current_user.places.paginate(page: params[:page], per_page: PLACES_PER_PAGE)
   end
 
-  private
-
-  def place_find
-    @place = Place.find(params[:place_id])
-  end
-
   def book
     @place = Place.find(params[:place_id])
     @user  = current_user
@@ -50,6 +40,12 @@ class PlacesController < ApplicationController
     else
       redirect_to_confirm
     end
+  end
+
+  private
+
+  def place_find
+    @place = Place.find(params[:id])
   end
 
   def booking_params
