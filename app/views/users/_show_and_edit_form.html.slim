@@ -22,15 +22,30 @@ div.container.profile
           table.about
             thead: tr: th About
             tbody
-              tr
-                td =  f.label :first_name, 'Name:'
-                td =  f.text_field  :first_name
-              tr
-                td =  f.label :last_name, 'Last Name:'
-                td =  f.text_field  :last_name, placeholder: 'Enter Last Name'
-              tr
-                td =  f.label :email, 'Email:'
-                td =  f.email_field  :email
-              tr
-                td Phone:
-                td =  f.telephone_field :phone_number, id: "phone", name: "phone",type: "tel"
+              - case action_name
+              - when "show"
+                tr
+                  td =  f.label :first_name, 'Name:'
+                  td =  f.text_field  :first_name, disabled: true
+                tr
+                  td =  f.label :last_name, 'Last Name:'
+                  td =  f.text_field  :last_name, placeholder: 'Enter Last Name', disabled: true
+                tr
+                  td =  f.label :email, 'Email:'
+                  td =  f.email_field  :email, disabled: true
+                tr
+                  td Phone:
+                  td =  f.telephone_field :phone_number, id: "phone", name: "phone",type: "tel", disabled: true
+              - when "edit"
+                tr
+                  td =  f.label :first_name, 'Name:'
+                  td =  f.text_field  :first_name
+                tr
+                  td =  f.label :last_name, 'Last Name:'
+                  td =  f.text_field  :last_name, placeholder: 'Enter Last Name'
+                tr
+                  td =  f.label :email, 'Email:'
+                  td =  f.email_field  :email
+                tr
+                  td Phone:
+                  td =  f.telephone_field :phone_number, id: "phone", name: "phone",type: "tel"
