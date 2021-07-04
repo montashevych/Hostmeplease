@@ -1,6 +1,6 @@
-window.newPlacePage = () => {
-  let geocoder = require('geocoder');                // require geocoder library
+import geocoder from 'geocoder'   // import geocoder library
 
+window.newPlacePage = () => {
   let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from enviropment
 
   let latlng = [0.0, 0.0];
@@ -39,7 +39,8 @@ window.newPlacePage = () => {
   let map = L.map('map').setView(latlng, 10);
   let marker;
 
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?' +
+              'access_token={accessToken}', {
     maxZoom: 18,
     id: 'mapbox/streets-v11',
     tileSize: 512,
