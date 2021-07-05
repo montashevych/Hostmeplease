@@ -16,17 +16,38 @@ let state_region_field = document.getElementById('place_address_state_region');
 let city_field = document.getElementById('place_address_city');
 let street_field = document.getElementById('place_address_details');
 let number_street_field = document.getElementById('place_address_details');
+//Get container with errors
 let image_errors = document.getElementById('image-error');
 let picture_label = document.getElementById('place_picture_label');
+// Marker add and delete function
+function markerAdd(lat, lng) {
+  if (marker) marker.remove();
+  marker = L.marker([lat, lng])
+    .addTo(map);
+
+  marker.on('click', evt => {
+    // Removing marker
+    marker.remove()
+
+    // Clearing latitude and longitude fields
+    document.getElementById('place_lon').value = '';
+    document.getElementById('place_lat').value = '';
+
+    // Clearing address's fields
+    document.getElementById('place_address_state_region').value = '';
+    document.getElementById('place_address_city').value = '';
+    document.getElementById('place_address_details').value = '';
+  });
+};
 
 
-delete L.Icon.Default.prototype._getIconUrl;                            //**************************
-                                                                        //*
-L.Icon.Default.mergeOptions({                                           //* Resolved bug
-  iconRetinaUrl: marker_icon_2x,     //* with
-  iconUrl: marker_icon,              //* loading images
-  shadowUrl: marker_shadow,          //*
-});                                                                     //**************************
+delete L.Icon.Default.prototype._getIconUrl;    //**************************
+                                                //*
+L.Icon.Default.mergeOptions({                   //* Resolved bug
+  iconRetinaUrl: marker_icon_2x,                //* with
+  iconUrl: marker_icon,                         //* loading images
+  shadowUrl: marker_shadow,                     //*
+});                                             //**************************
 
 if (image_errors.textContent.length > 0) {
   picture_label.className = 'image-has-errors';
@@ -90,25 +111,9 @@ map.on('click', evt => {
 
   }, { key: api_geocode_key });         //api key
 
-  if (marker) marker.remove();
-  marker = L.marker([lat, lng])
-    .addTo(map);
-
   localStorage.setItem('newplace-map-location', JSON.stringify([lat,lng]));
 
-  marker.on('click', evt => {
-    // Removing marker
-    marker.remove()
-
-    // Clearing latitude and longitude fields
-    document.getElementById('place_lon').value = '';
-    document.getElementById('place_lat').value = '';
-
-    // Clearing address's fields
-    document.getElementById('place_address_state_region').value = '';
-    document.getElementById('place_address_city').value = '';
-    document.getElementById('place_address_details').value = '';
-  });
+  markerAdd(lat, lng)
 });
 
 //When user write address in fields
@@ -162,6 +167,9 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
 
     // Moving to selected address
     map.flyTo([lat, lng], zoom);
+    if (street_field.value.length != 0) {
+      markerAdd(lat, lng);
+    };
   }, { key: api_geocode_key });         //api key
 });
 
