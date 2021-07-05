@@ -92,16 +92,48 @@ RSpec.describe 'Showing', type: :feature do
       fill_in 'Email', with: test_user.email
       fill_in 'Password', with: test_user.password
       click_button 'Sign In'
-      visit new_place_path
+    end
+
+    context 'when flash has message' do
+      it 'successfully created place message' do
+        visit new_place_path
+        fill_in 'place_title', with: 'q' * 9
+        fill_in 'place_description', with: 'q' * 30
+        fill_in 'place_price', with: 100
+        fill_in 'place_address_state_region', with: Faker::Address.state
+        fill_in 'place_address_city', with: Faker::Address.city
+        fill_in 'place_address_details', with: "#{Faker::Address.street_name}, 1"
+        page.attach_file('place[picture][image][]', Rails.root.join('spec/factories/test.png'), visible: false)
+        click_button 'Save'
+        expect(page.text).to have_content('Place created')
+      end
+
+      it 'error message for incorrect place' do
+        visit new_place_path
+        fill_in 'place_title', with: 'q'
+        fill_in 'place_description', with: 'q' * 30
+        fill_in 'place_price', with: 100
+        fill_in 'place_address_state_region', with: Faker::Address.state
+        fill_in 'place_address_city', with: Faker::Address.city
+        fill_in 'place_address_details', with: "#{Faker::Address.street_name}, 1"
+        page.attach_file('place[picture][image][]', Rails.root.join('spec/factories/test.png'), visible: false)
+        click_button 'Save'
+        expect(page.text).to have_content('Incorrect data entry')
+      end
     end
 
     context 'when it has' do
       it 'headers\'s title' do
+        visit new_place_path
         expect(page).to have_content('New Place')
       end
     end
 
     context 'when form has' do
+      before do
+        visit new_place_path
+      end
+
       it 'title label' do
         expect(page).to have_content('Title')
       end
@@ -143,8 +175,9 @@ RSpec.describe 'Showing', type: :feature do
       end
     end
 
-    context 'when it successfull create new place' do
-      it 'form\'s title field' do
+    context 'when it' do
+      it 'successfull create new place' do
+        visit new_place_path
         fill_in 'place_title', with: 'q' * 9
         fill_in 'place_description', with: 'q' * 30
         fill_in 'place_price', with: 100

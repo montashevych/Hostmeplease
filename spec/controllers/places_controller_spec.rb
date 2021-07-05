@@ -4,9 +4,15 @@ RSpec.describe PlacesController do
   describe PlacesController do
     let(:test_user) { FactoryBot.create(:user, :confirmed) }
     let!(:test_address) { FactoryBot.create(:address) }
-    let(:test_place) { FactoryBot.create(:place, user: test_user,
-                                          address: test_address) }
+    let(:test_place) {
+      FactoryBot.create(:place, user: test_user,
+                                address: test_address)
+    }
     let!(:test_picture) { FactoryBot.create(:picture, imageable: test_place) }
+
+    after do
+      test_picture.destroy
+    end
 
     context 'when User' do
       it 'with valid attributes' do

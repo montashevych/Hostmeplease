@@ -1,9 +1,36 @@
 require 'rails_helper'
 
 describe 'User', type: :feature do
-  context 'with the ability' do
-    let!(:test_user) { FactoryBot.build(:user) }
+  let!(:test_user) { FactoryBot.build(:user) }
 
+  context 'when flash has message' do
+    before do
+      visit user_session_path
+      fill_in 'Email', with: test_user.email
+      fill_in 'Password', with: test_user.password
+    end
+
+    it 'error message for incorrect user' do
+      click_button 'Sign In'
+      expect(page.text).to have_content('Invalid Email or password.')
+    end
+
+    it 'confirmation message' do
+      test_user.save
+      click_button 'Sign In'
+      expect(page.text).to have_content('You have to confirm your email ' \
+                                        'address before continuing.')
+    end
+
+    it 'successfull signed user' do
+      test_user.skip_confirmation! && test_user.save
+      click_button 'Sign In'
+      expect(page.text).to have_content('Signed in successfully.')
+      test_user.destroy
+    end
+  end
+
+  context 'with the ability' do
     it 'create account' do
       visit new_user_registration_path
       fill_in 'First name', with: test_user.first_name
