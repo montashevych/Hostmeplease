@@ -60,12 +60,21 @@ html, body {
     .container {
         display: grid;
         grid-template-columns: auto auto;
+
+        .carousel-card {
+          width: 35rem;
+        }
+
+        .description-card {
+          width: 30rem;
+        }
     }
   }
 
 .card {
     background-color: #444C4D!important;
     border-radius: 20px!important;
+    width: 35rem;
 
     .card-description{
         font-family: 'Montserrat';
@@ -85,6 +94,7 @@ html, body {
   min-width: 25rem;
   min-height: 15rem;
   background-size: cover;
+  width: 30rem;
 }
 
 $btn-color: #91CB82;
