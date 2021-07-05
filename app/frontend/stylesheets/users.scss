@@ -146,12 +146,15 @@ $link-color: #f8f9fa;
       tr {
         td:first-child { width: 100%; }
         td { padding-top: 24px; }
-      .iti__country-list {
-        background: #626662;
-        .iti__dial-code {
-          color: white;
+        .iti__country-list {
+          background: #626662;
+          .iti__dial-code {
+            color: white;
+          }
         }
-      }
+        .phone_numbers {
+          max-width: 243.667px;
+        }
       }
     }
     .button_profile {
