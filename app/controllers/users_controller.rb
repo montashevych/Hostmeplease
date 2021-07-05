@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_find, only: [:show, :edit]
+  before_action :user_find, only: [:show, :edit, :update]
 
   def index
     redirect_to root_path
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    user_find
     if @user.update(user_params)
       redirect_to @user
     else
@@ -26,7 +25,13 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:role, :first_name, :last_name, :email, :phone_number, :full_number, :password,
-                                 :password_confirmation)
+    binding.pry
+    params.require(:user).permit( :role,
+                                  :first_name,
+                                  :last_name,
+                                  :email,
+                                  :phone_number,
+                                  :password,
+                                  :password_confirmation)
   end
 end
