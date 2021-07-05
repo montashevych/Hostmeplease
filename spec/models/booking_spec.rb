@@ -42,6 +42,9 @@ RSpec.describe Booking, type: :model do
     end
 
     it 'overlaps with another booking' do
+      # overlapping_booking_1.save! # don't save first, it'll cause validation errors in save!
+      overlapping_booking_2.save!
+
       expect(overlapping_booking_1).not_to be_valid
     end
   end
