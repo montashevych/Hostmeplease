@@ -27,17 +27,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_090018) do
     t.index ["place_id"], name: "index_bookings_on_place_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
-
-  create_table "pictures", force: :cascade do |t|
-    t.string "picture_url"
-    t.string "name"
-    t.string "imageable_type", null: false
-    t.bigint "imageable_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable"
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "title", null: false
     t.string "type"
