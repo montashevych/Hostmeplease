@@ -10,7 +10,7 @@ user = User.new(first_name: "test",
                    password: "1q2w3e4rtest",
                    password_confirmation: "1q2w3e4rtest")
 user.skip_confirmation!
-user.save
+user.save!
 
 23.times do |n|
   title  = Faker::Company.name
@@ -21,7 +21,7 @@ user.save
   active = Faker::Boolean.boolean
   country = Faker::Address.country
   city = Faker::Address.city
-  place = user.places.create(title: title,
+  place = user.places.create!(title: title,
                 description: description,
                 price: price.round(2),
                 is_active: true,
