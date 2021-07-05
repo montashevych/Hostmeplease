@@ -133,22 +133,24 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
   let zoom = 5;
 
   // Setting zoom value by filling fields
-  if (state_region_field.value.length != 0) {
+  if (state_region_field.value.length != 0 && street_field.value != ' ') {
     zoom = 10;
   } else {
     zoom = 5;
   };
 
-  if (city_field.value.length != 0) {
+  if (city_field.value.length != 0 && street_field.value != ' ') {
     zoom = 14;
   } else {
     zoom = 5;
   };
 
-  if (street_field.value.length != 0) {
+  if (street_field.value.length != 0 && street_field.value != ' ') {
     zoom = 16;
   } else {
     zoom = 5;
+    // It remove marker if street field is empty
+    marker.remove();
   };
 
   if (number_street_field.value.includes(',')) {
