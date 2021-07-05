@@ -15,17 +15,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_090018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "country", null: false
-    t.string "city", null: false
-    t.string "state_region", null: false
-    t.string "details", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "place_id"
-    t.index ["place_id"], name: "index_addresses_on_place_id"
-  end
-
   create_table "bookings", force: :cascade do |t|
     t.bigint "place_id", null: false
     t.bigint "user_id", null: false
@@ -39,22 +28,13 @@ ActiveRecord::Schema.define(version: 2021_07_01_090018) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.json "image"
-    t.string "imageable_type"
-    t.bigint "imageable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable"
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "title", null: false
     t.string "type"
     t.text "description", null: false
-    t.decimal "price", null: false
-    t.integer "status", default: 0, null: false
-    t.boolean "is_active", default: true, null: false
+    t.decimal "price", default: "0.0", null: false
+    t.integer "status", null: false
+    t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "lon", default: 0.0
