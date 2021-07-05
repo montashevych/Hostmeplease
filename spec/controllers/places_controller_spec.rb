@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe PlacesController do
   describe PlacesController do
     let(:test_user) { FactoryBot.create(:user, :confirmed) }
+    let!(:test_address) { FactoryBot.create(:address) }
+    let(:test_place) { FactoryBot.create(:place, user: test_user,
+                                          address: test_address) }
+    let!(:test_picture) { FactoryBot.create(:picture, imageable: test_place) }
 
     context 'when User' do
       it 'with valid attributes' do
@@ -25,22 +29,20 @@ RSpec.describe PlacesController do
         expect(response).to render_template 'places/new'
       end
 
-      it 'see rendered template my_places' do
+      it 'my_places' do
         get :my_places
         expect(response).to render_template 'my_places'
       end
     end
 
     context 'when User is login and' do
-      let!(:user_places) { [FactoryBot.create(:place, user: test_user)] }
-
       before do
         sign_in test_user
-        get :my_places
       end
 
       it 'see own places count' do
-        expect(assigns(:count_places)).to eq(user_places.count)
+        get :my_places
+        expect(assigns(:count_places)).to eq(test_user.places.count)
       end
     end
   end
