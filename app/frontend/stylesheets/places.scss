@@ -401,7 +401,7 @@ $btn-color: #91CB82;
     backdrop-filter: blur(30px);
     border-radius: 20px;
     margin-top: 4em;
-    padding: 7.7% 0;
+    padding: 29.6% 0;
 
     .card {
       padding: 0;
@@ -410,16 +410,9 @@ $btn-color: #91CB82;
       max-width: 330px;
       min-height: 224px;
       min-width: 260px;
-      background: transparent !important;
       margin: 10px;
-      transition: transform 500ms ease-out, background-size 500ms ease-in-out;
-
-      @media (max-width: 768px) {
-        min-height:350px;
-      }
-      @media (max-width: 420px) {
-        min-height: 250px;
-      }
+      background-size: cover;
+      padding-top: 25%;
 
       .col-md-4 {
         margin: 0;
@@ -428,18 +421,8 @@ $btn-color: #91CB82;
       .card-footer {
         width: 100%;
         background: rgba(38, 47, 48, 0.8);
-        margin-top: -8em;
         padding-bottom: 0;
         padding-left: 1.5%;
-        @media (min-width: 360px) and (max-width: 364px ) {
-          margin-top: -7em;
-        }
-        @media (min-width: 570px) and (max-width: 768px ) {
-          margin-top: -9em;
-        }
-        @media (min-width: 768px) and (max-width: 990px ) {
-          margin-top: -8em;
-        }
         .row:first-child {
           height: 2.1em;
         }
@@ -508,6 +491,7 @@ $btn-color: #91CB82;
           margin: 0;
           width: 100%;
           font-size: 1.4em;
+          font-weight: bold;
 
           @media screen and (max-width: 360px ) {
             font-size: 1.1em;
@@ -548,6 +532,7 @@ $btn-color: #91CB82;
           width: 100%;
           @media screen and (max-width: 432px ) {
             width: 105%;
+            min-height: 140%;
           }
           @media (min-width: 432px) and (max-width: 770px ) {
             width: 104%;
@@ -641,7 +626,10 @@ $btn-color: #91CB82;
         }
         .font_family_price {
           font-family: Mabry;
+          font-size: 14px;
         }
+
+
 
         .col-6 {
           display: flex;
