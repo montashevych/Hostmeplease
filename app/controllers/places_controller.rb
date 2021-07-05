@@ -30,9 +30,7 @@ class PlacesController < ApplicationController
 
   def edit; end
 
-  def destroy
-    consumer_to_owner_and_vice_versa
-  end
+  def destroy; end
 
   def my_places
     @count_places = current_user.places.count
