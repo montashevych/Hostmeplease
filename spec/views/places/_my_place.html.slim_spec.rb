@@ -18,16 +18,27 @@ RSpec.describe 'places/my_places.html.slim', type: :view do
   end
 
   context 'when was successfull status' do
-    let(:user) { FactoryBot.create(:user, :confirmed) }
-    let(:test_place) { FactoryBot.create(:place, user: user) }
+    let!(:test_user) { FactoryBot.create(:user, :confirmed) }
+    let!(:test_address) { FactoryBot.create(:address) }
+    let!(:test_place) {
+      FactoryBot.create :place,
+                        user: test_user,
+                        address: test_address
+    }
+    let!(:test_picture) { FactoryBot.create(:picture, imageable: test_place) }
 
     before do
       allow(view).to receive(:user_signed_in?).and_return(true)
     end
 
+    after do
+      test_picture.destroy
+      test_place.destroy
+    end
+
     it 'render my_places template' do
       @places = [test_place].paginate
-      sign_in user
+      sign_in test_user
       render
       expect(rendered).to match(/Workspace/)
     end
