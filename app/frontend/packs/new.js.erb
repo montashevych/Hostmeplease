@@ -8,7 +8,9 @@ let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from e
 
 let latlng = [0.0, 0.0];
 let number = 1;
+let zoom = 5;
 let country = '';
+let marker;
 
 // Get address fields
 let country_field = document.getElementById('place_address_country');
@@ -60,7 +62,6 @@ if (localStorage.getItem('newplace-map-location')) {
 }
 
 let map = L.map('map').setView(latlng, 10);
-let marker;
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?' +
             'access_token={accessToken}', {
@@ -130,33 +131,26 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
                        `${ state_region_field.value }, ` +
                        `${ street_field.value }, ` +
                        `${ number_street_field.value }`;
-  let zoom = 5;
 
+  zoom = 5;
   // Setting zoom value by filling fields
   if (state_region_field.value.length != 0 && street_field.value != ' ') {
     zoom = 10;
-  } else {
-    zoom = 5;
   };
 
   if (city_field.value.length != 0 && street_field.value != ' ') {
     zoom = 14;
-  } else {
-    zoom = 5;
   };
 
   if (street_field.value.length != 0 && street_field.value != ' ') {
     zoom = 16;
   } else {
-    zoom = 5;
     // It remove marker if street field is empty
-    marker.remove();
+    if (marker) marker.remove();
   };
 
-  if (number_street_field.value.includes(',')) {
+  if (street_field.value.length != 0 && number_street_field.value.includes(',')) {
     zoom = 18;
-  } else {
-    zoom = 5;
   };
 
   // Geocoding by address from fields
@@ -169,7 +163,7 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
 
     // Moving to selected address
     map.flyTo([lat, lng], zoom);
-    if (street_field.value.length != 0) {
+    if (street_field.value.length != 0 && street_field.value != ' ' && number_street_field.value.includes(',')) {
       markerAdd(lat, lng);
     };
   }, { key: api_geocode_key });         //api key
