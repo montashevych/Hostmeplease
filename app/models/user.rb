@@ -18,5 +18,4 @@ class User < ApplicationRecord
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)
   end
-
 end
