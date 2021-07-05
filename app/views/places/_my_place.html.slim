@@ -1,13 +1,12 @@
 .col-12.col-sm-12.col-md-6.col-lg-4.d-flex.justify-content-center.mx-auto
-  .card.text-white.d-flex.flex-columnapp
-    = image_pack_tag("media/images/image-5.png", class: "card-img-top")
+  .card.text-white.d-flex.flex-columnapp style=("background-image: url(#{place.pictures[0].image[0].url})")
     .card-footer
       .row
         .col-md-12.col-lg-12.col-xl-12.col-xxl-12
           h5.text-center.col-12.col-sm-12.col-md-12 = place.title
-      .row.flex-row-reverse
+      .row.description
         .col-5.col-sm-4.col-md-4
-          .rating.mt-1.d-flex ⭐️ 4.9
+          p.rating.mt-1.d-flex ⭐️ 4.9
         .col-7.col-sm-8.col-md-8
           p = "🏠 #{place.type}"
           p 📍 New York, str Big Halls, 129a
