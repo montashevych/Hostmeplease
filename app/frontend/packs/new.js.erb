@@ -151,7 +151,7 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
     zoom = 5;
   };
 
-  if (number_street_field.value.length != 0) {
+  if (number_street_field.value.includes(',')) {
     zoom = 18;
   } else {
     zoom = 5;
