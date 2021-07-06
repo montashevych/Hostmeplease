@@ -34,6 +34,8 @@ gem 'geocoder'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pry', '~> 0.14.1'
 gem 'devise', '~> 4.8'
+gem 'rails_admin', '~> 2.0'
+gem 'pundit'
 gem 'will_paginate', '~> 3.3.0'
 
 gem 'omniauth'
@@ -74,6 +76,7 @@ group :test do
   gem 'database_cleaner-active_record'
   # expect render_template...
   gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
