@@ -61,10 +61,8 @@ html, body {
 }
 
 .map-card {
-  background-image: url('../images/map.jpg');
   min-width: 25rem;
-  min-height: 15rem;
-  background-size: cover;
+  height: 15rem;
 }
 
 $btn-color: #91CB82;
