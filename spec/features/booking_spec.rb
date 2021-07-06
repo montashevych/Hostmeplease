@@ -30,10 +30,10 @@ RSpec.describe 'Bookings', type: :feature do
       end
 
       it 'redirects after success' do
-        find(:id, 'booking_checkin', :hidden).set(DateTime.now.strftime('%Y-%m-%d'))
+        find(:id, 'booking_checkin', visible: false).set(DateTime.now.strftime('%Y-%m-%d'))
         # set checkin date in a hidden field
 
-        find(:id, 'booking_checkout', :hidden).set((DateTime.now + 10.days).strftime('%Y-%m-%d'))
+        find(:id, 'booking_checkout', visible: false).set((DateTime.now + 10.days).strftime('%Y-%m-%d'))
         # set checkout date
 
         click_button 'Quick book'
@@ -90,7 +90,7 @@ RSpec.describe 'Bookings', type: :feature do
       end
 
       it 'shows link for My Bookings page' do
-        expect(page).to have_link('My Bookings', :hidden) # not visible by default
+        expect(page).to have_link('My Bookings', visible: false) # not visible by default
       end
     end
 
@@ -109,15 +109,29 @@ RSpec.describe 'Bookings', type: :feature do
       end
 
       it 'shows bookings checkin date' do
-        expect(page).to have_content(test_booking.checkin.to_s)
+        expect(page).to have_content(test_booking.checkin.strftime('%Y-%m-%d'))
       end
 
       it 'shows bookings checkout date' do
-        expect(page).to have_content(test_booking.checkout.to_s)
+        expect(page).to have_content(test_booking.checkout.strftime('%Y-%m-%d'))
       end
 
       it "has a link to booking's page" do
-        expect(page).to have_link(href: booking_path(test_booking))
+        expect(page).to have_link(href: booking_url(test_booking))
+      end
+    end
+
+    context 'when on booking page' do
+      let(:test_booking) {
+        create :booking, user: test_user, place: test_place, checkin: DateTime.now + 12.months,
+                         checkout: DateTime.now + 20.months
+      }
+      before do
+        visit booking_path(test_booking)
+      end
+
+      it 'shows Cancel button' do
+        expect(page).to have_link('Cancel')
       end
     end
   end
