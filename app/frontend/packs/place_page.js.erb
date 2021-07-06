@@ -1,0 +1,23 @@
+import L from 'leaflet';
+import normalizeUrl from "normalize-url";
+
+import 'leaflet/dist/leaflet.css';
+
+const url = normalizeUrl(window.location.toString() + '.json');
+
+new Promise((resolve, reject) => window.onload = () => resolve()) // wait for onload
+  .then(() => fetch(url)) // retrieve bookings
+  .then(resp => resp.json())
+  .then(({ lat, lon }) => {
+    let map = L.map('map')
+      .setView([lat, lon], 18);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?' +
+                'access_token={accessToken}', {
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: '<%= ENV["MAPBOX_API_KEY"] %>'
+    }).addTo(map);
+  })

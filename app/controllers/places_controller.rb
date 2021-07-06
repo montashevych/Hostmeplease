@@ -18,7 +18,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    respond_with do |format|
+    respond_to do |format|
       format.html
       format.json { render json: @place }
     end
