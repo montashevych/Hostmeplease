@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $text-color: #FFF;
+$error-color: #f40000;
 
 @mixin field_properties {
   background-color: #ECECEC;
@@ -783,12 +784,17 @@ $btn-color: #91CB82;
           font-size: 10px;
           font-family: 'Noto Sans';
           font-weight: normal;
-          color: #a63636;
+          color: $error-color;
+          z-index: 2;
         }
 
         .field_with_errors {
           border: 1px solid red;
           border-radius: 14px;
+        }
+
+        .has-errors {
+          border: 1px solid red;
         }
       }
 
@@ -972,10 +978,6 @@ $btn-color: #91CB82;
                 .error-message {
                   top: 13%;
                 }
-
-                .image-has-errors {
-                  border: 1px solid red;
-                }
               }
             }
             img {
@@ -1037,9 +1039,16 @@ $btn-color: #91CB82;
         }
       }
 
-      #map {
-        height: 286px;
-        border-radius: 13px;
+      #map-column {
+        #map {
+          height: 286px;
+          border-radius: 13px;
+          z-index: 1;
+        }
+
+        .error-message {
+          top: 14%;
+        }
       }
     }
   }

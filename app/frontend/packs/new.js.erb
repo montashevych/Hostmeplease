@@ -21,6 +21,8 @@ let number_street_field = document.getElementById('place_address_details');
 //Get container with errors
 let image_errors = document.getElementById('image-error');
 let picture_label = document.getElementById('place_picture_label');
+let map_container = document.getElementById('map');
+let map_text_error = document.getElementById('map-error');
 // Marker add and delete function
 function markerAdd(lat, lng) {
   if (marker) marker.remove();
@@ -52,7 +54,7 @@ L.Icon.Default.mergeOptions({                   //* Resolved bug
 });                                             //**************************
 
 if (image_errors.textContent.length > 0) {
-  picture_label.className = 'image-has-errors';
+  picture_label.className = 'has-errors';
 } else {
   picture_label.className = '';
 }
@@ -155,17 +157,27 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
 
   // Geocoding by address from fields
   geocoder.geocode(address_string, function ( err, data ) {
-     let { lat, lng } = data.results[0].geometry.location;
+    if (data.results[0]) {
+      let { lat, lng } = data.results[0].geometry.location;
 
-    // Fill in latitude and longitude fields
-    document.getElementById('place_lon').value = lng;
-    document.getElementById('place_lat').value = lat;
+      // Fill in latitude and longitude fields
+      document.getElementById('place_lon').value = lng;
+      document.getElementById('place_lat').value = lat;
 
-    // Moving to selected address
-    map.flyTo([lat, lng], zoom);
-    if (street_field.value.length != 0 && street_field.value != ' ' && number_street_field.value.includes(',')) {
-      markerAdd(lat, lng);
-    };
+      if (map_container.classList.contains('has-errors')) {
+        map_container.classList.remove('has-errors');
+        map_text_error.textContent = '';
+      }
+
+      // Moving to selected address
+      map.flyTo([lat, lng], zoom);
+      if (street_field.value.length != 0 && street_field.value != ' ' && number_street_field.value.includes(',')) {
+        markerAdd(lat, lng);
+      };
+    } else {
+      map_container.classList.add('has-errors');
+      map_text_error.textContent = 'Address Not Found';
+    }
   }, { key: api_geocode_key });         //api key
 });
 
