@@ -13,8 +13,8 @@ class PlacesController < ApplicationController
 
   def new
     @place = Place.new
-    @address = Address.new
-    @picture = Picture.new
+    @address = @place.build_address
+    @picture = @place.pictures.build
   end
 
   def create
