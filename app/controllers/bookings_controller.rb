@@ -1,11 +1,16 @@
 class BookingsController < ApplicationController
-  respond_to :pdf, :html
+  # respond_to :pdf, :html, :json
 
   before_action :authenticate_user!
   before_action :find_booking
   before_action :check_same_user
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @booking.to_json(include: :place) }
+    end
+  end
 
   def confirm; end
 
