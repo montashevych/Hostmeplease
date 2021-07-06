@@ -17,6 +17,7 @@
     "leaflet": "^1.7.1",
     "leaflet.timeline": "^1.4.3",
     "rails-erb-loader": "^5.5.2",
+    "intl-tel-input": "^17.0.13",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
