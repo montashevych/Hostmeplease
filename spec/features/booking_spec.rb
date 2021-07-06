@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Bookings", type: :feature do
+RSpec.describe 'Bookings', type: :feature do
   let!(:test_user) { FactoryBot.create(:user, :confirmed) }
   let!(:place_owner) { create :user, confirmed_at: DateTime.now }
   let!(:test_place) { create :place, user: place_owner }
@@ -20,8 +20,8 @@ RSpec.feature "Bookings", type: :feature do
       click_button 'Sign In'
     end
 
-    context 'on place page' do
-      before(:each) do
+    context 'when on place page' do
+      before do
         visit place_path(test_place)
       end
 
@@ -30,32 +30,48 @@ RSpec.feature "Bookings", type: :feature do
       end
 
       it 'redirects after success' do
-        find(:id, 'booking_checkin', visible: false).set(DateTime.now.strftime('%Y-%m-%d'))              # set checkin date in a hidden field
-        find(:id, 'booking_checkout', visible: false).set((DateTime.now + 10.days).strftime('%Y-%m-%d')) # set checkout date
+        find(:id, 'booking_checkin', :hidden).set(DateTime.now.strftime('%Y-%m-%d'))
+        # set checkin date in a hidden field
+
+        find(:id, 'booking_checkout', :hidden).set((DateTime.now + 10.days).strftime('%Y-%m-%d'))
+        # set checkout date
+
         click_button 'Quick book'
-        expect(page).to have_title("Confirm Booking")
+        expect(page).to have_title('Confirm Booking')
       end
     end
 
-    context 'on booking confirmation page' do
-      let(:test_booking) { create :booking, user: test_user, place: test_place, checkin: DateTime.now + 1.months, checkout: DateTime.now + 2.months }
+    context 'when on booking confirmation page' do
+      let(:test_booking) {
+        create :booking, user: test_user, place: test_place, checkin: DateTime.now + 1.month,
+                         checkout: DateTime.now + 2.months
+      }
 
-      before(:each) do
+      before do
         visit booking_confirm_path(test_booking)
       end
 
-      it 'shows checkin and checkout dates' do
-        expect(page).to have_content(test_booking.checkin.strftime("%Y-%m-%d"))
-        expect(page).to have_content(test_booking.checkout.strftime("%Y-%m-%d"))
+      it 'shows checkin date' do
+        expect(page).to have_content(test_booking.checkin.strftime('%Y-%m-%d'))
       end
 
-      it 'shows price per night and total price' do
+      it 'shows checkout date' do
+        expect(page).to have_content(test_booking.checkout.strftime('%Y-%m-%d'))
+      end
+
+      it 'shows price per night' do
         expect(page).to have_content(test_booking.place.price.to_s)
+      end
+
+      it 'shows total price' do
         expect(page).to have_content(test_booking.full_price.to_s)
       end
 
-      it 'shows place name and location on map' do
+      it 'shows place name' do
         expect(page).to have_content(test_booking.place.title)
+      end
+
+      it 'shows location on map' do
         expect(page).to have_selector('#map')
       end
 
@@ -68,27 +84,36 @@ RSpec.feature "Bookings", type: :feature do
       end
     end
 
-    context 'in header' do
+    context 'when in header' do
       before do
         visit root_path
       end
 
       it 'shows link for My Bookings page' do
-        expect(page).to have_link('My Bookings', visible: false) # not visible by default
+        expect(page).to have_link('My Bookings', :hidden) # not visible by default
       end
     end
 
-    context 'on My Bookings page' do
-      let(:test_booking) { create :booking, user: test_user, place: test_place, checkin: DateTime.now + 6.months, checkout: DateTime.now + 7.months }
+    context 'when on My Bookings page' do
+      let(:test_booking) {
+        create :booking, user: test_user, place: test_place, checkin: DateTime.now + 6.months,
+                         checkout: DateTime.now + 7.months
+      }
 
-      before(:each) do
+      before do
         visit user_bookings_path(test_user)
       end
 
-      it 'shows bookings' do
-        expect(page).to have_content(test_booking.place.title) # check has title
-        expect(page).to have_content(test_booking.checkin.to_s) # checkin date
-        expect(page).to have_content(test_booking.checkout.to_s) # checkout date
+      it 'shows bookings place title' do
+        expect(page).to have_content(test_booking.place.title)
+      end
+
+      it 'shows bookings checkin date' do
+        expect(page).to have_content(test_booking.checkin.to_s)
+      end
+
+      it 'shows bookings checkout date' do
+        expect(page).to have_content(test_booking.checkout.to_s)
       end
 
       it "has a link to booking's page" do
