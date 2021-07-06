@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.new(first_name: "test",
-                   email: "test_one@gmail.com",
-                   password: "1q2w3e4rtest",
-                   password_confirmation: "1q2w3e4rtest")
+                email: "test@mail.com",
+                password: "1q2w3e4r",
+                password_confirmation: "1q2w3e4r")
 user.skip_confirmation!
-user.save
+user.save!
 
-23.times do |n|
-  title  = Faker::Company.name
+20.times do |n|
+  title  = Faker::Company.name[0..10]
   type = Faker::Lorem.characters(number: 10)
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
                                        random_sentences_to_add: 4)
@@ -21,7 +21,7 @@ user.save
   active = Faker::Boolean.boolean
   country = Faker::Address.country
   city = Faker::Address.city
-  place = user.places.create(title: title,
+  place = user.places.create!(title: title,
                 description: description,
                 price: price.round(2),
                 is_active: true,
@@ -29,4 +29,12 @@ user.save
                 status: (n % 2) == 0 ? :created : :approved,
                 lon: "#{n}.6191034",
                 lat: 26.2605438)
+  place.create_address!(country: Faker::Address.country,
+                         city: Faker::Address.city,
+                         state_region: Faker::Address.state,
+                         details: Faker::Address.street_address)
+  place.pictures.create!(image: [Rack::Test::UploadedFile.new(
+                      File.open(Rails.root.join('spec/factories/test.png')),
+                      'image/png',
+                    )])
 end

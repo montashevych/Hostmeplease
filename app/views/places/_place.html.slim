@@ -1,5 +1,5 @@
 .col-md
-  .card.text-white.card-has-bg
+  .card.text-white.card-has-bg style=("background-image: url(#{place.pictures[0].image[0].url})")
     .card-img-overlay.d-flex.flex-column
       .rating
         |⭐️4.9
@@ -9,12 +9,12 @@
             .row
               .col-12
                 h5
-                  = place.title
-                .col-12
-                  p = place.address
+                  = place.title.capitalize
+                .col-9
+                  p = full_address(place.address)
 
           .col-6
             = link_to place_path(place)
               button.btn.btn-success type="button"
-                = place.price
+                = '%.2f' % place.price
                 | $

@@ -19,8 +19,18 @@ RSpec.describe Place, type: :model do
       expect(test_place).not_to be_valid
     end
 
+    it 'does not allow a title shorter than 7 characters' do
+      test_place.title = 'q' * 7
+      expect(test_place).not_to be_valid
+    end
+
     it 'does not allow a description longer than 600 characters' do
       test_place.description = 'q' * 601
+      expect(test_place).not_to be_valid
+    end
+
+    it 'does not allow a description shorter than 20 characters' do
+      test_place.description = 'q' * 19
       expect(test_place).not_to be_valid
     end
   end

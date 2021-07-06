@@ -25,6 +25,16 @@ gem 'geocoder'
 gem 'wicked_pdf'
 # WickedPDF native binary
 gem 'wkhtmltopdf-binary'
+# List of countries in select tag
+gem 'country_select', '~> 4.0'
+# Use figaro for saving secrete values
+gem 'figaro'
+# Use for uploading images
+gem 'carrierwave', '~> 2.0'
+gem 'file_validators'
+gem 'mini_magick'
+gem 'fog-aws'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -62,7 +72,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
-  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/main/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
