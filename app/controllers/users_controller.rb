@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def bookings
     @bookings = @user.bookings.where(cancelled: false).paginate(page: params[:page], per_page: BOOKINGS_PER_PAGE)
-end
+  end
 
   def edit; end
 

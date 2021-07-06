@@ -126,6 +126,7 @@ RSpec.describe 'Bookings', type: :feature do
         create :booking, user: test_user, place: test_place, checkin: DateTime.now + 12.months,
                          checkout: DateTime.now + 20.months
       }
+
       before do
         visit booking_path(test_booking)
       end
