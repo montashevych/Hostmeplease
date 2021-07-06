@@ -112,9 +112,49 @@ $link-color: #f8f9fa;
     margin-top: 12rem;
     .card-body{
       padding: 0;
+
       .row {
         padding: 0 1rem 0 0;
-        margin: 0;
+        margin: 0 -4% 0 -3%;
+
+        &.row-name>* {
+          display: flex;
+          justify-content: center;
+
+          @media screen and (min-width: 770px) {
+            &.username { justify-content: flex-start; }     // name
+            &:not(.username) { justify-content: flex-end; } // button
+          }
+        }
+
+        .iti {
+          width: 100%;
+        }
+
+        div label {
+          width: 100%;
+          @media screen and (max-width: 570px) {
+            width: 100%;
+          }
+        }
+        .input_width {
+          width: 100%;
+          color: black;
+          font-weight: 600;
+        .phone_numbers {
+
+        }
+          @media screen and (max-width: 57px) {
+            margin-left: 5%;
+            &:last-child {
+              margin: 0;
+            }
+          }
+        }
+      }
+      .about {
+        width: 98%;
+        border-bottom: 2px solid white;
       }
     }
 
@@ -135,35 +175,18 @@ $link-color: #f8f9fa;
       padding: 4px 10px 4px;
     }
 
-    table.about {
-      width: 100%;
-
-      thead {
-        border-bottom: 2px solid white;
-        margin-bottom: 24px;
-      }
-
-      tr {
-        td:first-child { width: 100%; }
-        td { padding-top: 24px; }
-        .iti__country-list {
-          background: #626662;
-          .iti__dial-code {
-            color: white;
-          }
-        }
-        .phone_numbers {
-          max-width: 243.667px;
-        }
-      }
-    }
     .button_profile {
       font-weight: 800;
       font-size: 12px;
       border-radius: 20px;
       background-color: #91CB82;
       padding: 4px 10px 4px;
-      margin-left: 3rem;
+
+      justify-content: center;
+
+      @media screen and (min-width: 1024px) {
+        justify-content: flex-end;
+      }
     }
   }
 }

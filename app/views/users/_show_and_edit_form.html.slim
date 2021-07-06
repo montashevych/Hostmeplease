@@ -9,43 +9,40 @@ div.container.profile
     div.col-12.col-sm-12.col-md-8
       = form_for  :user, url: user_path(@user), method: :put do |f|
         .card-body
-          .row
-            .col-12.col-sm-12.col-md-4
+          .row.row-name
+            .col-md-7.col-sm-12.username
               = @user.first_name
-          .col-12.col-sm-12.col-md-8.d-flex.justify-content-end
+            .col-md-5.col-sm-12
               - if action_name == "show"
                 = link_to 'Edit Profile', edit_user_path(@user), class: 'button_profile btn text-white montserrat'
               - else action_name == "edit"
                 = f.submit 'Save Changes', class: 'button_profile btn text-white montserrat'
-          p = @user.role.capitalize
-          p.rating = "Rating: TODO"
-          table.about
-            thead: tr: th About
-            tbody
-              - case action_name
-              - when "show"
-                tr
-                  td.col-12.col-sm-12 =  f.label :first_name, 'Name:'
-                  td.col-12.col-sm-12 =  f.text_field  :first_name, disabled: true
-                tr
-                  td.col-12.col-sm-12 =  f.label :last_name, 'Last Name:'
-                  td.col-12.col-sm-12 =  f.text_field  :last_name, placeholder: 'Enter Last Name', disabled: true
-                tr
-                  td.col-12.col-sm-12 =  f.label :email, 'Email:'
-                  td.col-12.col-sm-12 =  f.email_field  :email, disabled: true
-                tr
-                  td.col-12.col-sm-12 Phone:
-                  td.col-12.col-sm-12 =  f.telephone_field :phone_number, id: "phone", class: "phone_numbers", name: "phone",type: "tel", disabled: true
-              - when "edit"
-                tr
-                  td.col-12.col-sm-12 =  f.label :first_name, 'Name:'
-                  td.col-12.col-sm-12 =  f.text_field  :first_name
-                tr
-                  td.col-12.col-sm-12 =  f.label :last_name, 'Last Name:'
-                  td.col-12.col-sm-12 =  f.text_field  :last_name, placeholder: 'Enter Last Name'
-                tr
-                  td.col-12.col-sm-12 =  f.label :email, 'Email:'
-                  td.col-12.col-sm-12 =  f.email_field  :email
-                tr
-                  td.col-12.col-sm-12 Phone:
-                  td.col-12.col-sm-12 =  f.telephone_field :phone_number, id: "phone", class: "phone_numbers", name: "phone",type: "tel"
+          .row.mb-2
+            .col-12.col-sm-4.col-lg-4
+              = @user.role.capitalize
+          .row.mb-2
+            .col-12.col-sm-12.col-lg-12
+              = "Rating: TODO"
+          .row.mb-2
+            .col-lg-12.about
+              | About
+          .row.mb-2
+            .col-12.col-sm-4.col-lg-4
+              =  f.label :first_name, 'Name:'
+            .col-12.col-sm-8.col-lg-8.d-flex.justify-content-end
+              =  f.text_field  :first_name, class: 'px-1 input_width', disabled: action_name == "show"
+          .row.mb-2
+            .col-12.col-sm-4.col-lg-4
+              =  f.label :last_name, 'Last Name:'
+            .col-12.col-sm-8.col-lg-8.d-flex.justify-content-end
+              =  f.text_field  :last_name, class: 'px-1 input_width', placeholder: 'Enter Last Name', disabled: action_name == "show"
+          .row.mb-2
+            .col-12.col-sm-4.col-lg-4
+              =  f.label :email, 'Email:'
+            .col-12.col-sm-8.col-lg-8.d-flex.justify-content-end
+              =  f.email_field  :email, class: 'px-1 input_width', disabled: action_name == "show"
+          .row
+            .col-12.col-sm-4.col-lg-4
+              =  f.label :phone_number, 'Phone:'
+            .col-12.col-sm-8.col-lg-8.d-flex.justify-content-end
+              =  f.telephone_field :phone_number, id: "phone", class: "phone_numbers input_width",type: "tel", disabled: action_name == "show"
