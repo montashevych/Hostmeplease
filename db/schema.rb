@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_07_06_094507) do
-=======
-ActiveRecord::Schema.define(version: 2021_07_01_064917) do
->>>>>>> new_place
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "country", null: false
+    t.string "city", null: false
+    t.string "state_region", null: false
+    t.string "details", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "place_id"
+    t.index ["place_id"], name: "index_addresses_on_place_id"
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "place_id", null: false
@@ -30,17 +37,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_064917) do
     t.boolean "cancelled", default: false
     t.index ["place_id"], name: "index_bookings_on_place_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "country", null: false
-    t.string "city", null: false
-    t.string "state_region", null: false
-    t.string "details", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "place_id"
-    t.index ["place_id"], name: "index_addresses_on_place_id"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -63,7 +59,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_064917) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "lon", default: 0.0
     t.float "lat", default: 0.0
-    t.string "address"
     t.bigint "user_id"
     t.index ["type"], name: "index_places_on_type"
     t.index ["user_id"], name: "index_places_on_user_id"
