@@ -28,12 +28,9 @@ class Booking < ApplicationRecord
   end
 
   def cannot_overlap_with_other_booking
-    if Booking.overlapping(self).any? # check for overlap in checkin
-      errors.add(:checkin, "can't overlap with other booking")
-    end
+    return unless Booking.overlapping(self).any?
 
-    if Booking.overlapping(self).any? # check for overlap in checkout
-      errors.add(:checkout, "can't overlap with other booking")
-    end
+    errors.add(:checkin, "can't overlap with other booking")
+    errors.add(:checkout, "can't overlap with other booking")
   end
 end
