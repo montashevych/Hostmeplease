@@ -3,5 +3,6 @@ FactoryBot.define do
     place { nil }
     user { nil }
     confirmed { true }
+    cancelled { false }
   end
 end
