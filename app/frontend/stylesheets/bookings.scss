@@ -1,0 +1,36 @@
+.confirm-booking {
+  min-height: 85vh;
+
+  h1 {
+    font-weight: 500;
+
+    a {
+      text-decoration: none;
+      color: #73BAD9;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  label {
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  .field {
+    font-size: 1.125em;
+    font-weight: 800;
+  }
+
+  .btn {
+    font-weight: 500;
+  }
+}
+
+.booking {
+  #map {
+    height: 320px;
+  }
+}

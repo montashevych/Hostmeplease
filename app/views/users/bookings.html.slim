@@ -1,0 +1,20 @@
+- provide :title, "Bookings"
+
+.container.bookings-title
+  = render 'shared/header'
+  .row: .col-xl-8: h1.monsterrat.text-light Your bookings
+
+.d-flex.align-items-center.bookings-list
+  .container-fluid.it
+    .py-5
+      .container
+        .row
+          = render partial: 'booking', collection: @bookings
+    .row.pag
+      .mx-auto
+        .apple_pagination
+          = will_paginate @bookings, container: false, \
+            previous_label: '« Prev',
+            next_label: 'Next »'
+
+= render 'shared/footer'

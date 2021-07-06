@@ -1,0 +1,14 @@
+- provide :title, "Booking for #{@booking.place.title}"
+
+= render 'shared/header'
+
+.container.confirm-booking.text-light.montserrat
+  h1.my-5
+    | Booking for 
+    = link_to @booking.place.title, place_url(id: @booking.place.id)
+  = render @booking
+
+  = link_to "Print Receipt", booking_receipt_url(id: @booking.id), class: "btn btn-success px-2 me-2"
+  = link_to "Cancel", booking_cancel_url(id: @booking.id), class: "btn btn-danger px-2 ms-2", method: :post
+
+= render 'shared/footer'
