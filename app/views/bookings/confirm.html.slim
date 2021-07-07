@@ -6,28 +6,8 @@
   h1.mb-5
     | Confirm your booking for 
     = link_to @booking.place.title, place_url(id: @booking.place.id)
-  .row.mb-2
-    .col-lg-8
-      .row.mb-2
-        .col-lg-6
-          label for="checkin" Check-in date
-          p.field#checkin = @booking.checkin.strftime("%Y-%m-%d")
-        .col-lg-6
-          label for="checkout" Check-out date
-          p.field#checkout = @booking.checkout.strftime("%Y-%m-%d")
-      .row.mb-2
-        .col-lg-6
-          label for="price" Price per night
-          p.field#price = "$ #{@booking.place.price}"
-        .col-lg-6
-          label for="price-total" Full price
-          p.field#price-total = "$ #{@booking.full_price}"
-      .row.mb-2
-        .col-lg-12
-          label for="payment-type" Payment type
-          p.field#payment-type Offline
-    .col-lg-4
-      label for="location" Location
+  
+  = render @booking
 
   = link_to "Print Receipt", booking_receipt_url(id: @booking.id), class: "btn btn-success px-2 me-2"
   = link_to "Confirm", booking_save_url(id: @booking.id), class: "btn btn-success px-2 ms-2"
