@@ -227,7 +227,7 @@ $btn-color: #91CB82;
       min-height: 300px;
       min-width: 250px;
       box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
-      margin: 32px;
+      margin: 32px 8px;
       transition: transform 500ms ease-out, background-size 500ms ease-in-out;
 
       @media (max-width: 768px) {
