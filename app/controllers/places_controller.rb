@@ -14,12 +14,18 @@ class PlacesController < ApplicationController
   def new
     @place = Place.new
     @address = @place.build_address
-    @picture = @place.pictures.build
+    @pictures = @place.pictures.build
   end
 
   def create
-    place_build && address_build && picture_build
-    if @place.save && @address.save && @picture.save
+    place_build
+    if @place.save
+      params[:pictures_attributes]['image'].each do |a|
+
+          @image_attachment = @place.pictures.create!(:image => a)
+
+      end
+
       flash[:notice] = 'Place created'
       redirect_to place_path(@place)
     else
@@ -45,23 +51,15 @@ class PlacesController < ApplicationController
   end
 
   def place_build
-    @place = current_user.places.build(place_params.except(:address, :picture))
-  end
-
-  def picture_build
-    @picture = @place.pictures.build(place_params.require(:picture))
-  end
-
-  def address_build
-    @address = @place.build_address(place_params.require(:address))
+    @place = current_user.places.build(place_params)
   end
 
   def place_params
     params.require(:place).permit(:title, :description, :price, :type, :lon,
-                                  :lat, address: [:country,
+                                  :lat, address_attributes: [:country,
                                                   :state_region,
                                                   :city,
                                                   :details],
-                                        picture: [:image_cache, { image: [] }])
+                                        pictures_attributes: [{ image: [] }])
   end
 end
