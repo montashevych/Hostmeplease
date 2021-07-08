@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $text-color: #FFF;
+$error-color: #f40000;
 
 @mixin field_properties {
   background-color: #ECECEC;
@@ -783,12 +784,17 @@ $btn-color: #91CB82;
           font-size: 10px;
           font-family: 'Noto Sans';
           font-weight: normal;
-          color: #a63636;
+          color: $error-color;
+          z-index: 2;
         }
 
         .field_with_errors {
           border: 1px solid red;
           border-radius: 14px;
+        }
+
+        .has-errors {
+          border: 1px solid red;
         }
       }
 
@@ -888,21 +894,21 @@ $btn-color: #91CB82;
           margin-top: 3px;
         }
 
-        #place_address_details, #accommodation_address_details {
+        #place_address_attributes_details {
           @include field_properties;
           padding: 2% 5%;
           height: 47px;
         }
 
-        #place_address_city {
+        #place_address_attributes_city {
           @include field_properties;
         }
 
-        #place_address_state_region {
+        #place_address_attributes_state_region {
           @include field_properties;
         }
 
-        #place_address_country {
+        #place_address_attributes_country {
           @include field_properties;
           height: 50px;
           padding: 2% 5%;
@@ -972,10 +978,6 @@ $btn-color: #91CB82;
                 .error-message {
                   top: 13%;
                 }
-
-                .image-has-errors {
-                  border: 1px solid red;
-                }
               }
             }
             img {
@@ -985,7 +987,7 @@ $btn-color: #91CB82;
               border-radius: 13px;
             }
 
-            #place_picture_label {
+            #place_pictures_label {
               display: flex;
               background-color: #D8D8D8;
               width: -moz-available;
@@ -1037,9 +1039,16 @@ $btn-color: #91CB82;
         }
       }
 
-      #map {
-        height: 286px;
-        border-radius: 13px;
+      #map-column {
+        #map {
+          height: 286px;
+          border-radius: 13px;
+          z-index: 1;
+        }
+
+        .error-message {
+          top: 14%;
+        }
       }
     }
   }
