@@ -11,7 +11,7 @@ class Place < ApplicationRecord
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
 
-  belongs_to :user, optional: true
+  belongs_to :user
   has_one :address, dependent: :destroy
   has_many :pictures, as: :imageable, dependent: :destroy
 
