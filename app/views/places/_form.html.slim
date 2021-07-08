@@ -1,4 +1,4 @@
-= form_for :place, url: places_path do |f|
+= form_for :place, html: {multipart: :true}, url: places_path do |f|
     .row.justify-content-center.form-row
       .col-xl-4
         .blur
@@ -34,7 +34,7 @@
       .col-xl-3
         .blur
           .col-lg-12
-            = render 'picture_form', f: f
+            = render 'pictures_form', f: f
       .row.button-row
         .col-xl-4
           .col-md-12.button-col
