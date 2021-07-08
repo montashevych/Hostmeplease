@@ -1,0 +1,10 @@
+= f.fields_for :pictures_attributes do |i|
+  .row
+    #image-column.col-md-12
+  .row.mb-2
+    #fileInputColumn.col-md-12
+      - if @place.pictures[0].errors[:image]
+        = i.label '+', for: 'place_pictures_attributes_image', id: 'place_pictures_label'
+        = i.file_field :image, hidden: '', multiple: true, name: "pictures_attributes[image][]"
+        / = i.hidden_field :image_cache
+      p#image-error.error-message = @place.pictures[0].errors[:image].first
