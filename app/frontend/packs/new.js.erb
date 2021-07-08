@@ -13,14 +13,16 @@ let country = '';
 let marker;
 
 // Get address fields
-let country_field = document.getElementById('place_address_country');
-let state_region_field = document.getElementById('place_address_state_region');
-let city_field = document.getElementById('place_address_city');
-let street_field = document.getElementById('place_address_details');
-let number_street_field = document.getElementById('place_address_details');
+let country_field = document.getElementById('place_address_attributes_country');
+let state_region_field = document.getElementById('place_address_attributes_state_region');
+let city_field = document.getElementById('place_address_attributes_city');
+let street_field = document.getElementById('place_address_attributes_details');
+let number_street_field = document.getElementById('place_address_attributes_details');
 //Get container with errors
 let image_errors = document.getElementById('image-error');
-let picture_label = document.getElementById('place_picture_label');
+let picture_label = document.getElementById('place_pictures_label');
+let map_container = document.getElementById('map');
+let map_text_error = document.getElementById('map-error');
 // Marker add and delete function
 function markerAdd(lat, lng) {
   if (marker) marker.remove();
@@ -36,9 +38,9 @@ function markerAdd(lat, lng) {
     document.getElementById('place_lat').value = '';
 
     // Clearing address's fields
-    document.getElementById('place_address_state_region').value = '';
-    document.getElementById('place_address_city').value = '';
-    document.getElementById('place_address_details').value = '';
+    document.getElementById('place_address_attributes_state_region').value = '';
+    document.getElementById('place_address_attributes_city').value = '';
+    document.getElementById('place_address_attributes_details').value = '';
   });
 };
 
@@ -52,7 +54,7 @@ L.Icon.Default.mergeOptions({                   //* Resolved bug
 });                                             //**************************
 
 if (image_errors.textContent.length > 0) {
-  picture_label.className = 'image-has-errors';
+  picture_label.className = 'has-errors';
 } else {
   picture_label.className = '';
 }
@@ -155,23 +157,33 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
 
   // Geocoding by address from fields
   geocoder.geocode(address_string, function ( err, data ) {
-     let { lat, lng } = data.results[0].geometry.location;
+    if (data.results[0]) {
+      let { lat, lng } = data.results[0].geometry.location;
 
-    // Fill in latitude and longitude fields
-    document.getElementById('place_lon').value = lng;
-    document.getElementById('place_lat').value = lat;
+      // Fill in latitude and longitude fields
+      document.getElementById('place_lon').value = lng;
+      document.getElementById('place_lat').value = lat;
 
-    // Moving to selected address
-    map.flyTo([lat, lng], zoom);
-    if (street_field.value.length != 0 && street_field.value != ' ' && number_street_field.value.includes(',')) {
-      markerAdd(lat, lng);
-    };
+      if (map_container.classList.contains('has-errors')) {
+        map_container.classList.remove('has-errors');
+        map_text_error.textContent = '';
+      }
+
+      // Moving to selected address
+      map.flyTo([lat, lng], zoom);
+      if (street_field.value.length != 0 && street_field.value != ' ' && number_street_field.value.includes(',')) {
+        markerAdd(lat, lng);
+      };
+    } else {
+      map_container.classList.add('has-errors');
+      map_text_error.textContent = 'Address Not Found';
+    }
   }, { key: api_geocode_key });         //api key
 });
 
 // Preview and deleting images befor upload
-document.getElementById('place_picture_image').addEventListener('change', (event) => {
-  let inputImage = document.getElementById('place_picture_image');
+document.getElementById('place_pictures_attributes_image').addEventListener('change', (event) => {
+  let inputImage = document.getElementById('place_pictures_attributes_image');
   let files = Array.from(event.target.files);
   let position = 0;
   let fileList = inputImage.files;
