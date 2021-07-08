@@ -1,29 +1,30 @@
-= f.fields_for @address do |a|
+= f.fields_for :address_attributes do |a|
   .mb-2.row
     .col-md-12
       p = a.label 'Country'
       = a.country_select :country, priority_countries: ['UA', 'RU', 'BY', 'GB']
   .mb-2.row
     .col-md-12
-      - if @address.errors[:state_region]
+      - if @place.address.errors[:state_region]
         p = a.label 'State / Region'
         = a.text_field :state_region, placeholder: 'Your state or region..', alt: 'State or region'
-      p.error-message = @address.errors[:state_region].first
+      p.error-message = @place.address.errors[:state_region].first
   .mb-2.row
     .col-md-12
-      - if @address.errors[:city]
+      - if @place.address.errors[:city]
         p = a.label 'City'
         = a.text_field :city, placeholder: 'City..', alt: 'city'
-      p.error-message = @address.errors[:city].first
+      p.error-message = @place.address.errors[:city].first
   .mb-2.row
     .col-md-12
-      - if @address.errors[:details]
+      - if @place.address.errors[:details]
         p = a.label 'Address'
         = a.text_field :details, placeholder: 'Like street, number of house..', alt: 'Address'
-      p.error-message = @address.errors[:details].first
+      p.error-message = @place.address.errors[:details].first
   .mb-2.row
-    .col-md-12
+    #map-column.col-md-12
       = f.hidden_field :lon
       = f.hidden_field :lat
       p Or select on map:
       #map
+      p#map-error.error-message
