@@ -15,8 +15,7 @@ module UsersHelper
     end
   end
 
-  def display_error(name)
-    user = @user
+  def display_error(name, user)
     user.errors[name].present? ? user.errors[name].first.to_s : nil
   end
 
