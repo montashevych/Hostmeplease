@@ -15,7 +15,7 @@ RSpec.describe Place, type: :model do
     let(:test_place) { FactoryBot.create(:place, user: test_user) }
 
     it 'does not allow a title longer than 50 characters' do
-      test_place.title = 'q' * 24
+      test_place.title = 'q' * 51
       expect(test_place).not_to be_valid
     end
 

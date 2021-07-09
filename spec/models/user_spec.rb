@@ -4,7 +4,10 @@ RSpec.describe User do
   context 'when valid' do
     let(:test_user) { FactoryBot.build(:user, role: 'owner') }
     let(:user_from_google) {
-      described_class.from_google(email: 'test@mail.com', params: { password: 'a' * 6, first_name: 'a' * 2 })
+      described_class.from_google(email: 'test_one@gmail.com', params: {  password: 'a' * 6,
+                                                                          first_name: 'a' * 2,
+                                                                          last_name: 'a' * 2,
+                                                                          phone_number: '1' * 8 })
     }
 
     it 'creates an user with owner role' do
@@ -78,6 +81,20 @@ RSpec.describe User do
 
     it 'creates an default user with indication password' do
       test_user.password = 'a' * 5
+      expect(test_user).not_to be_valid
+    end
+  end
+
+  context 'when not valid phone_number' do
+    let(:test_user) { FactoryBot.build(:user) }
+
+    it 'creates an  user with short phone_number' do
+      test_user.phone_number = '1' * 7
+      expect(test_user).not_to be_valid
+    end
+
+    it 'creates an user with long phone_number' do
+      test_user.phone_number = '1' * 18
       expect(test_user).not_to be_valid
     end
   end
