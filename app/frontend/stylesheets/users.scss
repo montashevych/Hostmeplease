@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $text-color: #FFFFFF;
 $link-color: #f8f9fa;
+$error-color: #bd0517;
 
 // Styles for main container page
 .main-screen {
@@ -110,6 +111,9 @@ $link-color: #f8f9fa;
     border-radius: 20px;
     font-weight: 700;
     margin-top: 12rem;
+    @media screen and (max-width: 570px) {
+      margin-top: 3rem;
+    }
     .card-body{
       padding: 0;
 
@@ -133,6 +137,7 @@ $link-color: #f8f9fa;
 
         div label {
           width: 100%;
+          color: white;
           @media screen and (max-width: 570px) {
             width: 100%;
           }
@@ -141,15 +146,29 @@ $link-color: #f8f9fa;
           width: 100%;
           color: black;
           font-weight: 500;
-        .phone_numbers {
-
-        }
-          @media screen and (max-width: 57px) {
-            margin-left: 5%;
+          padding-left: 12%;
+          @media screen and (max-width: 990px) {
+            padding-left: 17%;
             &:last-child {
               margin: 0;
             }
           }
+        }
+        .show_input {
+          width: 100%;
+          background-color: #464e4f;
+          color: white;
+          font-weight: 500;
+          padding-left: 12%;
+          @media (min-width: 570px) and (max-width: 990px) {
+            padding-left: 16%;
+          }
+        }
+        .error-message {
+          font-size: 1em;
+          font-family: 'Montserrat';
+          font-weight: normal;
+          color: $error-color;
         }
       }
       .about {
@@ -163,7 +182,13 @@ $link-color: #f8f9fa;
       margin-bottom: 0;
     }
 
-    .gravatar { border-radius: 100%; margin-bottom: 12px; }
+    .gravatar {
+      border-radius: 100%;
+      margin-bottom: 12px;
+      @media screen and (max-width: 770px){
+        width: 80px;
+      }
+    }
 
     .col-gravatar { text-align: center; }
 
