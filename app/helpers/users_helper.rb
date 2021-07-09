@@ -15,6 +15,11 @@ module UsersHelper
     end
   end
 
+  def display_error(name)
+    user = @user
+    user.errors[name].present? ? user.errors[name].first.to_s : nil
+  end
+
   private
 
   GOOGLE_AVATAR_STORAGE_REGEX = %r{https://lh\d\.googleusercontent\.com.+}
