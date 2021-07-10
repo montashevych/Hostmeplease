@@ -9,7 +9,7 @@
   
   = render @booking
 
-  = link_to "Print Receipt", booking_receipt_url(id: @booking.id), class: "btn btn-success px-2 me-2"
+  = link_to "Print Receipt", booking_receipt_url(id: @booking.id, format: :pdf), class: "btn btn-success px-2 me-2"
   = link_to "Confirm", booking_save_url(id: @booking.id), class: "btn btn-success px-2 ms-2"
 
 = render 'shared/footer'
