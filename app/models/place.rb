@@ -7,13 +7,15 @@ class Place < ApplicationRecord
   validates :price, presence: true
   validates :lon, presence: true
   validates :lat, presence: true
+  validates :address, presence: true
+  validates :pictures_attributes, presence: true
 
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
 
   belongs_to :user
   has_one :address, dependent: :destroy
-  has_many :pictures, as: :imageable, dependent: :destroy
+  has_many :pictures, as: :imageable, dependent: :destroy, inverse_of: :imageable
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :pictures

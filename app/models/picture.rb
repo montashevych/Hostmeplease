@@ -1,8 +1,7 @@
 class Picture < ApplicationRecord
   mount_uploader :image, ImageUploader
 
-  validates :image, file_size: { less_than: 1.megabytes }
-  validates :image, presence: true
+  validates :image, presence: true, file_size: { less_than: 1.megabytes }
 
-  belongs_to :imageable, polymorphic: true
+  belongs_to :imageable, polymorphic: true, inverse_of: :pictures
 end

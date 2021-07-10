@@ -4,5 +4,5 @@ class Address < ApplicationRecord
   validates :state_region, presence: true
   validates :details, presence: true
 
-  belongs_to :places, optional: true
+  belongs_to :place
 end
