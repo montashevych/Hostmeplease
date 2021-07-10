@@ -9,28 +9,28 @@ RSpec.describe Address, type: :model do
     expect(test_address).to be_valid
   end
 
-  context 'when not valid address' do
-    it 'returns a country presence error' do
+  context 'without presence not valid' do
+    it 'a country' do
       test_address.country = ''
       expect(test_address).not_to be_valid
     end
 
-    it 'returns a city presence error' do
+    it 'a city' do
       test_address.city = ''
       expect(test_address).not_to be_valid
     end
 
-    it 'returns a state_region presence error' do
+    it 'a state_region' do
       test_address.state_region = ''
       expect(test_address).not_to be_valid
     end
 
-    it 'returns a details presence error' do
+    it 'a details' do
       test_address.details = ''
       expect(test_address).not_to be_valid
     end
 
-    it 'returns a place presence error' do
+    it 'a place reference' do
       test_address.place = nil
       expect(test_address).not_to be_valid
     end
