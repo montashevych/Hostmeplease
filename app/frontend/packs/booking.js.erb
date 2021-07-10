@@ -1,13 +1,15 @@
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
 import normalizeUrl from "normalize-url";
 
-import 'leaflet/dist/leaflet.css';
+import onload from "../js/onload.js";
 
 const jsonBookingsUrl = normalizeUrl(
   window.location.toString().replaceAll('/confirm', '') + // remove /confirm if it is there
   '.json'); // /bookings/ID.json, to get the place
 
-new Promise((resolve, reject) => document.addEventListener("turbolinks:load", () => resolve())) // wait for load
+onload()
   .then(() => fetch(jsonBookingsUrl)) // retrieve bookings
   .then(resp => resp.json())
   .then(({ place }) => {
