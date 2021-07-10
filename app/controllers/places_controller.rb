@@ -19,18 +19,17 @@ class PlacesController < ApplicationController
 
   def create
     place_build
+
     if @place.save
-      params[:pictures_attributes]['image'].each do |a|
-
-          @image_attachment = @place.pictures.create!(:image => a)
-
+      place_params[:pictures_attributes][:image].each do |a|
+        @pictures = @place.pictures.create!(image: a)
       end
-
       flash[:notice] = 'Place created'
       redirect_to place_path(@place)
     else
       flash[:error] = 'Incorrect data entry'
       render :new
+      # binding.pry
     end
   end
 
@@ -51,7 +50,7 @@ class PlacesController < ApplicationController
   end
 
   def place_build
-    @place = current_user.places.build(place_params)
+    @place = current_user.places.build(place_params.except(:pictures_attributes))
   end
 
   def place_params
@@ -60,6 +59,6 @@ class PlacesController < ApplicationController
                                                   :state_region,
                                                   :city,
                                                   :details],
-                                        pictures_attributes: [{ image: [] }])
+                                        pictures_attributes: [image: []])
   end
 end
