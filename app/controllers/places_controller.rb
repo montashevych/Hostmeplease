@@ -26,7 +26,6 @@ class PlacesController < ApplicationController
     else
       flash[:error] = 'Incorrect data entry'
       render :new
-      binding.pry
     end
   end
 
