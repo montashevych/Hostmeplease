@@ -29,7 +29,7 @@ class PlacesController < ApplicationController
     else
       flash[:error] = 'Incorrect data entry'
       render :new
-      # binding.pry
+      binding.pry
     end
   end
 
@@ -50,7 +50,7 @@ class PlacesController < ApplicationController
   end
 
   def place_build
-    @place = current_user.places.build(place_params.except(:pictures_attributes))
+    @place = current_user.places.build(place_params)
   end
 
   def place_params

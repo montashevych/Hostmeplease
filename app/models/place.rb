@@ -8,7 +8,7 @@ class Place < ApplicationRecord
   validates :lon, presence: true
   validates :lat, presence: true
   validates :address, presence: true
-  validates :pictures_attributes, presence: true
+  validates :pictures, length: { minimum: 1 }
 
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
