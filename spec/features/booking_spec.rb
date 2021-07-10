@@ -30,10 +30,10 @@ RSpec.describe 'Bookings', type: :feature do
       end
 
       it 'redirects after success' do
-        find(:id, 'booking_checkin', visible: false).set(DateTime.now.strftime('%Y-%m-%d'))
+        find(:id, 'booking_checkin', visible: :hidden).set(DateTime.now.strftime('%Y-%m-%d'))
         # set checkin date in a hidden field
 
-        find(:id, 'booking_checkout', visible: false).set((DateTime.now + 10.days).strftime('%Y-%m-%d'))
+        find(:id, 'booking_checkout', visible: :hidden).set((DateTime.now + 10.days).strftime('%Y-%m-%d'))
         # set checkout date
 
         click_button 'Quick book'
@@ -90,7 +90,7 @@ RSpec.describe 'Bookings', type: :feature do
       end
 
       it 'shows link for My Bookings page' do
-        expect(page).to have_link('My Bookings', visible: false) # not visible by default
+        expect(page).to have_link('My Bookings', visible: :hidden) # not visible by default
       end
     end
 
@@ -126,6 +126,7 @@ RSpec.describe 'Bookings', type: :feature do
         create :booking, user: test_user, place: test_place, checkin: DateTime.now + 12.months,
                          checkout: DateTime.now + 20.months
       }
+
       before do
         visit booking_path(test_booking)
       end
