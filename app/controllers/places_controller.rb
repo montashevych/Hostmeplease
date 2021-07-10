@@ -21,9 +21,6 @@ class PlacesController < ApplicationController
     place_build
 
     if @place.save
-      place_params[:pictures_attributes][:image].each do |a|
-        @pictures = @place.pictures.create!(image: a)
-      end
       flash[:notice] = 'Place created'
       redirect_to place_path(@place)
     else
@@ -59,6 +56,6 @@ class PlacesController < ApplicationController
                                                   :state_region,
                                                   :city,
                                                   :details],
-                                        pictures_attributes: [image: []])
+                                        pictures_attributes: [:image])
   end
 end
