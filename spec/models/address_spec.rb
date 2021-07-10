@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Address, type: :model do
   let(:test_user) { FactoryBot.build(:user) }
-  let(:test_place) { FactoryBot.create(:place, user: test_user) }
-  let(:test_address) { FactoryBot.build(:address, place: test_place) }
+  let(:test_address) { FactoryBot.build(:address) }
+  let(:test_picture) { FactoryBot.build(:picture) }
+  let(:test_place) { FactoryBot.create(:place, user: test_user, address: test_address, pictures: [test_picture]) }
 
-  it 'is valid with valid attributes' do
-    expect(test_address).to be_valid
+  context 'with valid' do
+    it 'attributes' do
+      test_address.place = test_place
+      expect(test_address).to be_valid
+    end
   end
 
   context 'without presence not valid' do

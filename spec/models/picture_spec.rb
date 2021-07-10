@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Picture, type: :model do
   let!(:test_user) { FactoryBot.create(:user) }
-  let!(:test_place) { FactoryBot.create(:place, user: test_user) }
-  let!(:test_picture) { FactoryBot.build(:picture, imageable: test_place) }
+  let!(:test_picture) { FactoryBot.build(:picture) }
+  let(:test_address) { FactoryBot.build(:address) }
+  let!(:test_place) { FactoryBot.create(:place, user: test_user, pictures: [test_picture], address: test_address) }
 
   before do
     test_picture.save!
