@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Place, type: :model do
   let(:test_user) { FactoryBot.build(:user) }
-  let(:test_place) { FactoryBot.create(:place, user: test_user) }
+  let(:test_address) { FactoryBot.build(:address) }
+  let(:test_picture) { FactoryBot.build(:picture) }
+  let(:test_place) { FactoryBot.create(:place, user: test_user,
+                                        address: test_address,
+                                        pictures: [test_picture]) }
 
   context 'when  valid' do
     it 'is valid with valid attributes' do
@@ -40,6 +44,11 @@ RSpec.describe Place, type: :model do
 
     it 'to address not valid' do
       test_place.address = nil
+      expect(test_place).not_to be_valid
+    end
+
+    it 'to pictures not valid' do
+      test_place.pictures.delete_all
       expect(test_place).not_to be_valid
     end
   end
