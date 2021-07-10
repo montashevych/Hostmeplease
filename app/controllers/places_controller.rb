@@ -52,9 +52,9 @@ class PlacesController < ApplicationController
   def place_params
     params.require(:place).permit(:title, :description, :price, :type, :lon,
                                   :lat, address_attributes: [:country,
-                                                  :state_region,
-                                                  :city,
-                                                  :details],
+                                                             :state_region,
+                                                             :city,
+                                                             :details],
                                         pictures_attributes: [:image])
   end
 end

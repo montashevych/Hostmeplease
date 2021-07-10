@@ -4,7 +4,11 @@ RSpec.describe Picture, type: :model do
   let!(:test_user) { FactoryBot.create(:user) }
   let!(:test_picture) { FactoryBot.build(:picture) }
   let(:test_address) { FactoryBot.build(:address) }
-  let!(:test_place) { FactoryBot.create(:place, user: test_user, pictures: [test_picture], address: test_address) }
+  let!(:test_place) {
+    FactoryBot.create(:place, user: test_user,
+                              pictures: [test_picture],
+                              address: test_address)
+  }
 
   before do
     test_picture.save!
@@ -35,8 +39,13 @@ RSpec.describe Picture, type: :model do
       expect(test_picture).not_to be_valid
     end
 
-    it 'to place reference' do
+    it 'to imageable' do
       test_picture.imageable = nil
+      expect(test_picture).not_to be_valid
+    end
+
+    it 'to place reference' do
+      test_place.destroy
       expect(test_picture).not_to be_valid
     end
   end

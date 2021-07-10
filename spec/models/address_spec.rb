@@ -4,7 +4,11 @@ RSpec.describe Address, type: :model do
   let(:test_user) { FactoryBot.build(:user) }
   let(:test_address) { FactoryBot.build(:address) }
   let(:test_picture) { FactoryBot.build(:picture) }
-  let(:test_place) { FactoryBot.create(:place, user: test_user, address: test_address, pictures: [test_picture]) }
+  let(:test_place) {
+    FactoryBot.create(:place, user: test_user,
+                              address: test_address,
+                              pictures: [test_picture])
+  }
 
   context 'with valid' do
     it 'attributes' do

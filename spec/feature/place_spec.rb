@@ -101,10 +101,14 @@ RSpec.describe 'Showing', type: :feature do
         fill_in 'place_title', with: 'q' * 9
         fill_in 'place_description', with: 'q' * 30
         fill_in 'place_price', with: 100
-        fill_in 'place_address_attributes_state_region', with: Faker::Address.state
+        fill_in 'place_address_attributes_state_region',
+                with: Faker::Address.state
         fill_in 'place_address_attributes_city', with: Faker::Address.city
-        fill_in 'place_address_attributes_details', with: "#{Faker::Address.street_name}, 1"
-        page.attach_file('place[pictures_attributes][][image]', Rails.root.join('spec/factories/test.png'), visible: false)
+        fill_in 'place_address_attributes_details',
+                with: "#{Faker::Address.street_name}, 1"
+        page.attach_file('place[pictures_attributes][][image]',
+                         Rails.root.join('spec/factories/test.png'),
+                         visible: false)
         click_button 'Save'
         expect(page.text).to have_content('Place created')
       end
@@ -114,10 +118,14 @@ RSpec.describe 'Showing', type: :feature do
         fill_in 'place_title', with: 'q'
         fill_in 'place_description', with: 'q' * 30
         fill_in 'place_price', with: 100
-        fill_in 'place_address_attributes_state_region', with: Faker::Address.state
+        fill_in 'place_address_attributes_state_region',
+                with: Faker::Address.state
         fill_in 'place_address_attributes_city', with: Faker::Address.city
-        fill_in 'place_address_attributes_details', with: "#{Faker::Address.street_name}, 1"
-        page.attach_file('place[pictures_attributes][][image]', Rails.root.join('spec/factories/test.png'), visible: false)
+        fill_in 'place_address_attributes_details',
+                with: "#{Faker::Address.street_name}, 1"
+        page.attach_file('place[pictures_attributes][][image]',
+                         Rails.root.join('spec/factories/test.png'),
+                         visible: false)
         click_button 'Save'
         expect(page.text).to have_content('Incorrect data entry')
       end
@@ -182,10 +190,14 @@ RSpec.describe 'Showing', type: :feature do
         fill_in 'place_title', with: 'q' * 9
         fill_in 'place_description', with: 'q' * 30
         fill_in 'place_price', with: 100
-        fill_in 'place_address_attributes_state_region', with: Faker::Address.state
+        fill_in 'place_address_attributes_state_region',
+                with: Faker::Address.state
         fill_in 'place_address_attributes_city', with: Faker::Address.city
-        fill_in 'place_address_attributes_details', with: "#{Faker::Address.street_name}, 1"
-        page.attach_file('place[pictures_attributes][][image]', Rails.root.join('spec/factories/test.png'), visible: false)
+        fill_in 'place_address_attributes_details',
+                with: "#{Faker::Address.street_name}, 1"
+        page.attach_file('place[pictures_attributes][][image]',
+                         Rails.root.join('spec/factories/test.png'),
+                         visible: false)
         click_button 'Save'
         have_current_path eq(my_places_path)
       end

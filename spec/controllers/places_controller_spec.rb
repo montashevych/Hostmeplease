@@ -5,9 +5,11 @@ RSpec.describe PlacesController do
     let(:test_user) { FactoryBot.create(:user, :confirmed) }
     let!(:test_address) { FactoryBot.build(:address) }
     let!(:test_picture) { FactoryBot.build(:picture) }
-    let(:test_place) {FactoryBot.create(:place, user: test_user,
-                                        address: test_address,
-                                        pictures: test_picture)}
+    let(:test_place) {
+      FactoryBot.create(:place, user: test_user,
+                                address: test_address,
+                                pictures: test_picture)
+    }
 
     after do
       test_picture.destroy
