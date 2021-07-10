@@ -1,12 +1,19 @@
 import L from 'leaflet';
-import normalizeUrl from "normalize-url";
-
 import 'leaflet/dist/leaflet.css';
 
-const url = normalizeUrl(window.location.toString() + '.json');
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.css';
 
-new Promise((resolve, reject) => document.addEventListener("turbolinks:load", () => resolve())) // wait for onload
-  .then(() => fetch(url)) // retrieve bookings
+import normalizeUrl from "normalize-url";
+
+import onload from "../js/onload.js";
+
+
+const url = normalizeUrl(window.location.toString()) + '.json';
+const bookingsUrl = normalizeUrl(window.location.toString()) + '/bookings.json';
+
+onload() // wait for onload
+  .then(() => fetch(url)) // retrieve place
   .then(resp => resp.json())
   .then(({ lat, lon }) => {
     let map = L.map('map')
@@ -20,4 +27,29 @@ new Promise((resolve, reject) => document.addEventListener("turbolinks:load", ()
       zoomOffset: -1,
       accessToken: '<%= ENV["MAPBOX_API_KEY"] %>'
     }).addTo(map);
+  })
+
+onload()
+  .then(() => fetch(bookingsUrl))
+  .then(resp => resp.json())
+  .then(bookings => {
+    // list of disabled ranges for picker
+    const disabled = bookings.map(({ checkin, checkout }) => ({ from: new Date(checkin), to: new Date(checkout) }));
+
+    const textInput = document.querySelector("#booking_dates");
+    const checkin   = document.querySelector("#booking_checkin");
+    const checkout  = document.querySelector("#booking_checkout");
+
+    const picker = flatpickr(textInput, {
+      mode: "range",
+      disable: disabled,
+      minDate: "today"
+    });
+
+    picker.config.onChange.push(([checkinDate, checkoutDate]) => {
+      if (!checkoutDate) return; // when only start selected, checkoutDate == undefined
+
+      checkin.value = flatpickr.formatDate(checkinDate, "Y-m-d");
+      checkout.value = flatpickr.formatDate(checkoutDate, "Y-m-d");
+    })
   })
