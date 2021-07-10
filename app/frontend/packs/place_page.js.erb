@@ -3,16 +3,14 @@ import normalizeUrl from "normalize-url";
 
 import 'leaflet/dist/leaflet.css';
 
-const jsonBookingsUrl = normalizeUrl(
-  window.location.toString().replaceAll('/confirm', '') + // remove /confirm if it is there
-  '.json'); // /bookings/ID.json, to get the place
+const url = normalizeUrl(window.location.toString() + '.json');
 
-new Promise((resolve, reject) => document.addEventListener("turbolinks:load", () => resolve())) // wait for load
-  .then(() => fetch(jsonBookingsUrl)) // retrieve bookings
+new Promise((resolve, reject) => document.addEventListener("turbolinks:load", () => resolve())) // wait for onload
+  .then(() => fetch(url)) // retrieve bookings
   .then(resp => resp.json())
-  .then(({ place }) => {
+  .then(({ lat, lon }) => {
     let map = L.map('map')
-      .setView([place.lat, place.lon], 18);
+      .setView([lat, lon], 18);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?' +
                 'access_token={accessToken}', {
