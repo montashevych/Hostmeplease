@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe PlacesHelper do
-  include PlacesHelper
+  include described_class
 
   let(:test_user) { create(:user, :confirmed) }
   let!(:test_address) { build(:address) }
   let!(:test_picture) { build(:picture) }
   let(:test_place) {
     create(:place, user: test_user,
-                              address: test_address,
-                              pictures: test_picture)
+                   address: test_address,
+                   pictures: test_picture)
   }
 
   it 'returns valid full address' do
