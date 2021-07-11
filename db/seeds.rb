@@ -21,6 +21,14 @@ user.save!
   active = Faker::Boolean.boolean
   country = Faker::Address.country
   city = Faker::Address.city
+  address = Address.new(country: Faker::Address.country,
+                      city: Faker::Address.city,
+                      state_region: Faker::Address.state,
+                      details: Faker::Address.street_address)
+  picture = Picture.new(image: Rack::Test::UploadedFile.new(
+                      File.open(Rails.root.join('spec/factories/test.png')),
+                      'image/png',
+                    ))
   place = user.places.create!(title: title,
                 description: description,
                 price: price.round(2),
@@ -28,13 +36,8 @@ user.save!
                 type: (n % 2) == 0 ? 'Accommodation' : 'Workspace',
                 status: (n % 2) == 0 ? :created : :approved,
                 lon: "#{n}.6191034",
-                lat: 26.2605438)
-  place.create_address!(country: Faker::Address.country,
-                         city: Faker::Address.city,
-                         state_region: Faker::Address.state,
-                         details: Faker::Address.street_address)
-  place.pictures.create!(image: [Rack::Test::UploadedFile.new(
-                      File.open(Rails.root.join('spec/factories/test.png')),
-                      'image/png',
-                    )])
+                lat: 26.2605438,
+                address: address,
+                pictures: [picture]
+              )
 end
