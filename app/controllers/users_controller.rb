@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   def show; end
 
   def edit
+    
     @form = UserRegistrationForm.new
+
   end
 
   def update

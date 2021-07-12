@@ -16,7 +16,6 @@ class UserRegistrationForm
 
   def submit
     return false if invalid?
-
     # send acknowledgement reply, and admin notification emails, etc
     true
   end
