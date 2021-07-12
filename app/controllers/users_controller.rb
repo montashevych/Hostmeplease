@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   def show; end
 
   def edit
-    @form = UserForm.new
+    @form = UserForm.new(user: @user)
   end
 
   def update
-    - binding.pry
-    @form = UserForm.build(user_params)
-    if @form.submit
+    @form = UserForm.new(user: current_user, **user_params)
+    @form.submit
+    if @form.success
       redirect_to @user
     else
       render :edit
@@ -34,7 +34,6 @@ class UsersController < ApplicationController
                                       :role,
                                       :email,
                                       :phone_number,
-                                      :password,
-                                      :password_confirmation)
+                                      )
   end
 end
