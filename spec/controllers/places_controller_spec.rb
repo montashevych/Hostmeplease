@@ -33,12 +33,17 @@ RSpec.describe PlacesController do
 
     it 'index' do
       get :index
-      expect(response).to render_template 'places/index'
+      expect(response).to render_template 'index'
+    end
+
+    it 'show' do
+      get :show, params: { id: test_place.id }
+      expect(response).to render_template 'show'
     end
 
     it 'new' do
       get :new
-      expect(response).to render_template 'places/new'
+      expect(response).to render_template 'new'
     end
 
     it 'create' do
@@ -66,7 +71,7 @@ RSpec.describe PlacesController do
     end
   end
 
-  context 'when created place' do
+  context 'with created place' do
     it 'have page type' do
       post :create, params: { place: test_place.attributes,
                               address_attributes: test_address.attributes,
