@@ -13,8 +13,6 @@ class User < ApplicationRecord
                     format: { with: email_regexp },
                     uniqueness: { case_sensitive: false }
 
-  private
-
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)
   end
