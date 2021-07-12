@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def update
     - binding.pry
-    @form = UserForm.update(user_params)
+    @form = UserForm.build(user_params)
     if @form.submit
       redirect_to @user
     else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name,
+    params.require(:user_form).permit(:first_name,
                                       :last_name,
                                       :role,
                                       :email,
