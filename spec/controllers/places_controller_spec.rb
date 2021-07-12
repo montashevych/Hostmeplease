@@ -7,7 +7,13 @@ RSpec.describe PlacesController do
   let(:test_place) {
     FactoryBot.create(:place, user: test_user,
                               address: test_address,
-                              pictures: test_picture)
+                              pictures: [test_picture])
+  }
+  let(:file) {
+    Rack::Test::UploadedFile.new(
+                      File.open(Rails.root.join('spec/factories/test.png')),
+                      'image/png',
+                    )
   }
 
   after do
@@ -20,7 +26,7 @@ RSpec.describe PlacesController do
     end
   end
 
-  context 'when rendered template' do
+  context 'when rendered template after action' do
     before do
       sign_in test_user
     end
@@ -33,6 +39,14 @@ RSpec.describe PlacesController do
     it 'new' do
       get :new
       expect(response).to render_template 'places/new'
+    end
+
+    it 'create' do
+      parameters = test_place.attributes
+      parameters.store(:address_attributes, test_address.attributes)
+      parameters.store(:pictures_attributes, [image: file])
+      post :create, params: { place: parameters }
+      expect(response).to redirect_to(place_path(Place.last))
     end
 
     it 'my_places' do
