@@ -16,10 +16,6 @@ RSpec.describe PlacesController do
                     )
   }
 
-  after do
-    test_picture.destroy
-  end
-
   context 'when User' do
     it 'with valid attributes' do
       expect(test_user).to be_valid

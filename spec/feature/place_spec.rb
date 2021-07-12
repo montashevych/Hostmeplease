@@ -11,14 +11,10 @@ RSpec.describe 'Showing', type: :feature do
                       pictures: [test_picture]
   }
 
-  after do
-    test_picture.destroy
-    test_place.destroy
-  end
-
   describe('list of places') do
     before do
       visit places_path
+      # binding.pry
     end
 
     context 'when it has' do
