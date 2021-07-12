@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @form = UserForm.new(user: current_user, **user_params)
     @form.submit
     if @form.success
-      redirect_to @user
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit
     end

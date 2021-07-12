@@ -19,15 +19,21 @@ class UserForm
 
   def submit
     if valid?
-      user.update(
-        first_name: first_name,
-        last_name: last_name,
-        email: email,
-        phone_number: phone_number,
-      )
+      persist!
       @success = true
     else
       @success = false
     end
+  end
+
+  private
+
+  def persist!
+    user.update( {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      phone_number: phone_number,
+    })
   end
 end
