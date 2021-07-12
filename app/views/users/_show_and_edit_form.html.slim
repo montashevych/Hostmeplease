@@ -7,7 +7,7 @@ div.container.profile
       - else action_name == 'edit'
         p = link_to 'Change Photo', "https://en.gravatar.com/gravatars/new", class: 'change-avatar btn text-white montserrat'
     div.col-12.col-sm-12.col-md-8
-      = form_for @user_form, url: user_path(@user), method: :put  do |f|
+      = form_for @form, url: user_path(@user), method: :put  do |f|
         .card-body
           .row.row-name
             .col-md-1.col-sm-12.me-4.text-center.username

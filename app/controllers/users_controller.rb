@@ -8,10 +8,12 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @form = UserRegistrationForm.new
+  end
 
   def update
-    @form = UserForm.update(user_form_params)
+    @form = UserRegistrationForm.update(user_form_params)
     if @form.submit
       redirect_to @user
     else
@@ -26,9 +28,9 @@ class UsersController < ApplicationController
   end
 
   def user_form_params
-    params.require(:user_form).permit(:role,
-                                      :first_name,
+    params.require(:user_form).permit(:first_name,
                                       :last_name,
+                                      :role,
                                       :email,
                                       :phone_number,
                                       :password,
