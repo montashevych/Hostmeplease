@@ -33,7 +33,6 @@ class UsersController < ApplicationController
                                       :last_name,
                                       :role,
                                       :email,
-                                      :phone_number,
-                                      )
+                                      :phone_number)
   end
 end

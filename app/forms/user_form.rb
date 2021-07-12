@@ -17,14 +17,13 @@ class UserForm
     @phone_number ||= user.phone_number
   end
 
-
   def submit
     if valid?
       user.update(
         first_name: first_name,
         last_name: last_name,
         email: email,
-        phone_number: phone_number
+        phone_number: phone_number,
       )
       @success = true
     else
