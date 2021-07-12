@@ -65,4 +65,13 @@ RSpec.describe PlacesController do
       expect(assigns(:count_places)).to eq(test_user.places.count)
     end
   end
+
+  context 'when created place' do
+    it 'have page type' do
+      post :create, params: { place: test_place.attributes,
+                              address_attributes: test_address.attributes,
+                              pictures_attributes: test_picture.attributes }
+      expect(response.content_type) == 'text/html'
+    end
+  end
 end
