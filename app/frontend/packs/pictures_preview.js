@@ -1,57 +1,75 @@
-let itemNumber = 1;
+//*******************************************
+//*
+//* Preview and deleting images befor upload
+//*
+//*******************************************
 
-// Preview and deleting images befor upload
-document.getElementById('place_pictures_attributes_image').addEventListener('change', (event) => {
-  let inputImage = document.getElementById('place_pictures_attributes_image');
-  let selectedFiles = Array.from(event.target.files);
-  let imageNumber = 0;
+const PICTURES_INPUT = 'place_pictures_attributes_image'
+const INPUTS_COLUMN_NAME = 'fileInputColumn';
+const PICTURES_COLUMN_ID = 'image-column';
+let pictureIdNumber = 1;
 
-  selectedFiles.forEach((file) => {
-    let newimage_div = document.createElement('div');
-    let newimage = document.createElement('img');
-    let link_to_delete = document.createElement('a');
-    let clonedInput = inputImage.cloneNode();
-    let image = URL.createObjectURL(file);
-    const COLUMN_NAME = 'fileInputColumn';
+document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
+  let picturesInput = document.getElementById(PICTURES_INPUT);
+  let selectedPictures = Array.from(event.target.files);
+  // Counters
+  let pictureNumber = 0;
 
-    let newInput = (input) => {
-      let fileInputColumn = document.getElementById('fileInputColumn');
-      let fileList = inputImage.files;
+  selectedPictures.forEach((picture) => {
+    let clonedPicturesInput = picturesInput.cloneNode();
+    // Create new elements
+    let newPictureContainer = document.createElement('div');
+    let newPicture = document.createElement('img');
 
-      // set custom FileList
+    // set custom FileList
+    let getPictureFromList = (input) => {
+      let fileListOfPictures = input.files;
       let list = new DataTransfer();
-      let listItem = fileList[imageNumber++];
+      let listItem = fileListOfPictures[pictureNumber++];
 
       list.items.add(listItem);
+      return list.files
+    };
 
-      let myImage = list.files;
+    // Creating new input
+    let newInput = (input, inputsColumn) => {
+      let fileInputColumn = document.getElementById(inputsColumn);
 
-      // Creating new input
-      input.files = myImage;
-      input.id = 'place_picture_image-' + (itemNumber++);
+      input.files = getPictureFromList(picturesInput);
+      input.id = 'place_picture_image-' + (pictureIdNumber++);
       fileInputColumn.appendChild(input);
     };
 
-    newInput(clonedInput, COLUMN_NAME);
+    // Creating a button to remove picture
+    let createDeleteButton = (removeableElemet, container) => {
+      let buttonToDelete = document.createElement('a');
 
-    // Creating a link to remove image
-    link_to_delete.text = 'delete';
-    link_to_delete.className = 'delete_image';
-    link_to_delete.id = 'delete-' + clonedInput.id;
-    newimage_div.appendChild(link_to_delete);
+      buttonToDelete.text = 'delete';
+      buttonToDelete.className = 'delete_image';
+      buttonToDelete.id = 'delete-' + removeableElemet.id;
+      container.appendChild(buttonToDelete);
 
-    // Creating preview
-    newimage.src = image;
-    newimage_div.id = 'preview-' + clonedInput.id;
-    newimage_div.className = 'preview-div';
-    newimage_div.appendChild(newimage);
-    document.getElementById('image-column').appendChild(newimage_div);
+      buttonToDelete.addEventListener('click', () => {
+        document.getElementById(removeableElemet.id).outerHTML = '';
+        document.getElementById(container.id).outerHTML = '';
+      });
+    };
 
-    // Add eventListener for delete image
-    document.getElementById(link_to_delete.id).addEventListener('click', () => {
-      document.getElementById(clonedInput.id).outerHTML = '';
-      document.getElementById(newimage_div.id).outerHTML = '';
-    });
+    // Creating preview picture
+    let createPreview = (pictureElement, picturesColumnId, container, input) => {
+      let pictureURL = URL.createObjectURL(input.files[0]);
+
+      pictureElement.src = pictureURL;
+      container.id = 'preview-' + input.id;
+      container.className = 'preview-div';
+      createDeleteButton(input, container);
+      container.appendChild(pictureElement);
+      document.getElementById(picturesColumnId).appendChild(container);
+      console.log(container);
+    };
+
+    newInput(clonedPicturesInput, INPUTS_COLUMN_NAME);
+    createPreview(newPicture, PICTURES_COLUMN_ID, newPictureContainer, clonedPicturesInput);
   });
-  inputImage.value = '';
+  picturesInput.value = '';
 });
