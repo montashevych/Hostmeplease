@@ -16,6 +16,7 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
   let pictureNumber = 0;
 
   selectedPictures.forEach((picture) => {
+    // Copy original files input
     let clonedPicturesInput = picturesInput.cloneNode();
     // Create new elements
     let newPictureContainer = document.createElement('div');
@@ -24,6 +25,7 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
     // set custom FileList
     let getPictureFromList = (input) => {
       let fileListOfPictures = input.files;
+      // Transferring picture to cloned input
       let list = new DataTransfer();
       let listItem = fileListOfPictures[pictureNumber++];
 
