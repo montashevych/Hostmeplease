@@ -6,16 +6,18 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def show; end
+  def show
+    @user_form = UserForm.new(user_form: @user)
+  end
 
   def edit
-    @form = UserForm.new(user: @user)
+    @user_form = UserForm.new(user_form: @user)
   end
 
   def update
-    @form = UserForm.new(user: current_user, **user_params)
-    @form.submit
-    if @form.success
+    @user_form = UserForm.new(user_form: current_user, **user_params)
+    @user_form.submit
+    if @user_form.success
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit

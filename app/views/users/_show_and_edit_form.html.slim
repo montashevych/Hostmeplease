@@ -7,7 +7,7 @@ div.container.profile
       - else action_name == 'edit'
         p = link_to 'Change Photo', "https://en.gravatar.com/gravatars/new", class: 'change-avatar btn text-white montserrat'
     div.col-12.col-sm-12.col-md-8
-      = form_for action_name == 'show'? @user : @form, url: user_path(@user), method: :put  do |f|
+      = form_for action_name == 'show'? @user_form : @user_form, url: user_path(@user), method: :put  do |f|
         .card-body
           .row.row-name
             .col-md-1.col-sm-12.me-4.text-center.username
@@ -37,22 +37,22 @@ div.container.profile
               = f.label :first_name, 'Name:', class: 'form-label'
             .col-12.col-sm-8.col-lg-8
               = f.text_field  :first_name, class: action_name == 'show'? 'px-1 show_input form-control' : 'px-1 input_width form-control', disabled: action_name == 'show'
-              span.error-message = display_error(:first_name, @user)
+              span.error-message = display_error(:first_name, @user_form)
           .row.mb-2
             .col-12.col-sm-4.col-lg-4.mt-3
               = f.label :last_name, 'Last Name:', class: 'form-label'
             .col-12.col-sm-8.col-lg-8
               = f.text_field  :last_name, class: action_name == 'show'? 'px-1 show_input form-control' : 'px-1 input_width form-control', placeholder: 'Enter Last Name', disabled: action_name == 'show'
-              span.error-message = display_error(:last_name, @user)
+              span.error-message = display_error(:last_name, @user_form)
           .row.mb-2
             .col-12.col-sm-4.col-lg-4.mt-3
               = f.label :email, 'Email:', class: 'form-label'
             .col-12.col-sm-8.col-lg-8
               = f.email_field  :email, class: action_name == 'show'? 'px-1 show_input form-control' : 'px-1 input_width form-control', disabled: action_name == 'show'
-              span.error-message = display_error(:email, @user)
+              span.error-message = display_error(:email, @user_form)
           .row
             .col-12.col-sm-4.col-lg-4.mt-3
               =  f.label :phone_number, 'Phone:', class: 'form-label'
             .col-12.col-sm-8.col-lg-8
               =  f.telephone_field :phone_number, id: 'phone', class: action_name == 'show'? 'show_input form-control' : 'input_width form-control',type: 'tel', disabled: action_name == 'show'
-              span.error-message = display_error(:phone_number, @user)
+              span.error-message = display_error(:phone_number, @user_form)
