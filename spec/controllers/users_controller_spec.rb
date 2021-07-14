@@ -28,23 +28,24 @@ RSpec.describe UsersController do
     end
 
     context 'when User want update his data' do
-      let(:user) {FactoryBot.build( :user) }
+      let(:user) { FactoryBot.build(:user) }
 
-      it 'redirects  on user path if succesful save' do
+      before do
         user.confirm
         sign_in user
+      end
+
+      it 'redirects  on user path if succesful save' do
         put :update,
-            params: { id: user.id,user_form: { first_name: 'Maksym', last_name: 'Budko', email: 'maksym@gmail.com',
-                                   phone_number: '+380963451234' } }
+            params: { id: user.id, user_form: { first_name: 'Maksym', last_name: 'Budko', email: 'maksym@gmail.com',
+                                                phone_number: '+380963451234' } }
         expect(response).to redirect_to(user_path(id: user.id))
       end
 
       it "renders the edit screen if the model doesn't save" do
-        user.confirm
-        sign_in user
         put :update,
-            params: { id: user.id,user_form: { first_name: 'Maksym', last_name: '', email: 'maksym@gmail.com',
-                                   phone_number: '+380963451234'} }
+            params: { id: user.id, user_form: { first_name: 'Maksym', last_name: '', email: 'maksym@gmail.com',
+                                                phone_number: '+380963451234' } }
         expect(response).to render_template('edit')
       end
     end
