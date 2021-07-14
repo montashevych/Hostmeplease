@@ -7,7 +7,6 @@ import marker_shadow from 'leaflet/dist/images/marker-shadow.png'
 let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from enviropment
 
 let latlng = [0.0, 0.0];
-let number = 1;
 let zoom = 5;
 let country = '';
 let marker;
@@ -179,54 +178,4 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
       map_text_error.textContent = 'Address Not Found';
     }
   }, { key: api_geocode_key });         //api key
-});
-
-// Preview and deleting images befor upload
-document.getElementById('place_pictures_attributes_image').addEventListener('change', (event) => {
-  let inputImage = document.getElementById('place_pictures_attributes_image');
-  let files = Array.from(event.target.files);
-  let position = 0;
-  let fileList = inputImage.files;
-
-  files.forEach((file) => {
-    let fileInputColumn = document.getElementById('fileInputColumn');
-    let newimage_div = document.createElement('div');
-    let newimage = document.createElement('img');
-    let link_to_delete = document.createElement('a');
-    let cloneInput = inputImage.cloneNode();
-    let image = URL.createObjectURL(file);
-
-    // set custom FileList, all to line 60
-    let list = new DataTransfer();
-    let listItem = fileList[position++];
-
-    list.items.add(listItem);
-
-    let myImage = list.files;
-
-    // Creating new input
-    cloneInput.files = myImage;
-    cloneInput.id = 'place_picture_image-' + (number++);
-    fileInputColumn.appendChild(cloneInput);
-
-    // Creating delete link
-    link_to_delete.text = 'delete';
-    link_to_delete.className = 'delete_image';
-    link_to_delete.id = 'delete-' + cloneInput.id;
-    newimage_div.appendChild(link_to_delete);
-
-    // Creating preview
-    newimage.src = image;
-    newimage_div.id = 'preview-' + cloneInput.id;
-    newimage_div.className = 'preview-div';
-    newimage_div.appendChild(newimage);
-    document.getElementById('image-column').appendChild(newimage_div);
-
-    // Add eventListener for delete image
-    document.getElementById(link_to_delete.id).addEventListener('click', () => {
-      document.getElementById(cloneInput.id).outerHTML = '';
-      document.getElementById(newimage_div.id).outerHTML = '';
-    });
-  });
-  inputImage.value = '';
 });
