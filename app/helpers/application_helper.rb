@@ -28,4 +28,12 @@ module ApplicationHelper
     fill_in 'Password', with: test_user.password
     click_button 'Sign In'
   end
+
+  def test_edit_form
+    fill_in 'Name', with: test_user.first_name, match: :prefer_exact
+    fill_in 'Last Name', with: test_user.last_name
+    fill_in 'Email', with: test_user.email
+    fill_in 'Phone', with: test_user.phone_number
+    click_button 'Save Changes'
+  end
 end
