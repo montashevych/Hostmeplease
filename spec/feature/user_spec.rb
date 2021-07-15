@@ -31,7 +31,7 @@ RSpec.describe 'Edit Page', type: :feature do
 
     it 'Saves Changes successful' do
       test_edit_form
-      expect(page).to redirect_to(user_path(id: test_user.id))
+      expect(page).to have_current_path(user_path(id: test_user.id))
     end
   end
 end
