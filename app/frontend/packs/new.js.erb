@@ -25,10 +25,9 @@ let image_errors = document.getElementById('image-error');
 let picture_label = document.getElementById('place_pictures_label');
 let map_container = document.getElementById('map');
 let map_text_error = document.getElementById('map-error');
-let place_lon = document.getElementById('place_lon');
-let place_lat = document.getElementById('place_lat')
+
 // Marker add and delete function
-function markerAdd(lat, lng) {
+let markerAdd = (lat, lng) => {
   if (marker) marker.remove();
   marker = L.marker([lat, lng])
     .addTo(map);
@@ -38,8 +37,7 @@ function markerAdd(lat, lng) {
     marker.remove()
 
     // Clearing latitude and longitude fields
-    document.getElementById('place_lon').value = '';
-    document.getElementById('place_lat').value = '';
+    setLatLng('', '');
 
     // Clearing address's fields
     state_region_field.value = '';
@@ -47,6 +45,15 @@ function markerAdd(lat, lng) {
     street_field.value = '';
   });
 };
+
+// Fill in latitude and longitude fields
+let setLatLng = (latitude, longitude) => {
+  let place_lon = document.getElementById('place_lon');
+  let place_lat = document.getElementById('place_lat');
+
+  place_lon.value = longitude;
+  place_lat.value = latitude;
+}
 
 
 delete L.Icon.Default.prototype._getIconUrl;    //**************************
@@ -83,11 +90,10 @@ map.on('click', evt => {
   let { lat, lng } = evt.latlng;
 
   // Fill in latitude and longitude fields
-  place_lon.value = lng;
-  place_lat.value = lat;
+  setLatLng(lat, lng);
 
   // Reverse geocoding
-  geocoder.reverseGeocode(lat, lng, function ( err, data ) {
+  geocoder.reverseGeocode(lat, lng, ( err, data ) => {
     let parts = data.results[0].address_components.reverse();
     parts.forEach((part) => {
       // Fill in country field
@@ -120,11 +126,11 @@ map.on('click', evt => {
 
   localStorage.setItem('newplace-map-location', JSON.stringify([lat,lng]));
 
-  markerAdd(lat, lng)
+  markerAdd(lat, lng);
 });
 
 //When user write address in fields
-document.getElementById('address_form').addEventListener('change', () => {  // or event 'input' for geocoding in real time
+document.getElementById('address_form').addEventListener('change', () => {
   // Get full country name
   [...Array(country_field.length).keys()].forEach((i) => {
     if (country_field[i].value == country_field.value) {
@@ -160,13 +166,12 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
   };
 
   // Geocoding by address from fields
-  geocoder.geocode(address_string, function ( err, data ) {
+  geocoder.geocode(address_string, ( err, data ) => {
     if (data.results[0]) {
       let { lat, lng } = data.results[0].geometry.location;
 
       // Fill in latitude and longitude fields
-      place_lon.value = lng;
-      place_lat.value = lat;
+      setLatLng(lat, lng);
 
       if (map_container.classList.contains(PICTURE_ERRORS_CLASS)) {
         map_container.classList.remove(PICTURE_ERRORS_CLASS);
