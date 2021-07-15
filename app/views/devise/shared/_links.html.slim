@@ -1,6 +1,11 @@
 .container
   .row
     .mb-3
+      - if devise_mapping.omniauthable?
+        span Or do it with:
+        br
+          - resource_class.omniauth_providers.each do |provider|
+            = link_to '', omniauth_authorize_path(resource_name, provider), method: :post, class: 'omni-auth'
       - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
         = link_to "Forgot your password?", new_password_path(resource_name), class: "link_in_color"
         br/
@@ -10,7 +15,3 @@
       - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
         = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
         br/
-      - if devise_mapping.omniauthable?
-        - resource_class.omniauth_providers.each do |provider|
-          = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post
-          br/
