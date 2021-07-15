@@ -1,10 +1,13 @@
-import geocoder from 'geocoder'   // import geocoder library
+// import geocoder library
+import geocoder from 'geocoder'
+// import leaflet's marker-pictures
 import marker_icon_2x from 'leaflet/dist/images/marker-icon-2x.png'
 import marker_icon from 'leaflet/dist/images/marker-icon.png'
 import marker_shadow from 'leaflet/dist/images/marker-shadow.png'
 
-
-let api_geocode_key = '<%= ENV['API_GOOGLE_GEOCODE'] %>';  // Get API key from enviropment
+const PICTURE_ERRORS_CLASS = 'has-errors';
+// Get API key from enviropment
+const API_GEOCODE_KEY = '<%= ENV['API_GOOGLE_GEOCODE'] %>';
 
 let latlng = [0.0, 0.0];
 let zoom = 5;
@@ -22,6 +25,8 @@ let image_errors = document.getElementById('image-error');
 let picture_label = document.getElementById('place_pictures_label');
 let map_container = document.getElementById('map');
 let map_text_error = document.getElementById('map-error');
+let place_lon = document.getElementById('place_lon');
+let place_lat = document.getElementById('place_lat')
 // Marker add and delete function
 function markerAdd(lat, lng) {
   if (marker) marker.remove();
@@ -78,8 +83,8 @@ map.on('click', evt => {
   let { lat, lng } = evt.latlng;
 
   // Fill in latitude and longitude fields
-  document.getElementById('place_lon').value = lng;
-  document.getElementById('place_lat').value = lat;
+  place_lon.value = lng;
+  place_lat.value = lat;
 
   // Reverse geocoding
   geocoder.reverseGeocode(lat, lng, function ( err, data ) {
@@ -111,7 +116,7 @@ map.on('click', evt => {
       };
     });
 
-  }, { key: api_geocode_key });         //api key
+  }, { key: API_GEOCODE_KEY });         //api key
 
   localStorage.setItem('newplace-map-location', JSON.stringify([lat,lng]));
 
@@ -160,11 +165,11 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
       let { lat, lng } = data.results[0].geometry.location;
 
       // Fill in latitude and longitude fields
-      document.getElementById('place_lon').value = lng;
-      document.getElementById('place_lat').value = lat;
+      place_lon.value = lng;
+      place_lat.value = lat;
 
-      if (map_container.classList.contains('has-errors')) {
-        map_container.classList.remove('has-errors');
+      if (map_container.classList.contains(PICTURE_ERRORS_CLASS)) {
+        map_container.classList.remove(PICTURE_ERRORS_CLASS);
         map_text_error.textContent = '';
       }
 
@@ -174,8 +179,8 @@ document.getElementById('address_form').addEventListener('change', () => {  // o
         markerAdd(lat, lng);
       };
     } else {
-      map_container.classList.add('has-errors');
+      map_container.classList.add(PICTURE_ERRORS_CLASS);
       map_text_error.textContent = 'Address Not Found';
     }
-  }, { key: api_geocode_key });         //api key
+  }, { key: API_GEOCODE_KEY });         //api key
 });
