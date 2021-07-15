@@ -18,7 +18,7 @@ let marker;
 // Get address fields
 let fieldFor = {
   country: document.getElementById('place_address_attributes_country'),
-  state_region: document.getElementById('place_address_attributes_state_region'),
+  stateRegion: document.getElementById('place_address_attributes_state_region'),
   city: document.getElementById('place_address_attributes_city'),
   street: document.getElementById('place_address_attributes_details'),
   streetNumber: document.getElementById('place_address_attributes_details')
@@ -44,7 +44,7 @@ let markerAdd = (lat, lng) => {
     setLatLng('', '');
 
     // Clearing address's fields
-    fieldFor['state_region'].value = '';
+    fieldFor['stateRegion'].value = '';
     fieldFor['city'].value = '';
     fieldFor['street'].value = '';
   });
@@ -125,11 +125,12 @@ map.on('click', evt => {
 
       // Fill in city field
       if (part.types.includes('administrative_area_level_1')) {
-        fieldFor['state_region'].value = part.long_name;
+        fieldFor['stateRegion'].value = part.long_name;
       };
 
       // Fill in state or region field
-      if (part.types.includes('locality') || part.types.includes('administrative_area_level_2')) {
+      if (part.types.includes('locality') ||
+          part.types.includes('administrative_area_level_2')) {
         fieldFor['city'].value = part.long_name;
       };
 
@@ -162,13 +163,13 @@ document.getElementById('address_form').addEventListener('change', () => {
   });
 
   let address_string = `${ country }, ${ fieldFor['city'].value }, ` +
-                       `${ fieldFor['state_region'].value }, ` +
+                       `${ fieldFor['stateRegion'].value }, ` +
                        `${ fieldFor['street'].value }, ` +
                        `${ fieldFor['streetNumber'].value }`;
-
   zoom = 5;
   // Setting zoom value by filling fields
-  if (fieldFor['state_region'].value.length != 0 && fieldFor['street'].value != ' ') {
+  if (fieldFor['stateRegion'].value.length != 0 &&
+      fieldFor['street'].value != ' ') {
     zoom = 10;
   };
 
@@ -178,13 +179,14 @@ document.getElementById('address_form').addEventListener('change', () => {
 
   if (fieldFor['street'].value.length != 0 && fieldFor['street'].value != ' ') {
     zoom = 16;
+  };
+
+  if (fieldFor['street'].value.length != 0 &&
+      fieldFor['streetNumber'].value.includes(',')) {
+    zoom = 18;
   } else {
     // It remove marker if street field is empty
     if (marker) marker.remove();
-  };
-
-  if (fieldFor['street'].value.length != 0 && fieldFor['streetNumber'].value.includes(',')) {
-    zoom = 18;
   };
 
   // Geocoding by address from fields
@@ -202,7 +204,8 @@ document.getElementById('address_form').addEventListener('change', () => {
 
       // Moving to selected address
       map.flyTo([lat, lng], zoom);
-      if (fieldFor['street'].value.length != 0 && fieldFor['street'].value != ' ' && fieldFor['streetNumber'].value.includes(',')) {
+      if (fieldFor['street'].value.length != 0 && fieldFor['street'].value !=
+          ' ' && fieldFor['streetNumber'].value.includes(',')) {
         markerAdd(lat, lng);
       };
     } else {
