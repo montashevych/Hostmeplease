@@ -31,8 +31,8 @@ module ApplicationHelper
 
   def test_edit_form
     fill_in 'user_form[first_name]', with: test_user.first_name
-    fill_in 'Last Name', with: test_user.last_name
-    fill_in 'Email', with: test_user.email
+    fill_in 'user_form[last_name]', with: test_user.last_name
+    fill_in 'user_form[email]', with: test_user.email
     fill_in 'user_form[phone_number]', with: test_user.phone_number
     click_button 'Save Changes'
   end
