@@ -4,9 +4,9 @@
 $text-color: #FFFFFF;
 $link-color: #f8f9fa;
 
-// Styles for main container page 
+// Styles for main container page
 .main-screen {
-    background: url("../images/homepage-bg.png");
+    background: url('../images/homepage-bg.png');
     background-size: cover;
     height: Max(1080px, 100vh);
 
@@ -17,7 +17,7 @@ $link-color: #f8f9fa;
     border-radius: 20px;
     padding-top: 48px;
 
-    button { 
+    button {
       width: 80%;
       border-radius: 20px;
      }
@@ -29,6 +29,14 @@ $link-color: #f8f9fa;
 
   .signin-form, .signup-form {
     width: 40%;
+
+    .omni-auth {
+      background-image: url('../images/google_logo.png');
+      height: 25px;
+      width: 25px;
+      display: inline-block;
+      background-size: cover;
+    }
 
     @media screen and (max-width: 960px) {
       width: 100%;
@@ -99,7 +107,7 @@ $link-color: #f8f9fa;
 
       @media screen and (max-width: 960px) {
         width: 80%;
-      }    
+      }
   }
 
 //======== PROFILE ========
@@ -115,7 +123,7 @@ $link-color: #f8f9fa;
 
     font-weight: 700;
 
-    .name { 
+    .name {
       font-size: 18px;
       margin-bottom: 0;
     }
@@ -134,7 +142,7 @@ $link-color: #f8f9fa;
 
     table.about {
       width: 100%;
-      
+
       thead {
         border-bottom: 2px solid white;
         margin-bottom: 24px;
