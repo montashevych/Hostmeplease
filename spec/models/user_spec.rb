@@ -32,15 +32,15 @@ RSpec.describe User do
       expect(test_user).not_to be_valid
     end
 
-    it 'creates an default user with indication last_name' do
-      test_user.last_name = 'a'
-      expect(test_user).not_to be_valid
-    end
-
-    it 'creates an user with long last_name' do
-      test_user.last_name = 'a' * 51
-      expect(test_user).not_to be_valid
-    end
+    # it 'creates an default user with indication last_name' do
+    #   test_user.last_name = 'a'
+    #   expect(test_user).not_to be_valid
+    # end
+    #
+    # it 'creates an user with long last_name' do
+    #   test_user.last_name = 'a' * 51
+    #   expect(test_user).not_to be_valid
+    # end
 
     it 'creates an user without email' do
       test_user.email = ''
@@ -84,18 +84,18 @@ RSpec.describe User do
       expect(test_user).not_to be_valid
     end
   end
-
-  context 'when not valid phone_number' do
-    let(:test_user) { FactoryBot.build(:user) }
-
-    it 'creates an  user with short phone_number' do
-      test_user.phone_number = '1' * 7
-      expect(test_user).not_to be_valid
-    end
-
-    it 'creates an user with long phone_number' do
-      test_user.phone_number = '1' * 18
-      expect(test_user).not_to be_valid
-    end
-  end
+  #
+  # context 'when not valid phone_number' do
+  #   let(:test_user) { FactoryBot.build(:user) }
+  #
+  #   it 'creates an  user with short phone_number' do
+  #     test_user.phone_number = '1' * 7
+  #     expect(test_user).not_to be_valid
+  #   end
+  #
+  #   it 'creates an user with long phone_number' do
+  #     test_user.phone_number = '1' * 18
+  #     expect(test_user).not_to be_valid
+  #   end
+  # end
 end

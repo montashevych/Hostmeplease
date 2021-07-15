@@ -7,7 +7,7 @@ FactoryBot.define do
     sequence(:id) { |n| n }
     email       { Faker::Internet.unique.email }
     role        { 'consumer' }
-    phone_number { Faker::PhoneNumber.cell_phone_in_e164 }
+    phone_number { Faker::PhoneNumber.phone_number}
 
     trait :confirmed do
       confirmed_at { 2.minutes.ago }
