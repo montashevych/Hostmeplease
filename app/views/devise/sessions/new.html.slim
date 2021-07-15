@@ -13,12 +13,11 @@ section.main-screen
           = f.label :password, class: "form-label"
           = f.password_field :password, placeholder: 'Enter password', class: "form-control"
         - if devise_mapping.rememberable?
-          .mb-3.d-flex.justify-content-around
+          .mb-3.d-flex.justify-content-center
             = f.label :remember_me, class: "form-check-label"
-            = f.check_box :remember_me, class: "form-check-input mx-auto"
+            = f.check_box :remember_me, class: "form-check-input ms-2"
         button.btn.btn-success.mx-auto.d-block.mb-3 type="submit" Sign In
         hr
-        = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post
         .text-center
           = render "devise/shared/links"
 = render 'shared/footer'
