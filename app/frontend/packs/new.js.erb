@@ -23,6 +23,8 @@ let fieldFor = {
   street: document.getElementById('place_address_attributes_details'),
   streetNumber: document.getElementById('place_address_attributes_details')
 };
+// Get price field
+let placePrice = document.getElementById('place_price');
 //Get container with errors
 let image_errors = document.getElementById('image-error');
 let picture_label = document.getElementById('place_pictures_label');
@@ -57,6 +59,24 @@ let setLatLng = (latitude, longitude) => {
   place_lat.value = latitude;
 }
 
+// Number field validation with regex for price
+let numberFieldValidation = (numberFieldElement) => {
+  numberFieldElement.addEventListener('input',  (event) => {
+    let getValue = (element) => {
+      return element.originalTarget.value
+    };
+
+    let value = getValue(event);
+    let regex = /^\d+(\.\d{0,2})?$/g;
+
+    if (!regex.test(value)) {
+      event.originalTarget.value = value.slice(0, -1);
+    }
+  });
+};
+
+// Add price field validation
+numberFieldValidation(placePrice);
 
 delete L.Icon.Default.prototype._getIconUrl;    //**************************
                                                 //*
