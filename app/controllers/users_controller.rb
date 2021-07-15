@@ -7,15 +7,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_form = UserForm.new(user_form: @user)
+    @user_form = UserForm.new(user: @user)
   end
 
   def edit
-    @user_form = UserForm.new(user_form: @user)
+    @user_form = UserForm.new(user: @user)
   end
 
   def update
-    @user_form = UserForm.new(user_form: current_user, **user_params)
+    @user_form = UserForm.new(user: current_user, **user_params)
     @user_form.submit
     if @user_form.success
       redirect_to @user, notice: 'User was successfully updated.'
