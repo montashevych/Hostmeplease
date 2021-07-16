@@ -34,17 +34,17 @@ RSpec.describe Picture, type: :model do
   end
 
   context 'without presence not valid' do
-    it 'to image' do
+    it 'image' do
       test_picture.image = nil
       expect(test_picture).not_to be_valid
     end
 
-    it 'to imageable' do
+    it 'imageable' do
       test_picture.imageable = nil
       expect(test_picture).not_to be_valid
     end
 
-    it 'to place reference' do
+    it 'place reference' do
       test_place.destroy
       expect(test_picture).not_to be_valid
     end

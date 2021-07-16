@@ -42,5 +42,15 @@ RSpec.describe Address, type: :model do
       test_address.place = nil
       expect(test_address).not_to be_valid
     end
+
+    it 'a longitude' do
+      test_address.lon = nil
+      expect(test_address).not_to be_valid
+    end
+
+    it 'a latitude' do
+      test_address.lat = nil
+      expect(test_address).not_to be_valid
+    end
   end
 end
