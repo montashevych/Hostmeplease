@@ -50,7 +50,7 @@ RSpec.describe PlacesController do
     end
   end
 
-  context 'when User is login and' do
+  context 'when User is loged in can' do
     before do
       sign_in test_user
     end
