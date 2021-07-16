@@ -9,4 +9,12 @@ FactoryBot.define do
     lon { 50.6191034 }
     lat { 26.2605438 }
   end
+
+  trait :with_address do
+    address_attributes { attributes_for(:address) }
+  end
+
+  trait :with_picture do
+    pictures_attributes { [attributes_for(:picture)] }
+  end
 end
