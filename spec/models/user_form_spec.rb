@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserForm do
   context 'when not valid' do
-    let(:form) { described_class.create(user: user, **parameters) }
+    let(:form) { UserForm.new(user: user, **parameters) }
     let(:parameters_first_name) { { first_name: 'a' } }
     let(:parameters_long_first_name) { { first_name: 'a' * 51 } }
     let(:parameters_last_name) { { last_name: 'a' } }
@@ -30,7 +30,7 @@ RSpec.describe UserForm do
   end
 
   context 'when not valid phone_number' do
-    let(:form) { described_class.new(user: user, **parameters) }
+    let(:form) { UserForm.new(user: user, **parameters) }
     let(:parameters_email) { { email: ' ' } }
     let(:parameters_phone_number) { { phone_number: '1' * 7 } }
     let(:parameters_long_phone_number) { { phone_number: '1' * 18 } }
