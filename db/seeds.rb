@@ -15,8 +15,8 @@ user.save!
 20.times do |n|
   title  = Faker::Company.name[0..10]
   type = Faker::Lorem.characters(number: 10)
-  description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: false,
-                                       random_sentences_to_add: 4)
+  description = Faker::Lorem.paragraph(sentence_count: 20, supplemental: false,
+                                       random_sentences_to_add: 20)
   price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
   active = Faker::Boolean.boolean
   country = Faker::Address.country

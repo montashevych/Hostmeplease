@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :place do
     title { 'q' * 9 }
     type { 'Workspace' }
-    description { Faker::Lorem.paragraphs }
+    description { 'q' * 101 }
     price { Faker::Number.number(digits: 4) }
     status { :created }
     is_active { true }

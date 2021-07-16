@@ -14,7 +14,6 @@ RSpec.describe 'Showing', type: :feature do
   describe('list of places') do
     before do
       visit places_path
-      # binding.pry
     end
 
     context 'when it has' do
@@ -95,7 +94,7 @@ RSpec.describe 'Showing', type: :feature do
       it 'successfully created place message' do
         visit new_place_path
         fill_in 'place_title', with: 'q' * 9
-        fill_in 'place_description', with: 'q' * 30
+        fill_in 'place_description', with: 'q' * 101
         fill_in 'place_price', with: 100
         fill_in 'place_address_attributes_state_region',
                 with: Faker::Address.state
