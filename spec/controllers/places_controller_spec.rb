@@ -66,7 +66,7 @@ RSpec.describe PlacesController do
       post :create, params: { place: test_place.attributes,
                               address_attributes: test_address.attributes,
                               pictures_attributes: test_picture.attributes }
-      expect(response.content_type) == 'text/html'
+      expect(response.content_type).to include('text/html')
     end
   end
 end
