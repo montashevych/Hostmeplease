@@ -9,11 +9,8 @@ RSpec.describe PlacesController do
                               address: test_address,
                               pictures: [test_picture])
   end
-  let(:file) do
-    Rack::Test::UploadedFile.new(
-                      File.open(Rails.root.join('spec/factories/test.png')),
-                      'image/png',
-                    )
+  let(:parameters) do
+    FactoryBot.attributes_for(:place, :with_address, :with_picture)
   end
 
   context 'when rendered template after action' do
@@ -37,9 +34,6 @@ RSpec.describe PlacesController do
     end
 
     it 'create' do
-      parameters = test_place.attributes
-      parameters.store(:address_attributes, test_address.attributes)
-      parameters.store(:pictures_attributes, [image: file])
       post :create, params: { place: parameters }
       expect(response).to redirect_to(place_path(Place.last))
     end
@@ -63,9 +57,7 @@ RSpec.describe PlacesController do
 
   context 'with created place' do
     it 'have page type' do
-      post :create, params: { place: test_place.attributes,
-                              address_attributes: test_address.attributes,
-                              pictures_attributes: test_picture.attributes }
+      post :create, params: { place: parameters }
       expect(response.content_type).to include('text/html')
     end
   end
