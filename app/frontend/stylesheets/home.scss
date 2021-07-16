@@ -14,6 +14,14 @@ html, body {
   background-size: cover;
   min-height: Max(1080px, 100vh);
 
+  @media (max-width: 992px) {
+    min-height: Max(1265px, 100vh);
+  }
+
+  @media (max-width: 460px) {
+    min-height: Max(1394px, 100vh);
+  }
+
   .description {
     margin-top: 30vh;
     color: var(--bs-light);
