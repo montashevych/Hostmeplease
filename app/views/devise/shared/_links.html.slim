@@ -2,7 +2,7 @@
   .row
     .mb-3
       - if devise_mapping.omniauthable?
-        span Or do it with:
+        span Or log in with:
         br
           - resource_class.omniauth_providers.each do |provider|
             = link_to '', omniauth_authorize_path(resource_name, provider), method: :post, class: 'omni-auth'
