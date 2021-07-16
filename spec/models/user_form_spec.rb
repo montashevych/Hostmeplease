@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UserForm do
   context 'when not valid' do
     let!(:user) { FactoryBot.create(:user) }
-    let(:form) { -> (parameters) { UserForm.new(user: user, **parameters) } }
+    let(:form) { ->(parameters) { described_class.new(user: user, **parameters) } }
 
     it 'creates an default user with indication first_name' do
       parameters = { first_name: 'a' }
@@ -16,7 +16,7 @@ RSpec.describe UserForm do
     end
 
     it 'creates an default user with indication last_name' do
-        parameters = { last_name: 'a' }
+      parameters = { last_name: 'a' }
       expect(form.call(parameters)).not_to be_valid
     end
 
@@ -28,7 +28,7 @@ RSpec.describe UserForm do
 
   context 'when not valid parameters' do
     let(:user) { FactoryBot.create(:user) }
-    let(:form) { -> (parameters) { UserForm.new(user: user, **parameters) } }
+    let(:form) { ->(parameters) { described_class.new(user: user, **parameters) } }
 
     it 'creates an user email' do
       parameters = { email: ' ' }
