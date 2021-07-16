@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_143355) do
+ActiveRecord::Schema.define(version: 2021_07_16_160009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2021_07_16_143355) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "place_id"
+    t.float "lon", null: false
+    t.float "lat", null: false
     t.index ["place_id"], name: "index_addresses_on_place_id"
   end
 
@@ -44,8 +46,6 @@ ActiveRecord::Schema.define(version: 2021_07_16_143355) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "lon", default: 0.0
-    t.float "lat", default: 0.0
     t.bigint "user_id"
     t.index ["type"], name: "index_places_on_type"
     t.index ["user_id"], name: "index_places_on_user_id"
