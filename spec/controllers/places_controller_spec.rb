@@ -16,12 +16,6 @@ RSpec.describe PlacesController do
                     )
   }
 
-  context 'when User' do
-    it 'with valid attributes' do
-      expect(test_user).to be_valid
-    end
-  end
-
   context 'when rendered template after action' do
     before do
       sign_in test_user
