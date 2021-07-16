@@ -4,17 +4,17 @@ RSpec.describe PlacesController do
   let(:test_user) { FactoryBot.create(:user, :confirmed) }
   let!(:test_address) { FactoryBot.build(:address) }
   let!(:test_picture) { FactoryBot.build(:picture) }
-  let(:test_place) {
+  let(:test_place) do
     FactoryBot.create(:place, user: test_user,
                               address: test_address,
                               pictures: [test_picture])
-  }
-  let(:file) {
+  end
+  let(:file) do
     Rack::Test::UploadedFile.new(
                       File.open(Rails.root.join('spec/factories/test.png')),
                       'image/png',
                     )
-  }
+  end
 
   context 'when rendered template after action' do
     before do

@@ -5,12 +5,12 @@ RSpec.describe 'places/my_places.html.slim', type: :view do
   let!(:test_user) { FactoryBot.create(:user, :confirmed) }
   let!(:test_address) { FactoryBot.build(:address) }
   let(:test_picture) { FactoryBot.build(:picture) }
-  let!(:test_place) {
+  let!(:test_place) do
     FactoryBot.create :place,
                       user: test_user,
                       address: test_address,
                       pictures: [test_picture]
-  }
+  end
 
   after do
     test_picture.destroy
