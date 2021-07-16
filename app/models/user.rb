@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :places, dependent: :destroy
+  has_one :picture, as: :imageable, dependent: :destroy
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable,
          omniauth_providers: [:google_oauth2]
@@ -13,9 +16,6 @@ class User < ApplicationRecord
                     format: { with: email_regexp },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6, maximum: 256 }, on: :create
-
-  has_many :places, dependent: :destroy
-  has_one :picture, as: :imageable, dependent: :destroy
 
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)

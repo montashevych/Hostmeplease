@@ -1,4 +1,8 @@
 class Place < ApplicationRecord
+  belongs_to :user
+  has_one :address, dependent: :destroy
+  has_many :pictures, as: :imageable, dependent: :destroy, inverse_of: :imageable
+  
   enum status: { created: 0, updated: 1, approved: 2 }
 
   validates :title, presence: true, length: { minimum: 8, maximum: 23 }
@@ -12,10 +16,6 @@ class Place < ApplicationRecord
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
 
-  belongs_to :user
-  has_one :address, dependent: :destroy
-  has_many :pictures, as: :imageable, dependent: :destroy, inverse_of: :imageable
-
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :pictures
 
@@ -24,7 +24,7 @@ class Place < ApplicationRecord
   private
 
   def change_user_role
-    if user.places.count.zero? && user.owner?
+    if user.places.exists? && user.owner?
       user.update!(role: :consumer)
     elsif user.consumer?
       user.update!(role: :owner)
