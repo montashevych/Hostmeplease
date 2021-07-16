@@ -101,6 +101,10 @@ RSpec.describe 'Showing', type: :feature do
         fill_in 'place_address_attributes_city', with: Faker::Address.city
         fill_in 'place_address_attributes_details',
                 with: "#{Faker::Address.street_name}, 1"
+        find_field(id: 'place_address_attributes_lon',
+                   type: :hidden).set(26.2605438)
+        find_field(id: 'place_address_attributes_lat',
+                   type: :hidden).set(26.2605438)
         page.attach_file('place[pictures_attributes][][image]',
                          Rails.root.join('spec/factories/test.png'),
                          visible: false)

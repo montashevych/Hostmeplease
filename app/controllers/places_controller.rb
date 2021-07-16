@@ -50,11 +50,11 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:title, :description, :price, :type, :lon,
-                                  :lat, address_attributes: [:country,
-                                                             :state_region,
-                                                             :city,
-                                                             :details],
-                                        pictures_attributes: [:image])
+    params.require(:place).permit(:title, :description, :price, :type,
+                                  address_attributes: [:country,
+                                                       :state_region,
+                                                       :city, :details,
+                                                       :lon, :lat],
+                                  pictures_attributes: [:image])
   end
 end

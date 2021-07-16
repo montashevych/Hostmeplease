@@ -8,8 +8,6 @@ class Place < ApplicationRecord
   validates :title, presence: true, length: { minimum: 8, maximum: 23 }
   validates :description, presence: true, length: { minimum: 100, maximum: 900 }
   validates :price, presence: true
-  validates :lon, presence: true
-  validates :lat, presence: true
   validates :address, presence: true
   validates :pictures, presence: true
 
