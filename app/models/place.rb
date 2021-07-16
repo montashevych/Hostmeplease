@@ -20,14 +20,6 @@ class Place < ApplicationRecord
   accepts_nested_attributes_for :pictures
 
   after_commit :change_user_role
-  # geocoded_by full_address(@address) do |obj, results|
-  #   if (geo = results.first)
-  #     obj.lat = geo.latitude
-  #     obj.lon = geo.longitude
-  #   end
-  # end
-  #
-  # after_validation :geocode
 
   private
 
