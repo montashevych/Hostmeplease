@@ -33,11 +33,6 @@ RSpec.describe PlacesController do
       expect(response).to render_template 'new'
     end
 
-    it 'create' do
-      post :create, params: { place: parameters }
-      expect(response).to redirect_to(place_path(Place.last))
-    end
-
     it 'my_places' do
       get :my_places
       expect(response).to render_template 'my_places'
@@ -52,6 +47,23 @@ RSpec.describe PlacesController do
     it 'see own places count' do
       get :my_places
       expect(assigns(:count_places)).to eq(test_user.places.count)
+    end
+
+    it 'create new place' do
+      post :create, params: { place: parameters }
+      expect(response).to redirect_to(place_path(Place.last))
+    end
+  end
+
+  context 'when User isn\'t loged in cann\'t' do
+    it 'visit new place page' do
+      get :new
+      expect(response).not_to render_template 'new'
+    end
+
+    it 'visit my_places page' do
+      get :my_places
+      expect(response).not_to render_template 'my_places'
     end
   end
 
