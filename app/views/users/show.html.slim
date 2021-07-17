@@ -6,7 +6,7 @@ div.main-screen
   div.container.profile
     div.row.mx-auto.text-light.montserrat
       div.col-sm-4.col-gravatar
-        = gravatar_for @user, size: 135
+        = avatar_for(@user, 135)
         = link_to "Change Photo", "https://en.gravatar.com/gravatars/new",
                                 class: "change-avatar btn text-white montserrat"
       div.col-sm-8.montserrat
