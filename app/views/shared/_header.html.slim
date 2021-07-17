@@ -10,6 +10,18 @@ header.d-flex.w-100.flex-column
                              type="button" }
         - if user_signed_in?
           span = avatar_for(current_user)
+          li.nav-item.dropdown
+            a#dropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
+              = current_user.first_name
+              = avatar_for(current_user)
+            ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
+              li
+                = link_to 'Profile', user_path(id: current_user.id), class: 'dropdown-item'
+              li
+                = link_to 'My Places', my_places_path, class: 'dropdown-item'
+              li
+                = link_to 'Sign Out', destroy_user_session_path, method: :delete,
+                                                                 class: 'dropdown-item'
         - else
           span.navbar-toggler-icon
       #navbarNavDropdown.collapse.navbar-collapse

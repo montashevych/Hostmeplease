@@ -1,37 +1,76 @@
 require 'rails_helper'
 
 RSpec.describe PlacesController do
-  describe PlacesController do
-    context 'when User' do
-      let(:test_user) { FactoryBot.create(:user, :confirmed) }
+  let(:test_user) { FactoryBot.create(:user, :confirmed) }
+  let!(:test_address) { FactoryBot.build(:address) }
+  let!(:test_picture) { FactoryBot.build(:picture) }
+  let(:test_place) do
+    FactoryBot.create(:place, user: test_user,
+                              address: test_address,
+                              pictures: [test_picture])
+  end
+  let(:parameters) do
+    FactoryBot.attributes_for(:place, :with_address, :with_picture)
+  end
 
-      it 'is valid with valid attributes' do
-        expect(test_user).to be_valid
-      end
+  context 'when rendered template after action' do
+    before do
+      sign_in test_user
     end
 
-    it 'render template index' do
+    it 'index' do
       get :index
-      expect(response).to render_template 'places/index'
+      expect(response).to render_template 'index'
     end
 
-    context 'when User is login and User see ' do
-      let(:test_user) { FactoryBot.create(:user, :confirmed) }
-      let!(:user_places) { [FactoryBot.create(:place, user: test_user)] }
+    it 'show' do
+      get :show, params: { id: test_place.id }
+      expect(response).to render_template 'show'
+    end
 
-      it 'count current_user places' do
-        sign_in test_user
+    it 'new' do
+      get :new
+      expect(response).to render_template 'new'
+    end
 
-        get :my_places
-        expect(assigns(:count_places)).to eq(user_places.count)
-      end
+    it 'my_places' do
+      get :my_places
+      expect(response).to render_template 'my_places'
+    end
+  end
 
-      it 'render template my_places' do
-        sign_in test_user
+  context 'when User is loged in can' do
+    before do
+      sign_in test_user
+    end
 
-        get :my_places
-        expect(response).to render_template 'my_places'
-      end
+    it 'see own places count' do
+      get :my_places
+      expect(assigns(:count_places)).to eq(test_user.places.count)
+    end
+
+    it 'create new place' do
+      post :create, params: { place: parameters }
+      expect(response).to redirect_to(place_path(Place.last))
+    end
+  end
+
+  context 'when User isn\'t loged in cann\'t' do
+    it 'visit new place page' do
+      get :new
+      expect(response).not_to render_template 'new'
+    end
+
+    it 'visit my_places page' do
+      get :my_places
+      expect(response).not_to render_template 'my_places'
+    end
+  end
+
+  context 'with created place' do
+    it 'have page type' do
+      post :create, params: { place: parameters }
+      expect(response.content_type).to include('text/html')
     end
   end
 end

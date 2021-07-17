@@ -1,0 +1,216 @@
+// import geocoder library
+import geocoder from 'geocoder'
+// import leaflet's marker-pictures
+import marker_icon_2x from 'leaflet/dist/images/marker-icon-2x.png'
+import marker_icon from 'leaflet/dist/images/marker-icon.png'
+import marker_shadow from 'leaflet/dist/images/marker-shadow.png'
+
+const PICTURE_ERRORS_CLASS = 'has-errors';
+// Get API key from enviropment
+const API_GEOCODE_KEY = '<%= ENV['API_GOOGLE_GEOCODE'] %>';
+const API_MAPBOX_KEY = '<%= ENV['MAPBOX_API_KEY'] %>';
+
+let latlng = [0.0, 0.0];
+let zoom = 5;
+let country = '';
+let marker;
+
+// Get address fields
+let fieldFor = {
+  country: document.getElementById('place_address_attributes_country'),
+  stateRegion: document.getElementById('place_address_attributes_state_region'),
+  city: document.getElementById('place_address_attributes_city'),
+  street: document.getElementById('place_address_attributes_details'),
+  streetNumber: document.getElementById('place_address_attributes_details')
+};
+// Get price field
+let placePrice = document.getElementById('place_price');
+//Get container with errors
+let image_errors = document.getElementById('image-error');
+let picture_label = document.getElementById('place_pictures_label');
+let map_container = document.getElementById('map');
+let map_text_error = document.getElementById('map-error');
+
+// Marker add and delete function
+let markerAdd = (lat, lng) => {
+  if (marker) marker.remove();
+  marker = L.marker([lat, lng])
+    .addTo(map);
+
+  marker.on('click', evt => {
+    // Removing marker
+    marker.remove()
+    // Clearing latitude and longitude fields
+    setLatLng('', '');
+
+    // Clearing address's fields
+    fieldFor['stateRegion'].value = '';
+    fieldFor['city'].value = '';
+    fieldFor['street'].value = '';
+  });
+};
+
+// Fill in latitude and longitude fields
+let setLatLng = (latitude, longitude) => {
+  let place_lon = document.getElementById('place_address_attributes_lon');
+  let place_lat = document.getElementById('place_address_attributes_lat');
+
+  place_lon.value = longitude;
+  place_lat.value = latitude;
+}
+
+// Number field validation with regex for price
+let numberFieldValidation = (numberFieldElement) => {
+  numberFieldElement.addEventListener('input',  (event) => {
+    let getValue = (element) => {
+      return element.originalTarget.value
+    };
+
+    let value = getValue(event);
+    let regex = /^\d+(\.\d{0,2})?$/g;
+
+    if (!regex.test(value)) {
+      event.originalTarget.value = value.slice(0, -1);
+    }
+  });
+};
+
+// Add price field validation
+numberFieldValidation(placePrice);
+
+delete L.Icon.Default.prototype._getIconUrl;    //**************************
+                                                //*
+L.Icon.Default.mergeOptions({                   //* Resolved bug
+  iconRetinaUrl: marker_icon_2x,                //* with
+  iconUrl: marker_icon,                         //* loading images
+  shadowUrl: marker_shadow,                     //*
+});                                             //**************************
+
+if (image_errors.textContent.length > 0) {
+  picture_label.className = 'has-errors';
+} else {
+  picture_label.className = '';
+}
+
+if (localStorage.getItem('newplace-map-location')) {
+  latlng = JSON.parse(localStorage.getItem('newplace-map-location'));
+}
+
+let map = L.map('map').setView(latlng, 10);
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?' +
+            'access_token={accessToken}', {
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: API_MAPBOX_KEY
+}).addTo(map);
+
+// When user click on map
+map.on('click', evt => {
+  let { lat, lng } = evt.latlng;
+
+  // Fill in latitude and longitude fields
+  setLatLng(lat, lng);
+
+  // Reverse geocoding
+  geocoder.reverseGeocode(lat, lng, ( err, data ) => {
+    let parts = data.results[0].address_components.reverse();
+    parts.forEach((part) => {
+      // Fill in country field
+      if (part.types.includes('country')) {
+        fieldFor['country'].value = part.short_name;
+      };
+
+      // Fill in city field
+      if (part.types.includes('administrative_area_level_1')) {
+        fieldFor['stateRegion'].value = part.long_name;
+      };
+
+      // Fill in state or region field
+      if (part.types.includes('locality') ||
+          part.types.includes('administrative_area_level_2')) {
+        fieldFor['city'].value = part.long_name;
+      };
+
+      // Fill in details as street field
+      if (part.types.includes('route')) {
+        fieldFor['street'].value = part.long_name;
+      };
+
+      // Fill in details as street number field
+      if (part.types.includes('street_number')) {
+        fieldFor['streetNumber'].value += `, ${ part.long_name }`;
+      };
+    });
+
+  }, { key: API_GEOCODE_KEY });         //api key
+
+  localStorage.setItem('newplace-map-location', JSON.stringify([lat,lng]));
+
+  markerAdd(lat, lng);
+});
+
+//When user write address in fields
+document.getElementById('address_form').addEventListener('change', () => {
+  // Get full country name
+  [...Array(fieldFor['country'].length).keys()].forEach((i) => {
+    if (fieldFor['country'][i].value == fieldFor['country'].value) {
+      country = fieldFor['country'][i].text;
+      return;
+    }
+  });
+
+  let address_string = `${ country }, ${ fieldFor['city'].value }, ` +
+                       `${ fieldFor['stateRegion'].value }, ` +
+                       `${ fieldFor['street'].value }, ` +
+                       `${ fieldFor['streetNumber'].value }`;
+  zoom = 5;
+  // Setting zoom value by filling fields
+  if (fieldFor['stateRegion'].value.length != 0 &&
+      fieldFor['street'].value != ' ') {
+    zoom = 10;
+  };
+
+  if (fieldFor['city'].value.length != 0 && fieldFor['street'].value != ' ') {
+    zoom = 14;
+  };
+
+  if (fieldFor['street'].value.length != 0 && fieldFor['street'].value != ' ') {
+    zoom = 16;
+  };
+
+  if (fieldFor['street'].value.length != 0 &&
+      fieldFor['streetNumber'].value.includes(',')) {
+    zoom = 18;
+  } else {
+    // It remove marker if street field is empty
+    if (marker) marker.remove();
+  };
+
+  // Geocoding by address from fields
+  geocoder.geocode(address_string, ( err, data ) => {
+    if (data.results[0]) {
+      let { lat, lng } = data.results[0].geometry.location;
+
+      // Fill in latitude and longitude fields
+      setLatLng(lat, lng);
+
+      if (map_container.classList.contains(PICTURE_ERRORS_CLASS)) {
+        map_container.classList.remove(PICTURE_ERRORS_CLASS);
+        map_text_error.textContent = '';
+      }
+
+      // Moving to selected address
+      map.flyTo([lat, lng], zoom);
+      if (fieldFor['street'].value.length != 0 && fieldFor['street'].value !=
+          ' ' && fieldFor['streetNumber'].value.includes(',')) {
+        markerAdd(lat, lng);
+      };
+    } else {
+      map_container.classList.add(PICTURE_ERRORS_CLASS);
+      map_text_error.textContent = 'Address Not Found';
+    }
+  }, { key: API_GEOCODE_KEY });         //api key
+});

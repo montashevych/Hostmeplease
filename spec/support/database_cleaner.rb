@@ -1,16 +1,15 @@
-Capybara.javascript_driver = :webkit # Selenium works, but not as well
-
 RSpec.configure do |config|
-  config.use_transactional_fixtures = false
-
-  # Use transactions by default
   config.before do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation, except: %w[ar_internal_metadata]
+  end
+  config.after do # or :each or :all
+    Dir[Rails.root.join('public/uploads/tmp/**/*')].each do |file|
+      FileUtils.rm_rf file
+    end
   end
 
-  # For the javascript-enabled tests, switch to truncation, but *only on tables that were used*
-  config.before :each, js: true do
-    DatabaseCleaner.strategy = :truncation, { pre_count: true }
+  config.before do
+    DatabaseCleaner.strategy = :transaction
   end
 
   config.before do

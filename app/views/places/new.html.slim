@@ -1,0 +1,13 @@
+- provide :title, 'New'
+
+.container-field.new
+  = render 'shared/header'
+  .container-xxl.form-container
+    .row.text-row
+      h1.text-center New Place
+    .row
+      = render 'form'
+
+= render 'shared/footer'
+= javascript_pack_tag 'new'
+= javascript_pack_tag 'pictures_preview'
