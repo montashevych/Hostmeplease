@@ -444,57 +444,8 @@ $btn-color: #91CB82;
 
         }
         .rating {
-          margin: 0 0 0 52%;
-          font-size: 1.2em;
-
-          @media screen and (max-width: 360px ) {
-              margin: 0 0 0 43%;
-          }
-          @media (min-width: 360px) and (max-width: 370px ) {
-            font-size: 0.9em;
-            margin: 0 0 0 38%;
-          }
-          @media (min-width: 370px) and (max-width: 420px ) {
-            font-size: 0.9em;
-            margin: 0 0 0 38%;
-          }
-          @media (min-width: 420px) and (max-width: 432px ) {
-            font-size: 1em;
-            margin: 0 0 0 38%;
-          }
-          @media (min-width: 432px) and (max-width: 570px ) {
-            font-size: 1.1em;
-            margin: 0 0 0 38%;
-          }
-          @media (min-width: 570px) and (max-width: 770px ) {
-            margin: 0 0 0 28%;
-            font-size: 1.2em;
-          }
-          @media (min-width: 768px) and (max-width: 772px ) {
-            font-size: 0.9em;
-            margin: 0 0 0 18%;
-          }
-          @media (min-width: 770px) and (max-width: 990px ) {
-            margin: 0 0 0 10%;
-            font-size: 1.1em;
-          }
-          @media (min-width: 960px) and (max-width: 1200px ) {
-            margin: 0 0 0 8%;
-          }
-          @media (min-width: 990px) and (max-width: 1140px ) {
-            margin: 0 0 0 8%;
-            font-size: 1em;
-          }
-          @media (min-width: 1140px) and (max-width: 1200px ) {
-            margin: 0 0 0 12%;
-            font-size: 1em;
-          }
-          @media (min-width: 1200px) and (max-width: 1400px ) {
-            margin: 0 0 0 28%;
-          }
-          @media (min-width: 1400px) and (max-width: 1920px ) {
-            margin: 0 0 0 32%;
-          }
+          margin: 0 0 0 20%;
+          font-size: 15px;
         }
 
         h5 {
@@ -563,37 +514,7 @@ $btn-color: #91CB82;
           margin-left: 8%;
           margin-bottom: 4%;
           font-weight: 280;
-          font-size: 1.2em;
-          &:first-child {
-            margin-bottom: 1%;
-            @media (min-width: 360px) and (max-width: 460px ) {
-              margin-bottom: 6%;
-            }
-            @media (min-width: 460px) and (max-width: 770px ) {
-              margin-bottom: 4%;
-            }
-            @media (min-width: 990px) and (max-width: 1200px ) {
-              margin-bottom: 6%;
-            }
-          }
-          &:last-child {
-            margin-bottom: 1%;
-            @media (min-width: 360px) and (max-width: 365px ) {
-              margin: 0.5rem 0 0.5rem 0;
-            }
-            @media (min-width: 365px) and (max-width: 420px ) {
-              margin-top: 14%;
-            }
-            @media (min-width: 420px) and (max-width: 460px ) {
-              margin-top: 1%;
-            }
-            @media (min-width: 768px) and (max-width: 990px ) {
-              margin-top: 1rem;
-            }
-            @media (min-width: 990px) and (max-width: 1200px ) {
-              margin-top: 8%;
-            }
-          }
+          font-size: 11px;
           @media screen and (max-width: 360px ) {
             margin-left: -1%;
           }
@@ -637,6 +558,7 @@ $btn-color: #91CB82;
         .font_family_price {
           font-family: Mabry;
           font-size: 14px;
+          margin: 0  0 35% 20%;
         }
 
 
