@@ -1,16 +1,43 @@
+$dropdown-border-color: #f2f2f200;
+
 header {
   hr { margin: 0; }
 
   .navbar {
-    .collapse {
-      .navbar-nav {
-        a { color: var(--bs-light); }
+    .container-fluid {
+      .navbar-brand {
+        font-family: 'Montserrat';
+        font-weight: 700;
+        margin: 0;
+
+        @media (max-width: 992px) {
+          display: none;
+        }
+      }
+
+      .navbar-brand-lg {
+        display: none;
+
+        @media(max-width: 992px) {
+          display: block;
+        }
       }
     }
 
-    .navbar-brand {
-      font-family: 'Montserrat';
-      font-weight: 700;
+    .navbar-toggler {
+      border-color: $dropdown-border-color;
+
+      &:focus {
+        box-shadow: none;
+
+        .gravatar {
+          box-shadow: 0 0 30px;
+        }
+      }
+
+      .gravatar {
+        border-radius: 50px;
+      }
     }
 
     .userinfo {
@@ -19,6 +46,10 @@ header {
           .gravatar {
             border-radius: 50px;
             margin-left: 7px;
+
+            @media (max-width: 992px) {
+              display: none;
+            }
           }
           .dropdown-toggle::after {             // dropdown triangle
             display: none;
@@ -27,8 +58,18 @@ header {
             text-align: center;
             background-color: #464E4F;
 
+            @media (max-width: 992px) {
+              text-align: start;
+              backdrop-filter: blur(40px);
+              background-color: #fff2;
+              border-top: 2px solid #ddd;
+              border-bottom: 2px solid #ddd;
+              border-left: none;
+              border-right: none;
+            }
+
             .dropdown-item {
-              color: white;
+              color: var(--bs-light);
 
               &:hover {
                 color: #505050;
