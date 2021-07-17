@@ -33,10 +33,14 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [600, 600]
   end
 
+  version :avatar do
+    process resize_to_fit: [135, 135]
+  end
+
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w[jpg jpeg gif png]
+    %w[jpg jpeg gif png svg]
   end
 
   def content_type_allowlist
