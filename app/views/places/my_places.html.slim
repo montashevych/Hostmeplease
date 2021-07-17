@@ -11,18 +11,23 @@ section.my_places
           | Your Places(#{@count_places})
         .row
           .col-6.col-sm-6.col-md-6.col-xl-6.d-flex.justify-content-end
-            = link_to 'New Place', new_place_path, class: 'hovc rounded-pill button_myplaces px-4 py-2 text-center'
+            = link_to 'New Place', new_place_path, \
+                class: 'hovc rounded-pill button_myplaces px-4 py-2 text-center'
           .col-6.col-sm-6.col-md-6.col-xl-6.d-flex
             .myinfo
               .d-flex.justify-content-start.collapse.navbar-collapse.ms-auto
                 p.nav-item.dropdown
-                  .button_myplaces.px-4.rounded-pill.nav-link#dropdownMenuLink.dropdown-toggle.text-center.hovc aria-expanded="false" data-bs-toggle="dropdown" role="button"
+                  #dropdownMenuLink.button_myplaces.px-4.rounded-pill.nav-link.dropdown-toggle.text-center.hovc{
+                                                      aria-expanded="false"
+                                                      data-bs-toggle="dropdown"
+                                                      role="button" }
                     | Filters
-                  ul.dropdown-menu.dropdown-menu-end.text-center.bg-dark aria-labelledby="dropdownMenuLink"
+                  ul.dropdown-menu.dropdown-menu-end.text-center.bg-dark{
+                                            aria-labelledby="dropdownMenuLink" }
                     li
                       = link_to 'Accomodations', '#', class: 'dropdown-item hovc'
                     li
-                      = link_to 'Workspaces', '#',     class: 'dropdown-item hovc'
+                      = link_to 'Workspaces', '#', class: 'dropdown-item hovc'
       - if current_user.places.count == 0
         section.empty_my_places.mt-5.pt-4.mb-5
       - else

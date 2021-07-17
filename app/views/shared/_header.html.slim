@@ -2,7 +2,12 @@ header.d-flex.w-100.flex-column
   .navbar.navbar-expand-lg.navbar-dark.container
     .container-fluid
       = link_to 'HostMePlease', root_path, class: 'navbar-brand navbar-brand-lg'
-      button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button"
+      button.navbar-toggler{ aria-controls="navbarNavDropdown"
+                             aria-expanded="false"
+                             aria-label=("Toggle navigation")
+                             data-bs-target="#navbarNavDropdown"
+                             data-bs-toggle="collapse"
+                             type="button" }
         - if user_signed_in?
           span = avatar_for(current_user)
         - else
@@ -19,17 +24,23 @@ header.d-flex.w-100.flex-column
           ul.navbar-nav.ms-auto
             - if user_signed_in?
               li.nav-item.dropdown
-                a#dropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
+                a#dropdownMenuLink.nav-link.dropdown-toggle{
+                                                      aria-expanded="false"
+                                                      data-bs-toggle="dropdown"
+                                                      role="button" }
                   = current_user.first_name
                   = avatar_for(current_user)
-                ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
+                ul.dropdown-menu.dropdown-menu-end.smc{
+                                            aria-labelledby="dropdownMenuLink" }
                   li
-                    = link_to 'Profile', user_path(id: current_user.id), class: 'dropdown-item'
+                    = link_to 'Profile', user_path(id: current_user.id), \
+                                                          class: 'dropdown-item'
                   li
                     = link_to 'My Places', 'my_places', class: 'dropdown-item'
                   li
-                    = link_to 'Sign Out', destroy_user_session_path, method: :delete,
-                                                                     class: 'dropdown-item'
+                    = link_to 'Sign Out', destroy_user_session_path, \
+                                                          method: :delete,
+                                                          class: 'dropdown-item'
             - else
               li.nav-item
                 = link_to 'Sign In', new_user_session_url, class: 'nav-link'
