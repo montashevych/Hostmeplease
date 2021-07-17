@@ -7,7 +7,8 @@
               .col-md-12
                 - if @place.errors[:title]
                   p = f.label 'Title'
-                  = f.text_field :title, placeholder: 'My first place', alt: 'Title'
+                  = f.text_field :title, placeholder: 'My first place',
+                                                                    alt: 'Title'
                 p.error-message = @place.errors[:title].first
             .mb-2.row
               .col-md-12
@@ -17,7 +18,9 @@
               .col-md-12.description-column
                 - if @place.errors[:description]
                   p = f.label 'Description'
-                  = f.text_area :description, placeholder: 'Something about place..', alt: 'Description', size: '80'
+                  = f.text_area :description,
+                                        placeholder: 'Something about place..',
+                                        alt: 'Description', size: '80'
                 p.error-message = @place.errors[:description].first
             .mb-2.row
               .col-md-10
