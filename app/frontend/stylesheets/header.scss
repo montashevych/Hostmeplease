@@ -33,12 +33,12 @@ header {
       &:focus {
         box-shadow: none;
 
-        .gravatar {
+        .avatar {
           box-shadow: 0 0 30px;
         }
       }
 
-      .gravatar {
+      .avatar {
         border-radius: 50px;
       }
     }
@@ -46,7 +46,7 @@ header {
     .userinfo {
       ul {
         li {
-          .gravatar {
+          .avatar {
             border-radius: 50px;
             margin-left: 7px;
 
