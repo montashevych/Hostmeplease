@@ -9,18 +9,10 @@ html, body {
   background: #262F30 !important;
 }
 
-.main-screen {
+.home-main-screen {
   background: url("../images/homepage-bg.png");
   background-size: cover;
   padding: 0 0 5px 0;
-
-  @media (max-width: 992px) {
-    min-height: Max(1265px, 100vh);
-  }
-
-  @media (max-width: 460px) {
-    min-height: Max(1394px, 100vh);
-  }
 
   .description {
     margin-top: 30vh;
