@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
 
-  before_action :authenticate_user!, only: [:new, :create, :my_places, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :place_find, only: [:show]
 
   def index
