@@ -7,8 +7,8 @@ module UsersHelper
                                                    class: 'avatar')
     else
       image_tag(user.picture.image.avatar.url, class: 'avatar',
-                                        id: id,
-                                        width: "#{size}px", height: "#{size}px")
+                                               id: id,
+                                               width: "#{size}px", height: "#{size}px")
     end
   end
 

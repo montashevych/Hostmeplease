@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def set_default_avatar
-    self.build_picture(image: Rack::Test::UploadedFile.new(
+    build_picture(image: Rack::Test::UploadedFile.new(
                           File.open(Rails.root.join('app/frontend/images/default_avatar.svg')),
                           'image/svg',
                         ))
