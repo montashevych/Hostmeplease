@@ -12,11 +12,6 @@ RSpec.describe 'places/my_places.html.slim', type: :view do
                       pictures: [test_picture]
   end
 
-  after do
-    test_picture.destroy
-    test_place.destroy
-  end
-
   context 'when template rendered' do
     it 'infers the controller path' do
       expect(controller.controller_path).to eq('places')
