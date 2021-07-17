@@ -12,7 +12,7 @@ module UsersHelper
       image_tag(google_avatar_url_for(user, size), alt: user.first_name,
                                                    class: 'gravatar')
     else
-      gravatar_for(user, size: size)
+      image_tag(user.picture.image.avatar.url, class: 'gravatar', width: "#{size}px")
     end
   end
 
