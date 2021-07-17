@@ -16,5 +16,4 @@
           .col-6
             = link_to place_path(place)
               button.btn.btn-success type="button"
-                = place.price
-                | $
+                = "$#{ place.price }"
