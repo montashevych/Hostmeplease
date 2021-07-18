@@ -12,13 +12,13 @@ RSpec.describe UsersController do
     end
 
     context 'when signed in' do
-      it 'shows user profile' do
+      before do
         test_user.confirm
-
         sign_in test_user
+      end
 
+      it 'shows user profile' do
         get :show, params: { id: test_user.id }
-
         expect(response).to render_template('users/show')
       end
     end
