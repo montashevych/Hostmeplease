@@ -75,7 +75,33 @@ let numberFieldValidation = (numberFieldElement) => {
   });
 };
 
-// Add price field validation
+// Adds a one-time error display
+let oneTimeError = (classNameOfElements, elementsEvent) => {
+  document.querySelectorAll(`.${classNameOfElements}`).forEach (element => {
+    element.addEventListener(elementsEvent, (event) => {
+      element.parentNode.lastChild.remove();
+      element.classList.remove('field_with_errors');
+    }, { once: true });
+  });
+};
+
+// Adds errors a class to the given elements
+let addShowingErrorsToField = (itemsPlace, checkedItemsClass, givenClass) => {
+  let container = document.getElementById(itemsPlace)
+  container.querySelectorAll(`.${checkedItemsClass}`).forEach(messageElement => {
+  	if (messageElement.textContent.length > 0) {
+  		messageElement.previousSibling.classList.add(givenClass);
+  	} else {
+      messageElement.previousSibling.classList.remove(givenClass);
+    }
+  });
+};
+
+addShowingErrorsToField('address_form', 'error-message', 'field_with_errors');
+
+oneTimeError('field_with_errors', 'input');
+
+// Adds price field validation
 numberFieldValidation(placePrice);
 
 delete L.Icon.Default.prototype._getIconUrl;    //**************************
@@ -90,11 +116,11 @@ if (image_errors.textContent.length > 0) {
   picture_label.className = 'has-errors';
 } else {
   picture_label.className = '';
-}
+};
 
 if (localStorage.getItem('newplace-map-location')) {
   latlng = JSON.parse(localStorage.getItem('newplace-map-location'));
-}
+};
 
 let map = L.map('map').setView(latlng, 10);
 
