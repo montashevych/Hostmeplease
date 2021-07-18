@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User do
   context 'when valid' do
-    let(:test_user) { FactoryBot.build(:user, role: 'owner') }
+    let!(:test_user) { FactoryBot.create(:user) }
     let(:user_from_google) {
       described_class.from_google(email: 'test_one@gmail.com', params: {  password: 'a' * 6,
                                                                           first_name: 'a' * 2,
@@ -10,7 +10,12 @@ RSpec.describe User do
                                                                           phone_number: '1' * 8 })
     }
 
+    it 'creates an user with consumer role' do
+      expect(test_user).to be_valid
+    end
+
     it 'creates an user with owner role' do
+      test_user.update(role: 'owner')
       expect(test_user).to be_valid
     end
 

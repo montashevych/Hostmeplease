@@ -6,6 +6,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import '../js/bootstrap_js_files.js'
 import '../packs/edit.js'
 import "javascript/channels"
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 
 Rails.start()
 Turbolinks.start()

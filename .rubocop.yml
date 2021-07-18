@@ -58,6 +58,10 @@ Metrics/BlockLength:
     - Devise.setup
     - FactoryBot.define
 
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/feature/*'
+
 # Style Cops
 
 Style/BlockDelimiters:

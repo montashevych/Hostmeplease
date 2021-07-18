@@ -1,10 +1,13 @@
 class User < ApplicationRecord
-  has_many :places, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :places, dependent: :destroy
+  has_one :picture, as: :imageable, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable,
          omniauth_providers: [:google_oauth2]
+
   enum role: { consumer: 'consumer', owner: 'owner' }
 
   validates :first_name, length: { minimum: 2, maximum: 50 }
