@@ -9,8 +9,8 @@ div.main-screen
         = avatar_for(@user, 135, 'avatar-preview')
         = form_for current_user, method: :patch do |f|
           = f.label 'Change Photo', for: 'user_image', \
-                                class: 'change-avatar btn text-white montserrat'
-          = f.file_field :image, hidden: ''
+                              class: 'change-avatar btn text-white montserrat'
+          = f.file_field :image, hidden: '', accept: '.jpg, .png .jpeg .gif .svg'
       div.col-sm-8.montserrat
         p.name = @user.first_name
         p.role = @user.role.capitalize

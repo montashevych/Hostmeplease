@@ -5,5 +5,7 @@
     #fileInputColumn.col-md-12
       - if @place.errors[:pictures]
         = i.label '+', for: 'place_pictures_attributes_image', id: 'place_pictures_label'
-        = i.file_field :image, hidden: '', multiple: true, name: 'place[pictures_attributes][][image]'
+        = i.file_field :image, hidden: '', multiple: true,
+                                    name: 'place[pictures_attributes][][image]',
+                                    accept: '.jpg, .png .jpeg .gif .svg'
       p#image-error.error-message = @place.errors[:pictures].first
