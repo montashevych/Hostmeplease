@@ -26,61 +26,59 @@ $error-color: #f40000;
 
 
 html, body {
-    // overflow-x: hidden;
     background: #262F30;
 }
 
 .place-screen {
-    background: url('../images/place-background.png');
-    background-size: cover;
-    height: Max(350px);
+  background: url('../images/place-background.png');
+  background-size: cover;
+  height: Max(350px);
 
-    .place-name {
-        margin-top: 10vh;
-        color: var(--bs-light);
+  .place-name {
+    margin-top: 10vh;
+    color: var(--bs-light);
 
-        h1 {
-            max-width: 60%;
-            font-family: 'Montserrat';
-            font-weight: 700;
-            font-size: 4em;
-        }
+    h1 {
+      max-width: 60%;
+      font-family: 'Montserrat';
+      font-weight: 700;
+      font-size: 4em;
+    }
 
-        p {
-            max-width: 60%;
-            font-size: 1.5em;
-        }
+    p {
+      max-width: 60%;
+      font-size: 1.5em;
     }
   }
+}
 
-  .pg-cards {
-    padding: 2em 0;
-    background: #262F30;
+.pg-cards {
+  padding: 2em 0;
+  background: #262F30;
 
+  .container {
+    display: grid;
+    grid-template-columns: auto auto;
 
-    .container {
-        display: grid;
-        grid-template-columns: auto auto;
+    .carousel-card {
+      width: 35rem;
+    }
 
-        .carousel-card {
-          width: 35rem;
-        }
-
-        .description-card {
-          width: 30rem;
-        }
+    .description-card {
+      width: 30rem;
     }
   }
+}
 
 .card {
-    background-color: #444C4D!important;
-    border-radius: 20px!important;
-    width: 35rem;
+  background-color: #444C4D!important;
+  border-radius: 20px!important;
+  width: 35rem;
 
-    .card-description{
-        font-family: 'Montserrat';
-        font-weight: 900;
-    }
+  .card-description{
+    font-family: 'Montserrat';
+    font-weight: 900;
+  }
 }
 
 .card-image {
@@ -231,7 +229,7 @@ $btn-color: #91CB82;
       min-width: 250px;
       box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
       margin: 32px;
-      transition: transform 500ms ease-out, background-size 500ms ease-in-out;
+      transition: transform 350ms ease-out, background-size 400ms ease-in-out;
 
       @media (max-width: 768px) {
         min-height:350px;
