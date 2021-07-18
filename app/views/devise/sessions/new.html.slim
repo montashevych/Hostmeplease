@@ -3,7 +3,7 @@
 section.main-screen
   = render 'shared/header'
   .container
-    section.signin-form.text-light.mx-auto.px-5
+    section.signin-form.text-light.mx-auto.px-xl-5.px-4
       h2.text-center Sign In
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .mb-3

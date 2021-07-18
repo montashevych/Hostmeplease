@@ -22,7 +22,7 @@ $error-color: #f40000;
 
 .field_with_errors {
   border: 1px solid red;
-  border-radius: 14px;
+  border-radius: 5px;
 }
 
 // Styles for main container page
@@ -57,6 +57,10 @@ $error-color: #f40000;
 
   .signin-form, .signup-form {
     width: 34%;
+
+    .form-label {
+      margin-bottom: 0;
+    }
 
     .omni-auth {
       background-image: url('../images/google_logo.png');

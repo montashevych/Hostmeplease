@@ -1,8 +1,13 @@
 let oneTimeError = (classNameOfElements, elementsEvent) => {
   document.querySelectorAll(`.${classNameOfElements}`).forEach (element => {
-    element.addEventListener(elementsEvent, (event) => {
-      element.parentNode.lastChild.remove();
-    }, { once: true });
+    console.log(element);
+    if (element.firstChild.localName == 'input') {
+      element.addEventListener(elementsEvent, (event) => {
+        element.parentNode.lastChild.remove();
+      }, { once: true });
+    } else {
+      element.classList.remove('field_with_errors');
+    }
   });
 };
 
