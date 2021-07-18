@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Edit Page', type: :feature do
+RSpec.describe 'User Profile', type: :feature do
   include ApplicationHelper
   let(:test_user) { FactoryBot.create(:user) }
 
@@ -14,6 +14,12 @@ RSpec.describe 'Edit Page', type: :feature do
     it 'sees Show page' do
       visit user_path(id: test_user.id)
       expect(page).to have_current_path(user_path(id: test_user.id))
+    end
+
+    it 'render the Avatar image' do
+      visit user_path(id: test_user.id)
+      click_link 'Change Photo'
+      expect(page).to have_text('Change Photo')
     end
   end
 
@@ -32,6 +38,12 @@ RSpec.describe 'Edit Page', type: :feature do
     it 'Saves Changes successful' do
       test_edit_form
       expect(page).to have_current_path(user_path(id: test_user.id))
+    end
+
+    it 'render the Edit page' do
+      visit user_path(id: test_user.id)
+      click_link 'Edit Profile'
+      have_current_path eq(edit_user_path(id: test_user.id))
     end
   end
 end

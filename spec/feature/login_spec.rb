@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'the sign_in process', type: :feature do
   include ApplicationHelper
   context 'when user can' do
-    let(:test_user) { FactoryBot.create(:user) }
+    let(:test_user) { FactoryBot.create(:user, :confirmed) }
 
     before do
       test_registration
@@ -18,10 +18,10 @@ describe 'the sign_in process', type: :feature do
 
     # it 'sign_up' do
     #   visit '/users/sign_up'
-    #   fill_in 'First name', with: test_user.first_name
-    #   fill_in 'Email', with: Faker::Internet.unique.email
-    #   fill_in 'Password', with: test_user.password
-    #   fill_in 'Password confirmation', with: test_user.password
+    #   fill_in 'user[first_name]', with: test_user.first_name
+    #   fill_in 'user[email]', with: test_user.email
+    #   fill_in 'user[password]', with: test_user.password
+    #   fill_in 'user[password_confirmation]', with: test_user.password_confirmation
     #   click_button 'Sign Up'
     #   expect(current_path).to eq(root_path)
     # end
