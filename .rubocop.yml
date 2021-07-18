@@ -18,6 +18,7 @@ AllCops:
     - 'config/environments/*'
     - 'node_modules/**/*'
     - spec/factories/*.rb
+    - spec/requests/users_spec.rb
 # Metrics Cops
 
 Metrics/ClassLength:

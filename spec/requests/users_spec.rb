@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
   context 'when valid path' do
     let(:test_user) { FactoryBot.build(:user) }
+
     describe 'GET /sign_up' do
       it 'returns http success' do
         get '/users/sign_up'
@@ -39,21 +40,29 @@ RSpec.describe 'Users', type: :request do
       sign_in user
     end
 
-    it 'return Show http success' do
+    it 'return Show render partial' do
       get user_path(id: user.id)
       expect(response).to render_template('users/_show_and_edit_form')
+    end
+
+    it 'return Show http success' do
+      get user_path(id: user.id)
       expect(response).to have_http_status(:success)
+    end
+
+    it 'return Edit render partial' do
+      get edit_user_path(id: user.id)
+      expect(response).to render_template('users/_show_and_edit_form')
     end
 
     it 'return Edit http success' do
       get edit_user_path(id: user.id)
-      expect(response).to render_template('users/_show_and_edit_form')
       expect(response).to have_http_status(:success)
     end
 
     it "creates a User and redirects to User's page" do
-      patch user_path(id: user.id), params: { user_form: { first_name: 'James', last_name: 'Bond', email: 'james@gmail.com',
-                                            phone_number: '+380963451234' } }
+      patch user_path(id: user.id), params: { user_form: { first_name: 'James', last_name: 'Bond',
+                                                           email: 'james@gmail.com', phone_number: '+380963451234' } }
 
       expect(response).to be_redirect
       follow_redirect!
