@@ -4,6 +4,10 @@
 $text-color: #FFFFFF;
 $link-color: #f8f9fa;
 
+.has-errors {
+  border: 1px solid red;
+}
+
 // Styles for main container page
 .main-screen {
     background: url('../images/homepage-bg.png');
