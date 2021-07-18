@@ -67,7 +67,6 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
       createDeleteButton(input, container);
       container.appendChild(pictureElement);
       document.getElementById(picturesColumnId).appendChild(container);
-      console.log(container);
     };
 
     newInput(clonedPicturesInput, INPUTS_COLUMN_NAME);
