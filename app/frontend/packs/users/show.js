@@ -5,7 +5,6 @@ document.getElementById('user_image').addEventListener('change', (event) => {
   if (validateFile(preview_avatar)) {
     let pictureURL = URL.createObjectURL(event.originalTarget.files[0]);
 
-    preview_avatar.classList.remove('has-errors');
     preview_avatar.src = pictureURL;
   }  else {
     preview_avatar.src = preview_avatar_src;
@@ -34,12 +33,16 @@ function validateFile(picture){
     picture.classList.add('has-errors');
     alert("file type not allowed");
     event.originalTarget.value = null;
+
     return false;
   }else if(fileSize > sizeLimit){
     picture.classList.add('has-errors');
     alert("file size too large")
     event.originalTarget.value = null;
+
     return false;
   }
+  picture.classList.remove('has-errors');
+
   return true;
 }
