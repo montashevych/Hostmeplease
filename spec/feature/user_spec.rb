@@ -79,12 +79,6 @@ describe 'User', type: :feature do
       visit user_path(id: test_user.id)
       expect(page).to have_current_path(user_path(id: test_user.id))
     end
-
-    it 'render the Avatar image' do
-      visit user_path(id: test_user.id)
-      click_link 'Change Photo'
-      expect(page).to have_text('Change Photo')
-    end
   end
 
   context 'when User redirect_to Edit page' do
