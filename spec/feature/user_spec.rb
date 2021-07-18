@@ -51,7 +51,7 @@ describe 'User', type: :feature do
       visit user_path(test_user)
       page.attach_file('user_image', path_to_picture, visible: false)
       expect(page.find('#user_image',
-                      visible: false)['value']).to include(path_to_picture.to_s)
+                       visible: false)['value']).to include(path_to_picture.to_s)
     end
   end
 

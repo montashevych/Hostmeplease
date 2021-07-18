@@ -56,7 +56,7 @@ RSpec.describe User do
       expect {
         described_class.from_google(email: 'test@mail.com', params: {})
       }.to raise_error(ArgumentError) # with empty params create_with(**params)
-                                      # takes 0, it is supposed to take >= 1
+      # takes 0, it is supposed to take >= 1
     end
 
     it 'creates a user without name' do
