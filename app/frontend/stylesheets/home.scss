@@ -1,16 +1,18 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$button-color: #91CB82;
+$button-weight: bold;
 
 html, body {
   // overflow-x: hidden;
   background: #262F30 !important;
 }
 
-.main-screen {
+.home-main-screen {
   background: url("../images/homepage-bg.png");
   background-size: cover;
-  min-height: Max(1080px, 100vh);
+  padding: 0 0 5px 0;
 
   .description {
     margin-top: 30vh;
@@ -82,10 +84,13 @@ html, body {
       button {
         margin: 1em;
         padding: 1em 3em;
-        height: 100%;
+        height: 60px;
+        background: $button-color;
+        border-radius: 20px;
+        font-weight: $button-weight;
 
         @media screen and (max-width: 1400px) {
-            margin-left: 0;
+          margin-left: 0;
         }
       }
     }
@@ -118,11 +123,22 @@ html, body {
 
         span {
           flex-grow: 1; flex-basis: fill;
-          font-family: 'Montserrat'; font-weight: 700;
+          font-family: 'Montserrat';
+          font-weight: bold;
+          margin: 2.5%;
         }
 
         button {
+          width: 181px;
+          height: 54px;
           margin-right: 0;
+          background: $button-color;
+          border-radius: 20px;
+          font-weight: $button-weight;
+
+          @media (max-width: 576px) {
+            max-width: 106px;
+          }
         }
       }
     }
@@ -188,7 +204,10 @@ html, body {
           padding-top: 2em;
           * { display: block; }
 
-          .old-price { font-size: 1em; }
+          .old-price {
+            font-size: 1em;
+            margin-bottom: -6%;
+          }
           .price-main {
             display: flex;
             vertical-align: middle;
@@ -200,6 +219,19 @@ html, body {
               font-size: 1.5em;
 
               vertical-align: bottom;
+            }
+
+            button {
+              width: 50%;
+              height: 54px;
+              margin-bottom: 11%;
+              background: $button-color;
+              border-radius: 20px;
+              font-weight: $button-weight;
+
+              @media (max-width: 576px) {
+                max-width: 106px;
+              }
             }
           }
         }

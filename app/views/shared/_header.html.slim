@@ -1,29 +1,49 @@
 header.d-flex.w-100.flex-column
-  nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.container
-    ul.nav.navbar-nav.me-auto
-      li.nav-item
-        = link_to 'About', '#', class: 'nav-link'
-      li.nav-item
-        = link_to 'Contact', '#', class: 'nav-link'
-    = link_to "HostMePlease", root_path, class: "navbar-brand me-auto nav-link"
-    .userinfo
-      ul.navbar.navbar-nav.ms-auto
+  .navbar.navbar-expand-lg.navbar-dark.container
+    .container-fluid
+      = link_to 'HostMePlease', root_path, class: 'navbar-brand navbar-brand-lg'
+      button.navbar-toggler{ aria-controls="navbarNavDropdown"
+                             aria-expanded="false"
+                             aria-label=("Toggle navigation")
+                             data-bs-target="#navbarNavDropdown"
+                             data-bs-toggle="collapse"
+                             type="button" }
         - if user_signed_in?
-          li.nav-item.dropdown
-            a#dropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
-              = current_user.first_name
-              = avatar_for(current_user)
-            ul.dropdown-menu.dropdown-menu-end.smc aria-labelledby="dropdownMenuLink"
-              li
-                = link_to 'Profile', user_path(id: current_user.id), class: 'dropdown-item'
-              li
-                = link_to 'My Places', my_places_path, class: 'dropdown-item'
-              li
-                = link_to 'Sign Out', destroy_user_session_path, method: :delete,
-                                                                 class: 'dropdown-item'
+          span = avatar_for(current_user)
         - else
+          span.navbar-toggler-icon
+      #navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav
           li.nav-item
-            = link_to 'Sign In', new_user_session_url, class: 'nav-link'
+            = link_to 'About', '#', class: 'nav-link'
           li.nav-item
-            = link_to 'Sign Up', new_user_registration_url, class: 'nav-link'
+            = link_to 'Contacts', '#', class: 'nav-link'
+      = link_to 'HostMePlease', root_path, class: 'navbar-brand'
+      #navbarNavDropdown.collapse.navbar-collapse.justify-content-lg-end
+        .userinfo
+          ul.navbar-nav.ms-auto
+            - if user_signed_in?
+              li.nav-item.dropdown
+                a#dropdownMenuLink.nav-link.dropdown-toggle{
+                                                      aria-expanded="false"
+                                                      data-bs-toggle="dropdown"
+                                                      role="button" }
+                  = current_user.first_name
+                  = avatar_for(current_user)
+                ul.dropdown-menu.dropdown-menu-end.smc{
+                                            aria-labelledby="dropdownMenuLink" }
+                  li
+                    = link_to 'Profile', user_path(id: current_user.id), \
+                                                          class: 'dropdown-item'
+                  li
+                    = link_to 'My Places', my_places_path, class: 'dropdown-item'
+                  li
+                    = link_to 'Sign Out', destroy_user_session_path, \
+                                                          method: :delete,
+                                                          class: 'dropdown-item'
+            - else
+              li.nav-item
+                = link_to 'Sign In', new_user_session_url, class: 'nav-link'
+              li.nav-item
+                = link_to 'Sign Up', new_user_registration_url, class: 'nav-link'
   hr.container.mx-auto

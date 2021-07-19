@@ -28,7 +28,7 @@ RSpec.describe 'Showing', type: :feature do
 
     context 'with redirects to' do
       it 'home page' do
-        click_on 'HostMePlease'
+        click_on 'HostMePlease', match: :first
         have_current_path eq(root_path)
       end
 
@@ -66,7 +66,7 @@ RSpec.describe 'Showing', type: :feature do
 
     context 'with redirects to' do
       it 'home page' do
-        click_on 'HostMePlease'
+        click_on 'HostMePlease', match: :first
         have_current_path eq(root_path)
       end
 

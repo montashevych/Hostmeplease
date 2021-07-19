@@ -19,6 +19,10 @@ RSpec.describe User do
     it 'creates a user from google' do
       expect(user_from_google).to be_valid
     end
+
+    it 'has default avatar picture' do
+      expect(test_user.picture).not_to eq(nil)
+    end
   end
 
   context 'when not valid' do
@@ -44,10 +48,15 @@ RSpec.describe User do
       expect(test_user).not_to be_valid
     end
 
+    it 'hasn\'t avatar picture' do
+      expect(test_user.picture).to eq(nil)
+    end
+
     it 'creates an user without params' do
       expect {
         described_class.from_google(email: 'test@mail.com', params: {})
-      }.to raise_error(ArgumentError) # with empty params create_with(**params) takes 0, it is supposed to take >= 1
+      }.to raise_error(ArgumentError) # with empty params create_with(**params)
+      # takes 0, it is supposed to take >= 1
     end
 
     it 'creates a user without name' do

@@ -3,32 +3,72 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $text-color: #FFFFFF;
 $link-color: #f8f9fa;
+$error-color: #f40000;
 
-// Styles for main container page 
+.has-errors {
+  border: 1px solid red;
+}
+
+.error-message {
+  position: absolute;
+  bottom: 30%;
+  right: 7%;
+  font-size: 10px;
+  font-family: 'Noto Sans';
+  font-weight: normal;
+  color: $error-color;
+  z-index: 2;
+}
+
+.field_with_errors {
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+// Styles for main container page
 .main-screen {
-    background: url("../images/homepage-bg.png");
-    background-size: cover;
-    height: Max(1080px, 100vh);
+  background: url('../images/homepage-bg.png');
+  background-size: cover;
+  height: Max(1080px, 100vh);
 
-//======== FORMS ========
+  //======== FORMS ========
   .signin-form, .signup-form, .forgot_password-form, .resend_confirmation-form {
     background-color: #464E4F;
     margin-top: 20vh;
     border-radius: 20px;
     padding-top: 48px;
 
-    button { 
-      width: 80%;
+    .row {
+      position: relative;
+    }
+
+    button {
+      width: 75%;
+      height: 49px;
       border-radius: 20px;
+      background-color: #91CB82;
      }
   }
 
   .link_in_color {
     color: $link-color;
+    font-size: 11px;
   }
 
   .signin-form, .signup-form {
-    width: 40%;
+    width: 34%;
+
+    .form-label {
+      margin-bottom: 0;
+    }
+
+    .omni-auth {
+      background-image: url('../images/google_logo.png');
+      height: 25px;
+      width: 25px;
+      display: inline-block;
+      background-size: cover;
+    }
 
     @media screen and (max-width: 960px) {
       width: 100%;
@@ -99,7 +139,7 @@ $link-color: #f8f9fa;
 
       @media screen and (max-width: 960px) {
         width: 80%;
-      }    
+      }
   }
 
 //======== PROFILE ========
@@ -115,14 +155,14 @@ $link-color: #f8f9fa;
 
     font-weight: 700;
 
-    .name { 
+    .name {
       font-size: 18px;
       margin-bottom: 0;
     }
 
-    .gravatar { border-radius: 100%; margin-bottom: 12px; }
+    .avatar { border-radius: 100%; margin-bottom: 12px; }
 
-    .col-gravatar { text-align: center; }
+    .col-avatar { text-align: center; }
 
     .change-avatar {
       font-weight: 800;
@@ -134,7 +174,7 @@ $link-color: #f8f9fa;
 
     table.about {
       width: 100%;
-      
+
       thead {
         border-bottom: 2px solid white;
         margin-bottom: 24px;

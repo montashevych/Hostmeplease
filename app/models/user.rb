@@ -17,7 +17,16 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6, maximum: 256 }, on: :create
 
+  before_create :set_default_avatar
+
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)
+  end
+
+  def set_default_avatar
+    build_picture(image: Rack::Test::UploadedFile.new(
+                          File.open(Rails.root.join('app/frontend/images/default_avatar.png')),
+                          'image/png',
+                        ))
   end
 end

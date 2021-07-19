@@ -7,7 +7,8 @@
     .col-md-12
       - if @place.address.errors[:state_region]
         p = a.label 'State / Region'
-        = a.text_field :state_region, placeholder: 'Your state or region..', alt: 'State or region'
+        = a.text_field :state_region, placeholder: 'Your state or region..', \
+                                                        alt: 'State or region'
       p.error-message = @place.address.errors[:state_region].first
   .mb-2.row
     .col-md-12
@@ -19,7 +20,8 @@
     .col-md-12
       - if @place.address.errors[:details]
         p = a.label 'Address'
-        = a.text_field :details, placeholder: 'Like street, number of house..', alt: 'Address'
+        = a.text_field :details, placeholder: 'Like street, number of house..',
+                                                      alt: 'Address'
       p.error-message = @place.address.errors[:details].first
   .mb-2.row
     #map-column.col-md-12

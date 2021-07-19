@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def update
+    current_user.picture.update(user_params)
+  end
+
   private
 
   def user_find
@@ -15,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation, :image)
   end
 end

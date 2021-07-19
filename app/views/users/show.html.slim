@@ -5,9 +5,12 @@ div.main-screen
 
   div.container.profile
     div.row.mx-auto.text-light.montserrat
-      div.col-sm-4.col-gravatar
-        = gravatar_for @user, size: 135
-        = link_to "Change Photo", "https://en.gravatar.com/gravatars/new", class: "change-avatar btn text-white montserrat"
+      div.col-sm-4.col-avatar
+        = avatar_for(@user, 135, 'avatar-preview')
+        = form_for current_user, method: :patch do |f|
+          = f.label 'Change Photo', for: 'user_image', \
+                              class: 'change-avatar btn text-white montserrat'
+          = f.file_field :image, hidden: '', accept: '.jpg, .png .jpeg .gif'
       div.col-sm-8.montserrat
         p.name = @user.first_name
         p.role = @user.role.capitalize
@@ -24,3 +27,5 @@ div.main-screen
             tr
               td Phone:
               td = "+380 68 123 56 78"
+
+= javascript_pack_tag 'users/show'

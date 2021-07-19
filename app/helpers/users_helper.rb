@@ -1,18 +1,14 @@
 require 'digest'
 
 module UsersHelper
-  def gravatar_for(user, size: 40)
-    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: user.first_name, class: 'gravatar')
-  end
-
-  def avatar_for(user, size: 40)
+  def avatar_for(user, size = 40, id = '')
     if user.avatar_url && user.avatar_url =~ (GOOGLE_AVATAR_STORAGE_REGEX)
       image_tag(google_avatar_url_for(user, size), alt: user.first_name,
-                                                   class: 'gravatar')
+                                                   class: 'avatar')
     else
-      gravatar_for(user, size: size)
+      image_tag(user.picture.image.avatar.url, class: 'avatar',
+                                               id: id,
+                                               width: "#{size}px", height: "#{size}px")
     end
   end
 
