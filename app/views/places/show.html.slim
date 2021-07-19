@@ -5,27 +5,27 @@ section.place-screen
     = render 'shared/header'
   .container.place-name
     h1
-      = @place.title
+      = @my_place.title
 section.pg-cards
   .container.justify-content-center
     .row.align-items-start
       .col
-        .card style=("width: 35rem;") 
-          #carouselExampleIndicators.carousel.slide data-ride="carousel" 
+        .card.carousel-card
+          #carouselExampleIndicators.carousel.slide data-ride="carousel"
             ol.carousel-indicators
-              li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
+              li.active data-slide-to="0" data-target="#carouselExampleIndicators"
             .carousel-inner
               .carousel-item.active
-                img.d-block.w-100.card.card-image/
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button" 
-              span.carousel-control-prev-icon aria-hidden="true" 
+                img.d-block.w-100.card.card-image style=("background-image: url(#{@my_place.pictures[0].image.url})")
+            a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button"
+              span.carousel-control-prev-icon aria-hidden="true"
               span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
-              span.carousel-control-next-icon aria-hidden="true" 
+            a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button"
+              span.carousel-control-next-icon aria-hidden="true"
               span.sr-only Next
       .col.mx-4
           .row
-            .card.text-white style=("width: 30rem;") 
+            .card.text-white.description-card
               .card-body
                 h5.card-title.card-description
                   | Price starts from
@@ -54,7 +54,6 @@ section.pg-cards
           .row.mt-3
             div style=("width: 30rem;") 
               div#map.card.card-img-top.map-card
-
 = render'shared/footer'
 
 = javascript_pack_tag 'place_page', 'data-turbolinks-track': 'reload'
