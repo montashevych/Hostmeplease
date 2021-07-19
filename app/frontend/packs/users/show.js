@@ -12,7 +12,7 @@ document.getElementById('user_image').addEventListener('change', (event) => {
   // Gives me true or errors message
   let valideOrMessage = validateFile(preview_avatar);
 
-  if (valideOrMessage == true) {
+  if (valideOrMessage === true) {
     let pictureURL = URL.createObjectURL(event.originalTarget.files[0]);
 
     preview_avatar.classList.remove(PICTURES_ERRORS_CLASS);
