@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   context 'when valid path' do
-    let(:test_user) { FactoryBot.build(:user) }
+    let(:test_user) { build(:user) }
 
     describe 'GET /sign_up' do
       it 'returns http success' do
@@ -34,7 +34,7 @@ RSpec.describe 'Users', type: :request do
   end
 
   context 'when User' do
-    let(:user) { FactoryBot.create(:user, :confirmed) }
+    let(:user) { create(:user, :confirmed) }
 
     before do
       sign_in user
@@ -42,7 +42,7 @@ RSpec.describe 'Users', type: :request do
 
     it 'return Show render partial' do
       get user_path(id: user.id)
-      expect(response).to render_template('users/_show_and_edit_form')
+      expect(response).to render_template('users/_user_form')
     end
 
     it 'return Show http success' do
@@ -52,7 +52,7 @@ RSpec.describe 'Users', type: :request do
 
     it 'return Edit render partial' do
       get edit_user_path(id: user.id)
-      expect(response).to render_template('users/_show_and_edit_form')
+      expect(response).to render_template('users/_user_form')
     end
 
     it 'return Edit http success' do
@@ -66,7 +66,7 @@ RSpec.describe 'Users', type: :request do
 
       expect(response).to be_redirect
       follow_redirect!
-      expect(response).to render_template('users/_show_and_edit_form')
+      expect(response).to render_template('users/_user_form')
       expect(response.body).to include('User was successfully updated.')
     end
   end
