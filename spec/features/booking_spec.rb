@@ -90,7 +90,7 @@ RSpec.describe 'Bookings', type: :feature do
       end
 
       it 'shows link for My Bookings page' do
-        expect(page).to have_link('My Bookings', visible: :hidden) # not visible by default
+        expect(page).to have_link('My Bookings') # not visible by default
       end
     end
 

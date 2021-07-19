@@ -53,15 +53,8 @@ section.pg-cards
                 
           .row.mt-3
             div style=("width: 30rem;") 
-              / img.card.card-img-top.map-card /
               div#map.card.card-img-top.map-card
 
 = render'shared/footer'
-
-/ script
-/   == "window.disabledRanges = [\n#{@place.bookings.map { |b| (not b.checkin.nil? and not b.checkout.nil?) ? "{ from: new Date(#{b.checkin.strftime('%Y, %m, %d')}), to: new Date(#{b.checkout.strftime('%Y, %m, %d')}) }" : "undefined" }.join(", \n")}\n].filter(x => x !== undefined);"
-
-/ script
-/   == @place.bookings.map { |b| "console.log(#{j b.id}, '#{j b.checkin}', '#{j b.checkout}')" }.join(";\n")
 
 = javascript_pack_tag 'place_page', 'data-turbolinks-track': 'reload'

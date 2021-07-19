@@ -35,7 +35,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:place_id])
     @user  = current_user
 
-    if booking_overlaps(params[:booking][:checkin], params[:booking][:checkout])
+    if booking_overlaps(booking_params[:checkin], booking_params[:checkout])
       show_overlap_flash
     else
       redirect_to_confirm

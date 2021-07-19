@@ -19,7 +19,7 @@ header.d-flex.w-100.flex-column
               li
                 = link_to 'My Places', 'my_places', class: 'dropdown-item'
               li
-                = link_to 'My Bookings', user_bookings_path(id: current_user.id), class: 'dropdown-item'
+                = link_to 'My Bookings', user_bookings_path(current_user), class: 'dropdown-item'
               li
                 = link_to 'Sign Out', destroy_user_session_path, method: :delete,
                                                                  class: 'dropdown-item'

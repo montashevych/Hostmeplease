@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-  # respond_to :pdf, :html, :json
 
   before_action :authenticate_user!
   before_action :find_booking
@@ -35,7 +34,7 @@ class BookingsController < ApplicationController
   def save
     @booking.confirmed = true
     @booking.save!
-    redirect_to user_bookings_url(id: @booking.user.id)
+    redirect_to user_bookings_url(@booking.user)
   end
 
   private
