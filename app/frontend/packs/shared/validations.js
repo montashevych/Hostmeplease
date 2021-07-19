@@ -12,19 +12,34 @@ let numberFieldValidation = (numberFieldElement) => {
       event.originalTarget.value = value.slice(0, -1);
     }
   });
-}
+};
 
 let flashMessage = message => {
-  document.body.innerHTML += `
-    <div class="alert alert-danger alert-dismissible position-absolute start-50 fade show" role="alert">
-      <button class="btn-close" data-bs-dismiss="alert" type="button"></button>
-      <span>${message}</span>
-    </div>
-    `;
+  let div = document.createElement('div');
+  let button = document.createElement('button');
+  let message_span = document.createElement('span');
+
+  div.classList.add('alert', 'alert-danger', 'alert-dismissible',
+                              'position-absolute', 'start-50', 'fade', 'show');
+  div.role = 'alert';
+  button.classList.add('btn-close');
+  button.setAttribute('data-bs-dismiss', 'alert');
+  button.type = 'button';
+  message_span.textContent = message;
+  div.appendChild(button);
+  div.appendChild(message_span);
+  document.body.appendChild(div);
 }
 
-let validateFile = (picture, pictureErrors = '') => {
-  const PICTURES_ERRORS_CLASS = 'has-errors';
+let addErrorsClass = (element, className) => {
+  element.classList.add(className);
+}
+
+let resetFiles = fileHandler => {
+  fileHandler.originalTarget.value = null;
+}
+
+let validateFile = picture => {
   const allowedExtensions =  ['jpg', 'jpeg', 'gif', 'png'],
         sizeLimit = 1048576; // 1 megabyte
 
@@ -43,22 +58,16 @@ let validateFile = (picture, pictureErrors = '') => {
     in our array of allowed file extensions
   */
   if(!allowedExtensions.includes(fileExtension)){
-    picture.classList.add(PICTURES_ERRORS_CLASS);
-    flashMessage(`File type .${fileExtension} is not allowed.`);
-    event.originalTarget.value = null;
 
-    return false;
-  }else if(fileSize > sizeLimit){
-    picture.classList.add(PICTURES_ERRORS_CLASS);
-    flashMessage('File is too large');
-    event.originalTarget.value = null;
+    return `File type .${fileExtension} is not allowed.`;
 
-    return false;
+  } else if(fileSize > sizeLimit){
+
+    return 'File is too large';
   }
-  picture.classList.remove(PICTURES_ERRORS_CLASS);
-  pictureErrors.outerHTML ? pictureErrors.outerHTML = '' : false;
 
   return true;
 }
 
-export { numberFieldValidation, validateFile }
+export { numberFieldValidation, validateFile, addErrorsClass, resetFiles,
+                                                                  flashMessage }
