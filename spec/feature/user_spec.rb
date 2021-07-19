@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 describe 'User', type: :feature do
-  include ApplicationHelper
-  let!(:test_user) { FactoryBot.build(:user) }
+  let!(:test_user) { build(:user) }
 
   context 'when flash has message' do
     before do
-      visit user_session_path
+      visit new_user_session_path
       fill_in 'Email', with: test_user.email
       fill_in 'Password', with: test_user.password
     end
@@ -67,43 +66,48 @@ describe 'User', type: :feature do
   end
 
   context 'when User redirect_to Show page' do
-    let(:test_user) { FactoryBot.create(:user) }
-
-    before do
-      test_registration
-      test_confirmation
-      test_login
-    end
+    let(:user) { create(:user, :confirmed) }
 
     it 'sees Show page' do
-      visit user_path(id: test_user.id)
-      expect(page).to have_current_path(user_path(id: test_user.id))
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Sign In'
+      visit user_path(id: user.id)
+      expect(page).to have_current_path(user_path(id: user.id))
     end
   end
 
   context 'when User redirect_to Edit page' do
-    let(:test_user) { FactoryBot.create(:user) }
+    let(:test_user) { create(:user) }
+    let(:user) { create(:user, :confirmed) }
 
     before do
-      test_registration
-      test_confirmation
-      test_login
-      visit edit_user_path(id: test_user.id)
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Sign In'
     end
 
     it 'sees Edit page' do
-      expect(page).to have_current_path(edit_user_path(id: test_user.id))
+      visit edit_user_path(id: user.id)
+      expect(page).to have_current_path(edit_user_path(id: user.id))
     end
 
     it 'Saves Changes successful' do
-      test_edit_form
-      expect(page).to have_current_path(user_path(id: test_user.id))
+      visit edit_user_path(id: test_user.id)
+      fill_in 'user_form[first_name]', with: user.first_name
+      fill_in 'user_form[last_name]', with: user.last_name
+      fill_in 'user_form[email]', with: user.email
+      fill_in 'user_form[phone_number]', with: user.phone_number
+      click_button 'Save Changes'
+      have_current_path eq(user_path(id: user.id))
     end
 
     it 'render the Edit page' do
-      visit user_path(id: test_user.id)
+      visit user_path(id: user.id)
       click_link 'Edit Profile'
-      have_current_path eq(edit_user_path(id: test_user.id))
+      have_current_path eq(edit_user_path(id: user.id))
     end
   end
 end
