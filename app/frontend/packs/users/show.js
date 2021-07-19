@@ -12,7 +12,7 @@ document.getElementById('user_image').addEventListener('change', (event) => {
 });
 
 function validateFile(picture){
-  const allowedExtensions =  ['jpg', 'jpeg', 'gif', 'png', 'svg'],
+  const allowedExtensions =  ['jpg', 'jpeg', 'gif', 'png'],
         sizeLimit = 1000000; // 1 megabyte
 
   // destructuring file name and size from file object
