@@ -12,7 +12,16 @@ let numberFieldValidation = (numberFieldElement) => {
       event.originalTarget.value = value.slice(0, -1);
     }
   });
-};
+}
+
+let flashMessage = message => {
+  document.body.innerHTML += `
+    <div class="alert alert-danger alert-dismissible position-absolute start-50 fade show" role="alert">
+      <button class="btn-close" data-bs-dismiss="alert" type="button"></button>
+      <span>${message}</span>
+    </div>
+    `;
+}
 
 let validateFile = (picture, pictureErrors = '') => {
   const PICTURES_ERRORS_CLASS = 'has-errors';
@@ -35,13 +44,13 @@ let validateFile = (picture, pictureErrors = '') => {
   */
   if(!allowedExtensions.includes(fileExtension)){
     picture.classList.add(PICTURES_ERRORS_CLASS);
-    alert("file type not allowed");
+    flashMessage(`File type .${fileExtension} is not allowed.`);
     event.originalTarget.value = null;
 
     return false;
   }else if(fileSize > sizeLimit){
     picture.classList.add(PICTURES_ERRORS_CLASS);
-    alert("file size too large")
+    flashMessage('File is too large');
     event.originalTarget.value = null;
 
     return false;
