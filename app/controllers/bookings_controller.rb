@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :find_booking
   before_action :check_same_user
