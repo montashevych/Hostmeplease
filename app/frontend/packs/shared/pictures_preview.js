@@ -32,7 +32,7 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
 
     // Remove errors if it present in pure file
     uploadButton.classList.remove(PICTURES_ERRORS_CLASS);
-    picturesErrorsText.outerHTML && picturesErrorsText.outerHTML = '';
+    picturesErrorsText.outerHTML = '';
     // Work at pictures
     selectedPictures.forEach((picture) => {
       // Copy original files input
