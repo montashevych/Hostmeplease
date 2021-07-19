@@ -9,7 +9,7 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    - if not (yield :js_pack).empty?
+    - unless (yield :js_pack).empty?
       = javascript_pack_tag((yield :js_pack), 'data-turbolinks-track': 'reload')
   body
   - if flash[:notice]
