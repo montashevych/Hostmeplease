@@ -1,0 +1,27 @@
+- provide :title, "Confirm Booking for #{@place.title}"
+
+section#hero.d-flex.align-items-center
+  .container
+    = render 'shared/header'
+    h2.title
+      | Confirm your booking for
+      = link_to place_path(id: @place.id), @place.title
+    .row
+      .col-lg-8
+        .row.mb-2
+          .col-md-6
+            h6 Check-in date
+          .col-md-6
+            h6 Check-out date
+        .row.mb-2
+          .col-md-6
+            h6 Price per night
+          .col-md-6
+            h6 Full price
+        .row.mb-3
+          .col-md-6
+            h6 Payment type
+        = link_to booking_receipt_url(id: @booking.id), "Print Receipt", class: "btn btn-success"
+        = link_to booking_confirm_url(place_id: @place.id, booking_id: @booking.id), "Confirm", class: "btn btn-success"
+      .col-lg-4
+        h6 Location

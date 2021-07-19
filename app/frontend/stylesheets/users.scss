@@ -215,3 +215,14 @@ $error-color: #bd0517;
     }
   }
 }
+
+.d-flex .it .card .card-img-overlay .card-footer .col-6 {
+  flex-direction: column;
+}
+
+.bookings-title h1 {
+  padding: 8px 24px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 48px;
+}

@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :user_find, except: [:index]
 
+  BOOKINGS_PER_PAGE = 9
+
   def index
     redirect_to root_path
   end
@@ -22,6 +24,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def bookings
+    @bookings = @user.bookings.active.paginate(page: params[:page],
+                                               per_page: BOOKINGS_PER_PAGE)
   end
 
   private
