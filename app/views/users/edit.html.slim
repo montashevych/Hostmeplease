@@ -1,7 +1,6 @@
 - provide :title, @user.first_name
-
+= javascript_pack_tag 'users/edit', 'data-turbolinks-track': 'reload'
 div.main-screen
   = render  'shared/header'
   = render  'show_and_edit_form'
 = render  'shared/footer'
-= javascript_pack_tag 'users/edit'

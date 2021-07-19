@@ -1,6 +1,10 @@
 import intlTelInput from 'intl-tel-input';
 
-document.addEventListener("turbolinks:load", function(event) {
+const onload = () => Promise.any([
+  new Promise((ok, _) => window.onload = () => ok()),                              // regular onload
+  new Promise((ok, _) => document.addEventListener("turbolinks:load", () => ok())) // turbolinks load
+]);
+function handler(event) {
   const input = document.querySelector("#phone");
   intlTelInput(input, {
       autoHideDialCode: true,
@@ -17,4 +21,5 @@ document.addEventListener("turbolinks:load", function(event) {
         .then(response => response.json())
         .then(({ country }) => ok(country || "us")) }
       });
-});
+}
+onload().then(handler);
