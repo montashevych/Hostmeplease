@@ -5,7 +5,7 @@ section.place-screen
     = render 'shared/header'
   .container.place-name
     h1
-      = @my_place.title
+      = @place.title
 section.pg-cards
   .container.justify-content-center
     .row.align-items-start
@@ -16,7 +16,7 @@ section.pg-cards
               li.active data-slide-to="0" data-target="#carouselExampleIndicators"
             .carousel-inner
               .carousel-item.active
-                img.d-block.w-100.card.card-image style=("background-image: url(#{@my_place.pictures[0].image.url})")
+                img.d-block.w-100.card.card-image style=("background-image: url(#{@place.pictures[0].image[0].url})")
             a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button"
               span.carousel-control-prev-icon aria-hidden="true"
               span.sr-only Previous
@@ -50,10 +50,11 @@ section.pg-cards
                     button.btn.btn-success type="submit" Quick book
                 - else
                   = link_to new_user_session_url, "Sign in to book", class: "btn btn-success"
-                
           .row.mt-3
-            div style=("width: 30rem;") 
+            div style=("width: 30rem;")
+              / img.card.card-img-top.map-card /
               div#map.card.card-img-top.map-card
+
 = render'shared/footer'
 
 = javascript_pack_tag 'place_page', 'data-turbolinks-track': 'reload'

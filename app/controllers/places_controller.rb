@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
 
   before_action :place_find, only: [:show, :bookings]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :create, :my_places, :destroy]
 
   def index
     @places = Place.where(status: :created).paginate(page: params[:page],
@@ -66,7 +66,7 @@ class PlacesController < ApplicationController
   private
 
   def place_find
-    @my_place = Place.find(params[:id])
+    @place = Place.find(params[:id])
   end
 
   def place_build

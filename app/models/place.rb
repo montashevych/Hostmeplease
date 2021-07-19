@@ -6,7 +6,8 @@ class Place < ApplicationRecord
   enum status: { created: 0, updated: 1, approved: 2 }
 
   validates :title, presence: true, length: { minimum: 8, maximum: 23 }
-  validates :description, presence: true, length: { minimum: 100, maximum: 900 }
+  validates :description, presence: true, length: { minimum: 20, maximum: 600 }
+  # for production must change description minimum to 100 characters
   validates :price, presence: true
   validates :address, presence: true
   validates :pictures, presence: true

@@ -23,8 +23,8 @@
       p.error-message = @place.address.errors[:details].first
   .mb-2.row
     #map-column.col-md-12
-      = a.hidden_field :lon
-      = a.hidden_field :lat
+      = f.hidden_field :lon
+      = f.hidden_field :lat
       p Or select on map:
       #map
       p#map-error.error-message

@@ -10,24 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_160009) do
+ActiveRecord::Schema.define(version: 2021_07_06_094507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bookings", force: :cascade do |t|
-    t.bigint "place_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "checkin"
-    t.datetime "checkout"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "confirmed"
-    t.boolean "cancelled", default: false
-    t.index ["place_id"], name: "index_bookings_on_place_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
-  end
-    
   create_table "addresses", force: :cascade do |t|
     t.string "country", null: false
     t.string "city", null: false
@@ -41,6 +28,19 @@ ActiveRecord::Schema.define(version: 2021_07_16_160009) do
     t.index ["place_id"], name: "index_addresses_on_place_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "checkin"
+    t.datetime "checkout"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "confirmed"
+    t.boolean "cancelled", default: false
+    t.index ["place_id"], name: "index_bookings_on_place_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.json "image"
     t.string "imageable_type"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2021_07_16_160009) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable"
-
   end
 
   create_table "places", force: :cascade do |t|
