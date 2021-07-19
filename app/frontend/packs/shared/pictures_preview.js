@@ -3,6 +3,7 @@
 //* Preview and deleting images befor upload
 //*
 //*******************************************
+import { validateFile } from '../shared/validations'
 
 const PICTURES_INPUT = 'place_pictures_attributes_image'
 const PICTURES_UPLOAD_BUTTON = 'place_pictures_label'
@@ -16,7 +17,7 @@ let uploadButton = document.getElementById(PICTURES_UPLOAD_BUTTON);
 let picturesErrorsText = document.getElementById(PICTURES_ERRORS_TEXT);
 
 document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
-  if (validateFile(uploadButton)) {
+  if (validateFile(uploadButton, picturesErrorsText)) {
     let picturesInput = document.getElementById(PICTURES_INPUT);
     let selectedPictures = Array.from(event.target.files);
     // Counters
@@ -82,40 +83,3 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
     picturesInput.value = '';
   }
 });
-
-function validateFile(picture){
-  const allowedExtensions =  ['jpg', 'jpeg', 'gif', 'png'],
-        sizeLimit = 1048576; // 1 megabyte
-
-  // destructuring file name and size from file object
-  const { name:fileName, size:fileSize } = event.originalTarget.files[0];
-
-  /*
-  * if filename is apple.png, we split the string to get ["apple","png"]
-  * then apply the pop() method to return the file extension
-  *
-  */
-  const fileExtension = fileName.split(".").pop();
-
-  /*
-    check if the extension of the uploaded file is included
-    in our array of allowed file extensions
-  */
-  if(!allowedExtensions.includes(fileExtension)){
-    picture.classList.add(PICTURES_ERRORS_CLASS);
-    alert("file type not allowed");
-    event.originalTarget.value = null;
-
-    return false;
-  }else if(fileSize > sizeLimit){
-    picture.classList.add(PICTURES_ERRORS_CLASS);
-    alert("file size too large")
-    event.originalTarget.value = null;
-
-    return false;
-  }
-  picture.classList.remove(PICTURES_ERRORS_CLASS);
-  picturesErrorsText.outerHTML = '';
-
-  return true;
-}
