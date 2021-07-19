@@ -60,6 +60,6 @@ div.container.profile
               =  f.label :phone_number, 'Phone:', class: 'form-label'
             .col-12.col-sm-8.col-lg-8
               =  f.telephone_field :phone_number, id: 'phone',
-                class: action_name == 'show'? 'input_width form-control' : 'input_width form-control',type: 'tel'
+                class: action_name == 'show'? 'show_input form-control' : 'input_width form-control',type: 'tel'
 
               span.error-message = display_error(:phone_number, @user_form)
