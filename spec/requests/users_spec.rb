@@ -41,30 +41,30 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'return Show render partial' do
-      get user_path(id: user.id)
+      get user_path(user)
       expect(response).to render_template('users/_user_form')
     end
 
     it 'return Show http success' do
-      get user_path(id: user.id)
+      get user_path(user)
       expect(response).to have_http_status(:success)
     end
 
     it 'return Edit render partial' do
-      get edit_user_path(id: user.id)
+      get edit_user_path(user)
       expect(response).to render_template('users/_user_form')
     end
 
     it 'return Edit http success' do
-      get edit_user_path(id: user.id)
+      get edit_user_path(user)
       expect(response).to have_http_status(:success)
     end
 
     # rubocop:disable RSpec/ExampleLength
     # rubocop:disable RSpec/MultipleExpectations
     it "creates a User and redirects to User's page" do
-      patch user_path(id: user.id), params: { user_form: { first_name: 'James', last_name: 'Bond',
-                                                           email: 'james@gmail.com', phone_number: '+380963451234' } }
+      patch user_path(user), params: { user_form: { first_name: 'James', last_name: 'Bond',
+                                                    email: 'james@gmail.com', phone_number: '+380963451234' } }
 
       expect(response).to be_redirect
       follow_redirect!
