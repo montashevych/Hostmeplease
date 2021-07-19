@@ -4,7 +4,10 @@ RSpec.describe User do
   context 'when valid' do
     let!(:test_user) { FactoryBot.create(:user) }
     let(:user_from_google) {
-      described_class.from_google(email: 'test@mail.com', params: { password: 'a' * 6, first_name: 'a' * 2 })
+      described_class.from_google(email: 'test_one@gmail.com', params: {  password: 'a' * 6,
+                                                                          first_name: 'a' * 2,
+                                                                          last_name: 'a' * 2,
+                                                                          phone_number: '1' * 8 })
     }
 
     it 'creates an user with consumer role' do

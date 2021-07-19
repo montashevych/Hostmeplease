@@ -29,10 +29,9 @@ let fieldFor = {
 let placePrice = document.getElementById('place_price');
 //Get container with errors
 let image_errors = document.getElementById('image-error');
-let picture_label = document.getElementById('place_pictures_label');
+let picture_label = document.getElementById('place_picture_label');
 let map_container = document.getElementById('map');
 let map_text_error = document.getElementById('map-error');
-
 // Marker add and delete function
 let markerAdd = (lat, lng) => {
   if (marker) marker.remove();
@@ -182,27 +181,77 @@ document.getElementById('address_form').addEventListener('change', () => {
   };
 
   // Geocoding by address from fields
-  geocoder.geocode(address_string, ( err, data ) => {
+  geocoder.geocode(address_string, function ( err, data ) {
     if (data.results[0]) {
       let { lat, lng } = data.results[0].geometry.location;
 
       // Fill in latitude and longitude fields
-      setLatLng(lat, lng);
+      document.getElementById('place_lon').value = lng;
+      document.getElementById('place_lat').value = lat;
 
-      if (map_container.classList.contains(PICTURE_ERRORS_CLASS)) {
-        map_container.classList.remove(PICTURE_ERRORS_CLASS);
+      if (map_container.classList.contains('has-errors')) {
+        map_container.classList.remove('has-errors');
         map_text_error.textContent = '';
       }
 
       // Moving to selected address
       map.flyTo([lat, lng], zoom);
-      if (fieldFor['street'].value.length != 0 && fieldFor['street'].value !=
-          ' ' && fieldFor['streetNumber'].value.includes(',')) {
+      if (street_field.value.length != 0 && street_field.value != ' ' && number_street_field.value.includes(',')) {
         markerAdd(lat, lng);
       };
     } else {
-      map_container.classList.add(PICTURE_ERRORS_CLASS);
+      map_container.classList.add('has-errors');
       map_text_error.textContent = 'Address Not Found';
     }
-  }, { key: API_GEOCODE_KEY });         //api key
+  }, { key: api_geocode_key });         //api key
+});
+
+// Preview and deleting images befor upload
+document.getElementById('place_picture_image').addEventListener('change', (event) => {
+  let inputImage = document.getElementById('place_picture_image');
+  let files = Array.from(event.target.files);
+  let position = 0;
+  let fileList = inputImage.files;
+
+  files.forEach((file) => {
+    let fileInputColumn = document.getElementById('fileInputColumn');
+    let newimage_div = document.createElement('div');
+    let newimage = document.createElement('img');
+    let link_to_delete = document.createElement('a');
+    let cloneInput = inputImage.cloneNode();
+    let image = URL.createObjectURL(file);
+
+    // set custom FileList, all to line 60
+    let list = new DataTransfer();
+    let listItem = fileList[position++];
+
+    list.items.add(listItem);
+
+    let myImage = list.files;
+
+    // Creating new input
+    cloneInput.files = myImage;
+    cloneInput.id = 'place_picture_image-' + (number++);
+    fileInputColumn.appendChild(cloneInput);
+
+    // Creating delete link
+    link_to_delete.text = 'delete';
+    link_to_delete.className = 'delete_image';
+    link_to_delete.id = 'delete-' + cloneInput.id;
+    newimage_div.appendChild(link_to_delete);
+
+    // Creating preview
+    newimage.src = image;
+    newimage_div.id = 'preview-' + cloneInput.id;
+    newimage_div.className = 'preview-div';
+    newimage_div.appendChild(newimage);
+    document.getElementById('image-column').appendChild(newimage_div);
+
+    // Add eventListener for delete image
+    document.getElementById(link_to_delete.id).addEventListener('click', () => {
+      document.getElementById(cloneInput.id).outerHTML = '';
+      document.getElementById(newimage_div.id).outerHTML = '';
+    });
+  });
+  inputImage.value = '';
 });

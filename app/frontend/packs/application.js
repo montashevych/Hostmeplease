@@ -1,4 +1,5 @@
 require.context('../images', true)
+require.context('../img', true)
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"

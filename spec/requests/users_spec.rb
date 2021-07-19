@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  let(:test_user) { build :user }
-
   context 'when valid path' do
+    let(:test_user) { build(:user) }
+
     describe 'GET /sign_up' do
       it 'returns http success' do
         get '/users/sign_up'
@@ -27,11 +27,51 @@ RSpec.describe 'Users', type: :request do
   end
 
   context 'when invalid path' do
-    describe 'GET /users/{id}' do
-      it 'doesnt return http success' do
-        get '/users/foobar'
-        expect(response).not_to have_http_status(:success)
-      end
+    it 'doesnt return http success' do
+      get '/users/foobar'
+      expect(response).not_to have_http_status(:success)
     end
+  end
+
+  context 'when User' do
+    let(:user) { create(:user, :confirmed) }
+
+    before do
+      sign_in user
+    end
+
+    it 'return Show render partial' do
+      get user_path(user)
+      expect(response).to render_template('users/_user_form')
+    end
+
+    it 'return Show http success' do
+      get user_path(user)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'return Edit render partial' do
+      get edit_user_path(user)
+      expect(response).to render_template('users/_user_form')
+    end
+
+    it 'return Edit http success' do
+      get edit_user_path(user)
+      expect(response).to have_http_status(:success)
+    end
+
+    # rubocop:disable RSpec/ExampleLength
+    # rubocop:disable RSpec/MultipleExpectations
+    it "creates a User and redirects to User's page" do
+      patch user_path(user), params: { user_form: { first_name: 'James', last_name: 'Bond',
+                                                    email: 'james@gmail.com', phone_number: '+380963451234' } }
+
+      expect(response).to be_redirect
+      follow_redirect!
+      expect(response).to render_template('users/_user_form')
+      expect(response.body).to include('User was successfully updated.')
+    end
+    # rubocop:enable RSpec/ExampleLength
+    # rubocop:enable RSpec/MultipleExpectations
   end
 end

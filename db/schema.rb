@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 2021_07_16_160009) do
     t.index ["place_id"], name: "index_addresses_on_place_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "checkin"
+    t.datetime "checkout"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "confirmed"
+    t.boolean "cancelled", default: false
+    t.index ["place_id"], name: "index_bookings_on_place_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.json "image"
     t.string "imageable_type"
@@ -68,8 +81,11 @@ ActiveRecord::Schema.define(version: 2021_07_16_160009) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "avatar_url"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "places"
+  add_foreign_key "bookings", "users"
 end

@@ -144,16 +144,77 @@ $error-color: #f40000;
 
 //======== PROFILE ========
   .profile .row {
-    width: Max(60%, 800px);
-
-    margin-top: 64px;
+    max-width: 1036px;
     padding: 32px;
-
     background: #464E4F;
-
     border-radius: 20px;
-
     font-weight: 700;
+    margin-top: 12rem;
+    @media screen and (max-width: 570px) {
+      margin-top: 3rem;
+    }
+    .card-body{
+      padding: 0;
+
+      .row {
+        padding: 0 1rem 0 0;
+        margin: 0 -4% 0 -3%;
+
+        &.row-name>* {
+          display: flex;
+          justify-content: center;
+
+          @media screen and (min-width: 770px) {
+            &.username { justify-content: flex-start; }     // name
+            &:not(.username) { justify-content: flex-end; } // button
+          }
+        }
+
+        .iti {
+          width: 100%;
+        }
+
+        div label {
+          width: 100%;
+          color: white;
+          @media screen and (max-width: 570px) {
+            width: 100%;
+          }
+        }
+        .input_width {
+          width: 100%;
+          color: black;
+          font-weight: 500;
+          padding-left: 12%;
+          @media screen and (max-width: 990px) {
+            padding-left: 17%;
+            &:last-child {
+              margin: 0;
+            }
+          }
+        }
+        .show_input {
+          width: 100%;
+          background-color: #464e4f;
+          color: white;
+          font-weight: 500;
+          padding-left: 12%;
+          @media (min-width: 570px) and (max-width: 990px) {
+            padding-left: 16%;
+          }
+        }
+        .error-message {
+          font-size: 1em;
+          font-family: 'Montserrat';
+          font-weight: normal;
+          color: $error-color;
+        }
+      }
+      .about {
+        width: 98%;
+        border-bottom: 2px solid white;
+      }
+    }
 
     .name {
       font-size: 18px;
@@ -180,10 +241,20 @@ $error-color: #f40000;
         margin-bottom: 24px;
       }
 
-      tr {
-        td:first-child { width: 100%; }
-        td { padding-top: 24px; }
+      @media screen and (min-width: 1024px) {
+        justify-content: flex-end;
       }
     }
   }
+}
+
+.d-flex .it .card .card-img-overlay .card-footer .col-6 {
+  flex-direction: column;
+}
+
+.bookings-title h1 {
+  padding: 8px 24px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 48px;
 }
