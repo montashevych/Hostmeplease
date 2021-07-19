@@ -17,8 +17,8 @@ RSpec.describe Place, type: :model do
   end
 
   context 'when length incorrect' do
-    it 'does not allow a title longer than 23 characters' do
-      test_place.title = 'q' * 24
+    it 'does not allow a title longer than 50 characters' do
+      test_place.title = 'q' * 51
       expect(test_place).not_to be_valid
     end
 
