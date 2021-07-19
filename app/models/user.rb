@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     format: { with: email_regexp },
                     uniqueness: { case_sensitive: false }
+  validates :password, length: { minimum: 6, maximum: 256 }, on: :create
 
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)
