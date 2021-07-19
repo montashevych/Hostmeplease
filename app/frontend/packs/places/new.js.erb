@@ -4,6 +4,7 @@ import geocoder from 'geocoder'
 import marker_icon_2x from 'leaflet/dist/images/marker-icon-2x.png'
 import marker_icon from 'leaflet/dist/images/marker-icon.png'
 import marker_shadow from 'leaflet/dist/images/marker-shadow.png'
+import { oneTimeError, addShowingErrorsToField } from '../shared/errors'
 
 const PICTURE_ERRORS_CLASS = 'has-errors';
 // Get API key from enviropment
@@ -75,30 +76,10 @@ let numberFieldValidation = (numberFieldElement) => {
   });
 };
 
-// Adds a one-time error display
-let oneTimeError = (classNameOfElements, elementsEvent) => {
-  document.querySelectorAll(`.${classNameOfElements}`).forEach (element => {
-    element.addEventListener(elementsEvent, (event) => {
-      element.parentNode.lastChild.remove();
-      element.classList.remove('field_with_errors');
-    }, { once: true });
-  });
-};
-
 // Adds errors a class to the given elements
-let addShowingErrorsToField = (itemsPlace, checkedItemsClass, givenClass) => {
-  let container = document.getElementById(itemsPlace)
-  container.querySelectorAll(`.${checkedItemsClass}`).forEach(messageElement => {
-  	if (messageElement.textContent.length > 0) {
-  		messageElement.previousSibling.classList.add(givenClass);
-  	} else {
-      messageElement.previousSibling.classList.remove(givenClass);
-    }
-  });
-};
-
 addShowingErrorsToField('address_form', 'error-message', 'field_with_errors');
 
+// Adds a one-time error display
 oneTimeError('field_with_errors', 'input');
 
 // Adds price field validation
