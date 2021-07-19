@@ -15,7 +15,8 @@ div.container.profile
               = @user.first_name.capitalize
             .col-md-5.col-sm-12
               - if action_name == 'show'
-                = link_to 'Edit Profile', edit_user_path(@user), class: 'button_profile btn text-white montserrat'
+                = link_to 'Edit Profile', edit_user_path(@user),
+                  class: 'button_profile btn text-white montserrat'
               - else action_name == 'edit'
                 = f.submit 'Save Changes', class: 'button_profile btn text-white montserrat'
           .row.mb-2
