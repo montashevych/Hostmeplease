@@ -12,6 +12,7 @@ const PICTURES_INPUT = 'place_pictures_attributes_image'
 const PICTURES_UPLOAD_BUTTON = 'place_pictures_label'
 const INPUTS_COLUMN_NAME = 'fileInputColumn';
 const PICTURES_COLUMN_ID = 'image-column';
+// Pictures errors
 const PICTURES_ERRORS_CLASS = 'has-errors';
 const PICTURES_ERRORS_TEXT = 'image-error';
 
