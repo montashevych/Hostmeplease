@@ -3,7 +3,10 @@
 //* Preview and deleting images befor upload
 //*
 //*******************************************
-import { validateFile } from '../shared/validations'
+import { validateFile,
+         addErrorsClass,
+         resetFiles,
+         flashMessage} from '../shared/validations'
 
 const PICTURES_INPUT = 'place_pictures_attributes_image'
 const PICTURES_UPLOAD_BUTTON = 'place_pictures_label'
@@ -17,12 +20,19 @@ let uploadButton = document.getElementById(PICTURES_UPLOAD_BUTTON);
 let picturesErrorsText = document.getElementById(PICTURES_ERRORS_TEXT);
 
 document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
-  if (validateFile(uploadButton, picturesErrorsText)) {
+  // Gives me true or errors message
+  let valideOrMessage = validateFile(uploadButton);
+
+  if (valideOrMessage == true) {
     let picturesInput = document.getElementById(PICTURES_INPUT);
     let selectedPictures = Array.from(event.target.files);
     // Counters
     let pictureNumber = 0;
 
+    // Remove errors if it present in pure file
+    uploadButton.classList.remove(PICTURES_ERRORS_CLASS);
+    picturesErrorsText.outerHTML && picturesErrorsText.outerHTML = '';
+    // Work at pictures
     selectedPictures.forEach((picture) => {
       // Copy original files input
       let clonedPicturesInput = picturesInput.cloneNode();
@@ -81,5 +91,9 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
       createPreview(newPicture, PICTURES_COLUMN_ID, newPictureContainer, clonedPicturesInput);
     });
     picturesInput.value = '';
+  } else {
+    flashMessage(valideOrMessage);
+    addErrorsClass(uploadButton, PICTURES_ERRORS_CLASS);
+    resetFiles(event);
   }
 });
