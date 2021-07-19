@@ -18,6 +18,10 @@ class Booking < ApplicationRecord
       .where(confirmed: true)
   }
 
+  scope :active, lambda {
+    where(cancelled: false)
+  }
+
   def duration
     (checkout.to_date - checkin.to_date).to_i + 1
   end

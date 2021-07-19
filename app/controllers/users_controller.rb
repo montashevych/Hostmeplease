@@ -11,9 +11,8 @@ class UsersController < ApplicationController
   def show; end
 
   def bookings
-    @bookings = @user.bookings.where(cancelled: false).paginate(
-                                                        page: params[:page],
-                                                        per_page: BOOKINGS_PER_PAGE)
+    @bookings = @user.bookings.active.paginate(page: params[:page],
+                                               per_page: BOOKINGS_PER_PAGE)
   end
 
   private
