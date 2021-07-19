@@ -1,4 +1,4 @@
-- provide :title, @place.title
+- provide :title, @my_place.title
 
 section.place-screen
   .text-white
@@ -37,12 +37,12 @@ section.pg-cards
                   br/
                   big
                     | $
-                    = @place.price
+                    = @my_place.price
                   small  per night
-                p.card-text = @place.description
-                / a.btn.btn-success href="#{place_book_url(id: @place.id)}" Book
+                p.card-text = @my_place.description
+                / a.btn.btn-success href="#{place_book_url(id: @my_place.id)}" Book
                 - if signed_in?
-                  = form_with method: :post, model: Booking.create(place: @place, user: current_user), url: place_book_url(place_id: @place.id), local: true do |f|
+                  = form_with method: :post, model: Booking.create(place: @my_place, user: current_user), url: place_book_url(place_id: @my_place.id), local: true do |f|
                     = f.hidden_field :checkin
                     = f.hidden_field :checkout
                     fieldset.fields.row

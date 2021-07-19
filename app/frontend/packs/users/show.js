@@ -8,7 +8,7 @@ const PICTURES_ERRORS_CLASS = 'has-errors';
 let preview_avatar = document.getElementById('avatar-preview');
 let preview_avatar_src = preview_avatar.src;
 
-document.getElementById('user_image').addEventListener('change', (event) => {
+document.getElementById('user_form_picture_attributes_image').addEventListener('change', (event) => {
   // Gives me true or errors message
   let valideOrMessage = validateFile(preview_avatar);
 

@@ -20,6 +20,8 @@ class User < ApplicationRecord
   before_create :set_default_avatar
   has_many :bookings, dependent: :nullify
 
+  accepts_nested_attributes_for :picture
+
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)
   end

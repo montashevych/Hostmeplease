@@ -150,9 +150,21 @@ $error-color: #f40000;
     border-radius: 20px;
     font-weight: 700;
     margin-top: 12rem;
+
     @media screen and (max-width: 570px) {
       margin-top: 3rem;
     }
+
+    #new_user_form {
+      .profile-row {
+        margin: 0;
+
+        .button_profile {
+          background-color: #91CB82;
+        }
+      }
+    }
+
     .card-body{
       padding: 0;
 

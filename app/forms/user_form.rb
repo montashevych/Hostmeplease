@@ -2,7 +2,8 @@ class UserForm
   include ActiveModel::Model
   email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
-  attr_accessor :first_name, :last_name, :phone_number, :email, :success, :user
+  attr_accessor :first_name, :last_name, :phone_number, :email, :success, :user,
+                                                                        :picture_attributes
 
   validates :first_name, length: { minimum: 2, maximum: 50 }
   validates :last_name, length: { minimum: 2, maximum: 50 }
@@ -16,6 +17,7 @@ class UserForm
     @last_name  ||= user.last_name
     @email      ||= user.email
     @phone_number ||= user.phone_number
+    @picture ||= user.picture
   end
 
   def submit
@@ -35,6 +37,7 @@ class UserForm
                   last_name: last_name,
                   email: email,
                   phone_number: phone_number,
+                  picture_attributes: picture_attributes
                 })
   end
 end

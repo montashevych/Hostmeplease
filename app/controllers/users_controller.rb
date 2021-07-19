@@ -35,10 +35,6 @@ class UsersController < ApplicationController
                                                per_page: BOOKINGS_PER_PAGE)
   end
 
-  def update
-    current_user.picture.update(user_params)
-  end
-
   private
 
   def user_find
@@ -50,6 +46,7 @@ class UsersController < ApplicationController
                                       :last_name,
                                       :role,
                                       :email,
-                                      :phone_number)
+                                      :phone_number,
+                                      picture_attributes: :image)
   end
 end
