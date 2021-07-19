@@ -17,6 +17,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6, maximum: 256 }, on: :create
 
+  has_many :bookings, dependent: :nullify
+
   def self.from_google(email:, params:)
     create_with(**params).find_or_create_by!(email: email)
   end

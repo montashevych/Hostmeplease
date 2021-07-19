@@ -1,4 +1,5 @@
-- provide :title, @my_place.title
+- provide :title, @place.title
+
 section.place-screen
   .text-white
     = render 'shared/header'
@@ -31,11 +32,28 @@ section.pg-cards
                   br/
                   big
                     | $
-                    = @my_place.price
-                  small  per month
-                p.card-text = @my_place.description
-                a.btn.btn-success href="#"  Quick book
+                    = @place.price
+                  small  per night
+                p.card-text = @place.description
+                / a.btn.btn-success href="#{place_book_url(id: @place.id)}" Book
+                - if signed_in?
+                  = form_with method: :post, model: Booking.create(place: @place, user: current_user), url: place_book_url(place_id: @place.id), local: true do |f|
+                    = f.hidden_field :checkin
+                    = f.hidden_field :checkout
+                    fieldset.fields.row
+                      .col.mb-2
+                        = f.label :dates, "Dates"
+                        = f.text_field :dates
+                      .col.mb-2
+                        = f.label :guests, "Guests"
+                        = f.select :guests, ["4 adults"]
+                    button.btn.btn-success type="submit" Quick book
+                - else
+                  = link_to new_user_session_url, "Sign in to book", class: "btn btn-success"
+                
           .row.mt-3
-            div
-              img.card.card-img-top.map-card /
+            div style=("width: 30rem;") 
+              div#map.card.card-img-top.map-card
 = render'shared/footer'
+
+= javascript_pack_tag 'place_page', 'data-turbolinks-track': 'reload'

@@ -11,6 +11,8 @@ class Place < ApplicationRecord
   validates :address, presence: true
   validates :pictures, presence: true
 
+  has_many :bookings, dependent: :nullify
+
   scope :workspaces, -> { where(type: 'Workspace') }
   scope :accommodations, -> { where(type: 'Accommodation') }
 

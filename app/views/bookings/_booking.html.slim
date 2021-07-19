@@ -1,0 +1,25 @@
+.row.mb-2.booking
+    .col-lg-8
+      .row.mb-2
+        .col-lg-6
+          label for="checkin" Check-in date
+          p.field#checkin = @booking.checkin.strftime("%Y-%m-%d")
+        .col-lg-6
+          label for="checkout" Check-out date
+          p.field#checkout = @booking.checkout.strftime("%Y-%m-%d")
+      .row.mb-2
+        .col-lg-6
+          label for="price" Price per night
+          p.field#price = "$ #{@booking.place.price}"
+        .col-lg-6
+          label for="price-total" Full price
+          p.field#price-total = "$ #{@booking.full_price}"
+      .row.mb-2
+        .col-lg-12
+          label for="payment-type" Payment type
+          p.field#payment-type Offline
+    .col-lg-4
+      label for="location" Location
+      div#map
+
+= javascript_pack_tag 'booking'
