@@ -85,7 +85,7 @@ document.getElementById(PICTURES_INPUT).addEventListener('change', (event) =>{
 
 function validateFile(picture){
   const allowedExtensions =  ['jpg', 'jpeg', 'gif', 'png'],
-        sizeLimit = 1000000; // 1 megabyte
+        sizeLimit = 1048576; // 1 megabyte
 
   // destructuring file name and size from file object
   const { name:fileName, size:fileSize } = event.originalTarget.files[0];
