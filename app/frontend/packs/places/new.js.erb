@@ -116,11 +116,11 @@ if (image_errors.textContent.length > 0) {
   picture_label.className = 'has-errors';
 } else {
   picture_label.className = '';
-};
+}
 
 if (localStorage.getItem('newplace-map-location')) {
   latlng = JSON.parse(localStorage.getItem('newplace-map-location'));
-};
+}
 
 let map = L.map('map').setView(latlng, 10);
 
