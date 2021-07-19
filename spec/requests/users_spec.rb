@@ -60,6 +60,8 @@ RSpec.describe 'Users', type: :request do
       expect(response).to have_http_status(:success)
     end
 
+    # rubocop:disable RSpec/ExampleLength
+    # rubocop:disable RSpec/MultipleExpectations
     it "creates a User and redirects to User's page" do
       patch user_path(id: user.id), params: { user_form: { first_name: 'James', last_name: 'Bond',
                                                            email: 'james@gmail.com', phone_number: '+380963451234' } }
@@ -69,5 +71,7 @@ RSpec.describe 'Users', type: :request do
       expect(response).to render_template('users/_user_form')
       expect(response.body).to include('User was successfully updated.')
     end
+    # rubocop:enable RSpec/ExampleLength
+    # rubocop:enable RSpec/MultipleExpectations
   end
 end
