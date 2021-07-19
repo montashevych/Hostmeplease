@@ -60,11 +60,6 @@ Metrics/BlockLength:
 RSpec/ExampleLength:
   Exclude:
     - 'spec/feature/*'
-    - spec/requests/users_spec.rb
-    
-RSpec/MultipleExpectations:
-  Exclude:
-    - spec/requests/users_spec.rb
 
 # Style Cops
 
