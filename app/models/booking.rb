@@ -4,7 +4,6 @@ class Booking < ApplicationRecord
 
   validates :checkin, presence: true
   validates :checkout, presence: true
-
   validate :cannot_overlap_with_other_booking
 
   scope :with_overlapping_dates, lambda { |checkin, checkout|
