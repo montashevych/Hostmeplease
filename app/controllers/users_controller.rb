@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_find, only: [:show, :edit, :update]
+  before_action :user_find, except: [:index]
 
   def index
     redirect_to root_path
