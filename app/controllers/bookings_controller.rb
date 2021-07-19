@@ -14,8 +14,7 @@ class BookingsController < ApplicationController
   def confirm; end
 
   def cancel
-    @booking.cancelled = true
-    @booking.save!
+    @booking.update cancelled: true
     flash[:success] = "Cancelled booking for #{@booking.place.title} successfully."
     redirect_to user_bookings_url(id: @booking.user.id)
   end
@@ -32,8 +31,7 @@ class BookingsController < ApplicationController
   end
 
   def save
-    @booking.confirmed = true
-    @booking.save!
+    @booking.update confirmed: true
     redirect_to user_bookings_url(@booking.user)
   end
 
