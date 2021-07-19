@@ -4,9 +4,11 @@ class PlacesController < ApplicationController
   PLACES_PER_PAGE = 9
 
   before_action :place_find, only: [:show, :bookings]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @places = Place.where(status: :created).paginate(page: params[:page], per_page: PLACES_PER_PAGE)
+    @places = Place.where(status: :created).paginate(page: params[:page],
+                                                     per_page: PLACES_PER_PAGE)
   end
 
   def bookings
@@ -22,13 +24,32 @@ class PlacesController < ApplicationController
     end
   end
 
-  def new; end
+  def new
+    @place = Place.new
+    @address = @place.build_address
+    @pictures = @place.pictures.build
+  end
+
+  def create
+    place_build
+
+    if @place.save
+      flash[:notice] = 'Place created'
+      redirect_to place_path(@place)
+    else
+      flash[:error] = 'Incorrect data entry'
+      render :new
+    end
+  end
 
   def edit; end
 
+  def destroy; end
+
   def my_places
     @count_places = current_user.places.count
-    @places = current_user.places.paginate(page: params[:page], per_page: PLACES_PER_PAGE)
+    @places = current_user.places.paginate(page: params[:page],
+                                           per_page: PLACES_PER_PAGE)
   end
 
   def book
@@ -45,7 +66,11 @@ class PlacesController < ApplicationController
   private
 
   def place_find
-    @place = Place.find(params[:id])
+    @my_place = Place.find(params[:id])
+  end
+
+  def place_build
+    @place = current_user.places.build(place_params)
   end
 
   def booking_params
@@ -74,6 +99,11 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:title)
+    params.require(:place).permit(:title, :description, :price, :type,
+                                  address_attributes: [:country,
+                                                       :state_region,
+                                                       :city, :details,
+                                                       :lon, :lat],
+                                  pictures_attributes: [:image])
   end
 end
