@@ -66,7 +66,7 @@ class PlacesController < ApplicationController
   private
 
   def place_find
-    @my_place = Place.find(params[:id])
+    @place = Place.find(params[:id])
   end
 
   def place_build
