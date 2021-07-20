@@ -16,10 +16,6 @@ class UsersController < ApplicationController
     @user_form = UserForm.new(user: @user)
   end
 
-  def bookings
-    @bookings = @user.bookings.where(cancelled: false).paginate(page: params[:page], per_page: BOOKINGS_PER_PAGE)
-  end
-
   def update
     @user_form = UserForm.new(user: current_user, **user_params)
     @user_form.submit
