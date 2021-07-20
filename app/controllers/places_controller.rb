@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @place }
+      format.json { render json: @place.to_json(include: :address) }
     end
   end
 

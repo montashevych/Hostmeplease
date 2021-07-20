@@ -15,7 +15,7 @@ const bookingsUrl = normalizeUrl(window.location.toString()) + '/bookings.json';
 onload() // wait for onload
   .then(() => fetch(url)) // retrieve place
   .then(resp => resp.json())
-  .then(({ lat, lon }) => {
+  .then(({ address: { lat, lon } }) => {
     let map = L.map('map')
       .setView([lat, lon], 18);
 
