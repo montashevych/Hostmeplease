@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
 
   def bookings
     respond_with do |format|
-      format.json { render json: @place.bookings.where(cancelled: false) }
+      format.json { render json: @place.bookings.active }
     end
   end
 
